@@ -11,6 +11,8 @@ import com.polyshoes.swing.MenuItem;
 import com.polyshoes.swing.PopupMenu;
 import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
+import com.polyshoes.view.HoaDon.HoaDonJPanel;
+import com.polyshoes.view.HoaDon.LichSuHoaDonJFram;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,6 +49,13 @@ public class MainJFrame extends javax.swing.JFrame {
                         main.showForm(new TrangChuJPanel());
                     } else if (subMenuIndex == 1) {
                         main.showForm(new QLSPJPanel());
+                    }
+                }
+                if (menuIndex == 8) {
+                    if (subMenuIndex == 1) {
+                        main.showForm(new LichSuHoaDonJFram());
+                    } else if (subMenuIndex == 0) {
+                        main.showForm(new HoaDonJPanel());
                     }
                 }
             }
