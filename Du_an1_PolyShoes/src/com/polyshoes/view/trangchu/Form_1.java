@@ -1,8 +1,8 @@
 package com.polyshoes.view.trangchu;
 
-public class QLSPJPanel extends javax.swing.JPanel {
+public class Form_1 extends javax.swing.JPanel {
 
-    public QLSPJPanel() {
+    public Form_1() {
         initComponents();
         setOpaque(false);
     }
