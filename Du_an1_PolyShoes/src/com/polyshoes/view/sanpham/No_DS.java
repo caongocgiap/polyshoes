@@ -19,7 +19,7 @@ public class No_DS extends javax.swing.JPanel {
         private void fillToTable() {
                 DefaultTableModel tblModel = (DefaultTableModel) tblSanPham1.getModel();
                 tblModel.setRowCount(0);
-                List<SanPham> list = dao.select();
+                List<SanPham> list = dao.selectAll();
                 int index = 0;
                 Object[] rowData;
                 for (SanPham x : list) {

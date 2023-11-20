@@ -1,5 +1,8 @@
 package com.polyshoes.model.sanpham;
 
+import java.security.SecureRandom;
+import java.util.Random;
+
 public class SanPhamChiTiet {
 
         private String ma;
@@ -164,5 +167,25 @@ public class SanPhamChiTiet {
                 return new Object[] {
                         ma, ten, danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, khoiLuong, gia, soLuongTon, trangThai
                 };
+        }
+        
+        public Object[] toInsert() {
+                setMa(generateCode());
+                return new Object[] {
+                        ma, ten, danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, khoiLuong, gia, soLuongTon, trangThai
+                };
+        }
+
+        private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        private static final int CODE_LENGTH = 5;
+
+        public static String generateCode() {
+                Random random = new SecureRandom();
+                StringBuilder code = new StringBuilder(CODE_LENGTH);
+                for (int i = 0; i < CODE_LENGTH; i++) {
+                        int randomIndex = random.nextInt(CHARACTERS.length());
+                        code.append(CHARACTERS.charAt(randomIndex));
+                }
+                return "SPCT-" + code.toString();
         }
 }

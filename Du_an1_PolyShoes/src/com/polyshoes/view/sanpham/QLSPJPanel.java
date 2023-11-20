@@ -422,7 +422,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 if (evt.getClickCount() == 2) {
                         this.index = tblSanPham.rowAtPoint(evt.getPoint());
                         if (this.index >= 0) {
-                                new SanPhamCTJFrame().setVisible(true);
+//                                new SanPhamCTJFrame().setVisible(true);
                         }
                 }
         }//GEN-LAST:event_tblSanPhamMouseClicked
@@ -512,7 +512,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
         private void fillToTable() {
                 DefaultTableModel tblModel = (DefaultTableModel) tblSanPham.getModel();
                 int index = 0;
-                List<SanPham> list = dao.select();
+                List<SanPham> list = dao.selectAll();
                 tblModel.setRowCount(0);
                 for (SanPham x : list) {
                         index++;
@@ -557,7 +557,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 SanPhamDAO dao = new SanPhamDAO();
                 DefaultComboBoxModel cboModel = (DefaultComboBoxModel) cboMaSP.getModel();
                 cboModel.removeAllElements();
-                List<SanPham> list = dao.select();
+                List<SanPham> list = dao.selectAll();
                 for (SanPham x : list) {
                         cboModel.addElement(x);
                 }
