@@ -1,5 +1,8 @@
 package com.polyshoes.model.sanpham;
 
+import java.security.SecureRandom;
+import java.util.Random;
+
 public class Size {
 
         private int id;
@@ -52,6 +55,20 @@ public class Size {
         }
         
         public Object[] toInsert() {
-                return new Object[] {this.ma, this.size};
+                setMa(generateCode());
+                return new Object[]{this.ma, this.size};
+        }
+
+        private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        private static final int CODE_LENGTH = 5;
+
+        public static String generateCode() {
+                Random random = new SecureRandom();
+                StringBuilder code = new StringBuilder(CODE_LENGTH);
+                for (int i = 0; i < CODE_LENGTH; i++) {
+                        int randomIndex = random.nextInt(CHARACTERS.length());
+                        code.append(CHARACTERS.charAt(randomIndex));
+                }
+                return "SIZE-" + code.toString();
         }
 }

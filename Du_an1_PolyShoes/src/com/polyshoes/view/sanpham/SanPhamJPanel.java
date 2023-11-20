@@ -374,7 +374,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         private void showDetail() {
                 index = tblSanPham.getSelectedRow();
                 String ma = (String) tblSanPham.getValueAt(index, 1);
-                SanPham model = dao.findById(ma);
+                SanPham model = dao.findByMa(ma);
                 txtMa.setText(model.getMa());
                 txtTen.setText(model.getTen());
                 txtMoTa.setText(model.getMoTa());

@@ -1,5 +1,8 @@
 package com.polyshoes.model.sanpham;
 
+import java.security.SecureRandom;
+import java.util.Random;
+
 public class MauSac {
 
         private String ma;
@@ -35,6 +38,20 @@ public class MauSac {
         }
         
         public Object[] toInsert() {
-                return new Object[] {this.ma, this.ten};
+                setMa(generateCode());
+                return new Object[]{this.ma, this.ten};
+        }
+
+        private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        private static final int CODE_LENGTH = 7;
+
+        public static String generateCode() {
+                Random random = new SecureRandom();
+                StringBuilder code = new StringBuilder(CODE_LENGTH);
+                for (int i = 0; i < CODE_LENGTH; i++) {
+                        int randomIndex = random.nextInt(CHARACTERS.length());
+                        code.append(CHARACTERS.charAt(randomIndex));
+                }
+                return "MS-" + code.toString();
         }
 }
