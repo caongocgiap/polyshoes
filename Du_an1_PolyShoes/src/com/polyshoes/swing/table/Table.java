@@ -12,9 +12,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 
+
 public class Table extends JTable {
 
         public Table() {
+            
                 setShowHorizontalLines(true);
                 setGridColor(new Color(230, 230, 230));
                 setRowHeight(40);
@@ -87,5 +89,6 @@ public class Table extends JTable {
                 p.setBackground(Color.WHITE);
                 scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
                 scroll.setBorder(new EmptyBorder(5, 10, 5, 10));
+               
         }
 }
