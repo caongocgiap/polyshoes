@@ -1,6 +1,6 @@
 package com.polyshoes.dao.HoaDon;
 
-
+import com.polyshoes.helper.DBconnect;
 import com.polyshoes.helper.JdbcHelper;
 import com.polyshoes.model.HoaDon.HoaDon;
 import java.sql.Connection;
@@ -12,82 +12,108 @@ import java.util.List;
 
 public class HoaDonDao {
 
-    Connection con = null;
-
-    PreparedStatement ps = null;
-
-    String sql = null;
-
-    ResultSet rs = null;
     public List<HoaDon> select() {
-        String sql = "SELECT * FROM Hoa_Don WHERE deleted = 0";
+        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "where Hoa_Don.Deleted = 0";
         return select(sql);
     }
 
-//    public void insert(HoaDon model) {
-//        String sql = "INSERT INTO Hoa_Don  VALUES (?, ?, ?, ?, ?, ?)";
-//        JdbcHelper.executeUpdate(sql,
-//                model.getMaCD(),
-//                model.getTenCD(),
-//                model.getHocPhi(),
-//                model.getThoiLuong(),
-//                model.getHinh(),
-//                model.getMoTa());
-//    }
-//
-//    //câu lệnh cập nhập dữ liệu vào sql
-//    public void update(HoaDon model) {
-//        String sql = "UPDATE Hoa_Don SET TenCD=?, HocPhi=?, ThoiLuong=?, Hinh=?, MoTa=? WHERE MaCD=?";
-//        JdbcHelper.executeUpdate(sql,
-//                model.getTenCD(),
-//                model.getHocPhi(),
-//                model.getThoiLuong(),
-//                model.getHinh(),
-//                model.getMoTa(),
-//                model.getMaCD());
-//    }
-//    //câu lệnh xóa dữ liệu  sql
-//
-//    public void delete(String MAHD) {
-//        String sql = "DELETE FROM Lich_Su_Hoa_Don\n"
-//                + "WHERE IDHoaDon IN (SELECT ID FROM Hoa_Don WHERE mahd = ?)\n"
-//                + "DELETE FROM Hoa_Don\n"
-//                + "where mahd = ?";
-//        JdbcHelper.executeUpdate(sql, MAHD, MAHD);
-//
-//    }
-    public void delete(String MAHD) {
-        String sql ="UPDATE Hoa_Don SET Deleted = 1 WHERE MaHD = ?";
-        JdbcHelper.executeUpdate(sql, MAHD);
+    public void delete(String keyword) {
+        String sql = "UPDATE Hoa_Don SET trangthai = 2 , Deleted = 1 WHERE MaHD = ?";
+        JdbcHelper.executeUpdate(sql, keyword);
     }
-//     public int deleteBang(String MAHD) {//them dl vao data sinhvien
-//        sql = "UPDATE Hoa_Don SET Deleted = 1 WHERE MaHD = ?";
-//
-//        try {
-//            con = DBConnect.getConnection();
-//            ps = con.prepareStatement(sql);
-//            ps.setObject(1, MAHD);
-//            return ps.executeUpdate();
-//            //insert.delete,update
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return 0;
-//        }
-//    }
 
-    public HoaDon findById(String macd) {
-        String sql = "SELECT * FROM Hoa_Don WHERE MAHD=?";
-        List<HoaDon> list = select(sql, macd);
+    
+
+    public HoaDon findById(String keyword) {
+        String sql = "SELECT id,idNhanVien, Hoa_Don.MaHD, Hoa_Don.SDT, Hoa_Don.TenNguoiNhan, \n"
+                + "Hoa_Don.NgayTao, Hoa_Don.NgayThanhToan, Hoa_Don.DiaChi,\n"
+                + "Hoa_Don.TrangThai,Hoa_Don.TongTien\n"
+                + "FROM Hoa_Don where Hoa_Don.TenNguoiNhan like ?";
+        List<HoaDon> list = select(sql, "%" + keyword + "%");
         return list.size() > 0 ? list.get(0) : null;
     }
 
-    public List<HoaDon> selectByKeyword(String keyword) {
-        String sql = "SELECT * FROM Hoa_Don WHERE MAHD LIKE ?";
+    public void inHoaDon(String MAHD) {
+        String sql = "UPDATE Hoa_Don SET trangthai = 0, Deleted = 1 WHERE MaHD = ?";
+        JdbcHelper.executeUpdate(sql, MAHD);
+    }
+
+    public List<HoaDon> selectByTenKN(String keyword) {
+        String sql = "SELECT * FROM Hoa_Don WHERE deleted = 0 and TenNguoiNhan LIKE ?";
         return select(sql, "%" + keyword + "%");
     }
-    public List<HoaDon> selectTrangThai(String keyword) {
-        String sql = "SELECT * FROM Hoa_Don WHERE TrangThai = ?";
+
+    public List<HoaDon> selectByLSSS(String keyword) {
+        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "where  Hoa_Don.MaHD = ?";
         return select(sql, keyword);
+    }
+
+    public List<HoaDon> selectByHD(String keyword) {
+        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "where Hoa_Don.MaHD = ?";
+        return select(sql, keyword);
+    }
+
+    public List<HoaDon> selectByMaNV(String keyword) {
+        String sql = "SELECT * FROM Hoa_Don WHERE deleted = 0 and IDNhanVien = ?";
+        return select(sql, keyword);
+    }
+
+    public List<HoaDon> selectByKeyword(String MAHD, String tenNguoiNhan, String MaNV, String SDT) {
+        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "where hoa_don.Deleted = 0 and MAHD = ? or tenNguoiNhan like ? or MaNV = ? or Hoa_Don.SDT = ?";
+        return select(sql, MAHD, "%" + tenNguoiNhan + "%", MaNV, SDT);
+    }
+
+    public List<HoaDon> paging2(int TuSo, int DenSo, int page, int limit) {
+        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "where TongTien BETWEEN ? AND ? AND Hoa_Don.deleted = 0\n"
+                + "ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        return select(sql, TuSo, DenSo, page * limit, limit);
+    }
+
+    public List<HoaDon> selectTrangThai(int keyword) {
+        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "where Hoa_Don.Deleted = 0 and TrangThai = ?";
+        return select(sql, keyword);
+    }
+
+    public List<HoaDon> selectThanhToan(String keyword) {
+        String sql = "SELECT hoa_don.ID, hoa_don.MaHD, hoa_don.NgayTao, hoa_don.NgayThanhToan, hoa_don.TongTien, Nhan_Vien.MaNV, hoa_don.TenNguoiNhan,hoa_don.DiaChi,hoa_don.SDT, hoa_don.TrangThai\n"
+                + "               FROM Hoa_Don\n"
+                + "              join Nhan_Vien on Nhan_Vien.ID = Hoa_Don.IDNhanVien\n"
+                + "               JOIN Hinh_Thuc_TT ON Hinh_Thuc_TT.IDHoaDon = Hoa_Don.ID\n"
+                + "               JOIN Thanh_Toan ON Thanh_Toan.id = Hinh_Thuc_TT.IDThanhToan\n"
+                + "              WHERE hoa_don.deleted =0 and  Thanh_Toan.MoTa LIKE ?";
+        return select(sql, "%" + keyword + "%");
+    }
+
+    public void updateTraHang(String MAHD) {
+        String sql = "update Hoa_Don_Chi_Tiet \n"
+                + "set Hoa_Don_Chi_Tiet.TrangThai = 0\n"
+                + "from Hoa_Don_Chi_Tiet \n"
+                + "join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
+                + "where Hoa_Don.MaHD = ?";
+        JdbcHelper.executeUpdate(sql, MAHD);
+    }
+
+    public void updateTra1Hang(String MAHD, String Ten) {
+        String sql = "update Hoa_Don_Chi_Tiet \n"
+                + "set Hoa_Don_Chi_Tiet.TrangThai = 1\n"
+                + "from Hoa_Don_Chi_Tiet \n"
+                + "join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
+                + "join San_Pham_Chi_Tiet on San_Pham_Chi_Tiet.ID = Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
+                + "join San_Pham on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
+                + "where Hoa_Don.MaHD = ? San_Pham.Ten like ";
+        JdbcHelper.executeUpdate(sql, MAHD, "%" + Ten + "%");
     }
 
     private List<HoaDon> select(String sql, Object... args) {
@@ -111,15 +137,32 @@ public class HoaDonDao {
 
     private HoaDon readFromResultSet(ResultSet rs) throws SQLException {
         HoaDon model = new HoaDon();
-   
-        model.setMaHD(rs.getString("MaHD"));
+        model.setID(rs.getInt("ID"));
+//        model.setIDNhanVien(rs.getInt("IDNhanVien"));
+        model.setMaHD(rs.getString("MAHD"));
         model.setNgayTao(rs.getDate("NgayTao"));
         model.setNgayTT(rs.getDate("NgayThanhToan"));
         model.setTongTien(rs.getDouble("TongTien"));
-        model.setMaNV(rs.getString("IDNhanVien"));
+        model.setMaNV(rs.getString("MaNV"));
+        model.setDiaChi(rs.getString("DiaChi"));
         model.setTenKH(rs.getString("TenNguoiNhan"));
-        model.setTrangThai(rs.getBoolean("TrangThai"));
+        model.setSDT(rs.getString("SDT"));
+        model.setTrangThai(rs.getInt("TrangThai"));
+
         return model;
     }
+
+    public List<HoaDon> paging(int page, int limit) {
+        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "where Hoa_Don.Deleted = 0\n"
+                + "ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        return select(sql, page, limit);
+    }
+//     public List<HoaDon> paging(int page, int limit) {
+//        String sql = "	 SELECT * FROM Hoa_Don WHERE deleted = 0\n"
+//                + "ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+//        return select(sql, page, limit);
+//    }
 
 }

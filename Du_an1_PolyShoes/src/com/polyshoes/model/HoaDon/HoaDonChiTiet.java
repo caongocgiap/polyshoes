@@ -7,26 +7,32 @@ public class HoaDonChiTiet {
     private int ID;
     private String MaSPCT;
     private String Hang;
+    private String MaHD;
     private String Color;
     private int Size;
     private int SoLuong;
     private Double DonGia;
-    private boolean TrangThai;
+    private int TrangThai;
     private Double TongTien;
+    private String TenSp;
+    private HoaDon HoaDon;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(int ID, String MaSPCT, String Hang, String Color, int Size, int SoLuong, Double DonGia, boolean TrangThai, Double TongTien) {
+    public HoaDonChiTiet(int ID, String MaSPCT, String Hang, String MaHD, String Color, int Size, int SoLuong, Double DonGia, int TrangThai, Double TongTien, String TenSp, HoaDon HoaDon) {
         this.ID = ID;
         this.MaSPCT = MaSPCT;
         this.Hang = Hang;
+        this.MaHD = MaHD;
         this.Color = Color;
         this.Size = Size;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
         this.TrangThai = TrangThai;
         this.TongTien = TongTien;
+        this.TenSp = TenSp;
+        this.HoaDon = HoaDon;
     }
 
     public int getID() {
@@ -51,6 +57,14 @@ public class HoaDonChiTiet {
 
     public void setHang(String Hang) {
         this.Hang = Hang;
+    }
+
+    public String getMaHD() {
+        return MaHD;
+    }
+
+    public void setMaHD(String MaHD) {
+        this.MaHD = MaHD;
     }
 
     public String getColor() {
@@ -85,11 +99,11 @@ public class HoaDonChiTiet {
         this.DonGia = DonGia;
     }
 
-    public boolean isTrangThai() {
+    public int getTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(boolean TrangThai) {
+    public void setTrangThai(int TrangThai) {
         this.TrangThai = TrangThai;
     }
 
@@ -100,11 +114,30 @@ public class HoaDonChiTiet {
     public void setTongTien(Double TongTien) {
         this.TongTien = TongTien;
     }
-      public String getMaCT() {
-        if (MaSPCT == getMaSPCT()) {
-            return "MaSP"+getMaSPCT();
-        } else {
-            return "MaSP"+getMaSPCT();
-        }
+
+    public String getTenSp() {
+        return TenSp;
     }
+
+    public void setTenSp(String TenSp) {
+        this.TenSp = TenSp;
+    }
+
+    public HoaDon getHoaDon() {
+        return HoaDon;
+    }
+
+    public void setHoaDon(HoaDon HoaDon) {
+        this.HoaDon = HoaDon;
+    }
+
+    public boolean getTrangXep() {
+        if (getTrangThai() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }

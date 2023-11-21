@@ -62,7 +62,7 @@ public class MenuJPanel extends javax.swing.JPanel {
                 addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/6.png")), "he", Menu.menuType.EMTY));
                 addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/7.png")), "Quản lý sản phẩm", Menu.menuType.MENU, "Danh sách sản phẩm", "Thêm sản phẩm"));
                 addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/8.png")), "Quản lý khuyến mại", Menu.menuType.MENU, "Danh sách khuyến mại", "Thêm khuyến mại"));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/9.png")), "Quản lý hóa đơn", Menu.menuType.MENU, "Tạo hóa đơn", "Lịch sử hóa đơn"));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/9.png")), "hóa đơn", Menu.menuType.MENU, "hóa đơn", "Lịch sử hóa đơn"));
                 addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/10.png")),"Quản lý tài khoản", Menu.menuType.MENU, "Nhân viên", "Admin"));
                 addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/11.png")), "Thống kê", Menu.menuType.MENU, "Theo ngày", "Theo tuần", "Theo tháng"));
         }

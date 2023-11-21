@@ -1,10 +1,11 @@
 package com.polyshoes.model.HoaDon;
 
-import java.io.Serializable;
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
-public class HoaDon implements Serializable {
+public class HoaDon {
 
     private int ID;
     private String MaHD;
@@ -13,12 +14,15 @@ public class HoaDon implements Serializable {
     private double TongTien;
     private String MaNV;
     private String TenKH;
-    private boolean TrangThai;
+    private String SDT;
+    private int TrangThai;
+    private String DiaChi;
+    private int IDNhanVien;
 
     public HoaDon() {
     }
 
-    public HoaDon(int ID, String MaHD, Date NgayTao, Date NgayTT, double TongTien, String MaNV, String TenKH, boolean TrangThai) {
+    public HoaDon(int ID, String MaHD, Date NgayTao, Date NgayTT, double TongTien, String MaNV, String TenKH, String SDT, int TrangThai, String DiaChi, int IDNhanVien) {
         this.ID = ID;
         this.MaHD = MaHD;
         this.NgayTao = NgayTao;
@@ -26,7 +30,10 @@ public class HoaDon implements Serializable {
         this.TongTien = TongTien;
         this.MaNV = MaNV;
         this.TenKH = TenKH;
+        this.SDT = SDT;
         this.TrangThai = TrangThai;
+        this.DiaChi = DiaChi;
+        this.IDNhanVien = IDNhanVien;
     }
 
     public int getID() {
@@ -85,13 +92,39 @@ public class HoaDon implements Serializable {
         this.TenKH = TenKH;
     }
 
-    public boolean isTrangThai() {
+    public String getSDT() {
+        return SDT;
+    }
+
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
+    }
+
+    public int getTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(boolean TrangThai) {
+    public void setTrangThai(int TrangThai) {
         this.TrangThai = TrangThai;
     }
+
+    public String getDiaChi() {
+        return DiaChi;
+    }
+
+    public void setDiaChi(String DiaChi) {
+        this.DiaChi = DiaChi;
+    }
+
+    public int getIDNhanVien() {
+        return IDNhanVien;
+    }
+
+    public void setIDNhanVien(int IDNhanVien) {
+        this.IDNhanVien = IDNhanVien;
+    }
+
+    
 
     public String getMax() {
         if (MaNV == getMaNV()) {
@@ -102,13 +135,27 @@ public class HoaDon implements Serializable {
 
     }
 
-    public String getTrangThai() {
-        if (TrangThai == true) {
-            return "Đã thanh toán";
+    public String getIDHoaDon() {
+        if (MaNV == getMaNV()) {
+            return "HD" + getID();
         } else {
-            return "Chưa thanh toán";
+            return "HD" + getID();
         }
+
     }
+
+ public String getTrangThaiA() {
+    switch (getTrangThai()) {
+        case 0:
+            return "Đã thanh toán";
+        case 1:
+            return "Chưa thanh toán";
+        case 2:
+            return "Đã hủy thanh toán";
+        default:
+            return null;
+    }
+}
 
     public String getNgayTTAsString() {
         if (NgayTT != null) {
@@ -128,13 +175,18 @@ public class HoaDon implements Serializable {
         }
     }
 
-    @Override
-    public String toString() {
-        if (TrangThai == true) {
-            return "Đã thanh toán";
-        } else {
-            return "Chưa thanh toán";
+    public static String generateCode() {
+        Random random = new SecureRandom();
+        StringBuilder code = new StringBuilder(CODE_LENGTH);
+
+        for (int i = 0; i < CODE_LENGTH; i++) {
+            int randomIndex = random.nextInt(CHARACTERS.length());
+            code.append(CHARACTERS.charAt(randomIndex));
         }
+
+        return code.toString();
     }
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private static final int CODE_LENGTH = 8;
 
 }
