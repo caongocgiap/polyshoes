@@ -17,8 +17,14 @@ public class SanPham {
 
         public SanPham() {
         }
-        
-         public SanPham(int id, String ma, String ten, String moTa, boolean trangThai) {
+
+        public SanPham(String ma, String ten, String moTa) {
+                this.ma = ma;
+                this.ten = ten;
+                this.moTa = moTa;
+        }
+
+        public SanPham(int id, String ma, String ten, String moTa, boolean trangThai) {
                 this.id = id;
                 this.ma = ma;
                 this.ten = ten;
@@ -42,7 +48,7 @@ public class SanPham {
         public void setId(int id) {
                 this.id = id;
         }
-        
+
         public String getMa() {
                 return ma;
         }
@@ -74,7 +80,7 @@ public class SanPham {
         public void setSoLuong(int soLuong) {
                 this.soLuong = soLuong;
         }
-        
+
         public boolean isTrangThai() {
                 return trangThai;
         }
@@ -88,11 +94,15 @@ public class SanPham {
                 return this.ma;
         }
 
-        public Object[] toInsert() {
-                this.setMa(generateCode());
+        public Object[] toDataRow() {
                 return new Object[]{this.ma, this.ten, this.moTa, this.soLuong, this.trangThai};
         }
-        
+
+        public Object[] toInsert() {
+                this.setMa(generateCode());
+                return new Object[]{this.ma, this.ten, this.moTa};
+        }
+
         public static String generateCode() {
                 Random random = new SecureRandom();
                 StringBuilder code = new StringBuilder(CODE_LENGTH);

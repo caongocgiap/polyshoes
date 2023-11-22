@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SanPhamCTDAO {
+        
+        String PAGGINH_BY_MA = "{CALL pagging_SPCT_By_Ma(?,?,?)}";
+        String themSPCT = "{CALL them_SPCT(?,?,?,?,?,?,?,?,?,?,?,?)}";
+        String getSPCT_ByID = "{CALL getIDSPCT_ByMa(?)}";
+        
 
         public int insert(Object... args) {
                 String sql = "INSERT INTO San_Pham_Chi_Tiet(IDDanhMuc,IDXuatXu,IDNSX,IDMauSac,IDSize,IDSanPham,"
@@ -72,21 +77,15 @@ public class SanPhamCTDAO {
                 return !list.isEmpty() ? Integer.parseInt(String.valueOf(list.get(0))) : 0;
         }
         
-        public List<SanPhamChiTiet> paging(int page, int limit) {
-                String sql = "SELECT San_Pham.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,\n" +
-"Mau_Sac.Ten AS Expr8, Size.Size, San_Pham_Chi_Tiet.Gia, San_Pham_Chi_Tiet.SoLuongTon, San_Pham_Chi_Tiet.KhoiLuong, San_Pham_Chi_Tiet.TrangThai\n" +
-"FROM San_Pham_Chi_Tiet INNER JOIN\n" +
-"	San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID INNER JOIN\n" +
-"	Size ON San_Pham_Chi_Tiet.IDSize = Size.ID INNER JOIN\n" +
-"	Thuong_Hieu ON San_Pham_Chi_Tiet.IDThuongHieu = Thuong_Hieu.ID INNER JOIN\n" +
-"	Xuat_Xu ON San_Pham_Chi_Tiet.IDXuatXu = Xuat_Xu.ID INNER JOIN\n" +
-"	Mau_Sac ON San_Pham_Chi_Tiet.IDMauSac = Mau_Sac.ID INNER JOIN\n" +
-"	Nha_San_Xuat ON San_Pham_Chi_Tiet.IDNSX = Nha_San_Xuat.ID INNER JOIN\n" +
-"	De_Giay ON San_Pham_Chi_Tiet.IDDeGiay = De_Giay.ID INNER JOIN\n" +
-"	Danh_Muc ON San_Pham_Chi_Tiet.IDDanhMuc = Danh_Muc.ID INNER JOIN\n" +
-"	Co_Giay ON San_Pham_Chi_Tiet.IDCoGiay = Co_Giay.ID INNER JOIN\n" +
-"	Chat_Lieu ON San_Pham_Chi_Tiet.IDChatLieu = Chat_Lieu.ID\n" +
-"ORDER BY San_Pham_Chi_Tiet.id desc OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
-                return select(sql, page, limit);
+        public List<SanPhamChiTiet> paging(String ma, int page, int limit) {
+                return select(PAGGINH_BY_MA, ma, page, limit);
+        }
+        
+        public SanPhamChiTiet getByID(int id_SPCT) {
+                return select(getSPCT_ByID, id_SPCT).get(0);
+        }
+        
+        public void insertSPCT(Object... args) {
+                JdbcHelper.executeUpdate(themSPCT, args);
         }
 }

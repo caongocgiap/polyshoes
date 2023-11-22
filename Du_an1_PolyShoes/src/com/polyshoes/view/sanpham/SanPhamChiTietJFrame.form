@@ -58,30 +58,19 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cboTenSP" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnTenSP" min="-2" pref="36" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="cboTenSP" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="lblTieuDe2" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTieuDe7" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTieuDe6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="cboChatLieu" alignment="1" min="-2" pref="202" max="-2" attributes="0"/>
-                                      <Component id="cboNSX" min="-2" pref="202" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnNSX" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="btnChatLieu" min="-2" pref="36" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="cboChatLieu" alignment="1" min="-2" pref="202" max="-2" attributes="0"/>
+                                  <Component id="cboNSX" min="-2" pref="202" max="-2" attributes="0"/>
                               </Group>
                               <Component id="qrCole" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jSeparator1" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
@@ -94,35 +83,16 @@
                                               <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="lblTieuDe5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="cboDanhMuc" min="-2" pref="200" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="btnDanhMuc" min="-2" pref="36" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="lblTieuDe9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="cboDeGiay" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="btnDeGiay" min="-2" pref="36" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="cboDanhMuc" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                                      <Component id="lblTieuDe9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cboDeGiay" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="lblTieuDe3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Group type="102" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="cboThuongHieu" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                                              <Component id="cboCoGiay" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                                              <Component id="lblTieuDe8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="btnThuongHieu" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                                                              <Component id="btnCoGiay" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
+                                                      <Component id="cboThuongHieu" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                                      <Component id="cboCoGiay" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                                      <Component id="lblTieuDe8" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Group type="102" attributes="0">
@@ -132,13 +102,11 @@
                                               </Group>
                                               <Group type="102" attributes="0">
                                                   <Component id="cboSize" min="-2" pref="200" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="btnSize" min="-2" pref="36" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                                                   <Component id="txtGia" min="-2" pref="200" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -150,15 +118,11 @@
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                   <Component id="txtSoLuong" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="cboXuaXu" alignment="0" pref="200" max="32767" attributes="0"/>
+                                                  <Component id="cboXuatXu" alignment="0" pref="200" max="32767" attributes="0"/>
                                                   <Component id="lblTieuDe10" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="cboMauSac" alignment="0" pref="200" max="32767" attributes="0"/>
                                               </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="btnXuatXu" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                                                  <Component id="btnMauSac" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                                              </Group>
+                                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -193,50 +157,29 @@
                                       <Group type="102" attributes="0">
                                           <Component id="lblTieuDe2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="btnTenSP" max="32767" attributes="0"/>
-                                              <Component id="cboTenSP" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="cboTenSP" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="lblTieuDe7" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cboChatLieu" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnChatLieu" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="cboChatLieu" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="lblTieuDe3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="cboThuongHieu" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="lblTieuDe8" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="cboCoGiay" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="btnThuongHieu" max="32767" attributes="0"/>
-                                                  <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
-                                                  <Component id="btnCoGiay" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <Component id="cboThuongHieu" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="lblTieuDe8" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="cboCoGiay" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="lblTieuDe5" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cboDanhMuc" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnDanhMuc" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="cboDanhMuc" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="lblTieuDe9" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="btnDeGiay" max="32767" attributes="0"/>
-                                              <Component id="cboDeGiay" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="cboDeGiay" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -244,17 +187,11 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="lblTieuDe4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnXuatXu" max="32767" attributes="0"/>
-                                      <Component id="cboXuaXu" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="cboXuatXu" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="lblTieuDe10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnMauSac" max="32767" attributes="0"/>
-                                      <Component id="cboMauSac" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="cboMauSac" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -262,10 +199,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="lblTieuDe12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnSize" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="txtGia" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="txtGia" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -274,10 +208,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="cboNSX" max="32767" attributes="0"/>
-                                          <Component id="btnNSX" min="-2" pref="32" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="cboNSX" min="-2" max="-2" attributes="0"/>
                                       <Component id="cboSize" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -373,7 +304,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion" name="cboXuaXu">
+        <Component class="com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion" name="cboXuatXu">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
@@ -529,76 +460,6 @@
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="1" left="10" right="1" top="1"/>
               </Border>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnTenSP">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnChatLieu">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnDanhMuc">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnDeGiay">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnThuongHieu">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnCoGiay">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnXuatXu">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnMauSac">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnNSX">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.polyshoes.swing.Button" name="btnSize">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
             </Property>
           </Properties>
         </Component>

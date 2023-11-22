@@ -67,6 +67,6 @@ public class ThuocTinh {
                         int randomIndex = random.nextInt(CHARACTERS.length());
                         code.append(CHARACTERS.charAt(randomIndex));
                 }
-                return "SP-" + code.toString();
+                return "TT-" + code.toString();
         }
 }

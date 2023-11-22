@@ -11,10 +11,11 @@ public class SanPhamDAO {
 
         String getSP_All = "{CALL get_All_SP}";
         String findByMa = "{CALL getIDSP_ByMa(?)}";
+        String findByTen = "{CALL getIDSP_ByTen(?)}";
         String get_SP_Deleted = "{CALL get_SP_Deleted(?,?,?)}";
 
         public int insert(SanPham model) {
-                String sql = "INSERT INTO [dbo].[San_Pham]([Ma], [Ten], [MoTa], [TrangThai]) VALUES(?, ?, ?, ?)";
+                String sql = "INSERT INTO [dbo].[San_Pham]([Ma], [Ten], [MoTa]) VALUES(?, ?, ?)";
                 return JdbcHelper.executeUpdate(sql, model.toInsert());
         }
 
@@ -58,6 +59,10 @@ public class SanPhamDAO {
 
         public SanPham findByMa(String ma) {
                 return select(findByMa, ma).get(0);
+        }
+        
+        public List<SanPham> findByTen(String ten) {
+                return select(findByTen, ten);
         }
 
         public List<SanPham> paging(int page, int limit) {
