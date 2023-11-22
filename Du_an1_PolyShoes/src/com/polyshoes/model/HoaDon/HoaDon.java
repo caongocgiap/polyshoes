@@ -156,6 +156,21 @@ public class HoaDon {
             return null;
     }
 }
+ public String getFormattedTao() {
+        if (NgayTao != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            return dateFormat.format(NgayTao);
+        } else {
+            return null;
+        }
+    }public String getFormattedTT() {
+        if (NgayTT != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            return dateFormat.format(NgayTao);
+        } else {
+            return null;
+        }
+    }
 
     public String getNgayTTAsString() {
         if (NgayTT != null) {

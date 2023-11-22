@@ -34,15 +34,29 @@ public class HoaDonChiTietDao {
                 + "join Hoa_Don on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.id\n"
                 + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
                 + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
-                + "where hoa_don_chi_tiet.trangthai =1 and Hoa_Don.MaHD = ?";
+                + "where  Hoa_Don.MaHD = ?";
         return select(sql, MaHD);
     }
 
-    public void tra1mon(String keyword) {
-        String sql = "UPDATE Hoa_Don_Chi_Tiet SET trangthai = 0\n"
+    public void tra1mon(String mahd, String masp) {
+        String sql = "update Hoa_Don_Chi_Tiet \n"
+                + "set Hoa_Don_Chi_Tiet.TrangThai = 0\n"
                 + "from Hoa_Don_Chi_Tiet \n"
-                + "join Hoa_Don on Hoa_Don.ID = Hoa_Don_Chi_Tiet.IDHoaDon WHERE hoa_don.MaHD = ?";
-        JdbcHelper.executeUpdate(sql, keyword);
+                + "join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
+                + "join San_Pham_Chi_Tiet on San_Pham_Chi_Tiet.ID = Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
+                + "join San_Pham on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
+                + "where Hoa_Don.MaHD = ? and San_Pham.Ma = ?";
+        JdbcHelper.executeUpdate(sql, mahd, masp);
+    }
+     public void traALll(String mahd) {
+        String sql = "update Hoa_Don_Chi_Tiet \n"
+                + "set Hoa_Don_Chi_Tiet.TrangThai = 0\n"
+                + "from Hoa_Don_Chi_Tiet \n"
+                + "join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
+                + "join San_Pham_Chi_Tiet on San_Pham_Chi_Tiet.ID = Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
+                + "join San_Pham on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
+                + "where Hoa_Don.MaHD = ? ";
+        JdbcHelper.executeUpdate(sql, mahd);
     }
 
     public List<HoaDonChiTiet> selectByLichSu(String keyword) {

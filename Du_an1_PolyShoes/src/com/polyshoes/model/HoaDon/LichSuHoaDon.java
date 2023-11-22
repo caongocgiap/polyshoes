@@ -140,9 +140,17 @@ public class LichSuHoaDon {
         }
         return genMaNV();
     }
+     public String getFormattedTao() {
+        if (NgayTao != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            return dateFormat.format(NgayTao);
+        } else {
+            return null;
+        }
+    }
  public String getFormattedNgayCapNhat() {
         if (ngayCapNhat != null) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss z");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             return dateFormat.format(ngayCapNhat);
         } else {
             return null;

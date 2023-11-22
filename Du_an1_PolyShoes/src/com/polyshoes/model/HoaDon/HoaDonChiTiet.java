@@ -140,4 +140,13 @@ public class HoaDonChiTiet {
 
     }
 
+    public String getTrangXe2p() {
+        if (getTrangThai() == 0) {
+            return "Đã trả hàng";
+        } else {
+            return "Đã hoàn thành";
+        }
+
+    }
+
 }

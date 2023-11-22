@@ -731,20 +731,20 @@ public class HoaDonJPanel13 extends javax.swing.JPanel {
         return true;
     }
 
-    void delete1mon() {
-        int a = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn không", "", JOptionPane.YES_NO_OPTION);
-        String mahd = txtTimkiemLS1.getText();
-        if (a == 0) {
-            try {
-                hdctdao.tra1mon(mahd);
-                JOptionPane.showMessageDialog(this, "Đã Trả thành công!");
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Trả thất bại!");
-                e.printStackTrace();
-            }
-        }
-    }
+//    void delete1mon() {
+//        int a = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn không", "", JOptionPane.YES_NO_OPTION);
+//        String mahd = txtTimkiemLS1.getText();
+//        if (a == 0) {
+//            try {
+//                hdctdao.tra1mon(mahd);
+//                JOptionPane.showMessageDialog(this, "Đã Trả thành công!");
+//
+//            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(this, "Trả thất bại!");
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1998,7 +1998,7 @@ public class HoaDonJPanel13 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTimkiemLS3ActionPerformed
 
     private void btnTimkiemLS4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiemLS4ActionPerformed
-        delete1mon();
+//        delete1mon();
         TimKiemTheoBang3();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimkiemLS4ActionPerformed
