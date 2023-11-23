@@ -1,6 +1,5 @@
 package com.polyshoes.main;
 
-import com.formdev.flatlaf.FlatLightLaf;
 import com.polyshoes.component.HeaderJPanel;
 import com.polyshoes.component.MenuJPanel;
 import com.polyshoes.event.EventMenuSelected;
@@ -12,11 +11,9 @@ import com.polyshoes.swing.MenuItem;
 import com.polyshoes.swing.PopupMenu;
 import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
-import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.UIManager;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -45,11 +42,11 @@ public class MainJFrame extends javax.swing.JFrame {
             @Override
             public void menuSelected(int menuIndex, int subMenuIndex) {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
-                if (menuIndex == 9) {
-                    if (subMenuIndex == 9) {
-                        main.showForm(new NhanVienJPanel());
-                    } else if (subMenuIndex == 0) {
-                        main.showForm(new NhanVienJPanel());
+                if (menuIndex == 0) {
+                    if (subMenuIndex == 0) {
+                        main.showForm(new TrangChuJPanel());
+                    } else if (subMenuIndex == 1) {
+                        main.showForm(new QLSPJPanel());
                     }
                 }
             }
@@ -112,42 +109,42 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        private void initComponents() {
 
-        bg = new javax.swing.JLayeredPane();
+                bg = new javax.swing.JLayeredPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setUndecorated(true);
 
-        bg.setBackground(new java.awt.Color(245, 245, 245));
-        bg.setOpaque(true);
+                bg.setBackground(new java.awt.Color(245, 245, 245));
+                bg.setOpaque(true);
 
-        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
-        bg.setLayout(bgLayout);
-        bgLayout.setHorizontalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1366, Short.MAX_VALUE)
-        );
-        bgLayout.setVerticalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 783, Short.MAX_VALUE)
-        );
+                javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
+                bg.setLayout(bgLayout);
+                bgLayout.setHorizontalGroup(
+                        bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1366, Short.MAX_VALUE)
+                );
+                bgLayout.setVerticalGroup(
+                        bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 783, Short.MAX_VALUE)
+                );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg)
-        );
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                getContentPane().setLayout(layout);
+                layout.setHorizontalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bg)
+                );
+                layout.setVerticalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bg)
+                );
 
-        pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+                pack();
+                setLocationRelativeTo(null);
+        }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -183,7 +180,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLayeredPane bg;
-    // End of variables declaration//GEN-END:variables
+        // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JLayeredPane bg;
+        // End of variables declaration//GEN-END:variables
 }
