@@ -1,10 +1,13 @@
 package com.polyshoes.model.sanpham;
 
+import com.polyshoes.swing.table.EventAction;
+import com.polyshoes.swing.table.ModelAction;
 import java.security.SecureRandom;
 import java.util.Random;
 
 public class SanPham {
 
+        private int stt;
         private int id;
         private String ma;
         private String ten;
@@ -32,13 +35,22 @@ public class SanPham {
                 this.trangThai = trangThai;
         }
 
-        public SanPham(int id, String ma, String ten, String moTa, int soLuong, boolean trangThai) {
+        public SanPham(int stt, int id, String ma, String ten, String moTa, int soLuong, boolean trangThai) {
+                this.stt = stt;
                 this.id = id;
                 this.ma = ma;
                 this.ten = ten;
                 this.moTa = moTa;
                 this.soLuong = soLuong;
                 this.trangThai = trangThai;
+        }
+
+        public int getStt() {
+                return stt;
+        }
+
+        public void setStt(int stt) {
+                this.stt = stt;
         }
 
         public int getId() {
@@ -94,8 +106,8 @@ public class SanPham {
                 return this.ma;
         }
 
-        public Object[] toDataRow() {
-                return new Object[]{this.ma, this.ten, this.moTa, this.soLuong, this.trangThai};
+        public Object[] toDataRow(EventAction event) {
+                return new Object[]{this.stt, this.ma, this.ten, this.moTa, this.soLuong, this.trangThai == false ? "Hết hàng" : "Còn hàng", new ModelAction(this, event)};
         }
 
         public Object[] toInsert() {

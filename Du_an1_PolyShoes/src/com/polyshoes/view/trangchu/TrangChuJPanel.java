@@ -3,7 +3,6 @@ package com.polyshoes.view.trangchu;
 import com.polyshoes.model.trangchu.Card;
 import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
-import com.polyshoes.swing.table.EventAction;
 import java.awt.Color;
 import javax.swing.Icon;
 
@@ -22,17 +21,17 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         }
 
         private void initTableData() {
-                EventAction eventAction = new EventAction() {
-//                        @Override
-//                        public void delete(Student student) {
-//                                DialogHelper.alert(new MainJFrame(), "Xóa nó rồi!");
-//                        }
-//
-//                        @Override
-//                        public void update(Student student) {
-//                                DialogHelper.alert(new MainJFrame(), "Update nó rồi!");
-//                        }
-                };
+//                EventAction eventAction = new EventAction() {
+////                        @Override
+////                        public void delete(Student student) {
+////                                DialogHelper.alert(new MainJFrame(), "Xóa nó rồi!");
+////                        }
+////
+////                        @Override
+////                        public void update(Student student) {
+////                                DialogHelper.alert(new MainJFrame(), "Update nó rồi!");
+////                        }
+//                };
         }
 
         private void initCardData() {

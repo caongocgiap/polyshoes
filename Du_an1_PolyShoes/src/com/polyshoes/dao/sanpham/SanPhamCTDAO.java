@@ -2,7 +2,6 @@ package com.polyshoes.dao.sanpham;
 
 import com.polyshoes.helper.JdbcHelper;
 import com.polyshoes.model.sanpham.SanPhamChiTiet;
-import com.polyshoes.model.sanpham.ThuocTinh;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,21 +9,9 @@ import java.util.List;
 
 public class SanPhamCTDAO {
         
-        String PAGGINH_BY_MA = "{CALL pagging_SPCT_By_Ma(?,?,?)}";
-        String themSPCT = "{CALL them_SPCT(?,?,?,?,?,?,?,?,?,?,?,?)}";
-        String getSPCT_ByID = "{CALL getIDSPCT_ByMa(?)}";
-        
-
-        public int insert(Object... args) {
-                String sql = "INSERT INTO San_Pham_Chi_Tiet(IDDanhMuc,IDXuatXu,IDNSX,IDMauSac,IDSize,IDSanPham,"
-                        + "IDThuongHieu,IDChatLieu,IDDeGiay,IDCoGiay,KhoiLuong,Gia,SoLuongTon,TrangThai)VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                return JdbcHelper.executeUpdate(sql, args);
-        }
-
-        public void update(SanPhamChiTiet model) {
-                String sql = "UPDATE Danh_Muc SET Ma=?, Ten=? WHERE Ma=?";
-                JdbcHelper.executeUpdate(sql, model.getMa(), model.getTen(), model.getMa());
-        }
+        final String PAGGINH_BY_MA = "{CALL pagging_SPCT_By_Ma(?,?,?)}";
+        final String THEM_SPCT = "{CALL them_SPCT(?,?,?,?,?,?,?,?,?,?,?,?)}";
+        final String GET_1SPCT_BY_MA = "{CALL get_1SPCT_ByMa(?)}";
 
         private List<SanPhamChiTiet> select(String sql, Object... args) {
                 List<SanPhamChiTiet> list = new ArrayList<>();
@@ -64,28 +51,16 @@ public class SanPhamCTDAO {
                         + "                      Chat_Lieu ON San_Pham_Chi_Tiet.IDChatLieu = Chat_Lieu.ID";
                 return select(sql);
         }
-
-        public SanPhamChiTiet findById(String macd) {
-                String sql = "SELECT Ma, Ten FROM Danh_Muc WHERE Ma =?";
-                List<SanPhamChiTiet> list = select(sql, macd);
-                return !list.isEmpty() ? list.get(0) : null;
-        }
-
-        public int getId(String table, ThuocTinh model) {
-                String sql = "{Call getID(?, ?)}";
-                List<SanPhamChiTiet> list = select(sql, table, model.getMa());
-                return !list.isEmpty() ? Integer.parseInt(String.valueOf(list.get(0))) : 0;
-        }
         
         public List<SanPhamChiTiet> paging(String ma, int page, int limit) {
                 return select(PAGGINH_BY_MA, ma, page, limit);
         }
         
-        public SanPhamChiTiet getByID(int id_SPCT) {
-                return select(getSPCT_ByID, id_SPCT).get(0);
+        public SanPhamChiTiet getByMa(String maSPCT) {
+                return select(GET_1SPCT_BY_MA, maSPCT).get(0);
         }
         
         public void insertSPCT(Object... args) {
-                JdbcHelper.executeUpdate(themSPCT, args);
+                JdbcHelper.executeUpdate(THEM_SPCT, args);
         }
 }

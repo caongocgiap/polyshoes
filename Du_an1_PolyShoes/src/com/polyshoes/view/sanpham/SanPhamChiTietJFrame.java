@@ -2,6 +2,7 @@ package com.polyshoes.view.sanpham;
 
 import com.polyshoes.dao.sanpham.SanPhamCTDAO;
 import com.polyshoes.dao.sanpham.ThuocTinhDAO;
+import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.helper.ZXingHelper;
 import com.polyshoes.model.sanpham.SanPhamChiTiet;
 import com.polyshoes.model.sanpham.ThuocTinh;
@@ -14,6 +15,7 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
 
         SanPhamCTDAO spctDAO = new SanPhamCTDAO();
         ThuocTinhDAO thuocTinhDAO = new ThuocTinhDAO();
+        public static String maSPCT;
         
         public SanPhamChiTietJFrame() {
                 initComponents();
@@ -376,14 +378,11 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
         private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-                byte[] result = ZXingHelper.getQRCodeImage("hhee", 200, 200);
+                byte[] result = ZXingHelper.getQRCodeImage("hê hê", 200, 200);
                 lblQRCode.setIcon(new ImageIcon(result));
                 this.showDetail();
         }//GEN-LAST:event_formWindowOpened
 
-        /**
-         * @param args the command line arguments
-         */
         public static void main(String args[]) {
                 /* Set the Nimbus look and feel */
                 //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -478,19 +477,22 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
         }
          
          private void showDetail() {
-                 SanPhamChiTiet model = spctDAO.getByID(8);
+                 SanPhamChiTiet model = spctDAO.getByMa("SPCT4F2R9X");
                  ThuocTinh chatLieu = thuocTinhDAO.getByName("Chat_Lieu", model.getChatLieu());
+                 System.out.println(chatLieu.getMa() + chatLieu.getTen() + chatLieu.getId());
                  ThuocTinh danhMuc = thuocTinhDAO.getByName("Danh_Muc", model.getDanhMuc());
+                 System.out.println(model.getDanhMuc());
                  ThuocTinh xuatXu = thuocTinhDAO.getByName("Xuat_Xu", model.getXuatXu());
                  ThuocTinh nsx = thuocTinhDAO.getByName("Nha_San_Xuat", model.getNSX());
                  ThuocTinh mauSac = thuocTinhDAO.getByName("Mau_Sac", model.getMauSac());
-                 ThuocTinh size = thuocTinhDAO.getByName("Size", String.valueOf(model.getSize()));
-                 
-                 cboChatLieu.setSelectedItem(chatLieu);
-                 cboDanhMuc.setSelectedItem(danhMuc);
+//                 ThuocTinh size = thuocTinhDAO.getByName("Size", String.valueOf(model.getSize()));
+                 System.out.println(model.getChatLieu());
+                 cboChatLieu.setSelectedItem(model.getChatLieu());
+                 cboDanhMuc.setSelectedItem(model.getDanhMuc());
                  cboXuatXu.setSelectedItem(xuatXu);
                  cboNSX.setSelectedItem(nsx);
                  cboMauSac.setSelectedItem(mauSac);
-                 cboSize.setSelectedItem(size);
+//                 cboSize.setSelectedItem(size);
+                 DialogHelper.alert(this, "Mã SPCT là: " + model.getMa());
          }
 }

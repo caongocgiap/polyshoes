@@ -10,6 +10,7 @@ import java.util.List;
 public class SanPhamDAO {
 
         String getSP_All = "{CALL get_All_SP}";
+        String paging_SP = "{CALL Paging_SP(?,?)}";
         String findByMa = "{CALL getIDSP_ByMa(?)}";
         String findByTen = "{CALL getIDSP_ByTen(?)}";
         String get_SP_Deleted = "{CALL get_SP_Deleted(?,?,?)}";
@@ -36,14 +37,15 @@ public class SanPhamDAO {
                         try {
                                 rs = JdbcHelper.executeQuery(sql, args);
                                 while (rs.next()) {
-                                        SanPham model = new SanPham(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6) == 1);
+                                        SanPham model = new SanPham(rs.getInt(1), rs.getInt(2), rs.getString(3), 
+                                                rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7) == 1);
                                         list.add(model);
                                 }
                         } finally {
                                 rs.getStatement().getConnection().close();
                         }
                 } catch (SQLException ex) {
-                        ex.printStackTrace(System.out);
+                        ex.printStackTrace();
                         throw new RuntimeException(ex);
                 }
                 return list;
@@ -66,11 +68,7 @@ public class SanPhamDAO {
         }
 
         public List<SanPham> paging(int page, int limit) {
-                String sql = "SELECT San_Pham.id,Ma,Ten,MoTa,COALESCE(SUM(San_Pham_Chi_Tiet.SoLuongTon), 0) AS TongSoLuongTon,\n"
-                        + "CASE WHEN COALESCE(SUM(San_Pham_Chi_Tiet.SoLuongTon), 0) > 0 THEN 1 ELSE 0 END AS TrangThai\n"
-                        + "FROM San_Pham LEFT JOIN San_Pham_Chi_Tiet ON San_Pham.id = San_Pham_Chi_Tiet.IDSanPham\n"
-                        + "GROUP BY San_Pham.id,Ma,Ten,MoTa ORDER BY id DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
-                return select(sql, page, limit);
+                return select(paging_SP, page, limit);
         }
 
         public List<SanPham> pagingDeleted(int deleted, int page, int limit) {
