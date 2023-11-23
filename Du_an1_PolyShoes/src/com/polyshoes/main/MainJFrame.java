@@ -11,7 +11,7 @@ import com.polyshoes.swing.MenuItem;
 import com.polyshoes.swing.PopupMenu;
 import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
-import com.polyshoes.view.sanpham.QuanLySPJPanel;
+import com.polyshoes.view.sanpham.QLSPJPanel;
 import com.polyshoes.view.sanpham.QuanLySanPhamJPanel;
 import java.awt.Color;
 import java.awt.Component;
@@ -57,7 +57,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                         main.showForm(new QuanLySanPhamJPanel());
                                 }
                                 if(menuIndex == 6) {
-                                        main.showForm(new QuanLySPJPanel());
+                                        main.showForm(new QLSPJPanel());
                                 }
                         }
                 });

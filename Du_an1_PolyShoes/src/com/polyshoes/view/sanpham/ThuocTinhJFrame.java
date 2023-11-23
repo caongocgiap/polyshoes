@@ -24,10 +24,12 @@ public class ThuocTinhJFrame extends javax.swing.JFrame {
 
                 jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+                txtTen.setBackground(new java.awt.Color(255, 255, 255));
                 txtTen.setLabelText("Tên thuộc tính");
 
                 btnThem.setText("Thêm");
 
+                txtMa.setBackground(new java.awt.Color(255, 255, 255));
                 txtMa.setLabelText("Mã thuộc tính");
 
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

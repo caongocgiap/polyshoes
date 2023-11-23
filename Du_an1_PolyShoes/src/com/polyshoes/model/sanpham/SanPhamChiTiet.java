@@ -1,6 +1,7 @@
 package com.polyshoes.model.sanpham;
 
 import java.security.SecureRandom;
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class SanPhamChiTiet {
@@ -163,16 +164,22 @@ public class SanPhamChiTiet {
                 this.trangThai = trangThai;
         }
         
-        public Object[] toDataRow() {
+        public Object[] toDataRow(int stt) {
+                if(trangThai.equalsIgnoreCase("0")) {
+                        setTrangThai("Còn hàng");
+                } else {
+                        setTrangThai("Hết hàng");
+                }
+                DecimalFormat df = new DecimalFormat("$#,##");
                 return new Object[] {
-                        ma, ten, danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, khoiLuong, gia, soLuongTon, trangThai
+                        stt, ma, danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, df.format(gia), soLuongTon, trangThai
                 };
         }
         
         public Object[] toInsert() {
-                setMa(generateCode());
+                setTen(ten + mauSac);
                 return new Object[] {
-                        ma, ten, danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, khoiLuong, gia, soLuongTon, trangThai
+                        danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, khoiLuong, gia, soLuongTon, trangThai
                 };
         }
 

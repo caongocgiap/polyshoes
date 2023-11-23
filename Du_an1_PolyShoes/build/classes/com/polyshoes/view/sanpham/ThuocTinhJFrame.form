@@ -78,6 +78,9 @@
       <SubComponents>
         <Component class="com.polyshoes.swing.TextField" name="txtTen">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="labelText" type="java.lang.String" value="T&#xea;n thu&#x1ed9;c t&#xed;nh"/>
           </Properties>
         </Component>
@@ -88,6 +91,9 @@
         </Component>
         <Component class="com.polyshoes.swing.TextField" name="txtMa">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="labelText" type="java.lang.String" value="M&#xe3; thu&#x1ed9;c t&#xed;nh"/>
           </Properties>
         </Component>

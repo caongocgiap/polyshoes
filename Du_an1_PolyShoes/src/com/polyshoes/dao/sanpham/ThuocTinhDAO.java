@@ -33,8 +33,8 @@ public class ThuocTinhDAO {
                 return selectBySQL(getThuocTinh, tenBang);
         }
 
-        public void insert(String tenBang, ThuocTinh objThuocTinh) {
-                JdbcHelper.executeUpdate(themThuocTinh, tenBang, objThuocTinh.getTen());
+        public void insert(String tenBang, ThuocTinh model) {
+                JdbcHelper.executeUpdate(themThuocTinh, tenBang, model.generateCode(), model.getTen());
         }
 
         public void update(String tenBang, int id, ThuocTinh objThuocTinh) {
