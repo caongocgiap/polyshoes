@@ -54,17 +54,17 @@ public class MenuJPanel extends javax.swing.JPanel {
         }
 
         public void initMenuItem() {
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/3.png")), "Sản phẩm", Menu.menuType.MENU));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/4.png")), "Khuyến mại", Menu.menuType.MENU));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/1.png")), "Bán hàng", Menu.menuType.MENU, "Bán tại quầy", "Gửi ship"));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/3.png")), "Hóa đơn", Menu.menuType.MENU, "Tạo hóa đơn", "Lịch sử hóa đơn"));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/sanpham.png")), "Sản phẩm", Menu.menuType.MENU));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/khuyenmai.png")), "Khuyến mại", Menu.menuType.MENU));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/banhang.png")), "Bán hàng", Menu.menuType.MENU, "Bán tại quầy", "Gửi ship"));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/hoadon.png")), "Hóa đơn", Menu.menuType.MENU, "Tạo hóa đơn", "Lịch sử hóa đơn"));
                 addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/5.png")), "Khách hàng", Menu.menuType.MENU, "Truy vấn khách hàng", "Thêm khách hàng"));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/6.png")), "he", Menu.menuType.EMTY));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/7.png")), "Quản lý sản phẩm", Menu.menuType.MENU, "Danh sách sản phẩm", "Thêm sản phẩm"));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/8.png")), "Quản lý khuyến mại", Menu.menuType.MENU, "Danh sách khuyến mại", "Thêm khuyến mại"));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/9.png")), "Quản lý hóa đơn", Menu.menuType.MENU, "Tạo hóa đơn", "Lịch sử hóa đơn"));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/10.png")),"Quản lý tài khoản", Menu.menuType.MENU, "Nhân viên", "Admin"));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/11.png")), "Thống kê", Menu.menuType.MENU, "Theo ngày", "Theo tuần", "Theo tháng"));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/6.png")), "", Menu.menuType.EMTY));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/sanpham.png")), "Quản lý sản phẩm", Menu.menuType.MENU));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/khuyenmai.png")), "Quản lý khuyến mại", Menu.menuType.MENU, "Danh sách khuyến mại", "Thêm khuyến mại"));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/hoadon.png")), "Quản lý hóa đơn", Menu.menuType.MENU, "Tạo hóa đơn", "Lịch sử hóa đơn"));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/taikhoan.png")),"Quản lý tài khoản", Menu.menuType.MENU, "Nhân viên", "Admin"));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/thongke.png")), "Thống kê", Menu.menuType.MENU, "Theo ngày", "Theo tuần", "Theo tháng"));
         }
 
         private void addMenu(com.polyshoes.model.trangchu.Menu menu) {
