@@ -156,5 +156,12 @@ public class LichSuHoaDon {
             return null;
         }
     }
- 
+ public String getFormattedNgayTT2() {
+        if (ngayCapNhat != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+            return dateFormat.format(ngayCapNhat);
+        } else {
+            return null;
+        }
+    }
 }
