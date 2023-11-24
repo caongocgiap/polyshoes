@@ -2,7 +2,6 @@ package com.polyshoes.swing.table;
 
 import java.awt.Color;
 import java.awt.Component;
-import javax.swing.Action;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;

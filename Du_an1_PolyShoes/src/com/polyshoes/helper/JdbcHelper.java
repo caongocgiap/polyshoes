@@ -64,6 +64,7 @@ public class JdbcHelper {
                         PreparedStatement ps = preparedStatement(sql, args);
                         return ps.executeQuery();
                 } catch (SQLException e) {
+                        e.printStackTrace();
                         throw new RuntimeException();
                 }
         }
