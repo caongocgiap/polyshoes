@@ -14,6 +14,7 @@ public class ThuocTinhDAO {
         String updateThuocTinh = "{CALL updateThuocTinh(?,?,?)}";
         String xoaThuocTinh = "{CALL xoaThuocTinh(?,?,?)}";
         String getIDByTen = "{CALL getIDByTen(?,?)}";
+        String getIDByMa = "{CALL getIDByMa(?,?)}";
 
         public List<ThuocTinh> selectBySQL(String sql, Object... args) {
                 List<ThuocTinh> list = new ArrayList<>();
@@ -47,6 +48,14 @@ public class ThuocTinhDAO {
 
         public ThuocTinh getByName(String tenBang, String ten) {
                 List<ThuocTinh> list = selectBySQL(getIDByTen, tenBang, ten);
+                if (list.isEmpty()) {
+                        return null;
+                }
+                return list.get(0);
+        }
+        
+        public ThuocTinh getByMa(String tenBang, String ma) {
+                List<ThuocTinh> list = selectBySQL(getIDByMa, tenBang, ma);
                 if (list.isEmpty()) {
                         return null;
                 }

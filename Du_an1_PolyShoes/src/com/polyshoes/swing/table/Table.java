@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellEditor;
 
 public class Table extends JTable {
 
@@ -63,14 +64,14 @@ public class Table extends JTable {
                 });
         }
 
-//        @Override
-//        public TableCellEditor getCellEditor(int row, int col) {
-//                if (col == 4) {
-//                        return new TableCellAction();
-//                } else {
-//                        return super.getCellEditor(row, col);
-//                }
-//        }
+        @Override
+        public TableCellEditor getCellEditor(int row, int col) {
+                if (col == 6) {
+                        return new TableCellAction();
+                } else {
+                        return super.getCellEditor(row, col);
+                }
+        }
 
         public void fixTable(JScrollPane scroll) {
                 scroll.getViewport().setBackground(Color.WHITE);

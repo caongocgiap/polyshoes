@@ -11,7 +11,7 @@ public class JdbcHelper {
         private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         private static final String DBURL = "jdbc:sqlserver://localhost;database=N5_PolyShoes";
         private static final String USERNAME = "sa";
-        private static final String PASSWORD = "abc@123";
+        private static final String PASSWORD = "abc123";
         
         static {
                 try {
@@ -64,6 +64,7 @@ public class JdbcHelper {
                         PreparedStatement ps = preparedStatement(sql, args);
                         return ps.executeQuery();
                 } catch (SQLException e) {
+                        e.printStackTrace();
                         throw new RuntimeException();
                 }
         }
