@@ -63,6 +63,31 @@ public class HoaDonDao {
         return select(sql, keyword);
     }
 
+    public List<HoaDon> selectByLSSS2(String mahd,String keyword) {
+        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia,SUM(Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia) as TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "from San_Pham join San_Pham_Chi_Tiet on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
+                + "join Nha_San_Xuat on Nha_San_Xuat.ID = San_Pham_Chi_Tiet.IDNSX\n"
+                + "join Hoa_Don_Chi_Tiet on San_Pham_Chi_Tiet.id =Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
+                + "join Hoa_Don on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.id\n"
+                + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
+                + "join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
+                + "where Hoa_Don.MaHD =? and San_Pham.Ma = ?\n"
+                + "group by Hoa_Don.id,\n"
+                + "    Hoa_Don.MaHD,\n"
+                + "    Hoa_Don.NgayTao,\n"
+                + "    Hoa_Don.NgayThanhToan,\n"
+                + "    Hoa_Don_Chi_Tiet.SoLuong,\n"
+                + "    Hoa_Don_Chi_Tiet.Gia,\n"
+                + "    Nhan_Vien.MaNV,\n"
+                + "    Hoa_Don.DiaChi,\n"
+                + "    Hoa_Don.TenNguoiNhan,\n"
+                + "    Hoa_Don.SDT,\n"
+                + "    Hoa_Don.TrangThai;\n";
+            
+        return select(sql,mahd ,keyword);
+    }
+
     public List<HoaDon> selectByHD(String keyword) {
         String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
                 + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
@@ -172,6 +197,7 @@ public class HoaDonDao {
         model.setTenKH(rs.getString("TenNguoiNhan"));
         model.setSDT(rs.getString("SDT"));
         model.setTrangThai(rs.getInt("TrangThai"));
+    
 
         return model;
     }

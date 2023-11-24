@@ -16,6 +16,7 @@ import com.polyshoes.swing.icon.IconFontSwing;
 
 import com.polyshoes.view.HoaDon.HoaDonJPanel13;
 import com.polyshoes.view.HoaDon.HoaDonJPanel41;
+import com.polyshoes.view.HoaDon.HoaDonPanel10;
 import com.polyshoes.view.HoaDon.PrintHoaDon2;
 
 
@@ -59,7 +60,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 }
                 if (menuIndex == 8) {
                     if (subMenuIndex == 0) {
-                        main.showForm(new HoaDonJPanel13());
+                        main.showForm(new HoaDonPanel10());
                     } else if (subMenuIndex == 1) {
                         main.showForm(new HoaDonJPanel41());
                     }
