@@ -3,7 +3,6 @@ package com.polyshoes.view.sanpham;
 import com.polyshoes.dao.sanpham.SanPhamDAO;
 import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.model.sanpham.SanPham;
-import static com.polyshoes.view.sanpham.QuanLySanPhamJPanel.ma;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -533,12 +532,12 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         }
         
         private void showDetailSP() {
-                index = tblSanPham.getSelectedRow();
-                ma = (String) tblSanPham.getValueAt(index, 1);
-                SanPham model = dao.findByMa(ma);
-                txtMaSP.setText(model.getMa());
-                txtTenSP.setText(model.getTen());
-                txtMoTa.setText(model.getMoTa());
+//                index = tblSanPham.getSelectedRow();
+//                ma = (String) tblSanPham.getValueAt(index, 1);
+//                SanPham model = dao.findByMa(ma);
+//                txtMaSP.setText(model.getMa());
+//                txtTenSP.setText(model.getTen());
+//                txtMoTa.setText(model.getMoTa());
         }
         
         private boolean checkDataSP() {

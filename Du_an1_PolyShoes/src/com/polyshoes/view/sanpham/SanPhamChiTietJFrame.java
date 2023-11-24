@@ -2,7 +2,6 @@ package com.polyshoes.view.sanpham;
 
 import com.polyshoes.dao.sanpham.SanPhamCTDAO;
 import com.polyshoes.dao.sanpham.ThuocTinhDAO;
-import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.helper.ZXingHelper;
 import com.polyshoes.model.sanpham.SanPhamChiTiet;
 import com.polyshoes.model.sanpham.ThuocTinh;
@@ -14,9 +13,8 @@ import javax.swing.JComboBox;
 public class SanPhamChiTietJFrame extends javax.swing.JFrame {
 
         SanPhamCTDAO spctDAO = new SanPhamCTDAO();
-        ThuocTinhDAO thuocTinhDAO = new ThuocTinhDAO();
         public static String maSPCT;
-        
+
         public SanPhamChiTietJFrame() {
                 initComponents();
                 this.init();
@@ -378,9 +376,11 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
         private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-                byte[] result = ZXingHelper.getQRCodeImage("hê hê", 200, 200);
-                lblQRCode.setIcon(new ImageIcon(result));
-                this.showDetail();
+                if (maSPCT != null) {
+                        byte[] result = ZXingHelper.getQRCodeImage(maSPCT, 200, 200);
+                        lblQRCode.setIcon(new ImageIcon(result));
+                        this.showDetail();
+                }
         }//GEN-LAST:event_formWindowOpened
 
         public static void main(String args[]) {
@@ -462,10 +462,11 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 fillComboBox(cboCoGiay, "Co_Giay");
                 fillComboBox(cboXuatXu, "Xuat_Xu");
                 fillComboBox(cboNSX, "Nha_San_Xuat");
-                
+                cboTenSP.setEnabled(false);
+
         }
 
-         private void fillComboBox(JComboBox cbo, String tenBang) {
+        private void fillComboBox(JComboBox cbo, String tenBang) {
                 DefaultComboBoxModel cboModel = (DefaultComboBoxModel) cbo.getModel();
                 cboModel.removeAllElements();
                 ThuocTinhDAO dao = new ThuocTinhDAO();
@@ -475,24 +476,29 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 }
                 cbo.setSelectedIndex(-1);
         }
-         
-         private void showDetail() {
-                 SanPhamChiTiet model = spctDAO.getByMa("SPCT4F2R9X");
-                 ThuocTinh chatLieu = thuocTinhDAO.getByName("Chat_Lieu", model.getChatLieu());
-                 System.out.println(chatLieu.getMa() + chatLieu.getTen() + chatLieu.getId());
-                 ThuocTinh danhMuc = thuocTinhDAO.getByName("Danh_Muc", model.getDanhMuc());
-                 System.out.println(model.getDanhMuc());
-                 ThuocTinh xuatXu = thuocTinhDAO.getByName("Xuat_Xu", model.getXuatXu());
-                 ThuocTinh nsx = thuocTinhDAO.getByName("Nha_San_Xuat", model.getNSX());
-                 ThuocTinh mauSac = thuocTinhDAO.getByName("Mau_Sac", model.getMauSac());
-//                 ThuocTinh size = thuocTinhDAO.getByName("Size", String.valueOf(model.getSize()));
-                 System.out.println(model.getChatLieu());
-                 cboChatLieu.setSelectedItem(model.getChatLieu());
-                 cboDanhMuc.setSelectedItem(model.getDanhMuc());
-                 cboXuatXu.setSelectedItem(xuatXu);
-                 cboNSX.setSelectedItem(nsx);
-                 cboMauSac.setSelectedItem(mauSac);
-//                 cboSize.setSelectedItem(size);
-                 DialogHelper.alert(this, "Mã SPCT là: " + model.getMa());
-         }
+
+        private void showDetail() {
+                SanPhamChiTiet model = spctDAO.getByMa(maSPCT);
+                setSelectedIndex(cboTenSP, model.getTen());
+                setSelectedIndex(cboChatLieu, model.getChatLieu());
+                setSelectedIndex(cboDanhMuc, model.getDanhMuc());
+                setSelectedIndex(cboThuongHieu, model.getThuongHieu());
+                setSelectedIndex(cboXuatXu, model.getXuatXu());
+                setSelectedIndex(cboDeGiay, model.getDeGiay());
+                setSelectedIndex(cboCoGiay, model.getCoGiay());
+                setSelectedIndex(cboMauSac, model.getMauSac());
+                setSelectedIndex(cboNSX, model.getNSX());
+                setSelectedIndex(cboSize, String.valueOf(model.getSize()));
+                txtGia.setText(String.valueOf(model.getGia()));
+                txtSoLuong.setText(String.valueOf(model.getSoLuongTon()));
+        }
+
+        private void setSelectedIndex(JComboBox cbo, String value) {
+                for (int i = 0; i < cbo.getItemCount(); i++) {
+                        if(cbo.getItemAt(i).toString().equals(value)) {
+                                cbo.setSelectedIndex(i);
+                                return;
+                        }
+                }
+        }
 }

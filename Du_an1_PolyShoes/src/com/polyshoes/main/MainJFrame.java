@@ -13,7 +13,6 @@ import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
-import com.polyshoes.view.sanpham.QuanLySanPhamJPanel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -25,16 +24,16 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class MainJFrame extends javax.swing.JFrame {
 
-    private MigLayout layout;
-    private MenuJPanel menu;
-    private HeaderJPanel header;
-    private MainJPanel main;
-    private Animator animator;
+        private MigLayout layout;
+        private MenuJPanel menu;
+        private HeaderJPanel header;
+        private MainJPanel main;
+        private Animator animator;
 
-    public MainJFrame() {
-        initComponents();
-        init();
-    }
+        public MainJFrame() {
+                initComponents();
+                init();
+        }
 
         private void init() {
                 layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
@@ -54,14 +53,14 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 main.showForm(new Form_1());
                                         }
                                 }
-                                if(menuIndex == 0) {
-                                        main.showForm(new QuanLySanPhamJPanel());
+                                if (menuIndex == 0) {
+
                                 }
-                                if(menuIndex == 6) {
+                                if (menuIndex == 6) {
                                         main.showForm(new QLSPJPanel());
                                 }
-                                if(menuIndex == 9) {
-                                        if(subMenuIndex == 0) {
+                                if (menuIndex == 9) {
+                                        if (subMenuIndex == 0) {
                                                 main.showForm(new NhanVienJPanel());
                                         }
                                 }
@@ -95,36 +94,36 @@ public class MainJFrame extends javax.swing.JFrame {
                                 menu.revalidate();
                         }
 
-            @Override
-            public void end() {
-                menu.setShowMenu(!menu.isShowMenu());
-                menu.setEnableMenu(true);
-            }
+                        @Override
+                        public void end() {
+                                menu.setShowMenu(!menu.isShowMenu());
+                                menu.setEnableMenu(true);
+                        }
 
-        };
-        animator = new Animator(500, target);
-        animator.setResolution(0);
-        animator.setDeceleration(0.5f);
-        animator.setAcceleration(0.5f);
-        header.addMenuEvent(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                if (!animator.isRunning()) {
-                    animator.start();
-                }
-                menu.setEnableMenu(false);
-                if (menu.isShowMenu()) {
-                    menu.hideallMenu();
-                }
-            }
-        });
-        //  Init google icon font
-        IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
-        //  Start with this form
-        main.showForm(new TrangChuJPanel());
-    }
+                };
+                animator = new Animator(500, target);
+                animator.setResolution(0);
+                animator.setDeceleration(0.5f);
+                animator.setAcceleration(0.5f);
+                header.addMenuEvent(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent ae) {
+                                if (!animator.isRunning()) {
+                                        animator.start();
+                                }
+                                menu.setEnableMenu(false);
+                                if (menu.isShowMenu()) {
+                                        menu.hideallMenu();
+                                }
+                        }
+                });
+                //  Init google icon font
+                IconFontSwing.register(GoogleMaterialDesignIcons.getIconFont());
+                //  Start with this form
+                main.showForm(new TrangChuJPanel());
+        }
 
-    @SuppressWarnings("unchecked")
+        @SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -161,39 +160,39 @@ public class MainJFrame extends javax.swing.JFrame {
                 setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        public static void main(String args[]) {
+                /* Set the Nimbus look and feel */
+                //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+                /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+                 */
+                try {
+                        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                                if ("Nimbus".equals(info.getName())) {
+                                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                                        break;
+                                }
+                        }
+                } catch (ClassNotFoundException ex) {
+                        java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                        java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                        java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                        java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
                 }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+                //</editor-fold>
+                //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MainJFrame().setVisible(true);
-            }
-        });
-    }
+                /* Create and display the form */
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                                new MainJFrame().setVisible(true);
+                        }
+                });
+        }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JLayeredPane bg;

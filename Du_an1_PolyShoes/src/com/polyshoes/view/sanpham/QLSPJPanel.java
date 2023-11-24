@@ -4,7 +4,6 @@ import com.polyshoes.dao.sanpham.SanPhamDAO;
 import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.model.sanpham.SanPham;
 import com.polyshoes.swing.table.EventAction;
-import static com.polyshoes.view.sanpham.QuanLySanPhamJPanel.ma;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
@@ -72,6 +71,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
 
                 rdoSPDangBan.setBackground(new java.awt.Color(51, 255, 51));
                 grpTrangThai.add(rdoSPDangBan);
+                rdoSPDangBan.setSelected(true);
                 rdoSPDangBan.setText("Đang bán");
                 rdoSPDangBan.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,8 +132,9 @@ public class QLSPJPanel extends javax.swing.JPanel {
                         }
                 });
 
+                lblTieuDe.setBackground(new java.awt.Color(0, 0, 255));
                 lblTieuDe.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
-                lblTieuDe.setForeground(new java.awt.Color(76, 76, 76));
+                lblTieuDe.setForeground(new java.awt.Color(51, 51, 255));
                 lblTieuDe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 lblTieuDe.setText("Thông tin sản phẩm");
                 lblTieuDe.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
@@ -254,7 +255,6 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 pnlButton.add(btnEndSP);
 
                 grpTrangThai.add(rdoSPTatCa);
-                rdoSPTatCa.setSelected(true);
                 rdoSPTatCa.setText("Tất cả");
                 rdoSPTatCa.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,11 +295,9 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                                                                 .addComponent(btnThemSP)
                                                                                 .addGap(30, 30, 30)
                                                                                 .addComponent(btnCapNhatSP))))
-                                                        .addComponent(lblMoTaSP))
+                                                        .addComponent(lblMoTaSP)
+                                                        .addComponent(lblTieuDe))
                                                 .addGap(34, 34, 34))
-                                        .addGroup(tab1Layout.createSequentialGroup()
-                                                .addComponent(lblTieuDe)
-                                                .addGap(0, 0, Short.MAX_VALUE))
                                         .addComponent(pnlButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(tab1Layout.createSequentialGroup()
                                                 .addComponent(lblTrangThai)
@@ -552,7 +550,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
 
                         @Override
                         public void update(SanPham student) {
-                                System.out.println("Update");
+                                
                         }
                 };
                 DefaultTableModel tblModel = (DefaultTableModel) tblSanPham.getModel();
@@ -606,7 +604,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
 
         private void showDetailSP() {
                 index = tblSanPham.getSelectedRow();
-                ma = (String) tblSanPham.getValueAt(index, 1);
+                String ma = (String) tblSanPham.getValueAt(index, 1);
                 SanPham model = dao.findByMa(ma);
                 txtMaSP.setText(model.getMa());
                 txtTenSP.setText(model.getTen());

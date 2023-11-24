@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class SanPhamChiTiet {
 
+        private int stt;
         private String ma;
         private String ten;
         private String danhMuc;
@@ -25,8 +26,9 @@ public class SanPhamChiTiet {
         public SanPhamChiTiet() {
         }
 
-        public SanPhamChiTiet(String ma, String ten, String danhMuc, String thuongHieu, String xuatXu, String NSX, String chatLieu, 
+        public SanPhamChiTiet(int stt, String ma, String ten, String danhMuc, String thuongHieu, String xuatXu, String NSX, String chatLieu, 
                 String deGiay, String coGiay, String mauSac, int Size, double gia, int soLuongTon, double khoiLuong, String trangThai) {
+                this.stt = stt;
                 this.ma = ma;
                 this.ten = ten;
                 this.danhMuc = danhMuc;
@@ -164,27 +166,27 @@ public class SanPhamChiTiet {
                 this.trangThai = trangThai;
         }
         
-        public Object[] toDataRow(int stt) {
+        public Object[] toDataRow() {
                 if(trangThai.equalsIgnoreCase("0")) {
                         setTrangThai("Còn hàng");
                 } else {
                         setTrangThai("Hết hàng");
                 }
-                DecimalFormat df = new DecimalFormat("$#,##");
+                DecimalFormat df = new DecimalFormat("#,##0 VND");
                 return new Object[] {
                         stt, ma, danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, df.format(gia), soLuongTon, trangThai
                 };
         }
         
         public Object[] toInsert() {
-                setTen(ten + mauSac);
+                setMa(generateCode());
                 return new Object[] {
-                        danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, khoiLuong, gia, soLuongTon, trangThai
+                        danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, ma, khoiLuong, gia, soLuongTon, trangThai
                 };
         }
 
         private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        private static final int CODE_LENGTH = 5;
+        private static final int CODE_LENGTH = 6;
 
         public static String generateCode() {
                 Random random = new SecureRandom();
@@ -193,6 +195,6 @@ public class SanPhamChiTiet {
                         int randomIndex = random.nextInt(CHARACTERS.length());
                         code.append(CHARACTERS.charAt(randomIndex));
                 }
-                return "SPCT-" + code.toString();
+                return "SPCT" + code.toString();
         }
 }
