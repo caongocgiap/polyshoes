@@ -1477,7 +1477,7 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
             } catch (NotFoundException e) {
                 //No result...
             }
-
+if(txtHoTen.getText().isEmpty() || txtHoTen.getText().length()==0){
             if (result != null) {
                 txtCCCD.setText(randomCode);
                 txtHoTen.setText(this.generateRandomName());
@@ -1515,9 +1515,10 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
                 String randomEmail = generateRandomEmail(domains);
                 txtEmail.setText(randomEmail);
 
-            }
+            }}
         } while (true);
     }
+        
 
     @Override
     public Thread newThread(Runnable r) {
