@@ -38,7 +38,7 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
         jScrollPane3.setVerticalScrollBar(new ScrollBarCustom());
         fillTable(0, 5);
         addPlace(txtTimKiemKhuyenMai);
-
+        
     }
 
     void load(int page, int limit) {
@@ -48,14 +48,22 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
         try {
             List<KhuyenMai> list = dao.select();
             for (KhuyenMai km : list) {
+                String trangThaiText = "";
                 indexRow++;
+                if (km.getTrangThai() == 0) {
+                    trangThaiText = "Đang Diễn Ra";
+                } else if (km.getTrangThai() == 1) {
+                    trangThaiText = "Đã Hết Thời Gian Diễn Ra";
+                } else if (km.getTrangThai() == 2) {
+                    trangThaiText = "Sắp Diễn Ra";
+                }
                 Object[] row = {
                     indexRow,
                     km.getMa(),
                     km.getMoTa(),
                     km.getNgayBatDau(),
                     km.getNgayKetThuc(),
-                    km.getTrangThai() == 0 ? "Đang Diễn Ra" : "Đã Hết Thời Gian Diễn Ra"
+                    trangThaiText
                 };
                 model.addRow(row);
             }
@@ -72,14 +80,22 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
         try {
             List<KhuyenMai> list = dao.paging(page, limit);
             for (KhuyenMai km : list) {
+                String trangThaiText = "";
                 indexRow++;
+                if (km.getTrangThai() == 0) {
+                    trangThaiText = "Đang Diễn Ra";
+                } else if (km.getTrangThai() == 1) {
+                    trangThaiText = "Đã Hết Thời Gian Diễn Ra";
+                } else if (km.getTrangThai() == 2) {
+                    trangThaiText = "Sắp Diễn Ra";
+                }
                 Object[] row = {
                     indexRow,
                     km.getMa(),
                     km.getMoTa(),
                     km.getNgayBatDau(),
                     km.getNgayKetThuc(),
-                    km.getTrangThai() == 0 ? "Đang Diễn Ra" : "Đã Hết Thời Gian Diễn Ra"
+                    trangThaiText
                 };
                 model.addRow(row);
             }
@@ -160,7 +176,7 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
         KhuyenMai model = getModel1();
         try {
             dao.insert(model);
-            this.load(0, 5);
+            this.fillTable(0, 5);
             this.clear();
             JOptionPane.showMessageDialog(this, "Thêm Khuyến Mại Thành Công!");
         } catch (Exception e) {
@@ -173,7 +189,7 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
         KhuyenMai model = getModel();
         try {
             dao.update(model);
-            this.load(0, 5);
+            this.fillTable(0, 5);
             this.clear();
             JOptionPane.showMessageDialog(this, "Update Khuyến Mại Thành Công");
         } catch (Exception e) {
@@ -186,7 +202,7 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
         String ma = txtMaKM.getText();
         try {
             dao.delete(ma);
-            this.load(0, 5);
+            this.fillTable(0, 5);
             this.clear();
             JOptionPane.showMessageDialog(this, "Xóa Khuyến Mại thành công");
         } catch (Exception e) {
@@ -198,11 +214,12 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
         int trangThai = (int) cboTrangThai.getSelectedItem();
         try {
             dao.findByTrangThai(trangThai);
-            this.load(0, 5);
-//            this.clear();
+            this.fillTable(0, 5);
+            this.clear();
         } catch (Exception e) {
         }
     }
+
     void fillTimKiemKM() {
         DefaultTableModel model = (DefaultTableModel) tbl_KhuyenMai.getModel();
         model.setRowCount(0);
@@ -211,14 +228,22 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
             List<KhuyenMai> list = dao.findByMa(keyword);
             int indexRow = 0;
             for (KhuyenMai km : list) {
+                String trangThaiText = "";
                 indexRow++;
+                if (km.getTrangThai() == 0) {
+                    trangThaiText = "Đang Diễn Ra";
+                } else if (km.getTrangThai() == 1) {
+                    trangThaiText = "Đã Hết Thời Gian Diễn Ra";
+                } else if (km.getTrangThai() == 2) {
+                    trangThaiText = "Sắp Diễn Ra";
+                }
                 Object[] row = {
                     indexRow,
                     km.getMa(),
                     km.getMoTa(),
                     km.getNgayBatDau(),
                     km.getNgayKetThuc(),
-                    km.getTrangThai() == 0 ? "Đang Diễn Ra" : "Đã Hết Thời Gian Diễn Ra"
+                    trangThaiText
                 };
                 model.addRow(row);
             }
@@ -565,7 +590,7 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Trạng Thái");
 
-        cboTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang Diễn Ra", "Hết Thời Gian Diễn Ra" }));
+        cboTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang Diễn Ra", "Hết Thời Gian Diễn Ra", "Sắp Diễn Ra" }));
         cboTrangThai.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboTrangThaiItemStateChanged(evt);
@@ -960,7 +985,7 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSoTienGiamFocusGained
 
     private void txtTimKiemKhuyenMaiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemKhuyenMaiFocusGained
-         if (txtTimKiemKhuyenMai.getText().equals("Tìm Kiếm Theo Mã")) {
+        if (txtTimKiemKhuyenMai.getText().equals("Tìm Kiếm Theo Mã")) {
             txtTimKiemKhuyenMai.setText(null);
             txtTimKiemKhuyenMai.requestFocus();
             removeLpace(txtMaKM);
@@ -975,22 +1000,22 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSoTienGiamFocusLost
 
     private void txtTimKiemKhuyenMaiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemKhuyenMaiFocusLost
-         if (txtTimKiemKhuyenMai.getText().length()==0) {
+        if (txtTimKiemKhuyenMai.getText().length() == 0) {
             addPlace(txtSoTienGiam);
             txtTimKiemKhuyenMai.setText("Tìm Kiếm Theo Mã");
         }
     }//GEN-LAST:event_txtTimKiemKhuyenMaiFocusLost
 
     private void txtTimKiemKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemKhuyenMaiActionPerformed
-            this.fillTimKiemKM();
+        this.fillTimKiemKM();
     }//GEN-LAST:event_txtTimKiemKhuyenMaiActionPerformed
 
     private void txtTimKiemKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimKiemKhuyenMaiMouseClicked
-        
+
     }//GEN-LAST:event_txtTimKiemKhuyenMaiMouseClicked
 
     private void txtTimKiemKhuyenMaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimKiemKhuyenMaiMousePressed
-        
+
     }//GEN-LAST:event_txtTimKiemKhuyenMaiMousePressed
 
 

@@ -9,7 +9,7 @@ import com.polyshoes.model.trangchu.KhuyenMai;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Date;
 /**
  *
  * @author quan
@@ -70,7 +70,19 @@ public class KhuyenMaiDAO {
                 rs = JdbcHelper.executeQuery(sql, args);
                 while (rs.next()) {
                     KhuyenMai model = readFormResultSet(rs);
+                    if (model.getNgayBatDau() != null) {
+                    Date currentDate = new Date();
+                    long timeDifference = model.getNgayBatDau().getTime() - currentDate.getTime();
+                    // Nếu thời gian chênh lệch là dương, tức là ngày bắt đầu sắp diễn ra
+                    if (timeDifference > 0) {
+                        model.setTrangThai(2); // Giả sử trạng thái 2 là sắp diễn ra
+                    } else if (model.getNgayBatDau().after(currentDate)) {
+                        model.setTrangThai(0);
+                    } else if (model.getNgayKetThuc() != null && model.getNgayKetThuc().before(currentDate)) {
+                        model.setTrangThai(1);
+                    }
                     list.add(model);
+                }
                 }
             } finally {
                 rs.getStatement().getConnection().close();
