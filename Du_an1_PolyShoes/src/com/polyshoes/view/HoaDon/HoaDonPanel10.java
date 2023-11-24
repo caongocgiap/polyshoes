@@ -58,9 +58,8 @@ import javax.swing.event.TableModelListener;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 
-public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, ThreadFactory{
+public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, ThreadFactory {
 
- 
     int index = -1;
     HoaDonDao dao = new HoaDonDao();
     LichSuHoaDonDao lsdao = new LichSuHoaDonDao();
@@ -76,7 +75,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
     XuatDanhSachDao DSdao = new XuatDanhSachDao();
 
     public HoaDonPanel10() {
-     initComponents();
+        initComponents();
         setBackground(Color.WHITE);
         load(0, 5);
         addPlaceHolderStyle(txtTimKiem);
@@ -86,8 +85,10 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
         initWebcam();
 //        this.load2();
         fixTable();
+
     }
-        private void fixTable() {
+
+    private void fixTable() {
 
         tblHoaDon.fixTable(jScrollPane19);
         tblTimeLine2.fixTable(jScrollPane6);
@@ -137,8 +138,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
                 txtTimkiemLS2.setText(result.getText());
                 TimKiemTheoBang5(result.getText());
                 showData8(result.getText());
-                 TimKiemTheoBang8(result.getText());
-                
+                TimKiemTheoBang8(result.getText());
 
             }
 
@@ -519,12 +519,15 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
 //        }
 //    }
     void TimKiemTheoBang4() {
+        String SoLuong = JOptionPane.showInputDialog(this, "moi nhap so luong");
         DefaultTableModel model = (DefaultTableModel) tblChiTiet4.getModel();
         model.setRowCount(0);
         String mahd = txtTimkiemLS2.getText();
+        String masp = (String) tblChiTiet3.getValueAt(tblChiTiet3.getSelectedRow(), 1);
         try {
-            List<HoaDonChiTiet> list = hdctdao.selectByKeyword1(mahd);
+            List<HoaDonChiTiet> list = hdctdao.selectByTramotmon(mahd, masp);
             int stt = 0;
+
             for (HoaDonChiTiet hdct : list) {
                 stt++;
                 Object[] row = {
@@ -534,7 +537,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
                     hdct.getTenSp(),
                     hdct.getHang(),
                     hdct.getColor(),
-                    hdct.getSoLuong(),
+                    SoLuong,
                     hdct.getDonGia(),
                     hdct.getTongTien()
 
@@ -546,10 +549,11 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
             e.printStackTrace();
         }
     }
-      void TimKiemTheoBang8(String mahd) {
+
+    void TimKiemTheoBang8(String mahd) {
         DefaultTableModel model = (DefaultTableModel) tblChiTiet4.getModel();
         model.setRowCount(0);
-      
+
         try {
             List<HoaDonChiTiet> list = hdctdao.selectByKeyword1(mahd);
             int stt = 0;
@@ -884,10 +888,10 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
             List<HoaDon> model = dao.selectByLSSS2(mahd2, mahd);
             for (HoaDon x : model) {
                 JTextKH.setText(x.getTenKH());
-                JTextTienGocHoaDon.setText(String.valueOf(x.getTongTien()));         
+                JTextTienGocHoaDon.setText(String.valueOf(x.getTongTien()));
                 JTextArea.setText("....");
                 JTextTienThua.setText("0");
-                JTextTienGocTraHang.setText(String.valueOf(x.getTongTien()));      
+                JTextTienGocTraHang.setText(String.valueOf(x.getTongTien()));
 
             }
 //            for (HoaDonChiTiet x : model2) {
@@ -1051,7 +1055,6 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
 //            }
 //        }
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1647,6 +1650,11 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
                 return canEdit [columnIndex];
             }
         });
+        tblChiTiet3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblChiTiet3MouseClicked(evt);
+            }
+        });
         jScrollPane12.setViewportView(tblChiTiet3);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -1953,7 +1961,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
     private void txtTimkiemLS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimkiemLS2ActionPerformed
         TimKiemTheoBang7();
         showData7();
-        TimKiemTheoBang4();// TODO add your handling code here:
+//        TimKiemTheoBang4();
     }//GEN-LAST:event_txtTimkiemLS2ActionPerformed
 
     private void txtTimkiemLS2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimkiemLS2FocusLost
@@ -2017,14 +2025,14 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
             //            ListDS = DSdao.select();
             //
             //            for (int i = 0; i < 10; i++) {
-                //                row = sheet.createRow(4 + i);
-                //                cell = row.createCell(0, CellType.STRING);
-                //                cell.setCellValue(i + 1);
-                //
-                //                cell=row.createCell(1, CellType.STRING);
-                //                cell.setCellValue(l);
-                //
-                //            }
+            //                row = sheet.createRow(4 + i);
+            //                cell = row.createCell(0, CellType.STRING);
+            //                cell.setCellValue(i + 1);
+            //
+            //                cell=row.createCell(1, CellType.STRING);
+            //                cell.setCellValue(l);
+            //
+            //            }
             ListDS = DSdao.select();
             for (int i = 0; i < ListDS.size(); i++) {
 
@@ -2192,6 +2200,11 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements  Runnable, Thre
         TimKiemTheoBang();
         // TODO add your handling code here:
     }//GEN-LAST:event_tblHoaDontblHoaDonMouseClicked
+
+    private void tblChiTiet3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTiet3MouseClicked
+        TimKiemTheoBang4();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblChiTiet3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

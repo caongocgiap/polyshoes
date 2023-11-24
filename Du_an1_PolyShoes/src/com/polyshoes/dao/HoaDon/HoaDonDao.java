@@ -104,7 +104,7 @@ public class HoaDonDao {
         String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia,SUM(Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia) as TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
                 + " from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
                 + " join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
-                + " where hoa_don.Deleted = 0 and MAHD = ? or tenNguoiNhan like ? or MaNV = ? or Hoa_Don.SDT = ?\n"
+                + " where hoa_don.Deleted = 0 and hoa_don_chi_tiet.soluong != 0 and MAHD = ? or tenNguoiNhan like ? or MaNV = ? or Hoa_Don.SDT = ?\n"
                 + "\n"
                 + "group by  Hoa_Don.id,\n"
                 + "    Hoa_Don.MaHD,\n"
