@@ -1,11 +1,13 @@
 package com.polyshoes.component;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 public class HeaderJPanel extends javax.swing.JPanel {
 
     public HeaderJPanel() {
         initComponents();
+            setBackground(Color.decode("#FFFFFF"));
     }
 
     public void addMenuEvent(ActionListener event) {
@@ -22,9 +24,13 @@ public class HeaderJPanel extends javax.swing.JPanel {
         lbRole = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
+<<<<<<< HEAD
         setBackground(new java.awt.Color(255, 255, 255));
 
         cmdMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/menu.png"))); // NOI18N
+=======
+                cmdMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/menu.png"))); // NOI18N
+>>>>>>> 53974e1d02cacb0c223d1a8a3c85d9d54739dbaa
 
         pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/avatar.jpg"))); // NOI18N
 

@@ -4,16 +4,23 @@ import com.polyshoes.component.HeaderJPanel;
 import com.polyshoes.component.MenuJPanel;
 import com.polyshoes.event.EventMenuSelected;
 import com.polyshoes.event.EventShowPopupMenu;
-import com.polyshoes.view.trangchu.QLSPJPanel;
+import com.polyshoes.view.trangchu.Form_1;
 import com.polyshoes.view.trangchu.TrangChuJPanel;
 import com.polyshoes.view.trangchu.MainJPanel;
 import com.polyshoes.swing.MenuItem;
 import com.polyshoes.swing.PopupMenu;
 import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
+<<<<<<< HEAD
 import com.polyshoes.view.glasspanepopup.GlassPanePopup;
 import com.polyshoes.view.trangchu.QuanLyKhuyenMaiPanel;
 import com.polyshoes.view.trangchu.QuanLyKhuyenMaiPanellll;
+=======
+import com.polyshoes.view.nhanvien.NhanVienJPanel;
+import com.polyshoes.view.sanpham.QLSPJPanel;
+import com.polyshoes.view.sanpham.QuanLySanPhamJPanel;
+import java.awt.Color;
+>>>>>>> 53974e1d02cacb0c223d1a8a3c85d9d54739dbaa
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +43,7 @@ public class MainJFrame extends javax.swing.JFrame {
         GlassPanePopup.install(this);
     }
 
+<<<<<<< HEAD
     private void init() {
         layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
         bg.setLayout(layout);
@@ -92,6 +100,66 @@ public class MainJFrame extends javax.swing.JFrame {
                 layout.setComponentConstraints(menu, "w " + width + "!, spany2");
                 menu.revalidate();
             }
+=======
+        private void init() {
+                layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
+                bg.setBackground(Color.WHITE);
+                bg.setLayout(layout);
+                menu = new MenuJPanel();
+                header = new HeaderJPanel();
+                main = new MainJPanel();
+                menu.addEvent(new EventMenuSelected() {
+                        @Override
+                        public void menuSelected(int menuIndex, int subMenuIndex) {
+                                System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
+                                if (menuIndex == 2) {
+                                        if (subMenuIndex == 0) {
+                                                main.showForm(new TrangChuJPanel());
+                                        } else if (subMenuIndex == 1) {
+                                                main.showForm(new Form_1());
+                                        }
+                                }
+                                if(menuIndex == 0) {
+                                        main.showForm(new QuanLySanPhamJPanel());
+                                }
+                                if(menuIndex == 6) {
+                                        main.showForm(new QLSPJPanel());
+                                }
+                                if(menuIndex == 9) {
+                                        if(subMenuIndex == 0) {
+                                                main.showForm(new NhanVienJPanel());
+                                        }
+                                }
+                        }
+                });
+                menu.addEventShowPopup(new EventShowPopupMenu() {
+                        @Override
+                        public void showPopup(Component com) {
+                                MenuItem item = (MenuItem) com;
+                                PopupMenu popup = new PopupMenu(MainJFrame.this, item.getIndex(), item.getEventSelected(), item.getMenu().getSubMenu());
+                                int x = MainJFrame.this.getX() + 52;
+                                int y = MainJFrame.this.getY() + com.getY() + 86;
+                                popup.setLocation(x, y);
+                                popup.setVisible(true);
+                        }
+                });
+                menu.initMenuItem();
+                bg.add(menu, "w 230!, spany 2");    // Span Y 2cell
+                bg.add(header, "h 50!, wrap");
+                bg.add(main, "w 100%, h 100%");
+                TimingTarget target = new TimingTargetAdapter() {
+                        @Override
+                        public void timingEvent(float fraction) {
+                                double width;
+                                if (menu.isShowMenu()) {
+                                        width = 60 + (170 * (1f - fraction));
+                                } else {
+                                        width = 60 + (170 * fraction);
+                                }
+                                layout.setComponentConstraints(menu, "w " + width + "!, spany2");
+                                menu.revalidate();
+                        }
+>>>>>>> 53974e1d02cacb0c223d1a8a3c85d9d54739dbaa
 
             @Override
             public void end() {
@@ -128,7 +196,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         bg = new javax.swing.JLayeredPane();
 
+<<<<<<< HEAD
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+=======
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+>>>>>>> 53974e1d02cacb0c223d1a8a3c85d9d54739dbaa
 
         bg.setBackground(new java.awt.Color(245, 245, 245));
         bg.setOpaque(true);

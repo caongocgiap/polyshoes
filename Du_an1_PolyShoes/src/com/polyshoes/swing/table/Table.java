@@ -3,14 +3,11 @@ package com.polyshoes.swing.table;
 import com.polyshoes.swing.scrollbar.ScrollBarCustom;
 import java.awt.Color;
 import java.awt.Component;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
 
 
 public class Table extends JTable {
@@ -25,9 +22,9 @@ public class Table extends JTable {
                         @Override
                         public Component getTableCellRendererComponent(JTable jtable, Object o, boolean bln, boolean bln1, int i, int i1) {
                                 TableHeader header = new TableHeader(o + "");
-                                if (i1 == 4) {
-                                        header.setHorizontalAlignment(JLabel.CENTER);
-                                }
+//                                if (i1 == 4) {
+//                                        header.setHorizontalAlignment(JLabel.CENTER);
+//                                }
                                 return header;
                         }
                 });
@@ -68,19 +65,14 @@ public class Table extends JTable {
                 });
         }
 
-        @Override
-        public TableCellEditor getCellEditor(int row, int col) {
-                if (col == 4) {
-                        return new TableCellAction();
-                } else {
-                        return super.getCellEditor(row, col);
-                }
-        }
-
-        public void addRow(Object[] row) {
-                DefaultTableModel mod = (DefaultTableModel) getModel();
-                mod.addRow(row);
-        }
+//        @Override
+//        public TableCellEditor getCellEditor(int row, int col) {
+//                if (col == 4) {
+//                        return new TableCellAction();
+//                } else {
+//                        return super.getCellEditor(row, col);
+//                }
+//        }
 
         public void fixTable(JScrollPane scroll) {
                 scroll.getViewport().setBackground(Color.WHITE);

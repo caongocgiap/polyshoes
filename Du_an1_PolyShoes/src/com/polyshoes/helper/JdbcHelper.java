@@ -44,17 +44,30 @@ public class JdbcHelper {
                 return ps;
         }
         
+<<<<<<< HEAD
         public static void executeUpdate(String sql, Object...args) {
                 try {
                         PreparedStatement ps = preparedStatement(sql, args);
                         try {
                                 ps.executeUpdate();
+=======
+        public static int executeUpdate(String sql, Object...args) {
+                int result = 0;
+                try {
+                        PreparedStatement ps = preparedStatement(sql, args);
+                        try {
+                                result = ps.executeUpdate();
+>>>>>>> 53974e1d02cacb0c223d1a8a3c85d9d54739dbaa
                         } finally {
                                 ps.getConnection().close();
                         }
                 } catch (SQLException e) {
                         throw new RuntimeException(e);
                 }
+<<<<<<< HEAD
+=======
+                return result;
+>>>>>>> 53974e1d02cacb0c223d1a8a3c85d9d54739dbaa
         }
         
         public static ResultSet executeQuery(String sql, Object...args) {
