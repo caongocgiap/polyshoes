@@ -123,6 +123,10 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
 
         btnXoa.setVisible(false);
         btnKhoiPhuc.setVisible(false);
+         if (txtFind.getText().length() == 0) {
+            this.addPlaceHolderStyle(txtFind);
+            txtFind.setText("Tìm kiếm theo MaNV,Email,SĐT,Tên,Địa Chỉ");
+        }
     }
 
     public void fillTablePagging(long trang) {
@@ -1477,44 +1481,45 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
             } catch (NotFoundException e) {
                 //No result...
             }
+            if (txtHoTen.getText().length()==0) {
+                if (result != null) {
+                    txtCCCD.setText(randomCode);
+                    txtHoTen.setText(this.generateRandomName());
+                    txtSDT.setText(this.generateRandomPhoneNumber());
+                    txtDiaChi.setText(this.generateRandomProvinceName());
 
-            if (result != null) {
-                txtCCCD.setText(randomCode);
-                txtHoTen.setText(this.generateRandomName());
-                txtSDT.setText(this.generateRandomPhoneNumber());
-                txtDiaChi.setText(this.generateRandomProvinceName());
+                    if (txtHoTen.getText().contains("Thị") || txtHoTen.getText().contains("Như") || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Mỹ")
+                            || txtHoTen.getText().contains("Hoa") || txtHoTen.getText().contains("Hương") || txtHoTen.getText().contains("Linh") || txtHoTen.getText().contains("Nga")
+                            || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Trang") || txtHoTen.getText().contains("Vân")) {
+                        rdNu.setSelected(true);
+                    } else {
+                        rdNam.setSelected(true);
+                    }
 
-                if (txtHoTen.getText().contains("Thị") || txtHoTen.getText().contains("Như") || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Mỹ")
-                        || txtHoTen.getText().contains("Hoa") || txtHoTen.getText().contains("Hương") || txtHoTen.getText().contains("Linh") || txtHoTen.getText().contains("Nga")
-                        || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Trang") || txtHoTen.getText().contains("Vân")) {
-                    rdNu.setSelected(true);
-                } else {
-                    rdNam.setSelected(true);
+                    int minYear = 1900;
+                    int maxYear = 2022;
+                    int randomYear = ThreadLocalRandom.current().nextInt(minYear, maxYear + 1);
+
+                    // Tạo một số ngẫu nhiên đại diện cho tháng sinh (từ 1 đến 12)
+                    int randomMonth = ThreadLocalRandom.current().nextInt(1, 13);
+
+                    // Lấy số ngày tối đa trong tháng và năm sinh đã tạo
+                    int maxDay = LocalDate.of(randomYear, randomMonth, 1).lengthOfMonth();
+
+                    // Tạo một số ngẫu nhiên đại diện cho ngày sinh (từ 1 đến ngày tối đa trong tháng)
+                    int randomDay = ThreadLocalRandom.current().nextInt(1, maxDay + 1);
+
+                    // Tạo đối tượng LocalDate từ ngày, tháng và năm sinh đã tạo
+                    LocalDate randomDateOfBirth = LocalDate.of(randomYear, randomMonth, randomDay);
+
+                    // Đặt ngày sinh ngẫu nhiên vào JDateChooser
+                    txtNgaySinh.setDate(java.sql.Date.valueOf(randomDateOfBirth));
+
+                    String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
+                    String randomEmail = generateRandomEmail(domains);
+                    txtEmail.setText(randomEmail);
+
                 }
-
-                int minYear = 1900;
-                int maxYear = 2022;
-                int randomYear = ThreadLocalRandom.current().nextInt(minYear, maxYear + 1);
-
-                // Tạo một số ngẫu nhiên đại diện cho tháng sinh (từ 1 đến 12)
-                int randomMonth = ThreadLocalRandom.current().nextInt(1, 13);
-
-                // Lấy số ngày tối đa trong tháng và năm sinh đã tạo
-                int maxDay = LocalDate.of(randomYear, randomMonth, 1).lengthOfMonth();
-
-                // Tạo một số ngẫu nhiên đại diện cho ngày sinh (từ 1 đến ngày tối đa trong tháng)
-                int randomDay = ThreadLocalRandom.current().nextInt(1, maxDay + 1);
-
-                // Tạo đối tượng LocalDate từ ngày, tháng và năm sinh đã tạo
-                LocalDate randomDateOfBirth = LocalDate.of(randomYear, randomMonth, randomDay);
-
-                // Đặt ngày sinh ngẫu nhiên vào JDateChooser
-                txtNgaySinh.setDate(java.sql.Date.valueOf(randomDateOfBirth));
-
-                String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
-                String randomEmail = generateRandomEmail(domains);
-                txtEmail.setText(randomEmail);
-
             }
         } while (true);
     }
