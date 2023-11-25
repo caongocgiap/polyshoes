@@ -9,61 +9,64 @@ import java.sql.ResultSet;
 
 public class JdbcHelper {
 
-    private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-//    private static final String DBURL = "jdbc:sqlserver://localhost;database=N5_PolyShoes2";
-        private static final String DBURL = "jdbc:sqlserver://localhost;database=N5_PolyShoes7";
-    private static final String USERNAME = "sa";
-    private static final String PASSWORD = "Bathanh01";
+        private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        private static final String DBURL = "jdbc:sqlserver://localhost;database=N5_PolyShoes";
+        private static final String USERNAME = "sa";
+        private static final String PASSWORD = "abc123";
 
-    static {
-        try {
-            Class.forName(DRIVER);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        static {
+                try {
+                        Class.forName(DRIVER);
+                } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                }
         }
-    }
 
-    public static void main(String[] args) throws SQLException {
-        Connection con = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
-        DatabaseMetaData dbmt = con.getMetaData();
-        System.out.println(dbmt.getDriverName());
-        System.out.println(dbmt.getDatabaseProductName());
-        System.out.println(dbmt.getDatabaseProductVersion());
-    }
+        public static void main(String[] args) throws SQLException {
+                Connection con = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
+                DatabaseMetaData dbmt = con.getMetaData();
+                System.out.println(dbmt.getDriverName());
+                System.out.println(dbmt.getDatabaseProductName());
+                System.out.println(dbmt.getDatabaseProductVersion());
+        }
 
-    public static PreparedStatement preparedStatement(String sql, Object... args) throws SQLException {
-        Connection con = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
-        PreparedStatement ps = null;
-        if (sql.trim().startsWith("{")) {
-            ps = con.prepareCall(sql);
-        } else {
-            ps = con.prepareStatement(sql);
+        public static PreparedStatement preparedStatement(String sql, Object... args) throws SQLException {
+                Connection con = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
+                PreparedStatement ps = null;
+                if (sql.trim().startsWith("{")) {
+                        ps = con.prepareCall(sql);
+                } else {
+                        ps = con.prepareStatement(sql);
+                }
+                for (int i = 0; i < args.length; i++) {
+                        ps.setObject(i + 1, args[i]);
+                }
+                return ps;
         }
-        for (int i = 0; i < args.length; i++) {
-            ps.setObject(i + 1, args[i]);
-        }
-        return ps;
-    }
 
-    public static void executeUpdate(String sql, Object... args) {
-        try {
-            PreparedStatement ps = preparedStatement(sql, args);
-            try {
-                ps.executeUpdate();
-            } finally {
-                ps.getConnection().close();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+        public static int executeUpdate(String sql, Object... args) {
 
-    public static ResultSet executeQuery(String sql, Object... args) {
-        try {
-            PreparedStatement ps = preparedStatement(sql, args);
-            return ps.executeQuery();
-        } catch (SQLException e) {
-            throw new RuntimeException();
+                int result = 0;
+                try {
+                        PreparedStatement ps = preparedStatement(sql, args);
+                        try {
+                                result = ps.executeUpdate();
+                        } finally {
+                                ps.getConnection().close();
+                        }
+                } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                }
+                return result;
         }
-    }
+
+        public static ResultSet executeQuery(String sql, Object... args) {
+                try {
+                        PreparedStatement ps = preparedStatement(sql, args);
+                        return ps.executeQuery();
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                        throw new RuntimeException();
+                }
+        }
 }
