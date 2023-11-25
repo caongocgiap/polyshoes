@@ -757,6 +757,11 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         jLabel12.setText("Quét QR CCCD");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, -1, -1));
 
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, 210, 180));
 
@@ -1055,6 +1060,7 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        this.initWebcam();
         this.clearForm();
         btnXoa.setVisible(false);
         btnKhoiPhuc.setVisible(false);
@@ -1379,6 +1385,10 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         }
     }//GEN-LAST:event_txtFindFocusGained
 
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+           this.webcam.close();
+    }//GEN-LAST:event_jPanel2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -1473,7 +1483,7 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
                 }
             }
 
-            LuminanceSource source = new BufferedImageLuminanceSource(image);
+             LuminanceSource source = new BufferedImageLuminanceSource(image);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
             try {
