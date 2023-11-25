@@ -81,4 +81,8 @@ public class Table extends JTable {
                 scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
                 scroll.setBorder(new EmptyBorder(5, 10, 5, 10));
         }
+
+    public void setModel(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
