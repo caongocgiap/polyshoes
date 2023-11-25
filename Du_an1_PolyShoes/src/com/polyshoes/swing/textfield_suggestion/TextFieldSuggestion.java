@@ -31,8 +31,4 @@ public class TextFieldSuggestion extends JTextField {
         return textUI.getRound();
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 5095e7d5aac1f11388366af812e48ad24706f64f

@@ -24,13 +24,10 @@ public class HeaderJPanel extends javax.swing.JPanel {
         lbRole = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
-<<<<<<< HEAD
         setBackground(new java.awt.Color(255, 255, 255));
 
         cmdMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/menu.png"))); // NOI18N
-=======
-                cmdMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/menu.png"))); // NOI18N
->>>>>>> 53974e1d02cacb0c223d1a8a3c85d9d54739dbaa
+
 
         pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/avatar.jpg"))); // NOI18N
 
