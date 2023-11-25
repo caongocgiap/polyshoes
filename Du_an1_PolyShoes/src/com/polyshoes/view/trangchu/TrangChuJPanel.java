@@ -1,12 +1,8 @@
 package com.polyshoes.view.trangchu;
 
-import com.polyshoes.helper.DialogHelper;
-import com.polyshoes.main.MainJFrame;
-import com.polyshoes.model.khachhang.KhachHang;
 import com.polyshoes.model.trangchu.Card;
 import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
-import com.polyshoes.swing.table.EventAction;
 import java.awt.Color;
 import javax.swing.Icon;
 
@@ -21,10 +17,7 @@ public class TrangChuJPanel extends javax.swing.JPanel {
 
         private void initData() {
                 initCardData();
-//                initTableData();
         }
-
-   
 
         private void initCardData() {
                 Icon icon1 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.PEOPLE, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));

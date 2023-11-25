@@ -1,38 +1,34 @@
 package com.polyshoes.swing.table;
 
-import com.polyshoes.model.khachhang.KhachHang;
+import com.polyshoes.model.sanpham.SanPham;
 
 
 public class ModelAction {
 
-    public ModelAction(KhachHang aThis, EventAction event) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-//
-//        public KhachHang getKhachHang() {
-//                return KhachHang;
-//        }
-//
-//        public void setKhachHang(KhachHang kh) {
-//                this.KhachHang = KhachHang;
-//        }
-//
-//        public EventAction getEvent() {
-//                return event;
-//        }
-//
-//        public void setEvent(EventAction event) {
-//                this.event = event;
-//        }
-//
-//        public ModelAction(KhachHang KhachHang, EventAction) {
-//                this.KhachHang = KhachHang ;
-//                this.event = event;
-//        }
-//
-//        public ModelAction() {
-//        }
+        public SanPham getSanPham() {
+                return sanPham;
+        }
 
-        private KhachHang KhachHang;
+        public void setSanPam(SanPham sanPham) {
+                this.sanPham = sanPham;
+        }
+
+        public EventAction getEvent() {
+                return event;
+        }
+
+        public void setEvent(EventAction event) {
+                this.event = event;
+        }
+
+        public ModelAction(SanPham sanPham, EventAction event) {
+                this.sanPham = sanPham;
+                this.event = event;
+        }
+
+        public ModelAction() {
+        }
+
+        private SanPham sanPham;
         private EventAction event;
 }
