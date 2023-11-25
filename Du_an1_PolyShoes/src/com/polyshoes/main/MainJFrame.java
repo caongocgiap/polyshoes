@@ -4,13 +4,13 @@ import com.polyshoes.component.HeaderJPanel;
 import com.polyshoes.component.MenuJPanel;
 import com.polyshoes.event.EventMenuSelected;
 import com.polyshoes.event.EventShowPopupMenu;
-import com.polyshoes.view.trangchu.Form_1;
 import com.polyshoes.view.trangchu.TrangChuJPanel;
 import com.polyshoes.view.trangchu.MainJPanel;
 import com.polyshoes.swing.MenuItem;
 import com.polyshoes.swing.PopupMenu;
 import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
+import com.polyshoes.view.HoaDon.HoaDonPanel10;
 import com.polyshoes.view.banhang.BanHangJPanel;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
@@ -49,13 +49,6 @@ public class MainJFrame extends javax.swing.JFrame {
                                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                                 if (menuIndex == 2) {
                                         if (subMenuIndex == 0) {
-                                                main.showForm(new TrangChuJPanel());
-                                        } else if (subMenuIndex == 1) {
-                                                main.showForm(new Form_1());
-                                        }
-                                }
-                                if (menuIndex == 2) {
-                                        if(subMenuIndex == 0) {
                                                 main.showForm(new BanHangJPanel());
                                         }
 
@@ -63,6 +56,11 @@ public class MainJFrame extends javax.swing.JFrame {
                                 if (menuIndex == 6) {
                                         main.showForm(new QLSPJPanel());
                                 }
+
+                                if (menuIndex == 8) {
+                                        main.showForm(new HoaDonPanel10());
+                                }
+
                                 if (menuIndex == 9) {
                                         if (subMenuIndex == 0) {
                                                 main.showForm(new NhanVienJPanel());
