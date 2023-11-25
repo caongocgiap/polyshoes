@@ -1,11 +1,11 @@
 package com.polyshoes.swing.table;
 
-import com.polyshoes.model.sanpham.SanPham;
+import com.polyshoes.model.khachhang.KhachHang;
 
 
 public interface EventAction {
 
-    public void delete(SanPham sanPham);
+    public void delete(int row);
 
-    public void update(SanPham sanPham);
+    public void onEdit(int row);
 }
