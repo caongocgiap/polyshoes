@@ -38,6 +38,7 @@ public class Button extends JButton {
         setBorder(new EmptyBorder(5, 5, 5, 5));
         setBackground(Color.WHITE);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
+        setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/menu.png"))); 
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent me) {

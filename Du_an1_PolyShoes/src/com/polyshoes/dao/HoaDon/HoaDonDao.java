@@ -1,9 +1,5 @@
 package com.polyshoes.dao.HoaDon;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5095e7d5aac1f11388366af812e48ad24706f64f
 import com.polyshoes.helper.JdbcHelper;
 import com.polyshoes.model.HoaDon.HoaDon;
 import java.sql.Connection;

@@ -34,69 +34,82 @@ public class MainJFrame extends javax.swing.JFrame {
         private MainJPanel main;
         private Animator animator;
 
-    public MainJFrame() {
-        initComponents();
-        init();
-        GlassPanePopup.install(this);
-    }
+        public MainJFrame() {
+                initComponents();
+                init();
+                GlassPanePopup.install(this);
+        }
 
-
-    private void init() {
-        layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
-        bg.setLayout(layout);
-        menu = new MenuJPanel();
-        header = new HeaderJPanel();
-        main = new MainJPanel();
-        menu.addEvent(new EventMenuSelected() {
-            @Override
-            public void menuSelected(int menuIndex, int subMenuIndex) {
-                System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
-                if (menuIndex == 0) {
-                    if (subMenuIndex == 0) {
-                        main.showForm(new TrangChuJPanel());
-                    } else if (subMenuIndex == 1) {
-                        main.showForm(new QLSPJPanel());
-                    }
-                }
-                if (menuIndex == 7) {
-                    if (subMenuIndex == 0) {
-                        main.showForm(new TrangChuJPanel());
-                    }else if (subMenuIndex == 1) {
-                        main.showForm(new QuanLyKhuyenMaiPanellll());
-                    }
-                }
-                if (menuIndex == 1) {
-                    main.showForm(new QuanLyKhuyenMaiPanel());
-                }
-            }
-        });
-        menu.addEventShowPopup(new EventShowPopupMenu() {
-            @Override
-            public void showPopup(Component com) {
-                MenuItem item = (MenuItem) com;
-                PopupMenu popup = new PopupMenu(MainJFrame.this, item.getIndex(), item.getEventSelected(), item.getMenu().getSubMenu());
-                int x = MainJFrame.this.getX() + 52;
-                int y = MainJFrame.this.getY() + com.getY() + 86;
-                popup.setLocation(x, y);
-                popup.setVisible(true);
-            }
-        });
-        menu.initMenuItem();
-        bg.add(menu, "w 230!, spany 2");    // Span Y 2cell
-        bg.add(header, "h 50!, wrap");
-        bg.add(main, "w 100%, h 100%");
-        TimingTarget target = new TimingTargetAdapter() {
-            @Override
-            public void timingEvent(float fraction) {
-                double width;
-                if (menu.isShowMenu()) {
-                    width = 60 + (170 * (1f - fraction));
-                } else {
-                    width = 60 + (170 * fraction);
-                }
-                layout.setComponentConstraints(menu, "w " + width + "!, spany2");
-                menu.revalidate();
-            }
+        private void init() {
+                layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
+                bg.setLayout(layout);
+                menu = new MenuJPanel();
+                header = new HeaderJPanel();
+                main = new MainJPanel();
+                menu.addEvent(new EventMenuSelected() {
+                        @Override
+                        public void menuSelected(int menuIndex, int subMenuIndex) {
+                                System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
+                                if (menuIndex == 0) {
+                                        if (subMenuIndex == 0) {
+                                                main.showForm(new TrangChuJPanel());
+                                        } else if (subMenuIndex == 1) {
+                                                main.showForm(new QLSPJPanel());
+                                        }
+                                }
+                                if (menuIndex == 1) {
+                                        main.showForm(new QuanLyKhuyenMaiPanel());
+                                }
+                                if (menuIndex == 2) {
+                                        if (subMenuIndex == 0) {
+                                                main.showForm(new BanHangJPanel());
+                                        }
+                                }
+                                if (menuIndex == 3) {
+                                        main.showForm(new HoaDonPanel10());
+                                }
+                                if (menuIndex == 6) {
+                                        main.showForm(new QLSPJPanel());
+                                }
+                                if (menuIndex == 7) {
+                                        if (subMenuIndex == 0) {
+                                                main.showForm(new TrangChuJPanel());
+                                        } else if (subMenuIndex == 1) {
+                                                main.showForm(new QuanLyKhuyenMaiPanellll());
+                                        }
+                                }
+                                if (menuIndex == 9) {
+                                        main.showForm(new NhanVienJPanel());
+                                }
+                        }
+                });
+                menu.addEventShowPopup(new EventShowPopupMenu() {
+                        @Override
+                        public void showPopup(Component com) {
+                                MenuItem item = (MenuItem) com;
+                                PopupMenu popup = new PopupMenu(MainJFrame.this, item.getIndex(), item.getEventSelected(), item.getMenu().getSubMenu());
+                                int x = MainJFrame.this.getX() + 52;
+                                int y = MainJFrame.this.getY() + com.getY() + 86;
+                                popup.setLocation(x, y);
+                                popup.setVisible(true);
+                        }
+                });
+                menu.initMenuItem();
+                bg.add(menu, "w 230!, spany 2");    // Span Y 2cell
+                bg.add(header, "h 50!, wrap");
+                bg.add(main, "w 100%, h 100%");
+                TimingTarget target = new TimingTargetAdapter() {
+                        @Override
+                        public void timingEvent(float fraction) {
+                                double width;
+                                if (menu.isShowMenu()) {
+                                        width = 60 + (170 * (1f - fraction));
+                                } else {
+                                        width = 60 + (170 * fraction);
+                                }
+                                layout.setComponentConstraints(menu, "w " + width + "!, spany2");
+                                menu.revalidate();
+                        }
 
                         @Override
                         public void end() {
