@@ -88,25 +88,32 @@ public class HoaDonChiTietDao {
         return select(sql, MaHD);
     }
 
-    public void tra1mon(String mahd, String masp) {
+    public void tra1mon(String soLuong, String mahd, String masp) {
+        String sql = "update Hoa_Don_Chi_Tiet \n"
+                + "set Hoa_Don_Chi_Tiet.TrangThai = 0 , Hoa_Don_Chi_Tiet.soLuong = Hoa_Don_Chi_Tiet.soLuong - ?\n"
+                + "                from Hoa_Don_Chi_Tiet \n"
+                + "                join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
+                + "                join San_Pham_Chi_Tiet on San_Pham_Chi_Tiet.ID = Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
+                + "                join San_Pham on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
+                + "                where Hoa_Don.MaHD = ? and San_Pham.Ma = ?";
+        JdbcHelper.executeUpdate(sql, soLuong, mahd, masp);
+    }
+
+    public void traALll(String mahd) {
         String sql = "update Hoa_Don_Chi_Tiet \n"
                 + "set Hoa_Don_Chi_Tiet.TrangThai = 0\n"
                 + "from Hoa_Don_Chi_Tiet \n"
                 + "join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
                 + "join San_Pham_Chi_Tiet on San_Pham_Chi_Tiet.ID = Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
                 + "join San_Pham on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
-                + "where Hoa_Don.MaHD = ? and San_Pham.Ma = ?";
-        JdbcHelper.executeUpdate(sql, mahd, masp);
+                + "where Hoa_Don.MaHD = ? ";
+        JdbcHelper.executeUpdate(sql, mahd);
     }
 
-    public void traALll(String mahd) {
-        String sql = "update Hoa_Don_Chi_Tiet \n"
-                + "set Hoa_Don_Chi_Tiet.TrangThai = 0 and hoa_don.deleted=1\n"
-                + "from Hoa_Don_Chi_Tiet \n"
-                + "join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
-                + "join San_Pham_Chi_Tiet on San_Pham_Chi_Tiet.ID = Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
-                + "join San_Pham on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
-                + "where Hoa_Don.MaHD = ? ";
+    public void traALll2(String mahd) {
+        String sql = "UPDATE Hoa_Don \n"
+                + "SET Hoa_Don.Deleted = 1\n"
+                + "FROM Hoa_Don WHERE Hoa_Don.MaHD = ?";
         JdbcHelper.executeUpdate(sql, mahd);
     }
 

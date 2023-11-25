@@ -5,7 +5,7 @@
 package com.polyshoes.view.HoaDon;
 
 import com.polyshoes.dao.HoaDon.PrintDao;
-
+import com.polyshoes.view.HoaDon.HoaDonPanel10;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -30,7 +30,7 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
  */
 public final class PrintHoaDon2 extends javax.swing.JFrame {
 
-    HoaDonJPanel13 del = new HoaDonJPanel13();
+    HoaDonPanel10 del = new HoaDonPanel10();
     int index = -1;
     PrintDao dao = new PrintDao();
     Date currentDate = new Date();
