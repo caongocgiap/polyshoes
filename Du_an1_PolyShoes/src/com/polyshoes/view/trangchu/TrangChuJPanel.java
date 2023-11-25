@@ -17,21 +17,6 @@ public class TrangChuJPanel extends javax.swing.JPanel {
 
         private void initData() {
                 initCardData();
-                initTableData();
-        }
-
-        private void initTableData() {
-//                EventAction eventAction = new EventAction() {
-////                        @Override
-////                        public void delete(Student student) {
-////                                DialogHelper.alert(new MainJFrame(), "Xóa nó rồi!");
-////                        }
-////
-////                        @Override
-////                        public void update(Student student) {
-////                                DialogHelper.alert(new MainJFrame(), "Update nó rồi!");
-////                        }
-//                };
         }
 
         private void initCardData() {
