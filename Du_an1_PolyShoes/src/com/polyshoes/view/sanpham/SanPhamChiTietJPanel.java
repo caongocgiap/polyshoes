@@ -1242,7 +1242,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }
 
         private int getPageSize(int limit) {
-                int tongSoSP = dao.selectAll(0, 5).size();
+                int tongSoSP = dao.selectAll(pageIndex, limit) == null ? 1 : dao.selectAll(pageIndex, limit).size();
                 int tongDaXoa = dao.selectDeleted(maSP, 1, 0, limit) == null ? 1 : dao.selectDeleted(maSP, 1, 0, limit).size();
                 int tongChuaXoa = dao.selectDeleted(maSP, 0, 0, limit) == null ? 1 : dao.selectDeleted(maSP, 0, 0, limit).size();
                 int tongTrang = (int) Math.ceil((double) tongSoSP / limit);

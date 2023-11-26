@@ -19,7 +19,7 @@ public class TaiMaQR {
 
         public static void taiQR() {
                 String fileName = maSPCT + ".png";
-                String filePath = "D:\\image\\" + fileName;
+                String filePath = "C:\\" + fileName;
                 try {
                         QRCodeWriter qrCodeWriter = new QRCodeWriter();
                         BitMatrix bitMatrix = qrCodeWriter.encode(maSPCT, BarcodeFormat.QR_CODE, 300, 300);
