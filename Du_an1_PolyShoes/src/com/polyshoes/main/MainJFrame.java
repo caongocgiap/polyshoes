@@ -50,18 +50,18 @@ public class MainJFrame extends javax.swing.JFrame {
                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
                 if (menuIndex == 2) {
                     if (subMenuIndex == 0) {
-//                        main.showForm(new BanHangJPanel());
+                        main.showForm(new BanHangJPanel());
                     } else if (subMenuIndex == 1) {
-//                        main.showForm(new Form_1());
+                        main.showForm(new Form_1());
                     }
                 }
                 if (menuIndex == 0) {
-//                    main.showForm(new QuanLySanPhamJPanel());
+                    main.showForm(new QuanLySanPhamJPanel());
                 }
 
                 if (menuIndex == 9) {
                     if (subMenuIndex == 0) {
-//                        main.showForm(new NhanVienJPanel());
+                        main.showForm(new NhanVienJPanel());
                     }
                 }
             }
