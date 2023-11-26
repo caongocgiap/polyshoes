@@ -10,7 +10,7 @@ import java.util.List;
 public class SanPhamCTDAO {
         
         final String GET_ALL_SPCT = "{CALL get_ALL_SPCT(?,?)}";
-        final String GET_SPCT_DELETED = "{CALL get_SPCT_Deleted(?)}";
+        final String GET_SPCT_DELETED = "{CALL get_SPCT_Deleted(?, ?, ?, ?)}";
         final String PAGGINH_BY_MA = "{CALL pagging_SPCT_By_Ma(?,?,?)}";
         final String THEM_SPCT = "{CALL them_SPCT(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
         final String GET_1SPCT_BY_MA = "{CALL get_1SPCT_ByMa(?)}";
@@ -38,11 +38,13 @@ public class SanPhamCTDAO {
         }
 
         public List<SanPhamChiTiet> selectAll(int page, int limit) {
-                return select(GET_ALL_SPCT, page, limit);
+                List<SanPhamChiTiet> list = select(GET_ALL_SPCT, page, limit);
+                return list.isEmpty() ? null : list;
         }
         
-        public List<SanPhamChiTiet> selectDeleted(int deleted) {
-                return select(GET_SPCT_DELETED, deleted);
+        public List<SanPhamChiTiet> selectDeleted(String maSP, int deleted, int page, int limit) {
+                List<SanPhamChiTiet> list = select(GET_SPCT_DELETED, maSP, deleted, page, limit);
+                return list.isEmpty() ? null : list;
         }
         
         public List<SanPhamChiTiet> paging(String ma, int page, int limit) {

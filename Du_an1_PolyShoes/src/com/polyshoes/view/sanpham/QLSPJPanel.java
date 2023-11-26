@@ -576,12 +576,16 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 int tongTrang = (int) Math.ceil((double) tongSoSP / limit);
                 int tongTrangXoa = (int) Math.ceil((double) tongDaXoa / limit);
                 int tongTrangChuaXoa = (int) Math.ceil((double) tongChuaXoa / limit);
-                if (rdoSPTatCa.isSelected()) {
-                        pageSize = tongTrang;
-                } else if (rdoSPDangBan.isSelected()) {
-                        pageSize = tongTrangChuaXoa;
+                if (tongTrang > 0) {
+                        if (rdoSPTatCa.isSelected()) {
+                                pageSize = tongTrang;
+                        } else if (rdoSPDangBan.isSelected()) {
+                                pageSize = tongTrangChuaXoa;
+                        } else {
+                                pageSize = tongTrangXoa;
+                        }
                 } else {
-                        pageSize = tongTrangXoa;
+                        pageSize = 1;
                 }
                 return pageSize;
         }
