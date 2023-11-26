@@ -130,7 +130,7 @@ public class HoaDonDao {
     public List<HoaDon> selectTrangThai(int keyword) {
         String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
                 + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
-                + "where Hoa_Don.Deleted = 0 and TrangThai = ?";
+                + "where Hoa_Don.Deleted = 0 and Hoa_Don.TrangThai = ?";
         return select(sql, keyword);
     }
 

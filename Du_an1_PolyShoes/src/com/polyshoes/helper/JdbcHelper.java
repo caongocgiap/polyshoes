@@ -12,7 +12,7 @@ public class JdbcHelper {
         private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         private static final String DBURL = "jdbc:sqlserver://localhost;database=N5_PolyShoes";
         private static final String USERNAME = "sa";
-        private static final String PASSWORD = "abc123";
+        private static final String PASSWORD = "thanhck2511";
 
         static {
                 try {

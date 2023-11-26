@@ -515,10 +515,11 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 //        }
 //    }
     void TimKiemTheoBang4() {
-
+        int txtCheck = (int) tblChiTiet3.getValueAt(tblChiTiet3.getSelectedRow(), 3);
         String SoLuong = JOptionPane.showInputDialog(this, "Mời nhập số Lượng!");
         int SoLuong2 = Integer.parseInt(SoLuong);
-        if (SoLuong.isEmpty() || SoLuong2 <= 0) {
+     
+        if (SoLuong.isEmpty() || SoLuong2 <= 0 ||txtCheck < SoLuong2) {
             JOptionPane.showMessageDialog(this, "Mời nhập số Lượng!");
 
         } else {
@@ -2299,6 +2300,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_tblHoaDontblHoaDonMouseClicked
 
     private void tblChiTiet3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTiet3MouseClicked
+
         TimKiemTheoBang4();
         // TODO add your handling code here:
     }//GEN-LAST:event_tblChiTiet3MouseClicked
