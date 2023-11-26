@@ -4,6 +4,7 @@ import com.polyshoes.component.HeaderJPanel;
 import com.polyshoes.component.MenuJPanel;
 import com.polyshoes.event.EventMenuSelected;
 import com.polyshoes.event.EventShowPopupMenu;
+import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.view.trangchu.TrangChuJPanel;
 import com.polyshoes.view.trangchu.MainJPanel;
 import com.polyshoes.swing.MenuItem;
@@ -17,7 +18,6 @@ import com.polyshoes.view.HoaDon.HoaDonPanel10;
 import com.polyshoes.view.banhang.BanHangJPanel;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,36 +50,33 @@ public class MainJFrame extends javax.swing.JFrame {
                         @Override
                         public void menuSelected(int menuIndex, int subMenuIndex) {
                                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
-                                if (menuIndex == 0) {
-                                        if (subMenuIndex == 0) {
+                                switch (menuIndex) {
+                                        case 0:
                                                 main.showForm(new TrangChuJPanel());
-                                        } else if (subMenuIndex == 1) {
-                                                main.showForm(new QLSPJPanel());
-                                        }
-                                }
-                                if (menuIndex == 1) {
-                                        main.showForm(new QuanLyKhuyenMaiPanel());
-                                }
-                                if (menuIndex == 2) {
-                                        if (subMenuIndex == 0) {
+                                                break;
+                                        case 1:
                                                 main.showForm(new BanHangJPanel());
-                                        }
-                                }
-                                if (menuIndex == 3) {
-                                        main.showForm(new HoaDonPanel10());
-                                }
-                                if (menuIndex == 6) {
-                                        main.showForm(new QLSPJPanel());
-                                }
-                                if (menuIndex == 7) {
-                                        if (subMenuIndex == 0) {
-                                                main.showForm(new TrangChuJPanel());
-                                        } else if (subMenuIndex == 1) {
+                                                break;
+                                        case 2:
+                                                main.showForm(new HoaDonPanel10());
+                                                break;
+                                        case 3:
+                                                main.showForm(new QLSPJPanel());
+                                                break;
+                                        case 4:
                                                 main.showForm(new QuanLyKhuyenMaiPanellll());
-                                        }
-                                }
-                                if (menuIndex == 9) {
-                                        main.showForm(new NhanVienJPanel());
+                                                break;
+                                        case 5:
+                                                // Khach hang
+                                                break;
+                                        case 6:
+                                                // Thong ke
+                                                break;
+                                        case 7:
+                                                main.showForm(new NhanVienJPanel());
+                                                break;
+                                        default:
+                                                throw new AssertionError();
                                 }
                         }
                 });

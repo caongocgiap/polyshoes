@@ -7,9 +7,7 @@ import com.polyshoes.model.sanpham.SanPhamChiTiet;
 import com.polyshoes.model.sanpham.ThuocTinh;
 import com.qrcode.QR_Code;
 import com.qrcode.TaiMaQR;
-import java.security.SecureRandom;
 import java.util.List;
-import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
@@ -52,11 +50,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 jScrollPaneSpct = new javax.swing.JScrollPane();
                 tblSPCT = new com.polyshoes.swing.table.Table();
                 pnlButton = new javax.swing.JPanel();
-                btnFirstSpzt = new com.polyshoes.swing.Button();
-                btnPreviousSpzt = new com.polyshoes.swing.Button();
+                btnFirstSpct = new com.polyshoes.swing.Button();
+                btnPreviousSpct = new com.polyshoes.swing.Button();
                 lblIndexSpct = new javax.swing.JLabel();
                 jLabel3 = new javax.swing.JLabel();
-                lblSizeSpzt = new javax.swing.JLabel();
+                lblSizeSpct = new javax.swing.JLabel();
                 btnNextSpct = new com.polyshoes.swing.Button();
                 btnEndSpct = new com.polyshoes.swing.Button();
                 btnOpenQRCode = new javax.swing.JButton();
@@ -242,22 +240,22 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
 
                 pnlButton.setBackground(new java.awt.Color(255, 255, 255));
 
-                btnFirstSpzt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/back.png"))); // NOI18N
-                btnFirstSpzt.addActionListener(new java.awt.event.ActionListener() {
+                btnFirstSpct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/back.png"))); // NOI18N
+                btnFirstSpct.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnFirstSpztActionPerformed(evt);
+                                btnFirstSpctActionPerformed(evt);
                         }
                 });
-                pnlButton.add(btnFirstSpzt);
+                pnlButton.add(btnFirstSpct);
 
-                btnPreviousSpzt.setForeground(new java.awt.Color(76, 76, 76));
-                btnPreviousSpzt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/previous.png"))); // NOI18N
-                btnPreviousSpzt.addActionListener(new java.awt.event.ActionListener() {
+                btnPreviousSpct.setForeground(new java.awt.Color(76, 76, 76));
+                btnPreviousSpct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/previous.png"))); // NOI18N
+                btnPreviousSpct.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnPreviousSpztActionPerformed(evt);
+                                btnPreviousSpctActionPerformed(evt);
                         }
                 });
-                pnlButton.add(btnPreviousSpzt);
+                pnlButton.add(btnPreviousSpct);
 
                 lblIndexSpct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
                 lblIndexSpct.setForeground(new java.awt.Color(255, 0, 0));
@@ -271,11 +269,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 jLabel3.setText("/");
                 pnlButton.add(jLabel3);
 
-                lblSizeSpzt.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-                lblSizeSpzt.setForeground(new java.awt.Color(255, 0, 0));
-                lblSizeSpzt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lblSizeSpzt.setText("3");
-                pnlButton.add(lblSizeSpzt);
+                lblSizeSpct.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+                lblSizeSpct.setForeground(new java.awt.Color(255, 0, 0));
+                lblSizeSpct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lblSizeSpct.setText("1");
+                pnlButton.add(lblSizeSpct);
 
                 btnNextSpct.setForeground(new java.awt.Color(76, 76, 76));
                 btnNextSpct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/next.png"))); // NOI18N
@@ -967,7 +965,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }//GEN-LAST:event_btnOpenQRCodeActionPerformed
 
         private void pnlThemSPCTComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pnlThemSPCTComponentShown
-                if (maSP != null) {
+                if (!maSP.equals("%")) {
                         ThuocTinh model = thuocTinhDao.getByMa("San_Pham", maSP);
                         for (int i = 0; i < cboTenSP.getItemCount(); i++) {
                                 if (cboTenSP.getItemAt(i).toString().equals(model.getTen())) {
@@ -980,13 +978,13 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 System.out.println(maSP);
         }//GEN-LAST:event_pnlThemSPCTComponentShown
 
-        private void btnFirstSpztActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstSpztActionPerformed
+        private void btnFirstSpctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstSpctActionPerformed
                 pageIndex = 1;
                 this.fillToTable(pageIndex, limit);
                 lblIndexSpct.setText(String.valueOf(pageIndex));
-        }//GEN-LAST:event_btnFirstSpztActionPerformed
+        }//GEN-LAST:event_btnFirstSpctActionPerformed
 
-        private void btnPreviousSpztActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousSpztActionPerformed
+        private void btnPreviousSpctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousSpctActionPerformed
                 if (pageIndex > 1) {
                         pageIndex--;
                 } else {
@@ -994,7 +992,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 }
                 this.fillToTable(pageIndex, limit);
                 lblIndexSpct.setText(String.valueOf(pageIndex));
-        }//GEN-LAST:event_btnPreviousSpztActionPerformed
+        }//GEN-LAST:event_btnPreviousSpctActionPerformed
 
         private void btnNextSpctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextSpctActionPerformed
                 if (pageIndex < this.pageSize) {
@@ -1019,14 +1017,14 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         private com.polyshoes.swing.Button btnDanhMuc;
         private com.polyshoes.swing.Button btnDeGiay;
         private com.polyshoes.swing.Button btnEndSpct;
-        private com.polyshoes.swing.Button btnFirstSpzt;
+        private com.polyshoes.swing.Button btnFirstSpct;
         private com.polyshoes.swing.Button btnMauSac;
         private javax.swing.JButton btnMoi;
         private com.polyshoes.swing.Button btnNextSpct;
         private com.polyshoes.swing.Button btnNhaSanXuat;
         private javax.swing.JButton btnOpenQRCode;
         private javax.swing.JButton btnOpenThem;
-        private com.polyshoes.swing.Button btnPreviousSpzt;
+        private com.polyshoes.swing.Button btnPreviousSpct;
         private javax.swing.JButton btnQuayLai;
         private com.polyshoes.swing.Button btnSize;
         private javax.swing.JButton btnTaiMaQR;
@@ -1065,7 +1063,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         private javax.swing.JScrollPane jScrollPaneSpct;
         private javax.swing.JLabel lblBoLoc;
         private javax.swing.JLabel lblIndexSpct;
-        private javax.swing.JLabel lblSizeSpzt;
+        private javax.swing.JLabel lblSizeSpct;
         private javax.swing.JLabel lblTieuDe;
         private javax.swing.JLabel lblTieuDe1;
         private javax.swing.JLabel lblTieuDe13;
@@ -1094,9 +1092,14 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
 
         private void init() {
                 tblSPCT.fixTable(jScrollPaneSpct);
-                lblSizeSpzt.setText(String.valueOf(this.tongTrangSPCT(limit)));
-                this.fillToTable(pageIndex, limit);
                 this.fillComboBoxSPCT();
+                this.fillToTable(pageIndex, limit);
+                if (tblSPCT.getRowCount() > 0) {
+                        lblSizeSpct.setText(String.valueOf(tongTrangSPCT(limit)));
+                } else {
+                        pageSize = 1;
+                        lblSizeSpct.setText(String.valueOf(pageSize));
+                }
         }
 
         private void fillComboBox(JComboBox cbo, String tenBang) {
@@ -1132,15 +1135,6 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 return tongTrang;
         }
 
-//        private void fillToTable(int pageIndex, int limit) {
-//                DefaultTableModel tblModel = (DefaultTableModel) tblSPCT.getModel();
-//                tblModel.setRowCount(0);
-//                List<SanPhamChiTiet> list = dao.paging(maSP, (pageIndex - 1) * limit, limit);
-//                for (SanPhamChiTiet x : list) {
-//                        tblModel.addRow(x.toDataRow());
-//                }
-//        }
-        
         private void fillToTable(int pageIndex, int limit) {
                 if (rdoTatCa.isSelected()) {
                         this.fillSP(-1, pageIndex, limit);
@@ -1162,12 +1156,14 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                 tblModel.addRow(x.toDataRow());
                         }
                 } else {
-                        List<SanPhamChiTiet> list = dao.paging(maSP, (pageIndex - 1) * limit, limit);
-                        for (SanPhamChiTiet x : list) {
-                                tblModel.addRow(x.toDataRow());
+                        List<SanPhamChiTiet> list = dao.selectDeleted(maSP, deleted, (pageIndex - 1) * limit, limit);
+                        if(list != null) {
+                                for (SanPhamChiTiet x : list) {
+                                        tblModel.addRow(x.toDataRow());
+                                }
                         }
                 }
-                lblSizeSpzt.setText(String.valueOf(this.getPageSize(limit)));
+                lblSizeSpct.setText(String.valueOf(this.getPageSize(limit)));
         }
 
         private boolean checkSPCT() {
@@ -1227,7 +1223,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                         double gia = Double.parseDouble(txtGia.getText());
                         String ma = SanPhamChiTiet.generateCode();
                         try {
-                                dao.insertSPCT(idDanhMuc, idXuatXu, idNSX, idMauSac, idSize, idSP, idThuongHieu, idChatLieu, idDeGiay, idCoGiay, ma,gia, soLuong);
+                                dao.insertSPCT(idDanhMuc, idXuatXu, idNSX, idMauSac, idSize, idSP, idThuongHieu, idChatLieu, idDeGiay, idCoGiay, ma, gia, soLuong);
                                 DialogHelper.alert(this, "Thêm thành công!");
                                 this.fillToTable(pageIndex, limit);
                                 return true;
@@ -1244,11 +1240,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 TaiMaQR.maSPCT = (String) tblSPCT.getValueAt(tblSPCT.getSelectedRow(), 1);
                 TaiMaQR.taiQR();
         }
-        
+
         private int getPageSize(int limit) {
                 int tongSoSP = dao.selectAll(0, 5).size();
-                int tongDaXoa = dao.selectDeleted(1).size();
-                int tongChuaXoa = dao.selectDeleted(0).size();
+                int tongDaXoa = dao.selectDeleted(maSP, 1, 0, limit) == null ? 1 : dao.selectDeleted(maSP, 1, 0, limit).size();
+                int tongChuaXoa = dao.selectDeleted(maSP, 0, 0, limit) == null ? 1 : dao.selectDeleted(maSP, 0, 0, limit).size();
                 int tongTrang = (int) Math.ceil((double) tongSoSP / limit);
                 int tongTrangXoa = (int) Math.ceil((double) tongDaXoa / limit);
                 int tongTrangChuaXoa = (int) Math.ceil((double) tongChuaXoa / limit);
