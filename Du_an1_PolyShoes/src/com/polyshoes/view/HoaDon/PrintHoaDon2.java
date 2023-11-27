@@ -50,7 +50,7 @@ public final class PrintHoaDon2 extends javax.swing.JFrame {
             BufferedImage bi = new BufferedImage(Panle.getWidth(), Panle.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
             Panle.paint(bi.getGraphics());
 
-            String pdfFilePath = "C:\\Users\\ASUS\\Desktop\\duan1\\danh.pdf";
+            String pdfFilePath = "D:\\HoaDon.pdf";
 
             // Creating a PDF document
             PDDocument document = new PDDocument();

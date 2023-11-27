@@ -156,7 +156,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                 .addComponent(cboFindDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(cboFindGia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 pnlBoLocLayout.setVerticalGroup(
                         pnlBoLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,37 +304,34 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 pnlDanhSachSPCTLayout.setHorizontalGroup(
                         pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDanhSachSPCTLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(pnlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1052, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDanhSachSPCTLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPaneSpct, javax.swing.GroupLayout.PREFERRED_SIZE, 1039, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
+                                .addGap(0, 0, 0)
                                 .addGroup(pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(pnlBoLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblBoLoc)
                                         .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
-                                                .addComponent(lblTrangThai)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(rdoTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(rdoDangBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(rdoNgungBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(279, 279, 279)
-                                                .addComponent(btnOpenThem)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnOpenQRCode)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnTaiMaQR)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnMoi))
-                                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
-                                                .addGap(379, 379, 379)
-                                                .addComponent(lblTieuDe)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGroup(pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(pnlBoLoc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
+                                                                .addGap(409, 409, 409)
+                                                                .addComponent(lblTieuDe))
+                                                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
+                                                                .addComponent(lblTrangThai)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(rdoTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(rdoDangBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(rdoNgungBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(btnOpenThem)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(btnOpenQRCode)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(btnTaiMaQR)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(btnMoi))
+                                                        .addComponent(lblBoLoc)
+                                                        .addComponent(jScrollPaneSpct, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                .addContainerGap())
+                                        .addComponent(pnlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1052, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 );
                 pnlDanhSachSPCTLayout.setVerticalGroup(
                         pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,26 +342,20 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                 .addComponent(lblBoLoc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlBoLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
+                                .addGap(31, 31, 31)
                                 .addGroup(pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
-                                                .addGap(2, 2, 2)
+                                                .addGap(1, 1, 1)
                                                 .addComponent(lblTrangThai))
-                                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
-                                                .addGap(1, 1, 1)
-                                                .addComponent(rdoTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
-                                                .addGap(1, 1, 1)
-                                                .addComponent(rdoDangBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
-                                                .addGap(1, 1, 1)
-                                                .addComponent(rdoNgungBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(rdoTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(rdoDangBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(rdoNgungBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(btnTaiMaQR)
                                                 .addComponent(btnOpenQRCode)
                                                 .addComponent(btnOpenThem))
                                         .addComponent(btnMoi))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                                 .addComponent(jScrollPaneSpct, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -975,7 +966,6 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                 }
                         }
                 }
-                System.out.println(maSP);
         }//GEN-LAST:event_pnlThemSPCTComponentShown
 
         private void btnFirstSpctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstSpctActionPerformed
@@ -1223,7 +1213,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                         double gia = Double.parseDouble(txtGia.getText());
                         String ma = SanPhamChiTiet.generateCode();
                         try {
-                                dao.insertSPCT(idDanhMuc, idXuatXu, idNSX, idMauSac, idSize, idSP, idThuongHieu, idChatLieu, idDeGiay, idCoGiay, ma, gia, soLuong);
+                                dao.insert(idDanhMuc, idXuatXu, idNSX, idMauSac, idSize, idSP, idThuongHieu, idChatLieu, idDeGiay, idCoGiay, ma, gia, soLuong);
                                 DialogHelper.alert(this, "Thêm thành công!");
                                 this.fillToTable(pageIndex, limit);
                                 return true;

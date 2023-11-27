@@ -180,4 +180,43 @@ public class HoaDonChiTietDao {
         }
         return model;
     }
+    
+     /**
+     * Bán hàng - đừng xóa nhé
+     */
+    
+    private List<HoaDonChiTiet> selectBanHang(String sql, Object... args) {
+        List<HoaDonChiTiet> list = new ArrayList<>();
+        try {
+            ResultSet rs = null;
+            try {
+                rs = JdbcHelper.executeQuery(sql, args);
+                while (rs.next()) {
+                    HoaDonChiTiet model = new HoaDonChiTiet();
+                    model.setMaSPCT(rs.getString(1));
+                    model.setTenSp(rs.getString(2));
+                    model.setDonGia(rs.getDouble(3));
+                    model.setSoLuong(rs.getInt(4));
+                    model.setTongTien(rs.getDouble(5));
+                    list.add(model);
+                }
+            } finally {
+                rs.getStatement().getConnection().close();
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return list;
+    }
+
+    public List<HoaDonChiTiet> selectHDBanHang(String maHD) {
+            String sql = """
+                         SELECT    San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Hoa_Don_Chi_Tiet.Gia, Hoa_Don_Chi_Tiet.SoLuong, Hoa_Don_Chi_Tiet.ThanhTien
+                         FROM         Hoa_Don_Chi_Tiet LEFT JOIN
+                                               Thanh_Toan ON Hoa_Don_Chi_Tiet.ID = Thanh_Toan.ID LEFT JOIN
+                                               San_Pham_Chi_Tiet ON Hoa_Don_Chi_Tiet.IDSanPhamCT = San_Pham_Chi_Tiet.ID LEFT JOIN
+                                               San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID LEFT JOIN
+                                               Hoa_Don ON Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID WHERE Hoa_Don.MaHD = ?""";
+            return selectBanHang(sql, maHD);
+    }
 }
