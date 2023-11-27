@@ -16,8 +16,10 @@ import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanel;
 import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanellll;
 import com.polyshoes.view.HoaDon.HoaDonPanel10;
 import com.polyshoes.view.banhang.BanHangJPanel;
+import com.polyshoes.view.banhang.BanHangJPanel2;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,6 +48,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 menu = new MenuJPanel();
                 header = new HeaderJPanel();
                 main = new MainJPanel();
+                bg.setBackground(Color.white);
                 menu.addEvent(new EventMenuSelected() {
                         @Override
                         public void menuSelected(int menuIndex, int subMenuIndex) {
@@ -55,7 +58,8 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 main.showForm(new TrangChuJPanel());
                                                 break;
                                         case 1:
-                                                main.showForm(new BanHangJPanel());
+//                                                main.showForm(new BanHangJPanel());
+                                                main.showForm(new BanHangJPanel2());
                                                 break;
                                         case 2:
                                                 main.showForm(new HoaDonPanel10());
@@ -64,7 +68,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 main.showForm(new QLSPJPanel());
                                                 break;
                                         case 4:
-                                                main.showForm(new QuanLyKhuyenMaiPanellll());
+                                                main.showForm(new QuanLyKhuyenMaiPanel());
                                                 break;
                                         case 5:
                                                 // Khach hang
@@ -146,6 +150,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
                 bg.setBackground(new java.awt.Color(245, 245, 245));
+                bg.setForeground(new java.awt.Color(255, 255, 255));
                 bg.setOpaque(true);
 
                 javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);

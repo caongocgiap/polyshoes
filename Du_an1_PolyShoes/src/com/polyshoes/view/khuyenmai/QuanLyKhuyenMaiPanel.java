@@ -38,6 +38,7 @@ public class QuanLyKhuyenMaiPanel extends javax.swing.JPanel {
         jScrollPane3.setVerticalScrollBar(new ScrollBarCustom());
         fillTable(0, 5);
         addPlace(txtTimKiemKhuyenMai);
+        load(0, 5);
         
     }
 
