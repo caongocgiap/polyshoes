@@ -17,6 +17,7 @@ public class TrangChuJPanel extends javax.swing.JPanel {
 
         private void initData() {
                 initCardData();
+<<<<<<< HEAD
                 initTableData();
         }
 
@@ -32,6 +33,8 @@ public class TrangChuJPanel extends javax.swing.JPanel {
 //                                DialogHelper.alert(new MainJFrame(), "Update nó rồi!");
 //                        }
 //                };
+=======
+>>>>>>> 1e0d187c835f8993a6b773f844cd9c5b22c7499f
         }
 
         private void initCardData() {

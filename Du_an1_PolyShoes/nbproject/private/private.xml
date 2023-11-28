@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Vu%20Hieu/Documents/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/swing/combo_suggestion/ComboSuggestionUI.java</file>
             <file>file:/C:/Users/Vu%20Hieu/Documents/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/banhang/BanHangJPanel.java</file>
             <file>file:/C:/Users/Vu%20Hieu/Documents/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/swing/textfield_suggestion/TextFieldSuggestionUI.java</file>
@@ -13,6 +14,10 @@
             <file>file:/C:/Users/Vu%20Hieu/Documents/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/sanpham/QLSPJPanel.java</file>
             <file>file:/C:/Users/Vu%20Hieu/Documents/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/nhanvien/NhanVienJPanel.java</file>
             <file>file:/C:/Users/Vu%20Hieu/Documents/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/sanpham/QuanLySanPhamJPanel.java</file>
+=======
+            <file>file:/C:/Users/ngcoo.giapw_/OneDrive/Desktop/N5_PolyShoes/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/sanpham/SanPhamChiTietJFrame.java</file>
+            <file>file:/C:/Users/ngcoo.giapw_/OneDrive/Desktop/N5_PolyShoes/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/dao/sanpham/SanPhamCTDAO.java</file>
+>>>>>>> 1e0d187c835f8993a6b773f844cd9c5b22c7499f
         </group>
     </open-files>
 </project-private>
