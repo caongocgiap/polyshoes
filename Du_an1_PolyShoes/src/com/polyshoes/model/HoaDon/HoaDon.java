@@ -18,8 +18,22 @@ public class HoaDon {
     private int TrangThai;
     private String DiaChi;
     private int IDNhanVien;
+    private boolean HTTT;
+    private double soTienGiam;
 
     public HoaDon() {
+    }
+
+    public HoaDon(int ID, String MaHD, Date NgayTao, Date NgayTT, String MaNV, String TenKH, double TongTien, double soTienGiam, boolean HTTT) {
+        this.ID = ID;
+        this.MaHD = MaHD;
+        this.NgayTao = NgayTao;
+        this.NgayTT = NgayTT;
+        this.MaNV = MaNV;
+        this.TenKH = TenKH;
+        this.TongTien = TongTien;
+        this.soTienGiam = soTienGiam;
+        this.HTTT = HTTT;
     }
 
     public HoaDon(int ID, String MaHD, Date NgayTao, Date NgayTT, double TongTien, String MaNV, String TenKH, String SDT, int TrangThai, String DiaChi, int IDNhanVien) {
@@ -34,6 +48,22 @@ public class HoaDon {
         this.TrangThai = TrangThai;
         this.DiaChi = DiaChi;
         this.IDNhanVien = IDNhanVien;
+    }
+
+    public boolean isHTTT() {
+        return HTTT;
+    }
+
+    public void setHTTT(boolean HTTT) {
+        this.HTTT = HTTT;
+    }
+
+    public double getSoTienGiam() {
+        return soTienGiam;
+    }
+
+    public void setSoTienGiam(double soTienGiam) {
+        this.soTienGiam = soTienGiam;
     }
 
     public int getID() {
@@ -124,8 +154,6 @@ public class HoaDon {
         this.IDNhanVien = IDNhanVien;
     }
 
-    
-
     public String getMax() {
         if (MaNV == getMaNV()) {
             return "MANV" + getMaNV();
@@ -144,26 +172,31 @@ public class HoaDon {
 
     }
 
- public String getTrangThaiA() {
-    switch (getTrangThai()) {
-        case 0:
-            return "Đã thanh toán";
-        case 1:
-            return "Chưa thanh toán";
-        case 2:
-            return "Đã hủy thanh toán";
-        default:
-            return null;
+    public String getTrangThaiA() {
+        switch (getTrangThai()) {
+            case 0:
+                return "Đã thanh toán";
+            case 1:
+                return "Chưa thanh toán";
+            case 2:
+                return "Đã hủy thanh toán";
+            case 3:
+                return "Đã trả hàng";
+            default:
+                return null;
+        }
     }
-}
- public String getFormattedTao() {
+
+    public String getFormattedTao() {
         if (NgayTao != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             return dateFormat.format(NgayTao);
         } else {
             return null;
         }
-    }public String getFormattedTT() {
+    }
+
+    public String getFormattedTT() {
         if (NgayTT != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             return dateFormat.format(NgayTao);
@@ -199,9 +232,9 @@ public class HoaDon {
             code.append(CHARACTERS.charAt(randomIndex));
         }
 
-        return code.toString();
+        return "HD-" + code.toString();
     }
-    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    private static final int CODE_LENGTH = 8;
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final int CODE_LENGTH = 5;
 
 }

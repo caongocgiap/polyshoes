@@ -1,0 +1,1399 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="437" max="-2" attributes="0"/>
+              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="pnlDSSP" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblMoTaSP3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblMoTaSP4" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="pnlHoaDon" alignment="1" max="32767" attributes="0"/>
+                              <Component id="pnlGioHang" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblMoTaSP2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="689" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="lblMoTaSP" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="pnlDonHang" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblMoTaSP2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblMoTaSP" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="pnlHoaDon" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblMoTaSP3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="pnlGioHang" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblMoTaSP4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="pnlDSSP" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="pnlDonHang" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblTitle">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; B&#xc1;N H&#xc0;NG "/>
+      </Properties>
+    </Component>
+    <Container class="com.polyshoes.component.BorderJPanel" name="pnlDonHang">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="tabTong" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="tabTong" alignment="1" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="com.polyshoes.swing.tabbed.MaterialTabbed" name="tabTong">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="com.polyshoes.swing.tabbed.PanelRound" name="tab1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="T&#x1ea1;i qu&#x1ea7;y">
+                    <Property name="tabTitle" type="java.lang.String" value="T&#x1ea1;i qu&#x1ea7;y"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanel1" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblMoTaSP5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblMoTaSP6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblMoTaSP5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblMoTaSP6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel2" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel1">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtMaKH" pref="231" max="32767" attributes="0"/>
+                                  <Component id="txtTenKH" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnChonKH" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtMaKH" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnChonKH" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtTenKH" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="com.polyshoes.swing.TextField" name="txtMaKH">
+                      <Properties>
+                        <Property name="labelText" type="java.lang.String" value="M&#xe3; KH"/>
+                      </Properties>
+                    </Component>
+                    <Component class="com.polyshoes.swing.TextField" name="txtTenKH">
+                      <Properties>
+                        <Property name="labelText" type="java.lang.String" value="T&#xea;n KH"/>
+                      </Properties>
+                    </Component>
+                    <Component class="com.polyshoes.swing.Button" name="btnChonKH">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="cc" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="SansSerif" size="12" style="1"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="lblMoTaSP5">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin kh&#xe1;ch h&#xe0;ng"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                      </Border>
+                    </Property>
+                    <Property name="horizontalTextPosition" type="int" value="2"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblMoTaSP6">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="sansserif" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin h&#xf3;a &#x111;&#x1a1;n"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                      </Border>
+                    </Property>
+                    <Property name="horizontalTextPosition" type="int" value="2"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JPanel" name="jPanel2">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="lblMoTaSP9" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblMoTaSP7" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblMoTaSP8" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblMoTaSP13" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblMoTaSP12" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblMoTaSP10" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblMoTaSP11" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="lblMoTaSP15" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblNgayTao" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblMaHD" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="lblMaNV" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lblTenKH" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lblTongTien" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lblGiamGiaKM" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lblNgayThanhToan" alignment="0" pref="187" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="cboHTTT" min="-2" pref="184" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="lblMoTaSP17" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblMoTaSP16" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblMoTaSP14" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblTitle1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblTongTo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                                      <Component id="btnThanhToan" min="-2" pref="123" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="lblTienKhachCK" max="32767" attributes="0"/>
+                                                  <Component id="lblTienThua" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                              <Component id="txtTienKhachDua" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMaHD" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNgayTao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNgayThanhToan" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMaNV" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTenKH" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTongTien" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblGiamGiaKM" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboHTTT" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTienKhachDua" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTienKhachCK" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblMoTaSP17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTienThua" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="48" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnThanhToan" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="lblTitle1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTongTo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP7">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="M&#xe3; h&#xf3;a &#x111;&#x1a1;n"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP8">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="Ng&#xe0;y t&#x1ea1;o"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP9">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="Ng&#xe0;y thanh to&#xe1;n"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP10">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="M&#xe3; nh&#xe2;n vi&#xea;n"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP11">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="T&#xea;n kh&#xe1;ch h&#xe0;ng"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP12">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP13">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="Gi&#x1ea3;m gi&#xe1; KM"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP15">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="HT thanh to&#xe1;n"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMaHD">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="_____________________________________"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblNgayTao">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="_____________________________________"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblNgayThanhToan">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="_____________________________________"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMaNV">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="_____________________________________"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblTenKH">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="_____________________________________"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblTongTien">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="_____________________________________"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblGiamGiaKM">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="_____________________________________"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblTongTo">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="0 VND"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblTitle1">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="com.polyshoes.swing.Button" name="btnThanhToan">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="cc" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Thanh to&#xe1;n"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="SansSerif" size="18" style="1"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhToanActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP14">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="Ti&#x1ec1;n kh&#xe1;ch &#x111;&#x1b0;a"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtTienKhachDua">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP16">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="Ti&#x1ec1;n kh&#xe1;ch CK"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMoTaSP17">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="sansserif" size="12" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="Ti&#x1ec1;n th&#x1eeb;a"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+                          </Border>
+                        </Property>
+                        <Property name="horizontalTextPosition" type="int" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblTienKhachCK">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="_____________________________________"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblTienThua">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="_____________________________________"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cboHTTT">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Ti&#x1ec1;n m&#x1eb7;t"/>
+                            <StringItem index="1" value="Chuy&#x1ec3;n kho&#x1ea3;n"/>
+                            <StringItem index="2" value="K&#x1ebf;t h&#x1ee3;p"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="com.polyshoes.swing.tabbed.PanelRound" name="tab2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="&#x110;&#x1eb7;t h&#xe0;ng">
+                    <Property name="tabTitle" type="java.lang.String" value="&#x110;&#x1eb7;t h&#xe0;ng"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="333" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="609" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="lblMoTaSP">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="sansserif" size="12" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="&#x110;&#x1a1;n h&#xe0;ng"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+          </Border>
+        </Property>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="pnlHoaDon">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jScrollPaneHoaDon" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="button2" min="-2" pref="97" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="btnTaoHD" min="-2" pref="97" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cboTrangThaiHD" min="-2" pref="150" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="cboHinhThucHD" min="-2" pref="120" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cboHinhThucHD" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboTrangThaiHD" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="btnTaoHD" alignment="0" max="32767" attributes="0"/>
+                      <Component id="button2" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPaneHoaDon" min="-2" pref="158" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion" name="cboHinhThucHD">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="T&#x1ea1;i qu&#x1ea7;y"/>
+                <StringItem index="1" value="G&#x1eed;i ship"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion" name="cboTrangThaiHD">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Ch&#x1edd; thanh to&#xe1;n"/>
+                <StringItem index="1" value="&#x110;&#xe3; thanh to&#xe1;n"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboTrangThaiHDItemStateChanged"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTrangThaiHDActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPaneHoaDon">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="com.polyshoes.swing.table.Table" name="tblHoaDon">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="6" rowCount="0">
+                    <Column editable="false" title="#" type="java.lang.Object"/>
+                    <Column editable="false" title="M&#xe3; h&#xf3;a &#x111;&#x1a1;n" type="java.lang.Object"/>
+                    <Column editable="false" title="Ng&#xe0;y t&#x1ea1;o" type="java.lang.Object"/>
+                    <Column editable="false" title="Nh&#xe2;n vi&#xea;n" type="java.lang.Object"/>
+                    <Column editable="false" title="H&#xec;nh th&#x1ee9;c" type="java.lang.Object"/>
+                    <Column editable="false" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[40, 0]"/>
+                </Property>
+                <Property name="rowHeight" type="int" value="25"/>
+                <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblHoaDonMouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="com.polyshoes.swing.Button" name="button2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="cc" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="33" red="33" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Qu&#xe9;t m&#xe3; SP"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="12" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="com.polyshoes.swing.Button" name="btnTaoHD">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="cc" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="33" red="33" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="T&#x1ea1;o h&#xf3;a &#x111;&#x1a1;n"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="12" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaoHDActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="lblMoTaSP2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="sansserif" size="12" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="H&#xf3;a &#x111;&#x1a1;n"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+          </Border>
+        </Property>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="pnlGioHang">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPaneGioHang" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnXoaGioHang" min="-2" pref="58" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPaneGioHang" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="49" max="32767" attributes="0"/>
+                          <Component id="btnXoaGioHang" min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPaneGioHang">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="com.polyshoes.swing.table.Table" name="tblGioHang">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="9" rowCount="0">
+                    <Column editable="false" title="#" type="java.lang.Object"/>
+                    <Column editable="false" title="M&#xe3; SP" type="java.lang.Object"/>
+                    <Column editable="false" title="T&#xea;n SP" type="java.lang.Object"/>
+                    <Column editable="false" title="&#x110;&#x1a1;n gi&#xe1;" type="java.lang.Object"/>
+                    <Column editable="true" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
+                    <Column editable="false" title="Gi&#xe1; b&#xe1;n" type="java.lang.Object"/>
+                    <Column editable="false" title="Gi&#x1ea3;m gi&#xe1;" type="java.lang.Object"/>
+                    <Column editable="false" title="Th&#xe0;nh ti&#x1ec1;n" type="java.lang.Object"/>
+                    <Column editable="false" title="Ch&#x1ecd;n" type="java.lang.Boolean"/>
+                  </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[40, 0]"/>
+                </Property>
+                <Property name="rowHeight" type="int" value="25"/>
+                <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="showGrid" type="boolean" value="false"/>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="com.polyshoes.swing.Button" name="btnXoaGioHang">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="cc" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="33" red="33" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="12" style="1"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="lblMoTaSP3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="sansserif" size="12" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="Gi&#x1ecf; h&#xe0;ng"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+          </Border>
+        </Property>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMoTaSP4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="sansserif" size="12" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4c" green="4c" red="4c" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch s&#x1ea3;n ph&#x1ea9;m"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="1" left="10" right="1" top="1"/>
+          </Border>
+        </Property>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="pnlDSSP">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="cc" green="cc" red="cc" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPaneDSSP" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="txtFindSP" min="-2" pref="213" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnPreviousSP" min="-2" pref="58" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnNextSP" min="-2" pref="58" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cboMauSac" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cboSize" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cboSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboMauSac" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="btnPreviousSP" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnNextSP" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPaneDSSP" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPaneDSSP">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="com.polyshoes.swing.table.Table" name="tblDSSP">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="8" rowCount="0">
+                    <Column editable="false" title="#" type="java.lang.Object"/>
+                    <Column editable="false" title="M&#xe3; SPCT" type="java.lang.Object"/>
+                    <Column editable="false" title="T&#xea;n SP" type="java.lang.Object"/>
+                    <Column editable="false" title="M&#xe0;u s&#x1eaf;c" type="java.lang.Object"/>
+                    <Column editable="false" title="Size" type="java.lang.Object"/>
+                    <Column editable="false" title="Th&#x1b0;&#x1a1;ng hi&#x1ec7;u" type="java.lang.Object"/>
+                    <Column editable="false" title="SL t&#x1ed3;n" type="java.lang.Object"/>
+                    <Column editable="false" title="&#x110;&#x1a1;n gi&#xe1;" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="10" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[40, 0]"/>
+                </Property>
+                <Property name="rowHeight" type="int" value="25"/>
+                <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblDSSPMouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion" name="cboSize">
+        </Component>
+        <Component class="com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion" name="cboMauSac">
+        </Component>
+        <Component class="com.polyshoes.swing.textfield_suggestion.TextFieldSuggestion" name="txtFindSP">
+        </Component>
+        <Component class="com.polyshoes.swing.Button" name="btnPreviousSP">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="33" red="33" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/polyshoes/icon/previous.png"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="12" style="1"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="com.polyshoes.swing.Button" name="btnNextSP">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="33" red="33" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/polyshoes/icon/next.png"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="12" style="1"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

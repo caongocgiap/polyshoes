@@ -410,14 +410,17 @@ public class QLSPJPanel extends javax.swing.JPanel {
 
         private void btnThemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPActionPerformed
                 this.insert();
+                this.clear();
         }//GEN-LAST:event_btnThemSPActionPerformed
 
         private void btnCapNhatSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatSPActionPerformed
                 this.update();
+                this.clear();
         }//GEN-LAST:event_btnCapNhatSPActionPerformed
 
         private void btnXoaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSPActionPerformed
                 this.delete();
+                this.clear();
         }//GEN-LAST:event_btnXoaSPActionPerformed
 
         private void btnLamMoiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiSPActionPerformed

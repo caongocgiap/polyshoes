@@ -396,17 +396,16 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
                                                 .addComponent(lblTieuDe6, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(446, 446, 446)
                                 .addComponent(lblTieuDe7, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(442, 442, 442))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(lblTieuDe7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(12, 12, 12)
                                 .addComponent(borderJPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(63, 63, 63)
                                 .addComponent(lblTieuDe6)
@@ -518,11 +517,13 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
 
         private void btnThemTHuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTHuocTinhActionPerformed
                 this.insert();
+                this.clear();
         }//GEN-LAST:event_btnThemTHuocTinhActionPerformed
 
         private void btnSuaThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaThuocTinhActionPerformed
                 if (index >= 0) {
                         this.update();
+                        this.clear();
                 } else {
                         DialogHelper.alert(this, "Vui lòng chọn thuộc tính cần sửa!");
                 }
@@ -531,6 +532,7 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
         private void btnXoaThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaThuocTinhActionPerformed
                 if (index >= 0) {
                         this.delete();
+                        this.clear();
                 } else {
                         DialogHelper.alert(this, "Vui lòng chọn thuộc tính cần xóa!");
                 }

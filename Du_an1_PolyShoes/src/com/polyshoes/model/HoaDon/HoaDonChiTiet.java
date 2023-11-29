@@ -35,6 +35,16 @@ public class HoaDonChiTiet {
         this.HoaDon = HoaDon;
     }
 
+        public HoaDonChiTiet(String MaSPCT, int SoLuong, Double DonGia, Double TongTien, String TenSp) {
+                this.MaSPCT = MaSPCT;
+                this.SoLuong = SoLuong;
+                this.DonGia = DonGia;
+                this.TongTien = TongTien;
+                this.TenSp = TenSp;
+        }
+    
+    
+
     public int getID() {
         return ID;
     }

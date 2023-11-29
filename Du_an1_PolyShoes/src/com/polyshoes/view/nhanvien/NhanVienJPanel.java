@@ -127,7 +127,6 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
             this.addPlaceHolderStyle(txtFind);
             txtFind.setText("Tìm kiếm theo MaNV,Email,SĐT,Tên,Địa Chỉ");
         }
-                    
     }
 
     public void fillTablePagging(long trang) {
