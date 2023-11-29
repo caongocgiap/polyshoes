@@ -20,20 +20,20 @@ public class HoaDon {
         private int IDNhanVien;
         private boolean HTTT;
         private double soTienGiam;
+        private int tongSP;
 
         public HoaDon() {
         }
 
-        public HoaDon(int ID, String MaHD, Date NgayTao, Date NgayTT, String MaNV, String TenKH, double TongTien, double soTienGiam, boolean HTTT) {
+        public HoaDon(int ID, String MaHD, Date NgayTao, String MaNV, int tongSP, double TongTien, int TrangThai, Date NgayTT) {
                 this.ID = ID;
                 this.MaHD = MaHD;
                 this.NgayTao = NgayTao;
-                this.NgayTT = NgayTT;
                 this.MaNV = MaNV;
-                this.TenKH = TenKH;
+                this.tongSP = tongSP;
                 this.TongTien = TongTien;
-                this.soTienGiam = soTienGiam;
-                this.HTTT = HTTT;
+                this.TrangThai = TrangThai;
+                this.NgayTT = NgayTT;
         }
         
         public HoaDon(int ID, String MaHD, Date NgayTao, Date NgayTT, double TongTien, String MaNV, String TenKH, String SDT, int TrangThai, String DiaChi, int IDNhanVien) {
@@ -48,6 +48,14 @@ public class HoaDon {
                 this.TrangThai = TrangThai;
                 this.DiaChi = DiaChi;
                 this.IDNhanVien = IDNhanVien;
+        }
+
+        public int getTongSP() {
+                return tongSP;
+        }
+
+        public void setTongSP(int tongSP) {
+                this.tongSP = tongSP;
         }
 
         public boolean isHTTT() {
