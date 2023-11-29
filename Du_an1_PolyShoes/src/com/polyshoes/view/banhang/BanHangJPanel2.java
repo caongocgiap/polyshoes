@@ -925,7 +925,7 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
                 DefaultTableModel tblModel = (DefaultTableModel) tblHoaDon.getModel();
                 tblModel.setRowCount(0);
                 HoaDonDao dao = new HoaDonDao();
-                List<HoaDon> listHD = dao.getHD_ByMa("%", trangThai);
+                List<HoaDon> listHD = dao.getHD_ByMa(maHD, trangThai);
                 int stt = 0;
                 for (HoaDon x : listHD) {
                         stt++;
@@ -980,6 +980,7 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
                 lblTenKH.setText("_____________________________________");
                 lblTongTien.setText("_____________________________________");
                 lblGiamGiaKM.setText("_____________________________________");
+                lblTongTo.setText("0 đ");
         }
 
         private void createHD(String maSPCT, int slBan, int idHD) {

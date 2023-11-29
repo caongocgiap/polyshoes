@@ -10,6 +10,8 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 
 public class SanPhamChiTietJFrame extends javax.swing.JFrame {
 
@@ -215,6 +217,11 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lblAnh.setText("Ảnh");
                 lblAnh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+                lblAnh.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                lblAnhMouseClicked(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
@@ -394,6 +401,10 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 update();
         }//GEN-LAST:event_btnCapNhatActionPerformed
 
+        private void lblAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhMouseClicked
+                themAnh();
+        }//GEN-LAST:event_lblAnhMouseClicked
+
         public static void main(String args[]) {
                 /* Set the Nimbus look and feel */
                 //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -533,6 +544,25 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 } catch (Exception e) {
                         e.printStackTrace();
                         DialogHelper.alert(this, "Cập nhật thất bại!");
+                }
+        }
+
+        private void themAnh() {
+                JFileChooser fileChooser = new JFileChooser();
+                int result = fileChooser.showOpenDialog(null);
+
+                // Nếu chọn ảnh thành công
+                if (result == JFileChooser.APPROVE_OPTION) {
+                        String imagePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+                        // Tạo ImageIcon từ ảnh và đặt nó vào JLabel
+                        ImageIcon icon = new ImageIcon(imagePath);
+                        lblAnh.setIcon(icon);
+
+                        // Tạo JLabel mới để hiển thị ảnh khác (nếu muốn)
+                        JLabel newLabel = new JLabel(icon);
+                        this.add(newLabel);
+                        this.revalidate();
                 }
         }
 }
