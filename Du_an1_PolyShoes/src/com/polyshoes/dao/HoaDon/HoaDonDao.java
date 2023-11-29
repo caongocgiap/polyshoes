@@ -228,10 +228,10 @@ public class HoaDonDao {
 //                        "Khach_Hang ON Hoa_Don.IDKhachHang = Khach_Hang.ID";
 //            return selectBanHang(sql);
 //    }
-        final String GET_IDHD_BY_MA = "{CALL Get_HD_By_MaHD(?,?)}";
+        final String GET_HD_BY_MA = "{CALL Get_HD_By_MaHD(?,?)}";
 
         public List<HoaDon> getHD_ByMa(String maHD, int trangThai) {
-                return selectBanHang(GET_IDHD_BY_MA, maHD, trangThai);
+                return selectBanHang(GET_HD_BY_MA, maHD, trangThai);
         }
 
         public List<HoaDon> selectBanHang(String sql, Object... args) {
@@ -241,8 +241,8 @@ public class HoaDonDao {
                         try {
                                 rs = JdbcHelper.executeQuery(sql, args);
                                 while (rs.next()) {
-                                        HoaDon model = new HoaDon(rs.getInt(1), rs.getString(2), rs.getDate(3),
-                                                rs.getDate(4), rs.getString(5), rs.getString(6), rs.getDouble(7), rs.getDouble(8), rs.getInt(9) == 0);
+                                        HoaDon model = new HoaDon(rs.getInt("ID"), rs.getString("MaHD"), rs.getDate("NgayTao"),
+                                                rs.getString("MaNV"), rs.getInt("TongSP"), rs.getDouble("TongTien"), rs.getInt("TrangThai"), rs.getDate("NgayThanhToan"));
                                         list.add(model);
                                 }
                         } finally {
