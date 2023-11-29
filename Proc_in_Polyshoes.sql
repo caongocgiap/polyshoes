@@ -1,3 +1,6 @@
+USE [N5_PolyShoes]
+GO
+
 IF OBJECT_ID('getThuocTinh') IS NOT NULL
     DROP PROC getThuocTinh
 GO
@@ -14,7 +17,7 @@ BEGIN
     EXEC sp_executesql @sql
 END
 GO
-exec getThuocTinh 'san_Pham'
+exec getThuocTinh 'danh_muc'
 select id, ma, ten from San_Pham
 
 IF OBJECT_ID('themThuocTinh') IS NOT NULL
@@ -37,7 +40,7 @@ BEGIN
          N'@ma VARCHAR(10), @ten NVARCHAR(50)', @ma, @ten
 END
 GO
-exec themThuocTinh 'Xuat_Xu', '###', N'Đài Loan'
+--exec themThuocTinh 'Xuat_Xu', '###', N'Đài Loan'
 select * from Xuat_Xu
 
 IF OBJECT_ID('updateThuocTinh') IS NOT NULL
@@ -121,15 +124,31 @@ CREATE PROC getIDByTen
 AS
 BEGIN
     DECLARE @sql NVARCHAR(MAX)
-    SET @sql = N'SELECT ID, Ma, Ten FROM ' + QUOTENAME(@tenBang) + ' WHERE Ten = @Ten'
+	SET @sql = CASE
+		WHEN @tenBang = 'Size' THEN
+			N'SELECT ID, Ma, size FROM Size WHERE size = @Ten'
+		ELSE
+			N'SELECT ID, Ma, Ten FROM ' + QUOTENAME(@tenBang) + ' WHERE Ten = @Ten'
+		END
     EXEC sp_executesql @sql, N'@Ten NVARCHAR(50)', @Ten
 END
 GO
-select * from Danh_Muc
-exec getIDByTen 'Xuat_Xu', N'Việt Nam'
-select id, ma, ten, deleted from Xuat_Xu where ten = N'Việt nam'
 
-exec getThuocTinh 'xuat_Xu'
+
+IF OBJECT_ID('getIDByMa') IS NOT NULL
+	DROP PROC getIDByMa
+GO
+CREATE PROC getIDByMa 
+	@tenBang NVARCHAR(50),
+	@ma NVARCHAR(50)
+AS
+BEGIN
+    DECLARE @sql NVARCHAR(MAX)
+    SET @sql = N'SELECT ID, Ma, Ten FROM ' + QUOTENAME(@tenBang) + ' WHERE ma = @ma'
+    EXEC sp_executesql @sql, N'@ma NVARCHAR(50)', @ma
+END
+GO
+
 /*
 	Sản phẩm chi tiết
 */
@@ -137,10 +156,13 @@ IF OBJECT_ID('get_ALL_SPCT') IS NOT NULL
     DROP PROC get_ALL_SPCT
 GO
 CREATE PROC get_ALL_SPCT
+	@page INT,
+	@limit INT
 AS
 BEGIN
     DECLARE @sql NVARCHAR(MAX)
-    SET @sql = 'SELECT San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,
+    SET @sql = 'SELECT ROW_NUMBER() OVER (ORDER BY San_Pham_Chi_tiet.Id DESC) AS [STT],
+		San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,
 		Mau_Sac.Ten AS Expr8, Size.Size, San_Pham_Chi_Tiet.Gia, San_Pham_Chi_Tiet.SoLuongTon, San_Pham_Chi_Tiet.KhoiLuong, San_Pham_Chi_Tiet.TrangThai
 		FROM San_Pham_Chi_Tiet INNER JOIN
 		San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID INNER JOIN
@@ -152,11 +174,12 @@ BEGIN
 		De_Giay ON San_Pham_Chi_Tiet.IDDeGiay = De_Giay.ID INNER JOIN
         Danh_Muc ON San_Pham_Chi_Tiet.IDDanhMuc = Danh_Muc.ID INNER JOIN
 		Co_Giay ON San_Pham_Chi_Tiet.IDCoGiay = Co_Giay.ID INNER JOIN
-        Chat_Lieu ON San_Pham_Chi_Tiet.IDChatLieu = Chat_Lieu.ID'
-    EXEC sp_executesql @sql
+        Chat_Lieu ON San_Pham_Chi_Tiet.IDChatLieu = Chat_Lieu.ID
+		ORDER BY San_Pham_Chi_Tiet.ID DESC OFFSET @page ROWS FETCH NEXT @limit ROWS ONLY'
+    EXEC sp_executesql @sql, N'@page INT, @limit INT', @page, @limit
 END
 GO
-exec get_ALL_SPCT
+exec get_ALL_SPCT 0, 5
 
 IF OBJECT_ID('pagging_SPCT_By_Ma') IS NOT NULL
     DROP PROC pagging_SPCT_By_Ma
@@ -168,7 +191,8 @@ CREATE PROC pagging_SPCT_By_Ma
 AS
 BEGIN
     DECLARE @sql NVARCHAR(MAX)
-    SET @sql = 'SELECT San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,
+    SET @sql = 'SELECT ROW_NUMBER() OVER (ORDER BY San_Pham_Chi_tiet.Id DESC) AS [STT],
+		San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,
 		Mau_Sac.Ten AS Expr8, Size.Size, San_Pham_Chi_Tiet.Gia, San_Pham_Chi_Tiet.SoLuongTon, San_Pham_Chi_Tiet.KhoiLuong, San_Pham_Chi_Tiet.TrangThai
 		FROM San_Pham_Chi_Tiet INNER JOIN
 		San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID INNER JOIN
@@ -195,7 +219,8 @@ CREATE PROC get_1SPCT_ByMa
 AS
 BEGIN
     DECLARE @sql NVARCHAR(MAX)
-    SET @sql = 'SELECT San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,
+    SET @sql = 'SELECT ROW_NUMBER() OVER (ORDER BY San_Pham_Chi_tiet.Id DESC) AS [STT],
+		San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,
 		Mau_Sac.Ten AS Expr8, Size.Size, San_Pham_Chi_Tiet.Gia, San_Pham_Chi_Tiet.SoLuongTon, San_Pham_Chi_Tiet.KhoiLuong, San_Pham_Chi_Tiet.TrangThai
 		FROM San_Pham_Chi_Tiet INNER JOIN
 		San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID INNER JOIN
@@ -216,11 +241,16 @@ exec get_1SPCT_ByMa 'SPCT4F2R9X'
 IF OBJECT_ID('get_SPCT_Deleted') IS NOT NULL
     DROP PROC get_SPCT_Deleted
 GO
-CREATE PROC get_SPCT_Deleted @Deleted BIT
+CREATE PROC get_SPCT_Deleted 
+	@maSP VARCHAR(10),
+	@Deleted BIT,
+	@page INT, 
+	@limit INT
 AS
 BEGIN
     DECLARE @sql NVARCHAR(MAX)
-    SET @sql = 'SELECT San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,
+    SET @sql = 'SELECT ROW_NUMBER() OVER (ORDER BY San_Pham_Chi_tiet.Id DESC) AS [STT],
+		San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,
 		Mau_Sac.Ten AS Expr8, Size.Size, San_Pham_Chi_Tiet.Gia, San_Pham_Chi_Tiet.SoLuongTon, San_Pham_Chi_Tiet.KhoiLuong, San_Pham_Chi_Tiet.TrangThai
 		FROM San_Pham_Chi_Tiet INNER JOIN
 		San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID INNER JOIN
@@ -232,12 +262,13 @@ BEGIN
 		De_Giay ON San_Pham_Chi_Tiet.IDDeGiay = De_Giay.ID INNER JOIN
         Danh_Muc ON San_Pham_Chi_Tiet.IDDanhMuc = Danh_Muc.ID INNER JOIN
 		Co_Giay ON San_Pham_Chi_Tiet.IDCoGiay = Co_Giay.ID INNER JOIN
-        Chat_Lieu ON San_Pham_Chi_Tiet.IDChatLieu = Chat_Lieu.ID WHERE San_Pham_Chi_Tiet.Deleted = @Deleted'
-    EXEC sp_executesql @sql, N'@Deleted BIT', @Deleted
+        Chat_Lieu ON San_Pham_Chi_Tiet.IDChatLieu = Chat_Lieu.ID WHERE San_Pham.Ma LIKE @maSP AND San_Pham_Chi_Tiet.Deleted = @Deleted
+		ORDER BY San_Pham_Chi_Tiet.ID DESC OFFSET @page ROWS FETCH NEXT @limit ROWS ONLY'
+    EXEC sp_executesql @sql, N'@MaSP VARCHAR(10), @Deleted BIT, @page INT, @limit INT', @maSP, @Deleted, @page, @limit
 END
 GO
 select * from San_Pham_Chi_Tiet
-exec get_SPCT_Deleted 0
+exec get_SPCT_Deleted '%', 0, 0, 5
 
 IF OBJECT_ID('them_SPCT') IS NOT NULL
     DROP PROC them_SPCT
@@ -253,6 +284,7 @@ CREATE PROC them_SPCT
     @idChatLieu INT,
     @idDeGiay INT,
     @idCoGiay INT,
+	@ma VARCHAR(10),
     @gia MONEY,
     @soLuong INT
 AS
@@ -260,16 +292,16 @@ BEGIN
     DECLARE @sql NVARCHAR(MAX)
     SET @sql = 
         'INSERT INTO San_Pham_Chi_Tiet
-         (IDDanhMuc, IDXuatXu, IDNSX, IDMauSac, IDSize, IDSanPham, IDThuongHieu, IDChatLieu, IDDeGiay, IDCoGiay, Gia, SoLuongTon, TrangThai)
+         (IDDanhMuc, IDXuatXu, IDNSX, IDMauSac, IDSize, IDSanPham, IDThuongHieu, IDChatLieu, IDDeGiay, IDCoGiay, Ma, Gia, SoLuongTon, TrangThai)
          VALUES
-         (@idDanhMuc, @idXuatXu, @idNSX, @idMauSac, @idSize, @idSanPham, @idThuongHieu, @idChatLieu, @idDeGiay, @idCoGiay, @gia, @soLuong, 0)'
+         (@idDanhMuc, @idXuatXu, @idNSX, @idMauSac, @idSize, @idSanPham, @idThuongHieu, @idChatLieu, @idDeGiay, @idCoGiay, @ma, @gia, @soLuong, 0)'
 
     EXEC sp_executesql @sql, 
         N'@idDanhMuc INT, @idXuatXu INT, @idNSX INT, @idMauSac INT, @idSize INT,
-           @idSanPham INT, @idThuongHieu INT, @idChatLieu INT, @idDeGiay INT, @idCoGiay INT,
+           @idSanPham INT, @idThuongHieu INT, @idChatLieu INT, @idDeGiay INT, @idCoGiay INT, @ma VARCHAR(10),
            @gia MONEY, @soLuong INT',
         @idDanhMuc, @idXuatXu, @idNSX, @idMauSac, @idSize, @idSanPham, 
-        @idThuongHieu, @idChatLieu, @idDeGiay, @idCoGiay, @gia, @soLuong
+        @idThuongHieu, @idChatLieu, @idDeGiay, @idCoGiay, @ma, @gia, @soLuong
 END
 GO
 
@@ -363,10 +395,6 @@ BEGIN
 	@Nha_San_Xuat, @Mau_Sac, @Chat_Lieu, @Co_Giay
 END
 GO
-exec getSPCT_ByTen 'vinagiay', N'đen', 'Da', N'Cổ cao' 
-
-select * from San_Pham_Chi_Tiet
-exec getIdbyten 'Chat_lieu', N'tổng hợp'
 
 
 /*
@@ -503,15 +531,9 @@ END
 GO
 exec getIDSP_ByTen 'Giày thu đông'
 select * from san_Pham
-
-SELECT ROW_NUMBER() OVER (ORDER BY San_Pham.Id DESC) AS [STT],
-    San_Pham.id,Ma,Ten,MoTa,COALESCE(SUM(San_Pham_Chi_Tiet.SoLuongTon), 0) AS TongSoLuongTon,
-CASE WHEN COALESCE(SUM(San_Pham_Chi_Tiet.SoLuongTon), 0) > 0 THEN 1 ELSE 0 END AS TrangThai
-FROM San_Pham LEFT JOIN San_Pham_Chi_Tiet ON San_Pham.id = San_Pham_Chi_Tiet.IDSanPham
-GROUP BY San_Pham.id,Ma,Ten,MoTa ORDER BY id DESC OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY
-
-exec get_SP_Deleted 0, 0, 5
-
+/*
+	Bản chuẩn
+*/
 
 
 

@@ -11,6 +11,7 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import com.polyshoes.view.banhang.BanHangJPanel2;
 import com.polyshoes.view.sanpham.SanPhamChiTietJFrame;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
@@ -137,6 +138,7 @@ public class QR_Code extends javax.swing.JFrame implements  Runnable, ThreadFact
                         
                         if(result != null) {
                                 SanPhamChiTietJFrame.maSPCT = result.getText();
+                                BanHangJPanel2.maSPChiTiet = result.getText();
                                 new SanPhamChiTietJFrame().setVisible(true);
                                 webcam.close();
                                 this.setVisible(false);
