@@ -84,7 +84,6 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
         SimpleDateFormat dateFormat = new SimpleDateFormat("DD/MM/yyyy HH:mm");
 //        initWebcam();
         fixTable();
-      
 
     }
 
@@ -2058,48 +2057,51 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_tblChiTiet4MouseClicked
 
     private void btnTraHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraHangActionPerformed
+        int a = JOptionPane.showConfirmDialog(this, "bạn có chắc chắn không!");
+        if (a == 0) {
+            if (ckBox2.isSelected()) {
+                String lydo = JTextArea.getText();
+                String mahd = txtTimkiemLS2.getText();
+                hdctdao.traALll2(mahd, lydo);
+                hdctdao.traALll3(mahd);
+                TimKiemHoaDon3();
+                load(0, 5);
 
-        if (ckBox2.isSelected()) {
-            String lydo = JTextArea.getText();
-            String mahd = txtTimkiemLS2.getText();
-            hdctdao.traALll2(mahd, lydo);
-            hdctdao.traALll3(mahd);
-            TimKiemHoaDon3();
-            load(0, 5);
-
-            JOptionPane.showMessageDialog(this, "Đã Trả thành công!");
-            try {
-                TimKiemTheoBang11();
-            } catch (Exception e) {
-            }
-
-        } else {
-            int selectedRow = tblChiTiet4.getSelectedRow();
-            int checkboxColumnIndex = 0;
-            String mahd = txtTimkiemLS2.getText();
-
-            if (selectedRow != -1) {
-                Boolean isChecked = (Boolean) tblChiTiet4.getValueAt(selectedRow, checkboxColumnIndex);
-                System.out.println("Checkbox ở dòng " + selectedRow + " được chọn: " + isChecked);
-                if (isChecked == true) {
-                    String lydo = JTextArea.getText();
-                    String soLuong = (String) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 6);
-                    String masp = (String) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 2);
-                    hdctdao.tra1mon(soLuong, lydo, mahd, masp);
-                    hdctdao.traALll3(mahd);
-                    load(0, 5);
-                    JOptionPane.showMessageDialog(this, "Đã Trả thành công!");
-                    TimKiemHoaDon3();
+                JOptionPane.showMessageDialog(this, "Đã Trả thành công!");
+                try {
                     TimKiemTheoBang11();
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "Mời bạn chọn món đồ cần trả");
+                } catch (Exception e) {
                 }
 
             } else {
+                int selectedRow = tblChiTiet4.getSelectedRow();
+                int checkboxColumnIndex = 0;
+                String mahd = txtTimkiemLS2.getText();
 
+                if (selectedRow != -1) {
+                    Boolean isChecked = (Boolean) tblChiTiet4.getValueAt(selectedRow, checkboxColumnIndex);
+                    System.out.println("Checkbox ở dòng " + selectedRow + " được chọn: " + isChecked);
+                    if (isChecked == true) {
+                        String lydo = JTextArea.getText();
+                        String soLuong = (String) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 6);
+                        String masp = (String) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 2);
+                        hdctdao.tra1mon(soLuong, lydo, mahd, masp);
+                        hdctdao.traALll3(mahd);
+                        load(0, 5);
+                        JOptionPane.showMessageDialog(this, "Đã Trả thành công!");
+                        TimKiemHoaDon3();
+                        TimKiemTheoBang11();
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Mời bạn chọn món đồ cần trả");
+                    }
+
+                } else {
+
+                }
             }
-        }        // TODO add your handling code here:
+        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnTraHangActionPerformed
 
     private void txtTimkiemLS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimkiemLS2ActionPerformed
