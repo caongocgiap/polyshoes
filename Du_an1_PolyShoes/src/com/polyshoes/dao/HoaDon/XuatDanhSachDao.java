@@ -24,7 +24,7 @@ public class XuatDanhSachDao {
         return select(sql, mahd);
     }
 
-    public List<XuatDanhSach> select() {
+    public List<XuatDanhSach> select(String mahd) {
         String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,San_Pham.Ma,San_Pham.Ten,Nha_San_Xuat.Ten\n"
                 + "Ten2,Mau_Sac.Ten as  Ten3,Size.Size,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia\n"
                 + ",Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia as ThanhTien \n"
@@ -34,10 +34,11 @@ public class XuatDanhSachDao {
                 + "join Hoa_Don on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.id\n"
                 + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
                 + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
-                + "join Nhan_Vien on Nhan_Vien.id = Hoa_Don.IDNhanVien\n";
+                + "join Nhan_Vien on Nhan_Vien.id = Hoa_Don.IDNhanVien\n"
+                + "where hoa_don.MaHD = ?";
            
 
-        return select(sql);
+        return select(sql,mahd);
     }
 
     private List<XuatDanhSach> select(String sql, Object... args) {

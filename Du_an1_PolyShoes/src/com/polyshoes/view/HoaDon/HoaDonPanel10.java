@@ -2124,7 +2124,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_txtTimkiemLS2FocusGained
 
     private void btnCapNhat3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhat3ActionPerformed
-
+        String mahd = (String) tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1);
         try {
             XSSFWorkbook wordkbook = new XSSFWorkbook();
             XSSFSheet sheet = wordkbook.createSheet("HoaDon");
@@ -2167,7 +2167,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
             cell = row.createCell(15, CellType.STRING);
             cell.setCellValue("Thành tiền");
 
-            ListDS = DSdao.select();
+            ListDS = DSdao.select(mahd);
             for (int i = 0; i < ListDS.size(); i++) {
 
                 row = sheet.createRow(4 + i);

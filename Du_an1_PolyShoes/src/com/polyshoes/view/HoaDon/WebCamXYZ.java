@@ -107,12 +107,12 @@ public class WebCamXYZ extends javax.swing.JFrame implements Runnable, ThreadFac
                 //No result...
             }
             if (result != null) {
-                HoaDonPanel10 jfame = new HoaDonPanel10();
+                HoaDonPanel10 JPanle = new HoaDonPanel10();
                 String mahd = result.getText();
                 System.out.println(mahd);
 
-                jfame.TimKiemM(mahd);
-                jfame.showData90(mahd);
+                JPanle.TimKiemM(mahd);
+                JPanle.showData90(mahd);
 
                 webcam.close();
                 this.setVisible(false);
