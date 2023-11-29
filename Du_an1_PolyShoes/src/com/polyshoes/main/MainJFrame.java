@@ -4,13 +4,19 @@ import com.polyshoes.component.HeaderJPanel;
 import com.polyshoes.component.MenuJPanel;
 import com.polyshoes.event.EventMenuSelected;
 import com.polyshoes.event.EventShowPopupMenu;
-import com.polyshoes.view.trangchu.Form_1;
+import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.view.trangchu.TrangChuJPanel;
 import com.polyshoes.view.trangchu.MainJPanel;
 import com.polyshoes.swing.MenuItem;
 import com.polyshoes.swing.PopupMenu;
 import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
+import com.polyshoes.view.glasspanepopup.GlassPanePopup;
+import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanel;
+import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanellll;
+import com.polyshoes.view.HoaDon.HoaDonPanel10;
+import com.polyshoes.view.banhang.BanHangJPanel;
+import com.polyshoes.view.banhang.BanHangJPanel2;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
 import java.awt.Color;
@@ -33,36 +39,48 @@ public class MainJFrame extends javax.swing.JFrame {
         public MainJFrame() {
                 initComponents();
                 init();
+                GlassPanePopup.install(this);
         }
 
         private void init() {
                 layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
-                bg.setBackground(Color.WHITE);
                 bg.setLayout(layout);
                 menu = new MenuJPanel();
                 header = new HeaderJPanel();
                 main = new MainJPanel();
+                bg.setBackground(Color.white);
                 menu.addEvent(new EventMenuSelected() {
                         @Override
                         public void menuSelected(int menuIndex, int subMenuIndex) {
                                 System.out.println("Menu Index : " + menuIndex + " SubMenu Index " + subMenuIndex);
-                                if (menuIndex == 2) {
-                                        if (subMenuIndex == 0) {
+                                switch (menuIndex) {
+                                        case 0:
                                                 main.showForm(new TrangChuJPanel());
-                                        } else if (subMenuIndex == 1) {
-                                                main.showForm(new Form_1());
-                                        }
-                                }
-                                if (menuIndex == 0) {
-
-                                }
-                                if (menuIndex == 6) {
-                                        main.showForm(new QLSPJPanel());
-                                }
-                                if (menuIndex == 9) {
-                                        if (subMenuIndex == 0) {
+                                                break;
+                                        case 1:
+//                                                main.showForm(new BanHangJPanel());
+                                                main.showForm(new BanHangJPanel2());
+                                                break;
+                                        case 2:
+                                                main.showForm(new HoaDonPanel10());
+                                                break;
+                                        case 3:
+                                                main.showForm(new QLSPJPanel());
+                                                break;
+                                        case 4:
+                                                main.showForm(new QuanLyKhuyenMaiPanel());
+                                                break;
+                                        case 5:
+                                                // Khach hang
+                                                break;
+                                        case 6:
+                                                // Thong ke
+                                                break;
+                                        case 7:
                                                 main.showForm(new NhanVienJPanel());
-                                        }
+                                                break;
+                                        default:
+                                                throw new AssertionError();
                                 }
                         }
                 });
@@ -132,6 +150,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
                 bg.setBackground(new java.awt.Color(245, 245, 245));
+                bg.setForeground(new java.awt.Color(255, 255, 255));
                 bg.setOpaque(true);
 
                 javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);

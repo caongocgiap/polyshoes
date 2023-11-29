@@ -46,6 +46,22 @@ public class SanPhamChiTiet {
                 this.trangThai = trangThai;
         }
 
+        public int getStt() {
+                return stt;
+        }
+
+        public void setStt(int stt) {
+                this.stt = stt;
+        }
+
+        public String getNsx() {
+                return nsx;
+        }
+
+        public void setNsx(String nsx) {
+                this.nsx = nsx;
+        }
+
         public String getMa() {
                 return ma;
         }

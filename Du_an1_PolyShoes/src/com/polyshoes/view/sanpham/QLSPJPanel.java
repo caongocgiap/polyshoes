@@ -410,14 +410,17 @@ public class QLSPJPanel extends javax.swing.JPanel {
 
         private void btnThemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPActionPerformed
                 this.insert();
+                this.clear();
         }//GEN-LAST:event_btnThemSPActionPerformed
 
         private void btnCapNhatSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatSPActionPerformed
                 this.update();
+                this.clear();
         }//GEN-LAST:event_btnCapNhatSPActionPerformed
 
         private void btnXoaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSPActionPerformed
                 this.delete();
+                this.clear();
         }//GEN-LAST:event_btnXoaSPActionPerformed
 
         private void btnLamMoiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiSPActionPerformed
@@ -576,12 +579,16 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 int tongTrang = (int) Math.ceil((double) tongSoSP / limit);
                 int tongTrangXoa = (int) Math.ceil((double) tongDaXoa / limit);
                 int tongTrangChuaXoa = (int) Math.ceil((double) tongChuaXoa / limit);
-                if (rdoSPTatCa.isSelected()) {
-                        pageSize = tongTrang;
-                } else if (rdoSPDangBan.isSelected()) {
-                        pageSize = tongTrangChuaXoa;
+                if (tongTrang > 0) {
+                        if (rdoSPTatCa.isSelected()) {
+                                pageSize = tongTrang;
+                        } else if (rdoSPDangBan.isSelected()) {
+                                pageSize = tongTrangChuaXoa;
+                        } else {
+                                pageSize = tongTrangXoa;
+                        }
                 } else {
-                        pageSize = tongTrangXoa;
+                        pageSize = 1;
                 }
                 return pageSize;
         }

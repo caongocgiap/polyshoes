@@ -9,11 +9,12 @@ import java.util.List;
 
 public class SanPhamCTDAO {
         
-        final String GET_ALL_SPCT = "{CALL get_ALL_SPCT(?,?)}";
-        final String GET_SPCT_DELETED = "{CALL get_SPCT_Deleted(?)}";
+        final String GET_ALL = "{CALL get_ALL_SPCT(?,?)}";
+        final String GET_DELETED = "{CALL get_SPCT_Deleted(?, ?, ?, ?)}";
         final String PAGGINH_BY_MA = "{CALL pagging_SPCT_By_Ma(?,?,?)}";
-        final String THEM_SPCT = "{CALL them_SPCT(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
-        final String GET_1SPCT_BY_MA = "{CALL get_1SPCT_ByMa(?)}";
+        final String GET_BY_MA = "{CALL get_1SPCT_ByMa(?)}";
+        final String INSERT = "{CALL them_SPCT(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+        final String UPDATE = "{CALL update_SPCT(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 
         private List<SanPhamChiTiet> select(String sql, Object... args) {
                 List<SanPhamChiTiet> list = new ArrayList<>();
@@ -38,11 +39,13 @@ public class SanPhamCTDAO {
         }
 
         public List<SanPhamChiTiet> selectAll(int page, int limit) {
-                return select(GET_ALL_SPCT, page, limit);
+                List<SanPhamChiTiet> list = select(GET_ALL, page, limit);
+                return list.isEmpty() ? null : list;
         }
         
-        public List<SanPhamChiTiet> selectDeleted(int deleted) {
-                return select(GET_SPCT_DELETED, deleted);
+        public List<SanPhamChiTiet> selectDeleted(String maSP, int deleted, int page, int limit) {
+                List<SanPhamChiTiet> list = select(GET_DELETED, maSP, deleted, page, limit);
+                return list.isEmpty() ? null : list;
         }
         
         public List<SanPhamChiTiet> paging(String ma, int page, int limit) {
@@ -50,10 +53,14 @@ public class SanPhamCTDAO {
         }
         
         public SanPhamChiTiet getByMa(String maSPCT) {
-                return select(GET_1SPCT_BY_MA, maSPCT).get(0);
+                return select(GET_BY_MA, maSPCT).get(0);
         }
         
-        public void insertSPCT(Object... args) {
-                JdbcHelper.executeUpdate(THEM_SPCT, args);
+        public void insert(Object... args) {
+                JdbcHelper.executeUpdate(INSERT, args);
+        }
+        
+        public void update(Object... args) {
+                JdbcHelper.executeUpdate(UPDATE, args);
         }
 }
