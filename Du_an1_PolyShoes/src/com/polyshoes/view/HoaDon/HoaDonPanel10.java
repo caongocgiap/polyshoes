@@ -28,6 +28,8 @@ import com.polyshoes.model.HoaDon.XuatDanhSach;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -196,6 +198,35 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 
         try {
             List<HoaDon> list = dao.paging(page, limit);
+            int stt = 0;
+            for (HoaDon hd : list) {
+                stt++;
+                Object[] row = {
+                    stt,
+                    hd.getMaHD(),
+                    hd.getFormattedTao(),
+                    hd.getFormattedTT(),
+                    hd.getTongTien(),
+                    hd.getMaNV(),
+                    hd.getTenKH(),
+                    hd.getDiaChi(),
+                    hd.getSDT(),
+                    hd.getTrangThaiA()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "loi truy van du lieu!");
+            e.printStackTrace();
+        }
+    }
+
+    void load3(int page, int limit) {
+        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+
+        try {
+            List<HoaDon> list = dao.paging3(page, limit);
             int stt = 0;
             for (HoaDon hd : list) {
                 stt++;
@@ -1846,10 +1877,12 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnTraHang, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnTraHang, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(JTextKH, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2064,8 +2097,10 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
                 String mahd = txtTimkiemLS2.getText();
                 hdctdao.traALll2(mahd, lydo);
                 hdctdao.traALll3(mahd);
+                hdctdao.traALll4(mahd);
+                hdctdao.traVeSoLuongall(mahd);
                 TimKiemHoaDon3();
-                load(0, 5);
+                load3(0, 5);
 
                 JOptionPane.showMessageDialog(this, "Đã Trả thành công!");
                 try {
@@ -2087,6 +2122,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
                         String masp = (String) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 2);
                         hdctdao.tra1mon(soLuong, lydo, mahd, masp);
                         hdctdao.traALll3(mahd);
+                        hdctdao.traVeSoLuong(soLuong, masp);
                         load(0, 5);
                         JOptionPane.showMessageDialog(this, "Đã Trả thành công!");
                         TimKiemHoaDon3();
@@ -2353,8 +2389,21 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnTraHang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraHang1ActionPerformed
 
-        WebCamXYZ frame2 = new WebCamXYZ();
-        frame2.setVisible(true);
+        WebCamXYZ qrCode = new WebCamXYZ();
+
+        qrCode.setDefaultCloseOperation(qrCode.DISPOSE_ON_CLOSE);
+        qrCode.setVisible(true);
+        qrCode.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+                System.out.println("window closing");
+                
+                TimKiemM(qrCode.maHDKK);
+                showData90(qrCode.maHDKK);
+
+            }
+        });
 
 
     }//GEN-LAST:event_btnTraHang1ActionPerformed

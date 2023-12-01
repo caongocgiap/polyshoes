@@ -11,7 +11,7 @@ import java.util.List;
 public class HoaDonChiTietDao {
 
     public List<HoaDonChiTiet> selectByKeyword(String MaHD) {
-        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham.Ma,San_Pham.Ten,Nha_San_Xuat.Ten\n"
+        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham_chi_tiet.Ma,San_Pham.Ten,Nha_San_Xuat.Ten\n"
                 + " as Ten2,Mau_Sac.Ten as  Ten3,Size.Size,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia,Hoa_Don_Chi_Tiet.TrangThai\n"
                 + " ,Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia as ThanhTien \n"
                 + "from San_Pham join San_Pham_Chi_Tiet on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
@@ -38,8 +38,8 @@ public class HoaDonChiTietDao {
     }
 
     public List<HoaDonChiTiet> selectByKeyword1(String MaHD) {
-        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham.Ma,San_Pham.Ten,Nha_San_Xuat.Ten\n"
-                + " as Ten2,Mau_Sac.Ten as  Ten3,Size.Size,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia,Hoa_Don_Chi_Tiet.TrangThai\n"
+        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham_chi_Tiet.Ma,San_Pham.Ten,Nha_San_Xuat.Ten\n"
+                + " as Ten2,Mau_Sac.Ten as  Ten3,Size.Size,(Hoa_Don_Chi_Tiet.SoLuong - TraHang.SoLuong)as SoLuong,Hoa_Don_Chi_Tiet.Gia,Hoa_Don_Chi_Tiet.TrangThai\n"
                 + " ,Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia as ThanhTien \n"
                 + "from San_Pham join San_Pham_Chi_Tiet on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
                 + "join Nha_San_Xuat on Nha_San_Xuat.ID = San_Pham_Chi_Tiet.IDNSX\n"
@@ -47,12 +47,13 @@ public class HoaDonChiTietDao {
                 + "join Hoa_Don on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.id\n"
                 + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
                 + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
+                + "join TraHang on TraHang.IDHoaDonChiTiet = Hoa_Don_Chi_Tiet.id \n"
                 + "where Hoa_don_chi_Tiet.soluong !=0 and  Hoa_Don.MaHD = ?";
         return select(sql, MaHD);
     }
 
     public List<HoaDonChiTiet> selectByTraHang2(String MaHD) {
-        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham.Ma,San_Pham.Ten,Nha_San_Xuat.Ten as Ten2,Mau_Sac.Ten as  Ten3,Size.Size,(Hoa_Don_Chi_Tiet.SoLuong - TraHang.SoLuong)as SoLuong,Hoa_Don_Chi_Tiet.Gia,Hoa_Don_Chi_Tiet.TrangThai\n"
+        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham_chi_tiet.Ma,San_Pham.Ten,Nha_San_Xuat.Ten as Ten2,Mau_Sac.Ten as  Ten3,Size.Size,(Hoa_Don_Chi_Tiet.SoLuong - TraHang.SoLuong)as SoLuong,Hoa_Don_Chi_Tiet.Gia,Hoa_Don_Chi_Tiet.TrangThai\n"
                 + ",(Hoa_Don_Chi_Tiet.SoLuong- TraHang.SoLuong)*Hoa_Don_Chi_Tiet.Gia as ThanhTien \n"
                 + "from San_Pham join San_Pham_Chi_Tiet on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
                 + "join Nha_San_Xuat on Nha_San_Xuat.ID = San_Pham_Chi_Tiet.IDNSX\n"
@@ -66,7 +67,7 @@ public class HoaDonChiTietDao {
     }
 
     public List<HoaDonChiTiet> selectByTramotmon(String MaHD, String MaSP) {
-        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham.Ma,San_Pham.Ten,Nha_San_Xuat.Ten\n"
+        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham_chi_tiet.Ma,San_Pham.Ten,Nha_San_Xuat.Ten\n"
                 + " as Ten2,Mau_Sac.Ten as  Ten3,Size.Size,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia,Hoa_Don_Chi_Tiet.TrangThai\n"
                 + " ,Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia as ThanhTien \n"
                 + "from San_Pham join San_Pham_Chi_Tiet on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
@@ -75,7 +76,7 @@ public class HoaDonChiTietDao {
                 + "join Hoa_Don on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.id\n"
                 + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
                 + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
-                + "where  Hoa_Don.MaHD = ? and san_pham.ma = ?";
+                + "where  Hoa_Don.MaHD = ? and San_Pham_chi_tiet.ma = ?";
         return select(sql, MaHD, MaSP);
     }
 
@@ -102,15 +103,15 @@ public class HoaDonChiTietDao {
         return select(sql, MaHD);
     }
 
-    public void tra1mon(String soLuong,String lydo, String mahd, String masp) {
+    public void tra1mon(String soLuong, String lydo, String mahd, String masp) {
         String sql = "update TraHang set TraHang.soluong = TraHang.soluong + ? ,TraHang.LyDoTraHang= ?\n"
                 + "from TraHang \n"
                 + "join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.ID = TraHang.IDHoaDonChiTiet\n"
                 + "join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
                 + "join San_Pham_Chi_Tiet on San_Pham_Chi_Tiet.ID = Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
                 + "join San_Pham on San_Pham.id =San_Pham_Chi_Tiet.IDSanPham\n"
-                + "where Hoa_Don.MaHD =? and San_Pham.ma = ?";
-        JdbcHelper.executeUpdate(sql, soLuong,lydo, mahd, masp);
+                + "where Hoa_Don.MaHD =? and San_Pham_chi_tiet.ma = ?";
+        JdbcHelper.executeUpdate(sql, soLuong, lydo, mahd, masp);
     }
 
     public void traALll(String mahd) {
@@ -130,15 +131,35 @@ public class HoaDonChiTietDao {
         JdbcHelper.executeUpdate(sql, mahd);
     }
 
+    public void traVeSoLuong(String soLuong, String MaSP) {
+        String sql = "update San_Pham_Chi_Tiet set SoLuongTon = SoLuongTon + ?\n"
+                + "where San_Pham_Chi_Tiet.Ma = ?";
+        JdbcHelper.executeUpdate(sql, soLuong, MaSP);
+    }
+
+    public void traVeSoLuongall(String MaHD) {
+        String sql = "update San_Pham_Chi_Tiet set SoLuongTon = SoLuongTon + Hoa_Don_Chi_Tiet.SoLuong\n"
+                + "from San_Pham_Chi_Tiet join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.IDSanPhamCT = San_Pham_Chi_Tiet.id\n"
+                + "join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
+                + "where Hoa_Don.MaHD = ?";
+        JdbcHelper.executeUpdate(sql, MaHD);
+    }
+
     public void traALll2(String mahd, String lydo) {
-        String sql = "update TraHang set TraHang.soluong = Hoa_Don_Chi_Tiet.SoLuong,traHang.LyDoTraHang=?\n"
+        String sql = "update TraHang set TraHang.soluong = Hoa_Don_Chi_Tiet.SoLuong,traHang.LyDoTraHang=? \n"
                 + "from TraHang \n"
                 + "join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.ID = TraHang.IDHoaDonChiTiet\n"
                 + "join Hoa_Don on Hoa_Don.id = Hoa_Don_Chi_Tiet.IDHoaDon\n"
                 + "join San_Pham_Chi_Tiet on San_Pham_Chi_Tiet.ID = Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
                 + "join San_Pham on San_Pham.id =San_Pham_Chi_Tiet.IDSanPham\n"
                 + "where Hoa_Don.MaHD =?";
-        JdbcHelper.executeUpdate(sql,lydo, mahd);
+        JdbcHelper.executeUpdate(sql, lydo, mahd);
+    }
+
+    public void traALll4(String mahd) {
+        String sql = "update hoa_don set hoa_don.ngaycapnhat = getdate()"
+                + "where mahd = ?";
+        JdbcHelper.executeUpdate(sql, mahd);
     }
 
     public List<HoaDonChiTiet> selectByLichSu(String keyword) {
