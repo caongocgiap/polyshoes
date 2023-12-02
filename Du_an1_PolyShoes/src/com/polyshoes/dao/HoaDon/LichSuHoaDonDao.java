@@ -37,7 +37,7 @@ public class LichSuHoaDonDao {
     public List<LichSuHoaDon> selectByKeyword(String TenKH) {
         String sql = "SELECT  Lich_Su_Hoa_Don.ID, Nhan_Vien.TenNV,\n"
                 + "             Nhan_Vien.MaNV, Hoa_Don.TenNguoiNhan, Hoa_Don.TongTien, \n"
-                + "              Hoa_Don.NgayTao, Hoa_Don.NgayThanhToan,Hoa_Don.NgayCapNhat, Lich_Su_Hoa_Don.TrangThai\n"
+                + "              Hoa_Don.NgayTao, Hoa_Don.NgayThanhToan,Hoa_Don.NgayCapNhat, Hoa_Don.TrangThai\n"
                 + "                FROM Lich_Su_Hoa_Don INNER JOIN\n"
                 + "                 Hoa_Don ON Lich_Su_Hoa_Don.IDHoaDon = Hoa_Don.ID INNER JOIN\n"
                 + "             Nhan_Vien ON Hoa_Don.IDNhanVien = Nhan_Vien.ID where hoa_don.mahd = ?";

@@ -665,26 +665,26 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtTimkiemLS2" min="-2" pref="311" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                                      <Component id="btnTraHang1" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="btnTraHang1" min="-2" pref="103" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
                                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
                                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="407" max="-2" attributes="0"/>
-                                      <Component id="btnTraHang2" min="-2" pref="122" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="389" max="-2" attributes="0"/>
+                                      <Component id="btnTraHang2" min="-2" pref="124" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
@@ -704,10 +704,10 @@
                               </Group>
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTimkiemLS2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnTraHang1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Component id="btnTraHang2" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="jLabel19" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="txtTimkiemLS2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="btnTraHang1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTraHang2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -722,7 +722,7 @@
                           <Component id="jPanel9" min="-2" pref="268" max="-2" attributes="0"/>
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="137" max="32767" attributes="0"/>
+                      <EmptySpace pref="127" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1317,7 +1317,7 @@
                   <Color blue="ff" green="cc" red="99" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/polyshoes/icon/reset.png"/>
+                  <Image iconType="3" name="/com/polyshoes/icon/qr.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Qu&#xe9;t QR"/>
               </Properties>

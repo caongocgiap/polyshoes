@@ -64,7 +64,6 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 jPanel2 = new javax.swing.JPanel();
                 cboTenSP = new com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion();
                 lblTieuDe13 = new javax.swing.JLabel();
-                btnTenSP = new com.polyshoes.swing.Button();
                 jPanel3 = new javax.swing.JPanel();
                 cboDanhMuc = new com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion();
                 lblTieuDe15 = new javax.swing.JLabel();
@@ -391,8 +390,6 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe13.setText("Tên sản phẩm");
                 lblTieuDe13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
-                btnTenSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
-
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
                 jPanel2Layout.setHorizontalGroup(
@@ -403,11 +400,8 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                         .addGap(0, 10, Short.MAX_VALUE)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(lblTieuDe13)
-                                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                                        .addComponent(cboTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(6, 6, 6)
-                                                        .addComponent(btnTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 10, Short.MAX_VALUE)))
+                                                .addComponent(cboTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 52, Short.MAX_VALUE)))
                 );
                 jPanel2Layout.setVerticalGroup(
                         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,9 +411,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(lblTieuDe13)
                                         .addGap(6, 6, 6)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(cboTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(btnTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(cboTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE)))
                 );
 
@@ -436,6 +428,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 btnDanhMuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnDanhMuc.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnDanhMucActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
                 jPanel3.setLayout(jPanel3Layout);
@@ -480,6 +477,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe17.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 btnThuongHieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnThuongHieu.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnThuongHieuActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
                 jPanel4.setLayout(jPanel4Layout);
@@ -524,6 +526,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblXuatXu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 btnXuatXu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnXuatXu.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnXuatXuActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
@@ -568,6 +575,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe25.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 btnNhaSanXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnNhaSanXuat.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnNhaSanXuatActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
                 jPanel9.setLayout(jPanel9Layout);
@@ -612,6 +624,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe26.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 btnChatLieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnChatLieu.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnChatLieuActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
                 jPanel10.setLayout(jPanel10Layout);
@@ -656,6 +673,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe19.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 btnDeGiay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnDeGiay.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnDeGiayActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
                 jPanel5.setLayout(jPanel5Layout);
@@ -700,6 +722,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe20.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 btnCoGiay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnCoGiay.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnCoGiayActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
                 jPanel6.setLayout(jPanel6Layout);
@@ -744,6 +771,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe24.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 btnSize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnSize.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnSizeActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
                 jPanel8.setLayout(jPanel8Layout);
@@ -788,6 +820,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe23.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 btnMauSac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnMauSac.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnMauSacActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
                 jPanel7.setLayout(jPanel7Layout);
@@ -1000,6 +1037,52 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblIndexSpct.setText(String.valueOf(pageIndex));
         }//GEN-LAST:event_btnEndSpctActionPerformed
 
+        private void btnNhaSanXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaSanXuatActionPerformed
+                ThuocTinhJFrame.tenBang = "Nha_San_Xuat";
+                new ThuocTinhJFrame().setVisible(true);
+        }//GEN-LAST:event_btnNhaSanXuatActionPerformed
+
+        private void btnSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSizeActionPerformed
+                ThuocTinhJFrame.tenBang = "Size";
+                new ThuocTinhJFrame().setVisible(true);
+        }//GEN-LAST:event_btnSizeActionPerformed
+
+        private void btnDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhMucActionPerformed
+                ThuocTinhJFrame.tenBang = "Danh_Muc";
+                new ThuocTinhJFrame().setVisible(true);
+        }//GEN-LAST:event_btnDanhMucActionPerformed
+
+        private void btnChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatLieuActionPerformed
+                ThuocTinhJFrame.tenBang = "Chat_Lieu";
+                new ThuocTinhJFrame().setVisible(true);
+        }//GEN-LAST:event_btnChatLieuActionPerformed
+
+        private void btnMauSacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMauSacActionPerformed
+                ThuocTinhJFrame.tenBang = "Mau_Sac";
+                new ThuocTinhJFrame().setVisible(true);
+        }//GEN-LAST:event_btnMauSacActionPerformed
+
+        private void btnThuongHieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuongHieuActionPerformed
+                ThuocTinhJFrame.tenBang = "Thuong_Hieu";
+                new ThuocTinhJFrame().setVisible(true);
+        }//GEN-LAST:event_btnThuongHieuActionPerformed
+
+        private void btnDeGiayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeGiayActionPerformed
+                ThuocTinhJFrame.tenBang = "De_Giay";
+                new ThuocTinhJFrame().setVisible(true);
+        }//GEN-LAST:event_btnDeGiayActionPerformed
+
+        private void btnXuatXuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatXuActionPerformed
+                ThuocTinhJFrame.tenBang = "Xuat_Xu";
+                new ThuocTinhJFrame().setVisible(true);
+        }//GEN-LAST:event_btnXuatXuActionPerformed
+
+        private void btnCoGiayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoGiayActionPerformed
+                ThuocTinhJFrame.tenBang = "Co_Giay";
+                new ThuocTinhJFrame().setVisible(true);
+                fillComboBox(cboCoGiay, "Co_Giay");
+        }//GEN-LAST:event_btnCoGiayActionPerformed
+
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private com.polyshoes.swing.Button btnChatLieu;
@@ -1018,7 +1101,6 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         private javax.swing.JButton btnQuayLai;
         private com.polyshoes.swing.Button btnSize;
         private javax.swing.JButton btnTaiMaQR;
-        private com.polyshoes.swing.Button btnTenSP;
         private javax.swing.JButton btnThem;
         private com.polyshoes.swing.Button btnThuongHieu;
         private com.polyshoes.swing.Button btnXuatXu;

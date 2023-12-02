@@ -23,7 +23,7 @@ public class TraHangDao {
                 + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
                 + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
                 + "join TraHang on TraHang.IDHoaDonChiTiet = Hoa_Don_Chi_Tiet.id\n"
-                + "where Hoa_Don.MaHD = ?";
+                + "where TraHang.SoLuong !=0  and Hoa_Don.MaHD = ?";
         return select(sql, MaHD);
     }
       public List<TraHang> selectALL2() {

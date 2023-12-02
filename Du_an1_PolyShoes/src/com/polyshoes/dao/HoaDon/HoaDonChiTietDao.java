@@ -103,7 +103,7 @@ public class HoaDonChiTietDao {
         return select(sql, MaHD);
     }
 
-    public void tra1mon(String soLuong, String lydo, String mahd, String masp) {
+    public void tra1mon(int soLuong, String lydo, String mahd, String masp) {
         String sql = "update TraHang set TraHang.soluong = TraHang.soluong + ? ,TraHang.LyDoTraHang= ?\n"
                 + "from TraHang \n"
                 + "join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.ID = TraHang.IDHoaDonChiTiet\n"
@@ -131,7 +131,7 @@ public class HoaDonChiTietDao {
         JdbcHelper.executeUpdate(sql, mahd);
     }
 
-    public void traVeSoLuong(String soLuong, String MaSP) {
+    public void traVeSoLuong(int soLuong, String MaSP) {
         String sql = "update San_Pham_Chi_Tiet set SoLuongTon = SoLuongTon + ?\n"
                 + "where San_Pham_Chi_Tiet.Ma = ?";
         JdbcHelper.executeUpdate(sql, soLuong, MaSP);

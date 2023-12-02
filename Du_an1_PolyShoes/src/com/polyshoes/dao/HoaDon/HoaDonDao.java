@@ -72,7 +72,7 @@ public class HoaDonDao {
                 + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
                 + "join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
                 + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
-                + "where Hoa_Don.MaHD =? and San_Pham.Ma = ?\n"
+                + "where Hoa_Don.MaHD =? and San_Pham_Chi_Tiet.Ma = ?\n"
                 + "group by Hoa_Don.id,\n"
                 + "    Hoa_Don.MaHD,\n"
                 + "    Hoa_Don.NgayTao,\n"
@@ -207,8 +207,8 @@ public class HoaDonDao {
                 + "               join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
                 + "                 where Hoa_Don.Deleted = 0\n"
                 + "				 group by \n"
-                + "				 Hoa_Don.id,Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
-                + "               ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+                + "				 Hoa_Don.id,Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.ngayCapnhat,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "               ORDER BY Hoa_Don.ngayCapnhat DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return select(sql, page, limit);
     }
 
