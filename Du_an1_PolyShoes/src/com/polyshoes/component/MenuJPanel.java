@@ -62,7 +62,7 @@ public class MenuJPanel extends javax.swing.JPanel {
                 addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/5.png")), "Khách hàng", Menu.menuType.MENU));
 //                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/6.png")), "", Menu.menuType.EMTY));
                 addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/thongke.png")), "Thống kê", Menu.menuType.MENU));
-                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/taikhoan.png")),"Quản lý tài khoản", Menu.menuType.MENU));
+                addMenu(new com.polyshoes.model.trangchu.Menu(new ImageIcon(getClass().getResource("/com/polyshoes/icon/taikhoan.png")),"Nhân viên", Menu.menuType.MENU));
         }
 
         private void addMenu(com.polyshoes.model.trangchu.Menu menu) {

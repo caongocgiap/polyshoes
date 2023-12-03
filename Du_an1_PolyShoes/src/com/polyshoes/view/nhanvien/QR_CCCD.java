@@ -91,9 +91,8 @@ public class QR_CCCD extends javax.swing.JFrame implements Runnable, ThreadFacto
             if (result != null) {
 
                 webcam.close();
+                this.dispose();
 
-                this.setVisible(false);
-               
                 return;
 
             }
@@ -158,23 +157,6 @@ public class QR_CCCD extends javax.swing.JFrame implements Runnable, ThreadFacto
     public static String generateRandomProvinceName() {
         Random random = new Random();
         return provinceNames[random.nextInt(provinceNames.length)];
-    }
-
-    public static String generateRandomEmail(String[] domains) {
-        String[] nameParts = {"john", "jane", "alex", "emma", "mike", "sara"};
-        String[] domainParts = domains;
-        Random random = new Random();
-
-        // Chọn một phần tên ngẫu nhiên
-        String randomName = nameParts[random.nextInt(nameParts.length)];
-
-        // Chọn một phần tên miền ngẫu nhiên
-        String randomDomain = domainParts[random.nextInt(domainParts.length)];
-
-        // Kết hợp phần tên và phần tên miền để tạo địa chỉ email ngẫu nhiên
-        String randomEmail = randomName + "@" + randomDomain;
-
-        return randomEmail;
     }
 
     /**

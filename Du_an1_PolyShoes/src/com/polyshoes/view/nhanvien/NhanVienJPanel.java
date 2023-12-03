@@ -26,6 +26,8 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -587,7 +589,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     }
 
     void filedtxt() {
-      
+
     }
 
     /**
@@ -636,7 +638,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         jSeparator17 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
         txtNgaySinh = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        btnquetCCCD = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -800,25 +802,25 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         txtNgaySinh.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel1.add(txtNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 250, 25));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/qr.png"))); // NOI18N
-        jButton1.setText("Quét QR CCCD");
-        jButton1.addComponentListener(new java.awt.event.ComponentAdapter() {
+        btnquetCCCD.setBackground(new java.awt.Color(255, 255, 255));
+        btnquetCCCD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/qr.png"))); // NOI18N
+        btnquetCCCD.setText("Quét QR CCCD");
+        btnquetCCCD.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
-                jButton1ComponentHidden(evt);
+                btnquetCCCDComponentHidden(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnquetCCCD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnquetCCCDActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+        btnquetCCCD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jButton1KeyReleased(evt);
+                btnquetCCCDKeyReleased(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 130, -1, -1));
+        jPanel1.add(btnquetCCCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 130, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 102, 255));
@@ -1397,30 +1399,91 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtFindFocusGained
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnquetCCCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquetCCCDActionPerformed
 
-        QR_CCCD qr = new QR_CCCD();
-        qr.setVisible(true);
+        QR_CCCD qrCode = new QR_CCCD();
 
-        int delay = 3000; // Độ trễ sau 3 giây (3000 mili giây)
-        timer = new Timer(delay, e -> {
-            if (qr.isVisible()) {
+        qrCode.setDefaultCloseOperation(qrCode.DISPOSE_ON_CLOSE);
+        qrCode.setVisible(true);
+        qrCode.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+                System.out.println("window closing");
+
                 this.ramdomCCCD();
-                this.setVisible(true);
+
+            }
+
+            private void ramdomCCCD() {
+                String randomCode = generateRandomCode(12);
+                txtCCCD.setText(randomCode);
+                txtHoTen.setText(this.generateRandomName());
+                txtSDT.setText(this.generateRandomPhoneNumber());
+                txtDiaChi.setText(this.generateRandomProvinceName());
+
+                if (txtHoTen.getText().contains("Thị") || txtHoTen.getText().contains("Như") || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Mỹ")
+                        || txtHoTen.getText().contains("Hoa") || txtHoTen.getText().contains("Hương") || txtHoTen.getText().contains("Linh") || txtHoTen.getText().contains("Nga")
+                        || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Trang") || txtHoTen.getText().contains("Vân")) {
+                    rdNu.setSelected(true);
+                } else {
+                    rdNam.setSelected(true);
+                }
+
+                int minYear = 1900;
+                int maxYear = 2022;
+                int randomYear = ThreadLocalRandom.current().nextInt(minYear, maxYear + 1);
+
+                // Tạo một số ngẫu nhiên đại diện cho tháng sinh (từ 1 đến 12)
+                int randomMonth = ThreadLocalRandom.current().nextInt(1, 13);
+
+                // Lấy số ngày tối đa trong tháng và năm sinh đã tạo
+                int maxDay = LocalDate.of(randomYear, randomMonth, 1).lengthOfMonth();
+
+                // Tạo một số ngẫu nhiên đại diện cho ngày sinh (từ 1 đến ngày tối đa trong tháng)
+                int randomDay = ThreadLocalRandom.current().nextInt(1, maxDay + 1);
+
+                // Tạo đối tượng LocalDate từ ngày, tháng và năm sinh đã tạo
+                LocalDate randomDateOfBirth = LocalDate.of(randomYear, randomMonth, randomDay);
+
+                // Đặt ngày sinh ngẫu nhiên vào JDateChooser
+                txtNgaySinh.setDate(java.sql.Date.valueOf(randomDateOfBirth));
+
+                String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
+                String randomEmail = generateRandomEmail(domains);
+                txtEmail.setText(randomEmail);
+            }
+
+            private String generateRandomName() {
+                Random random = new Random();
+                String lastName = lastNames[random.nextInt(lastNames.length)];
+                String middleName = middleNames[random.nextInt(middleNames.length)];
+                String firstName = firstNames[random.nextInt(firstNames.length)];
+                return lastName + " " + middleName + " " + firstName;
+            }
+
+            private String generateRandomPhoneNumber() {
+                Random random = new Random();
+                String prefix = prefixes[random.nextInt(prefixes.length)];
+                String number = generateRandomNumber(8);
+                return prefix + number;
+            }
+
+            private String generateRandomProvinceName() {
+                Random random = new Random();
+                return provinceNames[random.nextInt(provinceNames.length)];
             }
         });
-        timer.setRepeats(false); // Chỉ gọi phương thức một lần
-        timer.start();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnquetCCCDActionPerformed
 
-    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
+    private void btnquetCCCDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnquetCCCDKeyReleased
 
-    }//GEN-LAST:event_jButton1KeyReleased
+    }//GEN-LAST:event_btnquetCCCDKeyReleased
 
-    private void jButton1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton1ComponentHidden
-       
-    }//GEN-LAST:event_jButton1ComponentHidden
+    private void btnquetCCCDComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnquetCCCDComponentHidden
+
+    }//GEN-LAST:event_btnquetCCCDComponentHidden
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1432,13 +1495,13 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnTaiMau;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnquetCCCD;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.JComboBox<String> cboChucVu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -1621,6 +1684,6 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
         String randomEmail = generateRandomEmail(domains);
         txtEmail.setText(randomEmail);
-     
+
     }
 }
