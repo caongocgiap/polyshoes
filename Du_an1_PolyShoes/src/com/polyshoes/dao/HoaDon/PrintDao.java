@@ -43,8 +43,7 @@ public class PrintDao {
                 + "    (Hoa_Don_Chi_Tiet.SoLuong * Hoa_Don_Chi_Tiet.Gia);";
         return select(sql, MaHD);
     }
-
-    public List<PrintHoaDon> select2(String MaHD) {
+     public List<PrintHoaDon> select2(String MaHD) {
         String sql = "SELECT TOP 1\n"
                 + "                   Hoa_Don.TenNguoiNhan,\n"
                 + "                	san_pham.Ten,\n"
@@ -80,6 +79,7 @@ public class PrintDao {
                 + "    tongTien DESC;";
         return select(sql, MaHD);
     }
+
 
     private List<PrintHoaDon> select(String sql, Object... args) {
         List<PrintHoaDon> list = new ArrayList<>();

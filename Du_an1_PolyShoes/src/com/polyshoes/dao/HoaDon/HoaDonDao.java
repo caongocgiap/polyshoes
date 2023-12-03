@@ -207,8 +207,8 @@ public class HoaDonDao {
                 + "               join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
                 + "                 where Hoa_Don.Deleted = 0\n"
                 + "				 group by \n"
-                + "				 Hoa_Don.id,Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
-                + "               ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+                + "				 Hoa_Don.id,Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.ngayCapnhat,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "               ORDER BY Hoa_Don.ngayCapnhat DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return select(sql, page, limit);
     }
 

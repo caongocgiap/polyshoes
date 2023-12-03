@@ -1,6 +1,5 @@
 package com.polyshoes.main;
 
-import com.github.sarxos.webcam.Webcam;
 import com.polyshoes.component.HeaderJPanel;
 import com.polyshoes.component.MenuJPanel;
 import com.polyshoes.event.EventMenuSelected;
@@ -59,7 +58,6 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 main.showForm(new TrangChuJPanel());
                                                 break;
                                         case 1:
-//                                                main.showForm(new BanHangJPanel());
                                                 main.showForm(new BanHangJPanel2());
                                                 break;
                                         case 2:
@@ -78,7 +76,6 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 // Thong ke
                                                 break;
                                         case 7:
-                                          
                                                 main.showForm(new NhanVienJPanel());
                                                 break;
                                         default:
@@ -150,6 +147,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 bg = new javax.swing.JLayeredPane();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setResizable(false);
 
                 bg.setBackground(new java.awt.Color(245, 245, 245));
                 bg.setForeground(new java.awt.Color(255, 255, 255));

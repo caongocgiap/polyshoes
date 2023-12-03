@@ -1,9 +1,15 @@
 package com.polyshoes.view.sanpham;
 
+import com.polyshoes.dao.sanpham.ThuocTinhDAO;
+import com.polyshoes.helper.DialogHelper;
+import com.polyshoes.model.sanpham.ThuocTinh;
 import java.awt.Color;
 
 public class ThuocTinhJFrame extends javax.swing.JFrame {
 
+        ThuocTinhDAO dao = new ThuocTinhDAO();
+        public static String tenBang;
+        
         public ThuocTinhJFrame() {
                 initComponents();
                 setBackground(Color.white);
@@ -28,8 +34,15 @@ public class ThuocTinhJFrame extends javax.swing.JFrame {
                 txtTen.setLabelText("Tên thuộc tính");
 
                 btnThem.setText("Thêm");
+                btnThem.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnThemActionPerformed(evt);
+                        }
+                });
 
+                txtMa.setEditable(false);
                 txtMa.setBackground(new java.awt.Color(255, 255, 255));
+                txtMa.setText("###");
                 txtMa.setLabelText("Mã thuộc tính");
 
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -73,6 +86,10 @@ public class ThuocTinhJFrame extends javax.swing.JFrame {
                 setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
 
+        private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+                insert();
+        }//GEN-LAST:event_btnThemActionPerformed
+
         public static void main(String args[]) {
                 /* Set the Nimbus look and feel */
                 //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -111,4 +128,17 @@ public class ThuocTinhJFrame extends javax.swing.JFrame {
         private com.polyshoes.swing.TextField txtMa;
         private com.polyshoes.swing.TextField txtTen;
         // End of variables declaration//GEN-END:variables
+
+        private void insert() {
+                String ma = txtMa.getText();
+                String ten = txtTen.getText();
+                ThuocTinh model = new ThuocTinh(ma, ten);
+                try {
+                        dao.insert(tenBang, model);
+                        DialogHelper.alert(this, "Thêm thành công!");
+                        setVisible(false);
+                } catch (Exception e) {
+                        DialogHelper.alert(this, "Thêm thất bại!");
+                }
+        }
 }

@@ -12,7 +12,6 @@ import java.util.Date;
  * @author ASUS
  */
 public class XuatDanhSach {
-    
     private int id;
     private String MaHD;
     private Date ngayTao;
