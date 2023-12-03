@@ -21,14 +21,11 @@ import javax.swing.table.DefaultTableModel;
 import com.polyshoes.dao.HoaDon.HoaDonDao;
 import com.polyshoes.dao.HoaDon.LichSuHoaDonDao;
 import com.polyshoes.dao.HoaDon.XuatDanhSachDao;
-import com.polyshoes.main.MainJFrame;
 import com.polyshoes.model.HoaDon.HoaDon;
 import com.polyshoes.model.HoaDon.HoaDonChiTiet;
 import com.polyshoes.model.HoaDon.LichSuHoaDon;
 import com.polyshoes.model.HoaDon.XuatDanhSach;
-import com.polyshoes.view.banhang.BanHangJPanel2;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
@@ -542,63 +539,47 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 //        }
 //    }
     void TimKiemTheoBang4() {
-        try {
-            int txtCheck = (int) tblChiTiet3.getValueAt(tblChiTiet3.getSelectedRow(), 3);
-            Double txtGia = (Double) tblChiTiet3.getValueAt(tblChiTiet3.getSelectedRow(), 4);
+        int txtCheck = (int) tblChiTiet3.getValueAt(tblChiTiet3.getSelectedRow(), 3);
+        Double txtGia = (Double) tblChiTiet3.getValueAt(tblChiTiet3.getSelectedRow(), 4);
+        String SoLuong = JOptionPane.showInputDialog(this, "Mời nhập số Lượng!");
+        int SoLuong2 = Integer.parseInt(SoLuong);
 
-            // Input validation for SoLuong
-            String inputSoLuong = JOptionPane.showInputDialog(this, "Mời nhập số Lượng!");
-            if (inputSoLuong == null || inputSoLuong.trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập số Lượng!");
-                return;
-            }
+        if (!SoLuong.equals("")) {
+            if (SoLuong.isEmpty() || SoLuong2 <= 0 || txtCheck < SoLuong2) {
+                JOptionPane.showMessageDialog(this, "Mời lại nhập số Lượng!");
 
-            int soLuong;
-            try {
-                soLuong = Integer.parseInt(inputSoLuong);
-                if (soLuong <= 0 || txtCheck < soLuong) {
-                    JOptionPane.showMessageDialog(this, "Số Lượng không hợp lệ!");
-                    return;
+            } else {
+                DefaultTableModel model = (DefaultTableModel) tblChiTiet4.getModel();
+                model.setRowCount(0);
+                String mahd = txtTimkiemLS2.getText();
+                String masp = (String) tblChiTiet3.getValueAt(tblChiTiet3.getSelectedRow(), 1);
+                try {
+                    List<HoaDonChiTiet> list = hdctdao.selectByTramotmon(mahd, masp);
+                    int stt = 0;
+                    double TongTien = (txtGia * SoLuong2);
+                    for (HoaDonChiTiet hdct : list) {
+                        stt++;
+                        Object[] row = {
+                            hdct.getTrangXep(),
+                            stt,
+                            hdct.getMaSPCT(),
+                            hdct.getTenSp(),
+                            hdct.getHang(),
+                            hdct.getColor(),
+                            SoLuong,
+                            hdct.getDonGia(),
+                            TongTien
+
+                        };
+                        model.addRow(row);
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "loi truy van du lieu!");
+                    e.printStackTrace();
                 }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập số Lượng hợp lệ!");
-                return;
             }
-
-            DefaultTableModel model = (DefaultTableModel) tblChiTiet4.getModel();
-            model.setRowCount(0);
-
-            String mahd = txtTimkiemLS2.getText();
-            String masp = (String) tblChiTiet3.getValueAt(tblChiTiet3.getSelectedRow(), 1);
-
-            try {
-                List<HoaDonChiTiet> list = hdctdao.selectByTramotmon(mahd, masp);
-                int stt = 0;
-                double tongTien = (txtGia * soLuong);
-
-                for (HoaDonChiTiet hdct : list) {
-                    stt++;
-                    Object[] row = {
-                        hdct.getTrangXep(),
-                        stt,
-                        hdct.getMaSPCT(),
-                        hdct.getTenSp(),
-                        hdct.getHang(),
-                        hdct.getColor(),
-                        soLuong,
-                        hdct.getDonGia(),
-                        tongTien
-                    };
-                    model.addRow(row);
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Lỗi truy vấn dữ liệu!");
-                e.printStackTrace();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Lỗi khi nhập số lượng!");
-            e.printStackTrace();
         }
+
     }
 
     void TimKiemTheoBang12() {
@@ -748,13 +729,6 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
         }
     }
 
-    public void showForm(Component form) {
-        removeAll();
-        add(form);
-        repaint();
-        revalidate();
-    }
-
     void TimKiemTheoBang6() {
         DefaultTableModel model = (DefaultTableModel) tblChiTiet3.getModel();
         model.setRowCount(0);
@@ -816,7 +790,185 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
             e.printStackTrace();
         }
     }
+//    void TimKiemTheoBangSanPham() {
+//        DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
+//        model.setRowCount(0);
+//        String mahd = (String) tblLichSu.getValueAt(tblLichSu.getSelectedRow(), 3);
+//        try {
+//            List<HoaDonChiTiet> list = hdctdao.selectByLichSu(mahd);
+//            int stt = 0;
+//            for (HoaDonChiTiet hdct : list) {
+//                stt++;
+//                Object[] row = {
+//                    stt,
+//                    hdct.getTenSp(),
+//                    hdct.getDonGia(),
+//                    hdct.getSoLuong(),
+//                    hdct.getTongTien()
+//                };
+//                model.addRow(row);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "loi truy van du lieu!");
+//            e.printStackTrace();
+//        }
+//    }
+//    void TimKiemTheoTraHang() {
+//        DefaultTableModel model = (DefaultTableModel) tblSanPham1.getModel();
+//        model.setRowCount(0);
+//        String mahd = txtTraHang.getText();
+//        try {
+//            List<HoaDonChiTiet> list = hdctdao.selectByTraHang(mahd);
+//            int stt = 0;
+//            for (HoaDonChiTiet hdct : list) {
+//                stt++;
+//                Object[] row = {
+//                    stt,
+//                    hdct.getTenSp(),
+//                    hdct.getDonGia(),
+//                    hdct.getSoLuong(),
+//                    hdct.getTongTien()
+//                };
+//                model.addRow(row);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "loi truy van du lieu!");
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    void filltableLichSu(int page, int limit) {
+//        DefaultTableModel model = (DefaultTableModel) tblLichSu.getModel();
+//        model.setRowCount(0);
+//        int stt = 0;
+//        try {
+//            List<LichSuHoaDon> list = lsdao.paging(page, limit);
+//            for (LichSuHoaDon ls : list) {
+//                stt++;
+//                Object[] row = {
+//                    stt,
+//                    ls.getTenNV(),
+//                    ls.getMaNV(),
+//                    ls.getTenKH(),
+//                    ls.getTongTien(),
+//                    ls.getNgayTao(),
+//                    ls.getNgayTT(),
+//                    ls.getTrangThaiA()
+//                };
+//                model.addRow(row);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "loi truy van du lieu!!");
+//            e.printStackTrace();
+//        }
+//    }
+//    void fillTimkiemLS() {
+//        DefaultTableModel model = (DefaultTableModel) tblLichSu.getModel();
+//        model.setRowCount(0);
+//        int stt = 0;
+//        try {
+//            String keyword = txtTimkiemLS.getText();
+//            List<LichSuHoaDon> list = lsdao.selectByKeyword(keyword);
+//            for (LichSuHoaDon ls : list) {
+//                stt++;
+//                Object[] row = {
+//                    stt,
+//                    ls.getTenNV(),
+//                    ls.getMaNV(),
+//                    ls.getTenKH(),
+//                    ls.getTongTien(),
+//                    ls.getNgayTao(),
+//                    ls.getNgayTT(),
+//                    ls.getTrangThai()
+//                };
+//                model.addRow(row);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "loi truy van du lieu!!");
+//            e.printStackTrace();
+//        }
+//    }
+//    void showData(int index) {
+//
+//        HoaDon model = dao.select().get(index);
+//        JTextHoaDon.setText(model.getMaHD());
+//        JTextKhachHang.setText(model.getTenKH());
+//        JTextSDT.setText(model.getSDT());
+//        JTextNgayTao.setText(model.getNgayTaoString());
+//        JTextNgayTT.setText(model.getNgayTTAsString());
+//        JTextArea.setText(model.getDiaChi());
+//        JTextTrangThai.setText(model.getTrangThaiA());
+//        JTextTongTien.setText(model.getTongTien() + "");
+//    }
+//
+//    void showData2() {
+//        try {
+//            String mahd = txtTimkiemLS.getText();
+//            List<HoaDon> model = dao.selectByLSSS(mahd);
+//            for (HoaDon x : model) {
+//                JTextHoaDon.setText(x.getMaHD());
+//                JTextKhachHang.setText(x.getTenKH());
+//                JTextSDT.setText(x.getSDT());
+//                JTextNgayTao.setText(x.getNgayTaoString());
+//                JTextNgayTT.setText(x.getNgayTTAsString());
+//                JTextArea.setText(x.getDiaChi());
+//                JTextTrangThai.setText(x.getTrangThaiA());
+//                JTextTongTien.setText(String.valueOf(x.getTongTien()));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+//
+//    void showData4() {
+//        try {
+//            String mahd = txtTimkiemLS.getText();
+//            List<LichSuHoaDon> model = lsdao.selectByKeyword(mahd);
+//            for (LichSuHoaDon x : model) {
+//                JTextTenNhanVien.setText(x.getTenNV());
+//                JTextMaNhanVien.setText(x.getMaNV());
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
+//    void showData5() {
+//        try {
+//            String mahd = txtTimkiemLS1.getText();
+//            List<HoaDon> model = dao.selectByLSSS(mahd);
+//            for (HoaDon x : model) {
+//                JTextHoaDon2.setText(x.getMaHD());
+//                JTextKhachHang2.setText(x.getTenKH());
+//                JTextSDT2.setText(x.getSDT());
+//                JTextNgayTao2.setText(x.getNgayTaoString());
+//                JTextNgayTT2.setText(x.getNgayTTAsString());
+//                JTextArea2.setText(x.getDiaChi());
+//                JTextTrangThai2.setText(x.getTrangThaiA());
+//                JTextTongTien2.setText(String.valueOf(x.getTongTien()));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+//    void showData6() {
+//        try {
+//            String mahd = txtTimkiemLS1.getText();
+//            List<LichSuHoaDon> model = lsdao.selectByKeyword(mahd);
+//            for (LichSuHoaDon x : model) {
+//                JTextTenNhanVien1.setText(x.getTenNV());
+//                JTextMaNhanVien1.setText(x.getMaNV());
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
     void showData7() {
         try {
             String mahd = txtTimkiemLS2.getText();
@@ -861,45 +1013,23 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
         try {
             String mahd2 = txtTimkiemLS2.getText();
             String mahd = (String) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 2);
-            double tiengoc = (double) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 7);
-
-            // Assuming HoaDon has a method to get the quantity as an integer
-            int quantity = getQuantityFromTable();
-
+            List<HoaDonChiTiet> model2 = hdctdao.selectByTraHang1(mahd2, mahd);
             List<HoaDon> model = dao.selectByLSSS2(mahd2, mahd);
-
-            // Assuming JTextTongTien3 is a JTextField
-            double tiengoc3Value = Double.parseDouble(JTextTongTien3.getText());
-
-            double tienhang = quantity * tiengoc;
-            double tienthua = tiengoc3Value - tienhang;
-
-            // Format tienhang and tienthua as strings
-            String formattedTienhang = String.format("%.2f", tienhang);
-            String formattedTienthua = String.format("%.2f", tienthua);
-
             for (HoaDon x : model) {
                 JTextKH.setText(x.getTenKH());
                 JTextTienGocHoaDon.setText(String.valueOf(x.getTongTien()));
-                JTextArea.setText("..."); // Replace "..." with the actual text you want to set
-                JTextTienThua.setText(String.valueOf(x.getTongTien() - tienhang));
-                JTextTienGocTraHang.setText(formattedTienhang);
+                JTextArea.setText("....");
+                JTextTienThua.setText("0");
+                JTextTienGocTraHang.setText(String.valueOf(x.getTongTien()));
+
             }
+//            for (HoaDonChiTiet x : model2) {
+//               JTextTienGocTraHang.setText(x.getDonGia().toString());
+//            }
         } catch (Exception e) {
             e.printStackTrace();
-            // Handle the exception appropriately, log it, show a message to the user, etc.
         }
-    }
 
-// Example method assuming HoaDon has a method to get quantity
-    private int getQuantityFromTable() {
-        try {
-            // Assuming column 6 contains integers
-            return (int) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 6);
-        } catch (Exception e) {
-            // Handle the exception appropriately, log it, show a message to the user, etc.
-            return 0; // Default value if the conversion fails
-        }
     }
 
     void showData8(String mahd) {
@@ -922,6 +1052,48 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 
     }
 
+//    void showData3() {
+//        try {
+//            String mahd = txtTraHang.getText();
+//            List<HoaDon> model = dao.selectByHD(mahd);
+//            for (HoaDon x : model) {
+//                JTextHoaDon1.setText(x.getMaHD());
+//                JTextKhachHang1.setText(x.getTenKH());
+//                JTextSDT1.setText(x.getSDT());
+//                JTextNgayTao1.setText(x.getNgayTaoString());
+//                JTextNgayTT1.setText(x.getNgayTTAsString());
+//                JTextArea1.setText(x.getDiaChi());
+//                JTextTrangThai1.setText(x.getTrangThaiA());
+//                JTextTongTien1.setText(String.valueOf(x.getTongTien()));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+//    void fillTimkiemLS() {
+//        DefaultTableModel model = (DefaultTableModel) tblTimeLine.getModel();
+//        model.setRowCount(0);
+//        int stt = 0;
+//        String lyDo = "....";
+//        try {
+//            String mahd = txtTimkiemLS.getText();
+//            List<LichSuHoaDon> list = lsdao.selectByKeyword(mahd);
+//            for (LichSuHoaDon ls : list) {
+//                stt++;
+//                Object[] row = {
+//                    stt,
+//                    ls.getTenNV(),
+//                    ls.getNgayTao(),
+//                    ls.getFormattedNgayCapNhat(),
+//                    lyDo,};
+//                model.addRow(row);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "loi truy van du lieu!!");
+//            e.printStackTrace();
+//        }
+//    }
     void fillTim2() {
         DefaultTableModel model = (DefaultTableModel) tblTimeLine2.getModel();
         model.setRowCount(0);
@@ -938,7 +1110,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
                     ls.getMaNV(),
                     ls.getFormattedNgayTT2(),
                     ls.getFormattedNgayCapNhat(),
-                    ls.getTrangThaiA(),};
+                    lyDo,};
                 model.addRow(row);
             }
         } catch (Exception e) {
@@ -987,6 +1159,31 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
         return true;
     }
 
+//    public void tableChanged() {
+//        int selectedRow = tblChiTiet2.getSelectedRow();
+//        int checkboxColumnIndex = 0;
+//
+//        if (selectedRow != -1) {
+//            Boolean isChecked = (Boolean) tblChiTiet2.getValueAt(selectedRow, checkboxColumnIndex);
+//            System.out.println("Checkbox ở dòng " + selectedRow + " được chọn: " + isChecked);
+//        } else {
+//            System.out.println("Chọn một dòng trước khi lấy giá trị checkbox.");
+//        }
+//    }
+//    void delete1mon() {
+//        int a = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn không", "", JOptionPane.YES_NO_OPTION);
+//        String mahd = txtTimkiemLS1.getText();
+//        if (a == 0) {
+//            try {
+//                hdctdao.tra1mon(mahd);
+//                JOptionPane.showMessageDialog(this, "Đã Trả thành công!");
+//
+//            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(this, "Trả thất bại!");
+//                e.printStackTrace();
+//            }
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1774,7 +1971,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnTraHang1.setBackground(new java.awt.Color(153, 204, 255));
-        btnTraHang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/qr.png"))); // NOI18N
+        btnTraHang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/reset.png"))); // NOI18N
         btnTraHang1.setText("Quét QR");
         btnTraHang1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1811,23 +2008,23 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel27)
-                                .addGap(16, 16, 16))
+                                .addComponent(jLabel27))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTimkiemLS2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(134, 134, 134)
-                                .addComponent(btnTraHang1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnTraHang1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(250, 250, 250)
+                                .addGap(266, 266, 266)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(165, 165, 165)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(389, 389, 389)
-                                .addComponent(btnTraHang2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(407, 407, 407)
+                                .addComponent(btnTraHang2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(116, 116, 116))))
         );
         jPanel6Layout.setVerticalGroup(
@@ -1840,10 +2037,10 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTimkiemLS2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTraHang1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTraHang2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel19)
+                            .addComponent(txtTimkiemLS2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTraHang1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTraHang2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1853,7 +2050,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         materialTabbed1.addTab("Trả hàng ", jPanel6);
@@ -1921,7 +2118,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
                     System.out.println("Checkbox ở dòng " + selectedRow + " được chọn: " + isChecked);
                     if (isChecked == true) {
                         String lydo = JTextArea.getText();
-                        int soLuong = (int) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 6);
+                        String soLuong = (String) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 6);
                         String masp = (String) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 2);
                         hdctdao.tra1mon(soLuong, lydo, mahd, masp);
                         hdctdao.traALll3(mahd);
@@ -2084,11 +2281,11 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnCapNhat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhat1ActionPerformed
         String mahd = (String) tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1);
-        PrintHoaDon2 frame2 = new PrintHoaDon2(mahd);
+        PrintHoaDon21 frame2 = new PrintHoaDon21(mahd);
     }//GEN-LAST:event_btnCapNhat1ActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-      
+        JOptionPane.showMessageDialog(this, "Chức năng đang phát triển!");        // TODO add your handling code here:
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
@@ -2192,6 +2389,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnTraHang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraHang1ActionPerformed
 
+        
         WebCamXYZ qrCode = new WebCamXYZ();
 
         qrCode.setDefaultCloseOperation(qrCode.DISPOSE_ON_CLOSE);
@@ -2201,7 +2399,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
             public void windowClosed(WindowEvent e) {
 
                 System.out.println("window closing");
-                txtTimkiemLS2.setText(qrCode.maHDKK);
+                
                 TimKiemM(qrCode.maHDKK);
                 showData90(qrCode.maHDKK);
 

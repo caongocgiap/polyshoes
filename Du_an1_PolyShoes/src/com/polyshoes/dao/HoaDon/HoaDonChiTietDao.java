@@ -103,7 +103,7 @@ public class HoaDonChiTietDao {
         return select(sql, MaHD);
     }
 
-    public void tra1mon(int soLuong, String lydo, String mahd, String masp) {
+    public void tra1mon(String soLuong, String lydo, String mahd, String masp) {
         String sql = "update TraHang set TraHang.soluong = TraHang.soluong + ? ,TraHang.LyDoTraHang= ?\n"
                 + "from TraHang \n"
                 + "join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.ID = TraHang.IDHoaDonChiTiet\n"
@@ -131,7 +131,7 @@ public class HoaDonChiTietDao {
         JdbcHelper.executeUpdate(sql, mahd);
     }
 
-    public void traVeSoLuong(int soLuong, String MaSP) {
+    public void traVeSoLuong(String soLuong, String MaSP) {
         String sql = "update San_Pham_Chi_Tiet set SoLuongTon = SoLuongTon + ?\n"
                 + "where San_Pham_Chi_Tiet.Ma = ?";
         JdbcHelper.executeUpdate(sql, soLuong, MaSP);
@@ -175,7 +175,7 @@ public class HoaDonChiTietDao {
     }
 
     public List<HoaDonChiTiet> selectByTraHang1(String mahd, String keyword) {
-        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham.Ma,San_Pham.Ten,Nha_San_Xuat.Ten as Ten2,Mau_Sac.Ten as  Ten3,Size.Size,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia,Hoa_Don_Chi_Tiet.TrangThai ,Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia as ThanhTien \n"
+        String sql = "select San_Pham_Chi_Tiet.ID,San_Pham_chi_tiet.Ma,San_Pham.Ten,Nha_San_Xuat.Ten as Ten2,Mau_Sac.Ten as  Ten3,Size.Size,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia,Hoa_Don_Chi_Tiet.TrangThai ,Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia as ThanhTien \n"
                 + "from San_Pham join San_Pham_Chi_Tiet on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
                 + "join Nha_San_Xuat on Nha_San_Xuat.ID = San_Pham_Chi_Tiet.IDNSX\n"
                 + "join Hoa_Don_Chi_Tiet on San_Pham_Chi_Tiet.id =Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
@@ -183,7 +183,7 @@ public class HoaDonChiTietDao {
                 + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
                 + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
                 + "join Nhan_Vien on Nhan_Vien.id =Hoa_Don.IDNhanVien\n"
-                + "where Hoa_Don_Chi_Tiet.trangthai = 1 and Hoa_Don.MaHD = ? and San_Pham.Ma = ? ";
+                + "where Hoa_Don_Chi_Tiet.trangthai = 1 and Hoa_Don.MaHD = ? and San_Pham_chi_tiet.Ma = ? ";
         return select(sql, mahd, keyword);
     }
 

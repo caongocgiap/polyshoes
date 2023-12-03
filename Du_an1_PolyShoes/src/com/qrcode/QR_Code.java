@@ -26,20 +26,19 @@ public class QR_Code extends javax.swing.JFrame implements  Runnable, ThreadFact
         private WebcamPanel panel = null;
         private Webcam webcam = null;
         private Executor executor = Executors.newSingleThreadExecutor(this);
-        public static int trangHienThi; 
         
         public QR_Code() {
                 initComponents();
                 initWebcam();
         }
-        
+
         @SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 jPanel2 = new javax.swing.JPanel();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 setTitle("Polyshoes");
                 setResizable(false);
 
@@ -137,19 +136,9 @@ public class QR_Code extends javax.swing.JFrame implements  Runnable, ThreadFact
                                 Logger.getLogger(QR_Code.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         
-                        if(trangHienThi == 1) {
-                                if(result != null) {
-                                        BanHangJPanel2.maSPCT = result.getText();
-                                        System.out.println(BanHangJPanel2.maSPCT);
-                                        webcam.close();
-//                                        this.setVisible(false);
-                                        dispose();
-                                        return;
-                                }
-                        }
-                        
                         if(result != null) {
                                 SanPhamChiTietJFrame.maSPCT = result.getText();
+                                BanHangJPanel2.maSPChiTiet = result.getText();
                                 new SanPhamChiTietJFrame().setVisible(true);
                                 webcam.close();
                                 this.setVisible(false);

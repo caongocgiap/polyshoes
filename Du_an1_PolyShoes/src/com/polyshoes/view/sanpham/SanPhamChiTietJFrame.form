@@ -327,6 +327,9 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboDanhMucActionPerformed"/>
+          </Events>
         </Component>
         <Component class="com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion" name="cboNSX">
           <Properties>
@@ -611,9 +614,6 @@
               </Border>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblAnhMouseClicked"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

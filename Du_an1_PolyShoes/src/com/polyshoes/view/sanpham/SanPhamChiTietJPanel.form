@@ -616,9 +616,13 @@
                               <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTieuDe13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboTenSP" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="cboTenSP" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="btnTenSP" min="-2" pref="36" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="0" pref="52" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -631,7 +635,10 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="lblTieuDe13" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="cboTenSP" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cboTenSP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTenSP" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -658,6 +665,13 @@
                       <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                         <EmptyBorder bottom="1" left="10" right="1" top="1"/>
                       </Border>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="com.polyshoes.swing.Button" name="btnTenSP">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -737,9 +751,6 @@
                       <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDanhMucActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -817,9 +828,6 @@
                       <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThuongHieuActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -897,9 +905,6 @@
                       <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXuatXuActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -977,9 +982,6 @@
                       <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhaSanXuatActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1057,9 +1059,6 @@
                       <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChatLieuActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1137,9 +1136,6 @@
                       <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeGiayActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1217,9 +1213,6 @@
                       <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCoGiayActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1297,9 +1290,6 @@
                       <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSizeActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1377,9 +1367,6 @@
                       <Image iconType="3" name="/com/polyshoes/icon/add.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMauSacActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -40,6 +40,8 @@ public class LichSuHoaDon {
         this.ngayCapNhat = ngayCapNhat;
     }
 
+  
+
     public int getID() {
         return ID;
     }
@@ -116,13 +118,11 @@ public class LichSuHoaDon {
     public String getTrangThaiA() {
         switch (getTrangThai()) {
             case 0:
-                return "tạo hóa đơn";
-//            case 1:
-//                return "hủy hóa đơn";
+                return "Đã thanh toán";
+            case 1:
+                return "Chưa thanh toán";
             case 2:
-                return "hủy hóa đơn";
-            case 3:
-                return "trả hàng";
+                return "Đã hủy thanh toán";
             default:
                 return null;
         }
@@ -140,8 +140,7 @@ public class LichSuHoaDon {
         }
         return genMaNV();
     }
-
-    public String getFormattedTao() {
+     public String getFormattedTao() {
         if (NgayTao != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             return dateFormat.format(NgayTao);
@@ -149,8 +148,7 @@ public class LichSuHoaDon {
             return null;
         }
     }
-
-    public String getFormattedNgayCapNhat() {
+ public String getFormattedNgayCapNhat() {
         if (ngayCapNhat != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             return dateFormat.format(ngayCapNhat);
@@ -158,8 +156,7 @@ public class LichSuHoaDon {
             return null;
         }
     }
-
-    public String getFormattedNgayTT2() {
+ public String getFormattedNgayTT2() {
         if (ngayCapNhat != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
             return dateFormat.format(ngayCapNhat);
