@@ -21,6 +21,10 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         int pageSize = 1;
         int limit = 5;
         public static String maSP = "%";
+        private String nsx = "%";
+        private String xuatXu = "%";
+        private String danhMuc = "%";
+        private boolean gia = false; // true: 1, false: 0
 
         public SanPhamChiTietJPanel() {
                 initComponents();
@@ -134,13 +138,33 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 pnlBoLoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
                 cboFindNSX.setLabeText("Nhà sản xuất");
+                cboFindNSX.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cboFindNSXActionPerformed(evt);
+                        }
+                });
 
                 cboFindXuatXu.setLabeText("Xuất xứ");
+                cboFindXuatXu.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cboFindXuatXuActionPerformed(evt);
+                        }
+                });
 
                 cboFindDanhMuc.setLabeText("Danh mục");
+                cboFindDanhMuc.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cboFindDanhMucActionPerformed(evt);
+                        }
+                });
 
-                cboFindGia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cao đến thấp", "Thấp đến cao" }));
+                cboFindGia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Thấp đến cao", "Cao đến thấp" }));
                 cboFindGia.setLabeText("Giá");
+                cboFindGia.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cboFindGiaActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout pnlBoLocLayout = new javax.swing.GroupLayout(pnlBoLoc);
                 pnlBoLoc.setLayout(pnlBoLocLayout);
@@ -963,6 +987,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
 
         private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
                 this.clear();
+                fillToTable(pageIndex, limit);
         }//GEN-LAST:event_btnMoiActionPerformed
 
         private void tblSPCTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSPCTMouseClicked
@@ -1082,6 +1107,34 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 new ThuocTinhJFrame().setVisible(true);
                 fillComboBox(cboCoGiay, "Co_Giay");
         }//GEN-LAST:event_btnCoGiayActionPerformed
+
+        private void cboFindNSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindNSXActionPerformed
+                if(cboFindNSX.getSelectedIndex() != -1) {
+                        nsx = cboFindNSX.getSelectedItem().toString();
+                        locSPCT();
+                }
+        }//GEN-LAST:event_cboFindNSXActionPerformed
+
+        private void cboFindXuatXuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindXuatXuActionPerformed
+                if(cboFindXuatXu.getSelectedIndex() != -1) {
+                        xuatXu = cboFindXuatXu.getSelectedItem().toString();
+                        locSPCT();
+                }
+        }//GEN-LAST:event_cboFindXuatXuActionPerformed
+
+        private void cboFindDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindDanhMucActionPerformed
+                if(cboFindDanhMuc.getSelectedIndex() != -1) {
+                        danhMuc = cboFindDanhMuc.getSelectedItem().toString();
+                        locSPCT();
+                }
+        }//GEN-LAST:event_cboFindDanhMucActionPerformed
+
+        private void cboFindGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindGiaActionPerformed
+                if(cboFindGia.getSelectedIndex() != -1) {
+                        gia = cboFindGia.getSelectedIndex() != 0;
+                        locSPCT();
+                }
+        }//GEN-LAST:event_cboFindGiaActionPerformed
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1309,8 +1362,13 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }
 
         private void taiMaQR() {
-                TaiMaQR.maSPCT = (String) tblSPCT.getValueAt(tblSPCT.getSelectedRow(), 1);
-                TaiMaQR.taiQR();
+                index = tblSPCT.getSelectedRow();
+                if(index >= 0) {
+                        TaiMaQR.maSPCT = (String) tblSPCT.getValueAt(index, 1);
+                        TaiMaQR.taiQR();
+                } else {
+                        DialogHelper.alert(this, "Vui lòng chọn sản phẩm muốn tải");
+                }
         }
 
         private int getPageSize(int limit) {
@@ -1329,5 +1387,14 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 }
                 return pageSize;
         }
-
+        
+        private void locSPCT() {
+                List<SanPhamChiTiet> list = dao.locSPCT(maSP, nsx, xuatXu, danhMuc, gia);
+                System.out.println("Ma:" + maSP + "\nNSX:" + nsx + "\nXuatXu:" + xuatXu + "\nDanhMuc:" + danhMuc + "\nGia:" + gia);
+                DefaultTableModel tblModel = (DefaultTableModel) tblSPCT.getModel();
+                tblModel.setRowCount(0);
+                for (SanPhamChiTiet x : list) {
+                        tblModel.addRow(x.toDataRow());
+                }
+        }
 }

@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 
 public class Actionn extends javax.swing.JPanel {
 
+        public Actionn() {
+        }
+
         public Actionn(ModelAction data) {
                 initComponents();
                 cmdEdit.addActionListener(new ActionListener() {
@@ -67,4 +70,14 @@ public class Actionn extends javax.swing.JPanel {
         private com.polyshoes.swing.Button cmdDelete;
         private com.polyshoes.swing.Button cmdEdit;
         // End of variables declaration//GEN-END:variables
+
+        public void initEvent(TableActionEvent event, int row) {
+                cmdEdit.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent ae) {
+                                event.onEdit(row);
+                        }
+                });
+
+        }
 }

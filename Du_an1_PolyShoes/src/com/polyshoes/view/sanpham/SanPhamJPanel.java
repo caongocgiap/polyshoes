@@ -86,6 +86,10 @@ public class SanPhamJPanel extends javax.swing.JPanel {
                         }
                 });
                 jScrollPaneSanPham.setViewportView(tblSanPham);
+                if (tblSanPham.getColumnModel().getColumnCount() > 0) {
+                        tblSanPham.getColumnModel().getColumn(0).setResizable(false);
+                        tblSanPham.getColumnModel().getColumn(0).setPreferredWidth(10);
+                }
 
                 lblTieuDe.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
                 lblTieuDe.setForeground(new java.awt.Color(76, 76, 76));
