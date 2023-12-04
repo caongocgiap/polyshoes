@@ -140,9 +140,7 @@ public class QR_Code extends javax.swing.JFrame implements  Runnable, ThreadFact
                         if(trangHienThi == 1) {
                                 if(result != null) {
                                         BanHangJPanel2.maSPCT = result.getText();
-                                        System.out.println(BanHangJPanel2.maSPCT);
                                         webcam.close();
-//                                        this.setVisible(false);
                                         dispose();
                                         return;
                                 }

@@ -4,7 +4,6 @@ import com.polyshoes.component.HeaderJPanel;
 import com.polyshoes.component.MenuJPanel;
 import com.polyshoes.event.EventMenuSelected;
 import com.polyshoes.event.EventShowPopupMenu;
-import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.view.trangchu.TrangChuJPanel;
 import com.polyshoes.view.trangchu.MainJPanel;
 import com.polyshoes.swing.MenuItem;
@@ -13,10 +12,9 @@ import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
 import com.polyshoes.view.glasspanepopup.GlassPanePopup;
 import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanel;
-import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanellll;
 import com.polyshoes.view.HoaDon.HoaDonPanel10;
-import com.polyshoes.view.banhang.BanHangJPanel;
 import com.polyshoes.view.banhang.BanHangJPanel2;
+import com.polyshoes.view.khachhang.KhacHangJPanel1;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
 import java.awt.Color;
@@ -70,7 +68,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 main.showForm(new QuanLyKhuyenMaiPanel());
                                                 break;
                                         case 5:
-                                                // Khach hang
+                                                main.showForm(new KhacHangJPanel1());
                                                 break;
                                         case 6:
                                                 // Thong ke

@@ -311,6 +311,9 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                                 .addComponent(cboFindTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
                 );
+
+                tab1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCapNhatSP, btnLamMoiSP, btnThemSP, btnXoaSP});
+
                 tab1Layout.setVerticalGroup(
                         tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(tab1Layout.createSequentialGroup()

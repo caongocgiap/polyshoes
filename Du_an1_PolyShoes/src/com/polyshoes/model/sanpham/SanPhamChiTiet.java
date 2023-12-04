@@ -22,6 +22,7 @@ public class SanPhamChiTiet {
         private int soLuongTon;
         private double  khoiLuong;
         private String trangThai;
+        private int id;
 
         public SanPhamChiTiet() {
         }
@@ -44,6 +45,14 @@ public class SanPhamChiTiet {
                 this.soLuongTon = soLuongTon;
                 this.khoiLuong = khoiLuong;
                 this.trangThai = trangThai;
+        }
+        
+        public SanPhamChiTiet(int id) {
+                this.id = id;
+        }
+        
+        public int getId() {
+                return this.id;
         }
 
         public int getStt() {
@@ -202,7 +211,7 @@ public class SanPhamChiTiet {
         }
 
         private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        private static final int CODE_LENGTH = 6;
+        private static final int CODE_LENGTH = 5;
 
         public static String generateCode() {
                 Random random = new SecureRandom();
@@ -211,6 +220,6 @@ public class SanPhamChiTiet {
                         int randomIndex = random.nextInt(CHARACTERS.length());
                         code.append(CHARACTERS.charAt(randomIndex));
                 }
-                return "SPCT" + code.toString();
+                return "SPCT-" + code.toString();
         }
 }
