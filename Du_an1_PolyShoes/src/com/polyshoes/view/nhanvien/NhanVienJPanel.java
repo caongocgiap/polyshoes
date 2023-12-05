@@ -20,11 +20,14 @@ import com.polyshoes.dao.NhanVien.NhanVienDao;
 import com.polyshoes.main.MainJFrame;
 import com.polyshoes.model.NhanVien.ChucVu;
 import com.polyshoes.model.NhanVien.NhanVien;
+
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -71,6 +74,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import static org.apache.poi.ss.util.CellUtil.createCell;
 
@@ -78,21 +82,21 @@ import static org.apache.poi.ss.util.CellUtil.createCell;
  *
  * @author Vu Hieu
  */
-public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, ThreadFactory {
+public class NhanVienJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form NhanVienJPanel
      */
     // webcam quét CCCD
-    private WebcamPanel panel = null;
-    private Webcam webcam = null;
-    private static final long serialVersionUID = 6441489157408381878L;
-    private Executor executor = Executors.newSingleThreadExecutor(this);
+//    private WebcamPanel panel = null;
+//    private Webcam webcam = null;
+//    private static final long serialVersionUID = 6441489157408381878L;
+//    private Executor executor = Executors.newSingleThreadExecutor(this);
     // gen mã ramdom
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     private static final int PASSWORD_LENGTH = 8;
     // Tạo Table
-
+    private Timer timer;
     private static final String[] lastNames = {"Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Huỳnh", "Phan", "Vũ", "Đặng"};
     private static final String[] middleNames = {"Văn", "Thị", "Đức", "Như", "Tiến", "Kim", "Thành", "Thủy", "Mỹ", "Quốc"};
     private static final String[] firstNames = {"An", "Bình", "Cường", "Đức", "Hải", "Hoa", "Hương", "Linh", "Minh", "Nga", "Quang", "Thủy", "Trang", "Trung", "Tuấn", "Vân", "Việt", "Xuân"};
@@ -106,7 +110,6 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
 
     public NhanVienJPanel() {
         initComponents();
-        initWebcam();
 
         this.fillComBoBoxChuyenDe();
         rdTatCa.setSelected(true);
@@ -123,10 +126,11 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
 
         btnXoa.setVisible(false);
         btnKhoiPhuc.setVisible(false);
-         if (txtFind.getText().length() == 0) {
+        if (txtFind.getText().length() == 0) {
             this.addPlaceHolderStyle(txtFind);
             txtFind.setText("Tìm kiếm theo MaNV,Email,SĐT,Tên,Địa Chỉ");
         }
+
     }
 
     public void fillTablePagging(long trang) {
@@ -584,6 +588,10 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
 
     }
 
+    void filedtxt() {
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -621,8 +629,6 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator15 = new javax.swing.JSeparator();
         txtEmail = new javax.swing.JTextField();
@@ -632,6 +638,7 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         jSeparator17 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
         txtNgaySinh = new com.toedter.calendar.JDateChooser();
+        btnquetCCCD = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -690,7 +697,7 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         jPanel1.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 245, 10));
 
         cboChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cboChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 250, 25));
+        jPanel1.add(cboChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 250, 25));
 
         rdNam.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(rdNam);
@@ -715,13 +722,13 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, 20));
 
         jLabel6.setText("Email");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, -1, 20));
 
         jLabel8.setText("CCCD");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, 20));
 
         jLabel9.setText("Chức vụ");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, 20));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, 20));
 
         btnThem.setBackground(new java.awt.Color(51, 255, 255));
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/them.png"))); // NOI18N
@@ -753,24 +760,17 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         });
         jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, -1, -1));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/qr.png"))); // NOI18N
-        jLabel12.setText("Quét QR CCCD");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, -1, -1));
-
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, 210, 180));
-
         jLabel7.setText("Ngày sinh");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, 20));
 
         jSeparator15.setForeground(new java.awt.Color(0, 0, 255));
         jSeparator15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 250, 11));
+        jPanel1.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 250, 11));
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(0, 153, 255));
         txtEmail.setBorder(null);
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 245, 20));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 245, 20));
 
         txtSDT.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtSDT.setForeground(new java.awt.Color(0, 153, 255));
@@ -787,20 +787,40 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         txtMaNV.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtMaNV.setForeground(new java.awt.Color(0, 153, 255));
         txtMaNV.setBorder(null);
-        jPanel1.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 245, 20));
+        jPanel1.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 245, 20));
 
         jSeparator17.setForeground(new java.awt.Color(0, 0, 255));
-        jPanel1.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 250, 11));
+        jPanel1.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 250, 11));
 
         jLabel10.setText("MaNV");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 30, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 30, 20));
 
         txtNgaySinh.setBackground(new java.awt.Color(255, 255, 255));
         txtNgaySinh.setForeground(new java.awt.Color(0, 51, 255));
         txtNgaySinh.setToolTipText("");
         txtNgaySinh.setDateFormatString("y,MMM,d");
         txtNgaySinh.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jPanel1.add(txtNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 250, 25));
+        jPanel1.add(txtNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 250, 25));
+
+        btnquetCCCD.setBackground(new java.awt.Color(255, 255, 255));
+        btnquetCCCD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/qr.png"))); // NOI18N
+        btnquetCCCD.setText("Quét QR CCCD");
+        btnquetCCCD.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                btnquetCCCDComponentHidden(evt);
+            }
+        });
+        btnquetCCCD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnquetCCCDActionPerformed(evt);
+            }
+        });
+        btnquetCCCD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnquetCCCDKeyReleased(evt);
+            }
+        });
+        jPanel1.add(btnquetCCCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 130, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 102, 255));
@@ -1239,7 +1259,7 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         fileChooser.setSelectedFile(new File("export.xlsx"));
         fileChooser.setApproveButtonText("Save");
 
-        int userSelection = fileChooser.showSaveDialog(panel);
+        int userSelection = fileChooser.showSaveDialog(jLabel10);
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             String filePath = fileChooser.getSelectedFile().getAbsolutePath();
 
@@ -1379,6 +1399,92 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         }
     }//GEN-LAST:event_txtFindFocusGained
 
+    private void btnquetCCCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquetCCCDActionPerformed
+
+        QR_CCCD qrCode = new QR_CCCD();
+
+        qrCode.setDefaultCloseOperation(qrCode.DISPOSE_ON_CLOSE);
+        qrCode.setVisible(true);
+        qrCode.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+                System.out.println("window closing");
+
+                this.ramdomCCCD();
+
+            }
+
+            private void ramdomCCCD() {
+                String randomCode = generateRandomCode(12);
+                txtCCCD.setText(randomCode);
+                txtHoTen.setText(this.generateRandomName());
+                txtSDT.setText(this.generateRandomPhoneNumber());
+                txtDiaChi.setText(this.generateRandomProvinceName());
+
+                if (txtHoTen.getText().contains("Thị") || txtHoTen.getText().contains("Như") || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Mỹ")
+                        || txtHoTen.getText().contains("Hoa") || txtHoTen.getText().contains("Hương") || txtHoTen.getText().contains("Linh") || txtHoTen.getText().contains("Nga")
+                        || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Trang") || txtHoTen.getText().contains("Vân")) {
+                    rdNu.setSelected(true);
+                } else {
+                    rdNam.setSelected(true);
+                }
+
+                int minYear = 1900;
+                int maxYear = 2022;
+                int randomYear = ThreadLocalRandom.current().nextInt(minYear, maxYear + 1);
+
+                // Tạo một số ngẫu nhiên đại diện cho tháng sinh (từ 1 đến 12)
+                int randomMonth = ThreadLocalRandom.current().nextInt(1, 13);
+
+                // Lấy số ngày tối đa trong tháng và năm sinh đã tạo
+                int maxDay = LocalDate.of(randomYear, randomMonth, 1).lengthOfMonth();
+
+                // Tạo một số ngẫu nhiên đại diện cho ngày sinh (từ 1 đến ngày tối đa trong tháng)
+                int randomDay = ThreadLocalRandom.current().nextInt(1, maxDay + 1);
+
+                // Tạo đối tượng LocalDate từ ngày, tháng và năm sinh đã tạo
+                LocalDate randomDateOfBirth = LocalDate.of(randomYear, randomMonth, randomDay);
+
+                // Đặt ngày sinh ngẫu nhiên vào JDateChooser
+                txtNgaySinh.setDate(java.sql.Date.valueOf(randomDateOfBirth));
+
+                String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
+                String randomEmail = generateRandomEmail(domains);
+                txtEmail.setText(randomEmail);
+            }
+
+            private String generateRandomName() {
+                Random random = new Random();
+                String lastName = lastNames[random.nextInt(lastNames.length)];
+                String middleName = middleNames[random.nextInt(middleNames.length)];
+                String firstName = firstNames[random.nextInt(firstNames.length)];
+                return lastName + " " + middleName + " " + firstName;
+            }
+
+            private String generateRandomPhoneNumber() {
+                Random random = new Random();
+                String prefix = prefixes[random.nextInt(prefixes.length)];
+                String number = generateRandomNumber(8);
+                return prefix + number;
+            }
+
+            private String generateRandomProvinceName() {
+                Random random = new Random();
+                return provinceNames[random.nextInt(provinceNames.length)];
+            }
+        });
+
+    }//GEN-LAST:event_btnquetCCCDActionPerformed
+
+    private void btnquetCCCDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnquetCCCDKeyReleased
+
+    }//GEN-LAST:event_btnquetCCCDKeyReleased
+
+    private void btnquetCCCDComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnquetCCCDComponentHidden
+
+    }//GEN-LAST:event_btnquetCCCDComponentHidden
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -1389,6 +1495,7 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
     private javax.swing.JButton btnTaiMau;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnquetCCCD;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -1397,7 +1504,6 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
     private javax.swing.JComboBox<String> cboChucVu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1408,7 +1514,6 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -1440,97 +1545,96 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
     private javax.swing.JTextField txtSDT;
     // End of variables declaration//GEN-END:variables
 
-    private void initWebcam() {
-        Dimension size = WebcamResolution.QVGA.getSize();
-        webcam = Webcam.getWebcams().get(0); //0 is default webcam
-        webcam.setViewSize(size);
-
-        panel = new WebcamPanel(webcam);
-        panel.setPreferredSize(size);
-        panel.setFPSDisplayed(true);
-
-        jPanel2.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 180));
-
-        executor.execute(this);
-    }
-
-    @Override
-    public void run() {
-        String randomCode = generateRandomCode(12);
-        do {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            Result result = null;
-            BufferedImage image = null;
-
-            if (webcam.isOpen()) {
-                if ((image = webcam.getImage()) == null) {
-                    continue;
-                }
-            }
-
-            LuminanceSource source = new BufferedImageLuminanceSource(image);
-            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
-            try {
-                result = new MultiFormatReader().decode(bitmap);
-            } catch (NotFoundException e) {
-                //No result...
-            }
-            if (txtHoTen.getText().length()==0) {
-                if (result != null) {
-                    txtCCCD.setText(randomCode);
-                    txtHoTen.setText(this.generateRandomName());
-                    txtSDT.setText(this.generateRandomPhoneNumber());
-                    txtDiaChi.setText(this.generateRandomProvinceName());
-
-                    if (txtHoTen.getText().contains("Thị") || txtHoTen.getText().contains("Như") || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Mỹ")
-                            || txtHoTen.getText().contains("Hoa") || txtHoTen.getText().contains("Hương") || txtHoTen.getText().contains("Linh") || txtHoTen.getText().contains("Nga")
-                            || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Trang") || txtHoTen.getText().contains("Vân")) {
-                        rdNu.setSelected(true);
-                    } else {
-                        rdNam.setSelected(true);
-                    }
-
-                    int minYear = 1900;
-                    int maxYear = 2022;
-                    int randomYear = ThreadLocalRandom.current().nextInt(minYear, maxYear + 1);
-
-                    // Tạo một số ngẫu nhiên đại diện cho tháng sinh (từ 1 đến 12)
-                    int randomMonth = ThreadLocalRandom.current().nextInt(1, 13);
-
-                    // Lấy số ngày tối đa trong tháng và năm sinh đã tạo
-                    int maxDay = LocalDate.of(randomYear, randomMonth, 1).lengthOfMonth();
-
-                    // Tạo một số ngẫu nhiên đại diện cho ngày sinh (từ 1 đến ngày tối đa trong tháng)
-                    int randomDay = ThreadLocalRandom.current().nextInt(1, maxDay + 1);
-
-                    // Tạo đối tượng LocalDate từ ngày, tháng và năm sinh đã tạo
-                    LocalDate randomDateOfBirth = LocalDate.of(randomYear, randomMonth, randomDay);
-
-                    // Đặt ngày sinh ngẫu nhiên vào JDateChooser
-                    txtNgaySinh.setDate(java.sql.Date.valueOf(randomDateOfBirth));
-
-                    String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
-                    String randomEmail = generateRandomEmail(domains);
-                    txtEmail.setText(randomEmail);
-
-                }
-            }
-        } while (true);
-    }
-
-    @Override
-    public Thread newThread(Runnable r) {
-        Thread t = new Thread(r, "My Thread");
-        t.setDaemon(true);
-        return t;
-    }
-
+//    private void initWebcam() {
+//        Dimension size = WebcamResolution.QVGA.getSize();
+//        webcam = Webcam.getWebcams().get(0); //0 is default webcam
+//        webcam.setViewSize(size);
+//
+//        panel = new WebcamPanel(webcam);
+//        panel.setPreferredSize(size);
+//        panel.setFPSDisplayed(true);
+//
+//        jPanel2.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 180));
+//
+//        executor.execute(this);
+//    }
+//
+//    @Override
+//    public void run() {
+//        String randomCode = generateRandomCode(12);
+//        do {
+//            try {
+//                Thread.sleep(100);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//            Result result = null;
+//            BufferedImage image = null;
+//
+//            if (webcam.isOpen()) {
+//                if ((image = webcam.getImage()) == null) {
+//                    continue;
+//                }
+//            }
+//
+//            LuminanceSource source = new BufferedImageLuminanceSource(image);
+//            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+//
+//            try {
+//                result = new MultiFormatReader().decode(bitmap);
+//            } catch (NotFoundException e) {
+//                //No result...
+//            }
+//            if (txtHoTen.getText().length() == 0) {
+//                if (result != null) {
+//                    txtCCCD.setText(randomCode);
+//                    txtHoTen.setText(this.generateRandomName());
+//                    txtSDT.setText(this.generateRandomPhoneNumber());
+//                    txtDiaChi.setText(this.generateRandomProvinceName());
+//
+//                    if (txtHoTen.getText().contains("Thị") || txtHoTen.getText().contains("Như") || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Mỹ")
+//                            || txtHoTen.getText().contains("Hoa") || txtHoTen.getText().contains("Hương") || txtHoTen.getText().contains("Linh") || txtHoTen.getText().contains("Nga")
+//                            || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Trang") || txtHoTen.getText().contains("Vân")) {
+//                        rdNu.setSelected(true);
+//                    } else {
+//                        rdNam.setSelected(true);
+//                    }
+//
+//                    int minYear = 1900;
+//                    int maxYear = 2022;
+//                    int randomYear = ThreadLocalRandom.current().nextInt(minYear, maxYear + 1);
+//
+//                    // Tạo một số ngẫu nhiên đại diện cho tháng sinh (từ 1 đến 12)
+//                    int randomMonth = ThreadLocalRandom.current().nextInt(1, 13);
+//
+//                    // Lấy số ngày tối đa trong tháng và năm sinh đã tạo
+//                    int maxDay = LocalDate.of(randomYear, randomMonth, 1).lengthOfMonth();
+//
+//                    // Tạo một số ngẫu nhiên đại diện cho ngày sinh (từ 1 đến ngày tối đa trong tháng)
+//                    int randomDay = ThreadLocalRandom.current().nextInt(1, maxDay + 1);
+//
+//                    // Tạo đối tượng LocalDate từ ngày, tháng và năm sinh đã tạo
+//                    LocalDate randomDateOfBirth = LocalDate.of(randomYear, randomMonth, randomDay);
+//
+//                    // Đặt ngày sinh ngẫu nhiên vào JDateChooser
+//                    txtNgaySinh.setDate(java.sql.Date.valueOf(randomDateOfBirth));
+//
+//                    String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
+//                    String randomEmail = generateRandomEmail(domains);
+//                    txtEmail.setText(randomEmail);
+//
+//                }
+//            }
+//        } while (true);
+//    }
+//
+//    @Override
+//    public Thread newThread(Runnable r) {
+//        Thread t = new Thread(r, "My Thread");
+//        t.setDaemon(true);
+//        return t;
+//    }
     public static String generateRandomCode(int length) {
         Random random = new Random();
         StringBuilder codeBuilder = new StringBuilder();
@@ -1541,5 +1645,45 @@ public class NhanVienJPanel extends javax.swing.JPanel implements Runnable, Thre
         }
 
         return codeBuilder.toString();
+    }
+
+    void ramdomCCCD() {
+        String randomCode = generateRandomCode(12);
+        txtCCCD.setText(randomCode);
+        txtHoTen.setText(this.generateRandomName());
+        txtSDT.setText(this.generateRandomPhoneNumber());
+        txtDiaChi.setText(this.generateRandomProvinceName());
+
+        if (txtHoTen.getText().contains("Thị") || txtHoTen.getText().contains("Như") || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Mỹ")
+                || txtHoTen.getText().contains("Hoa") || txtHoTen.getText().contains("Hương") || txtHoTen.getText().contains("Linh") || txtHoTen.getText().contains("Nga")
+                || txtHoTen.getText().contains("Thủy") || txtHoTen.getText().contains("Trang") || txtHoTen.getText().contains("Vân")) {
+            rdNu.setSelected(true);
+        } else {
+            rdNam.setSelected(true);
+        }
+
+        int minYear = 1900;
+        int maxYear = 2022;
+        int randomYear = ThreadLocalRandom.current().nextInt(minYear, maxYear + 1);
+
+        // Tạo một số ngẫu nhiên đại diện cho tháng sinh (từ 1 đến 12)
+        int randomMonth = ThreadLocalRandom.current().nextInt(1, 13);
+
+        // Lấy số ngày tối đa trong tháng và năm sinh đã tạo
+        int maxDay = LocalDate.of(randomYear, randomMonth, 1).lengthOfMonth();
+
+        // Tạo một số ngẫu nhiên đại diện cho ngày sinh (từ 1 đến ngày tối đa trong tháng)
+        int randomDay = ThreadLocalRandom.current().nextInt(1, maxDay + 1);
+
+        // Tạo đối tượng LocalDate từ ngày, tháng và năm sinh đã tạo
+        LocalDate randomDateOfBirth = LocalDate.of(randomYear, randomMonth, randomDay);
+
+        // Đặt ngày sinh ngẫu nhiên vào JDateChooser
+        txtNgaySinh.setDate(java.sql.Date.valueOf(randomDateOfBirth));
+
+        String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
+        String randomEmail = generateRandomEmail(domains);
+        txtEmail.setText(randomEmail);
+
     }
 }

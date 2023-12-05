@@ -110,6 +110,10 @@ BEGIN
         SELECT ERROR_MESSAGE() AS ErrorMessage;
     END CATCH;
 END;
+GO
+select * from Hoa_Don_Chi_Tiet
+
+
 
 IF OBJECT_ID('Giam_SL_GioHang') IS NOT NULL
     DROP PROC Giam_SL_GioHang
@@ -125,44 +129,17 @@ BEGIN
 		-- giảm số lượng sản phẩm chi tiết trong giỏ hàng
 		UPDATE Hoa_Don_Chi_Tiet SET SoLuong = SoLuong - @soLuong WHERE IDSanPhamCT = @IDSPCT
 
+		-- tính lại thành tiên
+		UPDATE Hoa_Don_Chi_Tiet SET ThanhTien = SoLuong * Gia WHERE IDSanPhamCT = @IDSPCT
+
 		-- tăng số lượng sản phẩm chi tiết trong bảng San_Pham_Chi_Tiet
 		UPDATE San_Pham_Chi_Tiet SET SoLuongTon = SoLuongTon + @soLuong WHERE Ma = @MaSPCT
         COMMIT;
     END TRY
     BEGIN CATCH
         ROLLBACK;
-        -- Xử lý nếu có lỗi
-        SELECT ERROR_MESSAGE() AS ErrorMessage;
     END CATCH;
 END;
-select * from San_Pham_Chi_Tiet
+GO
 
-
-
-delete from hoa_Don_chi_tiet
-select * from hoa_Don
-select * from hoa_Don_Chi_Tiet
-select * from san_Pham_Chi_Tiet
-
-
-
-
-
-SELECT
-    San_Pham_Chi_Tiet.Ma,
-    San_Pham.Ten,
-    CONCAT(FORMAT(Hoa_Don_Chi_Tiet.Gia, 'N0'), ' đ') AS Gia,
-    Hoa_Don_Chi_Tiet.SoLuong,
-    CONCAT(FORMAT(Hoa_Don_Chi_Tiet.ThanhTien, 'N0'), ' đ') AS ThanhTien
-FROM
-    Hoa_Don_Chi_Tiet
-LEFT JOIN Thanh_Toan ON Hoa_Don_Chi_Tiet.ID = Thanh_Toan.ID
-LEFT JOIN San_Pham_Chi_Tiet ON Hoa_Don_Chi_Tiet.IDSanPhamCT = San_Pham_Chi_Tiet.ID
-LEFT JOIN San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID
-LEFT JOIN Hoa_Don ON Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID
-WHERE
-    Hoa_Don.MaHD = 'HD-DZ0G5';
-
-
-select * from Hinh_Thuc_TT
 

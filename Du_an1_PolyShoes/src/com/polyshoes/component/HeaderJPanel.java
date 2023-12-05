@@ -1,5 +1,9 @@
 package com.polyshoes.component;
 
+import com.polyshoes.main.MainJFrame;
+import com.polyshoes.view.dangnhap.Auth;
+import com.polyshoes.view.dangnhap.ThongTinNhanVien;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 
@@ -7,11 +11,21 @@ public class HeaderJPanel extends javax.swing.JPanel {
 
     public HeaderJPanel() {
         initComponents();
-            setBackground(Color.decode("#FFFFFF"));
+        fillThongtin();
+        setBackground(Color.decode("#FFFFFF"));
     }
 
     public void addMenuEvent(ActionListener event) {
         cmdMenu.addActionListener(event);
+    }
+
+    void fillThongtin() {
+
+        if (Auth.isLogin()) {
+            lbUserName.setText(Auth.user.getTennv());
+            lbRole.setText(Auth.user.hienThiChucVu());
+
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -24,12 +38,14 @@ public class HeaderJPanel extends javax.swing.JPanel {
         lbRole = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
         cmdMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/menu.png"))); // NOI18N
 
-
         pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/avatar.jpg"))); // NOI18N
+        pic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                picMouseClicked(evt);
+            }
+        });
 
         lbUserName.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         lbUserName.setForeground(new java.awt.Color(127, 127, 127));
@@ -72,6 +88,12 @@ public class HeaderJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void picMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_picMouseClicked
+        new ThongTinNhanVien().setVisible(true);
+
+
+    }//GEN-LAST:event_picMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.polyshoes.swing.Button cmdMenu;

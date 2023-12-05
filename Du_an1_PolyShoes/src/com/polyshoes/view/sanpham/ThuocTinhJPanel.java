@@ -433,8 +433,10 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
         }//GEN-LAST:event_rdoCoGiayItemStateChanged
 
         private void btnThemTHuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTHuocTinhActionPerformed
-                this.insert();
-                this.clear();
+                if(DialogHelper.confirm(this, "Bạn có chắc muốn thêm?")) {
+                        this.insert();
+                        this.clear();
+                }
         }//GEN-LAST:event_btnThemTHuocTinhActionPerformed
 
         private void btnSuaThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaThuocTinhActionPerformed
