@@ -98,13 +98,13 @@ public class KhachHangDao {
 
     public List<KhachHang> select() {
         String sql = "SELECT Khach_Hang.MaKH, Khach_Hang.HoTen, Khach_Hang.SDT, Khach_Hang.GioiTinh,DiaChi.Tinh,DiaChi.Quan,DiaChi.Xa,CONCAT(DiaChi.Xa ,',' ,DiaChi.Quan,',' ,DiaChi.Tinh) AS DiaChiChiTiet \n"
-                + "FROM  Khach_Hang INNER    JOIN  DiaChi ON Khach_Hang.ID = DiaChi.ID";
+                + "FROM  Khach_Hang INNER    JOIN  DiaChi ON Khach_Hang.ID = DiaChi.ID where Khach_Hang.Deleted = 0";
         return select(sql);
     }
 
     public List<KhachHang> selectHoaDon() {
         String sql = "SELECT  Hoa_Don.MaHD,Khach_Hang.MaKH,Khach_Hang.HoTen, Hoa_Don.NgayNhan,Hoa_Don.TongTien, Hoa_Don.TrangThai\n"
-                + "FROM Khach_Hang INNER JOIN  Hoa_Don ON Khach_Hang.ID = Hoa_Don.IDKhachHang";
+                + "FROM Khach_Hang INNER JOIN  Hoa_Don ON Khach_Hang.ID = Hoa_Don.IDKhachHang ";
         return select1(sql);
     }
 
@@ -116,10 +116,8 @@ public class KhachHangDao {
     }
 
     public void delete(String MaKH) {
-        String sql = "DELETE FROM DiaChi\n" +
-"WHERE IDKhachHang IN (SELECT ID FROM Khach_Hang WHERE MaKH like ?)  DELETE FROM Khach_Hang\n" +
-"WHERE MaKH like ?";
-        JdbcHelper.executeUpdate(sql, MaKH);
+        String sql = "update Khach_Hang set Deleted = 1 where MaKH = ?"; 
+                JdbcHelper.executeUpdate(sql, MaKH);
     }
 
     public void deleteDiaChi(String MaKH) {
