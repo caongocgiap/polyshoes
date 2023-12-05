@@ -24,12 +24,14 @@ public class NhanVienDao {
 
     String INSERT_SQL = "INSERT INTO [dbo].[Nhan_Vien] (IDChucVu,MaNV,Email,MatKhau,CCCD,TenNV,NgaySinh,SDT,DiaChi,GioiTinh,TrangThai) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     String UPDATE_SQL = "UPDATE [dbo].[Nhan_Vien] SET IDChucVu=?,Email=?,CCCD=?,TenNV=?,NgaySinh=?,SDT=?,DiaChi=?,GioiTinh=?,TrangThai=? WHERE MaNV=?";
+    String UPDATEMK_SQL = "UPDATE [dbo].[Nhan_Vien] SET MatKhau = ? WHERE MaNV=?";
     String SELECT_BY_FIND = "SELECT * FROM [dbo].[Nhan_Vien] WHERE MaNV LIKE ? or Email LIKE ? or TenNV LIKE ? or SDT LIKE ?  or DiaChi LIKE ?";
 
     String SELECT_COUNT = "SELECT count(*) FROM [dbo].[Nhan_Vien]";
     String SELECT_LOATDATA = "select top 5 * from [dbo].[Nhan_Vien] where MaNV not in (select top 1 MaNV from [dbo].[Nhan_Vien]  )";
     String SELECT_DELETE = "UPDATE [dbo].[Nhan_Vien] SET TrangThai=0 WHERE MaNV = ?";
- String SELECT_DELETE1 = "UPDATE [dbo].[Nhan_Vien] SET TrangThai=1 WHERE MaNV = ?";
+    String SELECT_DELETE1 = "UPDATE [dbo].[Nhan_Vien] SET TrangThai=1 WHERE MaNV = ?";
+
     public List<NhanVien> selectAll2() {
         return this.selectBySQL(SELECT_ALL_SQL);
     }
@@ -94,6 +96,13 @@ public class NhanVienDao {
                 entity.getDiaChi(),
                 entity.getGioiTinh(),
                 entity.getTrangThai(),
+                entity.getManv()
+        );
+    }
+
+    public void updateMK(NhanVien entity) {
+        JdbcHelper.executeUpdate(UPDATEMK_SQL,
+                entity.getMatKhau(),
                 entity.getManv()
         );
     }

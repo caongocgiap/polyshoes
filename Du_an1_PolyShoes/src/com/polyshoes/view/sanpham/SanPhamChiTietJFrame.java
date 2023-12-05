@@ -398,7 +398,9 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
         }//GEN-LAST:event_formWindowOpened
 
         private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-                update();
+                if(DialogHelper.confirm(this, "Bạn có chắc muốn cập nhật không?")) {
+                        update();
+                }
         }//GEN-LAST:event_btnCapNhatActionPerformed
 
         private void lblAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhMouseClicked

@@ -635,12 +635,12 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
                 pnlGioHangLayout.setHorizontalGroup(
                         pnlGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlGioHangLayout.createSequentialGroup()
-                                .addComponent(jScrollPaneGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPaneGioHang)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnXoaGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jCheckBoxCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jCheckBoxCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnXoaGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
                 );
                 pnlGioHangLayout.setVerticalGroup(
                         pnlGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -649,9 +649,9 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
                                 .addGroup(pnlGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(pnlGioHangLayout.createSequentialGroup()
                                                 .addComponent(jCheckBoxCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(54, 54, 54)
+                                                .addGap(56, 56, 56)
                                                 .addComponent(btnXoaGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 54, Short.MAX_VALUE))
+                                                .addGap(0, 52, Short.MAX_VALUE))
                                         .addComponent(jScrollPaneGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                 .addContainerGap())
                 );
@@ -719,7 +719,7 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
                 pnlDSSPLayout.setHorizontalGroup(
                         pnlDSSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDSSPLayout.createSequentialGroup()
-                                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(cboNhaSanXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -824,8 +824,6 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
         private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
                 if (index == -1) {
                         index = 0;
-                } else {
-                        index = tblHoaDon.getSelectedRow();
                 }
                 thanhToan();
         }//GEN-LAST:event_btnThanhToanActionPerformed
@@ -943,7 +941,7 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
                 SanPhamCTDAO spctDao = new SanPhamCTDAO();
                 DefaultTableModel tblModel = (DefaultTableModel) tblDSSP.getModel();
                 tblModel.setRowCount(0);
-                List<SanPhamChiTiet> list = spctDao.selectAll(0, 5);
+                List<SanPhamChiTiet> list = spctDao.selectAll(0, 20);
                 NumberFormat formatVN = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
                 for (SanPhamChiTiet x : list) {
                         Object[] rowData = new Object[]{
@@ -1076,7 +1074,12 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
                 SanPhamCTDAO spctDao = new SanPhamCTDAO();
                 maSPCT = (String) tblGioHang.getValueAt(tblGioHang.getSelectedRow(), 1);
                 int idSPCT = spctDao.getID_ByMa(maSPCT).getId();
-                dao.giamSL(slGiam, idSPCT, maSPCT);
+                try {
+                        dao.giamSL(slGiam, idSPCT, maSPCT);
+                } catch (Exception e) {
+                        e.printStackTrace();
+                        DialogHelper.alert(this, "Bug rồi");
+                }
                 fillFormHD();
                 fillTableGioHang(maHD);
                 fillTableHoaDon();

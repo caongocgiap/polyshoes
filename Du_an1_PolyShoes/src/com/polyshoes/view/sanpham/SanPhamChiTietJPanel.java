@@ -7,6 +7,8 @@ import com.polyshoes.model.sanpham.SanPhamChiTiet;
 import com.polyshoes.model.sanpham.ThuocTinh;
 import com.qrcode.QR_Code;
 import com.qrcode.TaiMaQR;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -68,6 +70,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 jPanel2 = new javax.swing.JPanel();
                 cboTenSP = new com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion();
                 lblTieuDe13 = new javax.swing.JLabel();
+                btnTenSP = new com.polyshoes.swing.Button();
                 jPanel3 = new javax.swing.JPanel();
                 cboDanhMuc = new com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion();
                 lblTieuDe15 = new javax.swing.JLabel();
@@ -414,11 +417,21 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe13.setText("Tên sản phẩm");
                 lblTieuDe13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
+                btnTenSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnTenSP.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnTenSPActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
                 jPanel2Layout.setHorizontalGroup(
                         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 262, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(220, Short.MAX_VALUE)
+                                .addComponent(btnTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(0, 10, Short.MAX_VALUE)
@@ -429,7 +442,10 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 );
                 jPanel2Layout.setVerticalGroup(
                         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 143, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(66, Short.MAX_VALUE)
+                                .addComponent(btnTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
@@ -1064,7 +1080,14 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
 
         private void btnNhaSanXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaSanXuatActionPerformed
                 ThuocTinhJFrame.tenBang = "Nha_San_Xuat";
-                new ThuocTinhJFrame().setVisible(true);
+                ThuocTinhJFrame nsx = new ThuocTinhJFrame();
+                nsx.setVisible(true);
+                nsx.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                                fillComboBox(cboNhaSanXuat, "Nha_San_Xuat");
+                        }
+                });
         }//GEN-LAST:event_btnNhaSanXuatActionPerformed
 
         private void btnSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSizeActionPerformed
@@ -1136,6 +1159,10 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 }
         }//GEN-LAST:event_cboFindGiaActionPerformed
 
+        private void btnTenSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTenSPActionPerformed
+                // TODO add your handling code here:
+        }//GEN-LAST:event_btnTenSPActionPerformed
+
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private com.polyshoes.swing.Button btnChatLieu;
@@ -1154,6 +1181,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         private javax.swing.JButton btnQuayLai;
         private com.polyshoes.swing.Button btnSize;
         private javax.swing.JButton btnTaiMaQR;
+        private com.polyshoes.swing.Button btnTenSP;
         private javax.swing.JButton btnThem;
         private com.polyshoes.swing.Button btnThuongHieu;
         private com.polyshoes.swing.Button btnXuatXu;
@@ -1234,7 +1262,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 for (ThuocTinh x : list) {
                         cboModel.addElement(x);
                 }
-                cbo.setSelectedIndex(-1);
+                cbo.setSelectedIndex(0);
         }
 
         private void fillComboBoxSPCT() {
@@ -1252,6 +1280,9 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 fillComboBox(cboFindXuatXu, "Xuat_Xu");
                 fillComboBox(cboFindNSX, "Nha_San_Xuat");
                 cboFindGia.setSelectedIndex(-1);
+                cboFindDanhMuc.setSelectedIndex(-1);
+                cboFindXuatXu.setSelectedIndex(-1);
+                cboFindNSX.setSelectedIndex(-1);
         }
 
         private int tongTrangSPCT(int limit) {
