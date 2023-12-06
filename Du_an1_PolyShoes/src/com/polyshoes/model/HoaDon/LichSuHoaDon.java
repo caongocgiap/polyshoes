@@ -15,12 +15,12 @@ public class LichSuHoaDon {
     private Date NgayTao;
     private Date NgayTT;
     private int TrangThai;
-    private String ngayCapNhat;
+    private Date ngayCapNhat;
 
     public LichSuHoaDon() {
     }
 
-    public LichSuHoaDon(int ID, String TenNV, String MaNV, String TenKH, double TongTien, Date NgayTao, Date NgayTT, int TrangThai, String ngayCapNhat) {
+    public LichSuHoaDon(int ID, String TenNV, String MaNV, String TenKH, double TongTien, Date NgayTao, Date NgayTT, int TrangThai, Date ngayCapNhat) {
         this.ID = ID;
         this.TenNV = TenNV;
         this.MaNV = MaNV;
@@ -32,13 +32,15 @@ public class LichSuHoaDon {
         this.ngayCapNhat = ngayCapNhat;
     }
 
-    public String getNgayCapNhat() {
+    public Date getNgayCapNhat() {
         return ngayCapNhat;
     }
 
-    public void setNgayCapNhat(String ngayCapNhat) {
+    public void setNgayCapNhat(Date ngayCapNhat) {
         this.ngayCapNhat = ngayCapNhat;
     }
+
+  
 
     public int getID() {
         return ID;
@@ -118,17 +120,9 @@ public class LichSuHoaDon {
             case 0:
                 return "Đã thanh toán";
             case 1:
-                return "Bán hàng";
+                return "Chưa thanh toán";
             case 2:
-                return "Hủy hóa đơn";
-            case 5:
-                return "Tìm kiếm";
-            case 6:
-                return "Quét QR";
-            case 7:
-                return "In Hóa Đơn";
-            case 8:
-                return "xuất danh sách";
+                return "Đã hủy thanh toán";
             default:
                 return null;
         }
@@ -146,8 +140,7 @@ public class LichSuHoaDon {
         }
         return genMaNV();
     }
-
-    public String getFormattedTao() {
+     public String getFormattedTao() {
         if (NgayTao != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             return dateFormat.format(NgayTao);
@@ -155,42 +148,20 @@ public class LichSuHoaDon {
             return null;
         }
     }
-
-    public String getFormattedNgayCapNhat() {
+ public String getFormattedNgayCapNhat() {
         if (ngayCapNhat != null) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             return dateFormat.format(ngayCapNhat);
         } else {
             return null;
         }
     }
-
-    public String getFormattedNgayTT2() {
+ public String getFormattedNgayTT2() {
         if (ngayCapNhat != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
             return dateFormat.format(ngayCapNhat);
         } else {
             return null;
         }
-    }
-
-    public String ThoiGian() {
-        if (ngayCapNhat != null) {
-            String ketQua = ngayCapNhat.substring(11, 16); // Lấy từ vị trí 11 đến 15
-            return ketQua;
-        } else {
-            return null;
-        }
-
-    }
-
-    public String NgayCapS() {
-        if (ngayCapNhat != null) {
-            String ketQua = ngayCapNhat.substring(0, 10); // Lấy từ vị trí 11 đến 15
-            return ketQua;
-        } else {
-            return null;
-        }
-
     }
 }

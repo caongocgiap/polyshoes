@@ -208,12 +208,18 @@
                   <SubComponents>
                     <Component class="com.polyshoes.swing.TextField" name="txtMaKH">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="KH-01"/>
                         <Property name="labelText" type="java.lang.String" value="M&#xe3; KH"/>
                       </Properties>
                     </Component>
                     <Component class="com.polyshoes.swing.TextField" name="txtTenKH">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Kh&#xe1;ch b&#xe1;n l&#x1ebb;"/>
                         <Property name="labelText" type="java.lang.String" value="T&#xea;n KH"/>
                       </Properties>
@@ -305,7 +311,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="lblTongTien" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblTongTien" alignment="0" pref="150" max="32767" attributes="0"/>
                                                   <Component id="lblTenKH" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="lblMaNV" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="lblNgayThanhToan" alignment="0" max="32767" attributes="0"/>
@@ -668,6 +674,9 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTienMat">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
@@ -740,6 +749,9 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtChuyenKhoan">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
@@ -877,6 +889,9 @@
           <SubComponents>
             <Component class="com.polyshoes.swing.table.Table" name="tblHoaDon">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
@@ -1068,6 +1083,9 @@
           <SubComponents>
             <Component class="com.polyshoes.swing.table.Table" name="tblGioHang">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="7" rowCount="0">
                     <Column editable="false" title="#" type="java.lang.Object"/>
@@ -1260,6 +1278,9 @@
           <SubComponents>
             <Component class="com.polyshoes.swing.table.Table" name="tblDSSP">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="8" rowCount="0">
                     <Column editable="false" title="#" type="java.lang.Object"/>
@@ -1345,6 +1366,9 @@
         </Component>
         <Component class="com.polyshoes.swing.TextField" name="txtTimKiem">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="labelText" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
           </Properties>
         </Component>

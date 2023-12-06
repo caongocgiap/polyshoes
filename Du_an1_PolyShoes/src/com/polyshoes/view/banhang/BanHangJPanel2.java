@@ -807,7 +807,7 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
                         DialogHelper.alert(this, "Số lượng hóa đơn đã quá giới hạn!");
                         return;
                 }
-                dao.taoHD(1, 1);
+                dao.taoHD(2, 1);
                 DialogHelper.alert(this, "Tạo hóa đơn thành công!");
                 fillTableHoaDon();
                 index = 0;
