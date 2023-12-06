@@ -17,7 +17,7 @@ BEGIN
 END
 GO
 
-UPDATE Hoa_Don SET Deleted = 1 WHERE MaHD = ?
+--UPDATE Hoa_Don SET Deleted = 1 WHERE MaHD = ?
 
 IF OBJECT_ID('Get_HD_By_MaHD') IS NOT NULL
 	DROP PROC Get_HD_By_MaHD

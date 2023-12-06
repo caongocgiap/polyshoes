@@ -152,7 +152,7 @@ public class login1 extends javax.swing.JFrame {
 
                 txtpassword.setFont(txtpassword.getFont().deriveFont(txtpassword.getFont().getSize()+2f));
                 txtpassword.setForeground(new java.awt.Color(255, 255, 255));
-                txtpassword.setText("giapdaik");
+                txtpassword.setText("123");
                 txtpassword.setBorder(null);
                 txtpassword.setCaretColor(new java.awt.Color(255, 255, 255));
                 jPanel2.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 240, 30));
