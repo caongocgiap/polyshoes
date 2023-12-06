@@ -24,22 +24,20 @@ public class XuatDanhSachDao {
         return select(sql, mahd);
     }
 
-    public List<XuatDanhSach> select(String mahd) {
-        String sql = "  select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV, (DiaChi.Xa + ', ' + DiaChi.Quan + ', ' + DiaChi.Tinh) AS DiaChi,Khach_Hang.HoTen as TenNguoiNhan,Khach_Hang.SDT as SDT,San_Pham.Ma,San_Pham.Ten,Nha_San_Xuat.Ten\n"
-                + "                Ten2,Mau_Sac.Ten as  Ten3,Size.Size,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia\n"
-                + "                ,Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia as ThanhTien \n"
-                + "                from San_Pham join San_Pham_Chi_Tiet on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
-                + "                join Nha_San_Xuat on Nha_San_Xuat.ID = San_Pham_Chi_Tiet.IDNSX\n"
-                + "                join Hoa_Don_Chi_Tiet on San_Pham_Chi_Tiet.id =Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
-                + "                join Hoa_Don on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.id\n"
-                + "                join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
-                + "                join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
-                + "                join Nhan_Vien on Nhan_Vien.id = Hoa_Don.IDNhanVien\n"
-                + "				join Khach_Hang on Khach_Hang.id = Hoa_Don.IDKhachHang\n"
-                + "				join DiaChi on DiaChi.IDKhachHang = Khach_Hang.ID\n"
-                + "                where Hoa_Don.MaHD = ?";
+    public List<XuatDanhSach> select() {
+        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,San_Pham.Ma,San_Pham.Ten,Nha_San_Xuat.Ten\n"
+                + "Ten2,Mau_Sac.Ten as  Ten3,Size.Size,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia\n"
+                + ",Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia as ThanhTien \n"
+                + "from San_Pham join San_Pham_Chi_Tiet on San_Pham.ID = San_Pham_Chi_Tiet.IDSanPham\n"
+                + "join Nha_San_Xuat on Nha_San_Xuat.ID = San_Pham_Chi_Tiet.IDNSX\n"
+                + "join Hoa_Don_Chi_Tiet on San_Pham_Chi_Tiet.id =Hoa_Don_Chi_Tiet.IDSanPhamCT\n"
+                + "join Hoa_Don on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.id\n"
+                + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
+                + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
+                + "join Nhan_Vien on Nhan_Vien.id = Hoa_Don.IDNhanVien\n";
+           
 
-        return select(sql, mahd);
+        return select(sql);
     }
 
     private List<XuatDanhSach> select(String sql, Object... args) {
