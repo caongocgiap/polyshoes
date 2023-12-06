@@ -61,6 +61,7 @@ public class LichSuHoaDonDao {
                 + "order by NgayCapNhat desc";
         return select(sql, TenKH);
     }
+    
 
     private List<LichSuHoaDon> select(String sql, Object... args) {
         List<LichSuHoaDon> list = new ArrayList<>();

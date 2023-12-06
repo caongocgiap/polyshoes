@@ -38,6 +38,119 @@ public class HoaDonDao {
         JdbcHelper.executeUpdate(sql, MAHD);
     }
 
+    public void InsertHanhDongTimKiem(String MAHD) {
+        String sql = "	INSERT INTO [dbo].[Lich_Su_Hoa_Don] (\n"
+                + "    [IDHoaDon],\n"
+                + "    [ThoiGian],\n"
+                + "    [HanhDong],\n"
+                + "    [TrangThai],\n"
+                + "    [NguoiTao],\n"
+                + "    [NgayTao],\n"
+                + "    [NguoiCapNhat],\n"
+                + "    [NgayCapNhat],\n"
+                + "    [Deleted]\n"
+                + ")\n"
+                + "SELECT\n"
+                + "    [ID],\n"
+                + "    GETDATE() AS [ThoiGian], -- Giả sử ThoiGian là dấu thời gian cho hành động\n"
+                + "    5 AS [HanhDong], -- Giả sử 1 đại diện cho hành động bạn muốn ghi log\n"
+                + "    [TrangThai],\n"
+                + "    [NguoiTao],\n"
+                + "    [NgayTao],\n"
+                + "    [NguoiCapNhat],\n"
+                + "    GETDATE() AS  [NgayCapNhat],\n"
+                + "    [Deleted]\n"
+                + "FROM\n"
+                + "    [dbo].[hoa_don]\n"
+                + "WHERE\n"
+                + "    [MaHD] = ?;";
+        JdbcHelper.executeUpdate(sql, MAHD);
+    }
+     public void InsertHanhDongInHoaDon(String MAHD) {
+        String sql = "	INSERT INTO [dbo].[Lich_Su_Hoa_Don] (\n"
+                + "    [IDHoaDon],\n"
+                + "    [ThoiGian],\n"
+                + "    [HanhDong],\n"
+                + "    [TrangThai],\n"
+                + "    [NguoiTao],\n"
+                + "    [NgayTao],\n"
+                + "    [NguoiCapNhat],\n"
+                + "    [NgayCapNhat],\n"
+                + "    [Deleted]\n"
+                + ")\n"
+                + "SELECT\n"
+                + "    [ID],\n"
+                + "    GETDATE() AS [ThoiGian], -- Giả sử ThoiGian là dấu thời gian cho hành động\n"
+                + "    7 AS [HanhDong], -- Giả sử 1 đại diện cho hành động bạn muốn ghi log\n"
+                + "    [TrangThai],\n"
+                + "    [NguoiTao],\n"
+                + "    [NgayTao],\n"
+                + "    [NguoiCapNhat],\n"
+                + "    GETDATE() AS  [NgayCapNhat],\n"
+                + "    [Deleted]\n"
+                + "FROM\n"
+                + "    [dbo].[hoa_don]\n"
+                + "WHERE\n"
+                + "    [MaHD] = ?;";
+        JdbcHelper.executeUpdate(sql, MAHD);
+    }
+     public void InsertHanhDongXuatDanhSach(String MAHD) {
+        String sql = "	INSERT INTO [dbo].[Lich_Su_Hoa_Don] (\n"
+                + "    [IDHoaDon],\n"
+                + "    [ThoiGian],\n"
+                + "    [HanhDong],\n"
+                + "    [TrangThai],\n"
+                + "    [NguoiTao],\n"
+                + "    [NgayTao],\n"
+                + "    [NguoiCapNhat],\n"
+                + "    [NgayCapNhat],\n"
+                + "    [Deleted]\n"
+                + ")\n"
+                + "SELECT\n"
+                + "    [ID],\n"
+                + "    GETDATE() AS [ThoiGian], -- Giả sử ThoiGian là dấu thời gian cho hành động\n"
+                + "    7 AS [HanhDong], -- Giả sử 1 đại diện cho hành động bạn muốn ghi log\n"
+                + "    [TrangThai],\n"
+                + "    [NguoiTao],\n"
+                + "    [NgayTao],\n"
+                + "    [NguoiCapNhat],\n"
+                + "    GETDATE() AS  [NgayCapNhat],\n"
+                + "    [Deleted]\n"
+                + "FROM\n"
+                + "    [dbo].[hoa_don]\n"
+                + "WHERE\n"
+                + "    [MaHD] = ?;";
+        JdbcHelper.executeUpdate(sql, MAHD);
+    }
+    public void InsertHanhDongQR(String MAHD) {
+        String sql = "	INSERT INTO [dbo].[Lich_Su_Hoa_Don] (\n"
+                + "    [IDHoaDon],\n"
+                + "    [ThoiGian],\n"
+                + "    [HanhDong],\n"
+                + "    [TrangThai],\n"
+                + "    [NguoiTao],\n"
+                + "    [NgayTao],\n"
+                + "    [NguoiCapNhat],\n"
+                + "    [NgayCapNhat],\n"
+                + "    [Deleted]\n"
+                + ")\n"
+                + "SELECT\n"
+                + "    [ID],\n"
+                + "    GETDATE() AS [ThoiGian], -- Giả sử ThoiGian là dấu thời gian cho hành động\n"
+                + "    6 AS [HanhDong], -- Giả sử 1 đại diện cho hành động bạn muốn ghi log\n"
+                + "    [TrangThai],\n"
+                + "    [NguoiTao],\n"
+                + "    [NgayTao],\n"
+                + "    [NguoiCapNhat],\n"
+                + "    GETDATE() AS  [NgayCapNhat],\n"
+                + "    [Deleted]\n"
+                + "FROM\n"
+                + "    [dbo].[hoa_don]\n"
+                + "WHERE\n"
+                + "    [MaHD] = ?;";
+        JdbcHelper.executeUpdate(sql, MAHD);
+    }
+
     public List<HoaDon> selectByTenKN(String keyword) {
         String sql = "SELECT * FROM Hoa_Don WHERE deleted = 0 and TenNguoiNhan LIKE ?";
         return select(sql, "%" + keyword + "%");

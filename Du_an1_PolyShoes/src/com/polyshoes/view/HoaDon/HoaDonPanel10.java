@@ -252,11 +252,12 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
             e.printStackTrace();
         }
     }
- void fillTimKiemHDQR(String mahd) {
+
+    void fillTimKiemHDQR(String mahd) {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
         model.setRowCount(0);
         try {
-      
+
             List<HoaDon> list = dao.selectByKeyword(mahd, mahd, mahd, mahd);
             int stt = 0;
             for (HoaDon hd : list) {
@@ -280,6 +281,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
             e.printStackTrace();
         }
     }
+
     void fillTimKiemHD() {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
         model.setRowCount(0);
@@ -487,10 +489,11 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
             e.printStackTrace();
         }
     }
+
     void TimKiemTheoBangQR(String mahd) {
         DefaultTableModel model = (DefaultTableModel) tblChiTiet.getModel();
         model.setRowCount(0);
-      
+
         try {
             List<HoaDonChiTiet> list = hdctdao.selectByKeyword(mahd);
             int stt = 0;
@@ -734,22 +737,6 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
             e.printStackTrace();
         }
     }
-//      void TimKiemTheoBang9() {
-//        DefaultTableModel model = (DefaultTableModel) tblChiTiet4.getModel();
-//        model.setRowCount(0);
-//        String mahd = (String) tblChiTiet4.getValueAt(tblChiTiet4.getSelectedRow(), 2);
-//        try {
-//            List<HoaDonChiTiet> list = hdctdao.selectByTraHang(mahd);
-//            int stt = 0;
-//            for (HoaDonChiTiet hdct : list) {
-//                stt++;
-//               hdct.get
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "loi truy van du lieu!");
-//            e.printStackTrace();
-//        }
-//    }
 
     void TimKiemHoaDon3() {
         DefaultTableModel model = (DefaultTableModel) tblChiTiet3.getModel();
@@ -999,12 +986,13 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
             e.printStackTrace();
         }
     }
-     void fillTimQR(String mahd) {
+
+    void fillTimQR(String mahd) {
         DefaultTableModel model = (DefaultTableModel) tblTimeLine2.getModel();
         model.setRowCount(0);
 
         int stt = 0;
-        
+
         try {
 
             List<LichSuHoaDon> list = lsdao.selectByKeyword3(mahd);
@@ -2061,6 +2049,8 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnCapNhat3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhat3ActionPerformed
         String mahd = (String) tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1);
+         dao.InsertHanhDongXuatDanhSach(mahd);
+          fillTimQR(mahd);
         try {
             XSSFWorkbook wordkbook = new XSSFWorkbook();
             XSSFSheet sheet = wordkbook.createSheet("HoaDon");
@@ -2179,12 +2169,16 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 
     private void btnCapNhat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhat1ActionPerformed
         String mahd = (String) tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1);
+        
+        dao.InsertHanhDongInHoaDon(mahd);
+          fillTimQR(mahd);
         PrintHoaDonV2 frame2 = new PrintHoaDonV2(mahd);
+
     }//GEN-LAST:event_btnCapNhat1ActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-       
-        
+
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
@@ -2194,7 +2188,9 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_button1ActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        fillTimKiemHD();   // TODO add your handling code here:
+        String mahd = txtTimKiem.getText();
+        fillTimKiemHD();
+        dao.InsertHanhDongTimKiem(mahd);  // TODO add your handling code here:
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void btnLastbtnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastbtnThemActionPerformed
@@ -2242,7 +2238,10 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_cboTrangThaicboTrangThaiActionPerformed
 
     private void txtTimKiemtxtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemtxtTimKiemActionPerformed
-        fillTimKiemHD();        // TODO add your handling code here:
+        String mahd = txtTimKiem.getText();
+        fillTimKiemHD();
+        dao.InsertHanhDongTimKiem(mahd);
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtTimKiemtxtTimKiemActionPerformed
 
     private void txtTimKiemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusLost
@@ -2312,7 +2311,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
     }//GEN-LAST:event_btnTraHang2ActionPerformed
 
     private void btnTimKiem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiem1ActionPerformed
-      WebCamXYZ qrCode = new WebCamXYZ();
+        WebCamXYZ qrCode = new WebCamXYZ();
 
         qrCode.setDefaultCloseOperation(qrCode.DISPOSE_ON_CLOSE);
         qrCode.setVisible(true);
@@ -2322,6 +2321,7 @@ public class HoaDonPanel10 extends javax.swing.JPanel implements Runnable, Threa
 
                 System.out.println("window closing");
                 txtTimKiem.setText(qrCode.maHDKK);
+                dao.InsertHanhDongQR(qrCode.maHDKK);
                 fillTimKiemHDQR(qrCode.maHDKK);
                 fillTimQR(qrCode.maHDKK);
                 TimKiemTheoBangQR(qrCode.maHDKK);

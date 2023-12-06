@@ -121,6 +121,14 @@ public class LichSuHoaDon {
                 return "Bán hàng";
             case 2:
                 return "Hủy hóa đơn";
+            case 5:
+                return "Tìm kiếm";
+            case 6:
+                return "Quét QR";
+            case 7:
+                return "In Hóa Đơn";
+            case 8:
+                return "xuất danh sách";
             default:
                 return null;
         }
@@ -175,7 +183,8 @@ public class LichSuHoaDon {
         }
 
     }
-     public String NgayCapS() {
+
+    public String NgayCapS() {
         if (ngayCapNhat != null) {
             String ketQua = ngayCapNhat.substring(0, 10); // Lấy từ vị trí 11 đến 15
             return ketQua;
