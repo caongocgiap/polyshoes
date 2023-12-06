@@ -440,7 +440,7 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
         }//GEN-LAST:event_btnThemTHuocTinhActionPerformed
 
         private void btnSuaThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaThuocTinhActionPerformed
-                if (index >= 0) {
+                if (index >= 0 && DialogHelper.confirm(this, "Bạn có chắc muốn cập nhật?")) {
                         this.update();
                         this.clear();
                 } else {
@@ -449,7 +449,7 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
         }//GEN-LAST:event_btnSuaThuocTinhActionPerformed
 
         private void btnXoaThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaThuocTinhActionPerformed
-                if (index >= 0) {
+                if (index >= 0 && DialogHelper.confirm(this, "Bạn có chắc muốn xóa không?")) {
                         this.delete();
                         this.clear();
                 } else {

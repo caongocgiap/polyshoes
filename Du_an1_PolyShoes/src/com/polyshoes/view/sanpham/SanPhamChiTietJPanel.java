@@ -23,10 +23,10 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         int pageSize = 1;
         int limit = 5;
         public static String maSP = "%";
-        private String nsx = "%";
-        private String xuatXu = "%";
-        private String danhMuc = "%";
-        private boolean gia = false; // true: 1, false: 0
+        private String findNsx = "%";
+        private String findXuatXu = "%";
+        private String findDanhMuc = "%";
+        private boolean findGia = false; // true: 1, false: 0
 
         public SanPhamChiTietJPanel() {
                 initComponents();
@@ -41,15 +41,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 pnlDanhSachSPCT = new javax.swing.JPanel();
                 lblTieuDe = new javax.swing.JLabel();
                 lblBoLoc = new javax.swing.JLabel();
-                lblTrangThai = new javax.swing.JLabel();
                 pnlBoLoc = new com.polyshoes.component.BorderJPanel();
                 cboFindNSX = new com.polyshoes.component.Combobox();
                 cboFindXuatXu = new com.polyshoes.component.Combobox();
                 cboFindDanhMuc = new com.polyshoes.component.Combobox();
                 cboFindGia = new com.polyshoes.component.Combobox();
-                rdoTatCa = new com.polyshoes.swing.RadioButtonCustom();
-                rdoDangBan = new com.polyshoes.swing.RadioButtonCustom();
-                rdoNgungBan = new com.polyshoes.swing.RadioButtonCustom();
                 btnOpenThem = new javax.swing.JButton();
                 btnTaiMaQR = new javax.swing.JButton();
                 btnMoi = new javax.swing.JButton();
@@ -111,8 +107,8 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 txtSoLuong = new com.polyshoes.swing.TextField();
                 jPanel11 = new javax.swing.JPanel();
                 txtGia = new com.polyshoes.swing.TextField();
-                btnThem = new javax.swing.JButton();
-                btnQuayLai = new javax.swing.JButton();
+                btnThem = new com.polyshoes.swing.Button();
+                btnQuayLai = new com.polyshoes.swing.Button();
 
                 setBackground(new java.awt.Color(255, 255, 255));
                 setLayout(new java.awt.CardLayout());
@@ -130,12 +126,6 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblBoLoc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 lblBoLoc.setText("Bộ lọc");
                 lblBoLoc.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-
-                lblTrangThai.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-                lblTrangThai.setForeground(new java.awt.Color(76, 76, 76));
-                lblTrangThai.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                lblTrangThai.setText("Trạng thái");
-                lblTrangThai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
                 pnlBoLoc.setBackground(new java.awt.Color(255, 255, 255));
                 pnlBoLoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -182,7 +172,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                 .addComponent(cboFindDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(cboFindGia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(80, Short.MAX_VALUE))
                 );
                 pnlBoLocLayout.setVerticalGroup(
                         pnlBoLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,18 +185,6 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                         .addComponent(cboFindGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(30, Short.MAX_VALUE))
                 );
-
-                grpTrangThai.add(rdoTatCa);
-                rdoTatCa.setText("Tất cả");
-
-                rdoDangBan.setBackground(new java.awt.Color(51, 255, 51));
-                grpTrangThai.add(rdoDangBan);
-                rdoDangBan.setSelected(true);
-                rdoDangBan.setText("Đang bán");
-
-                rdoNgungBan.setBackground(new java.awt.Color(255, 0, 0));
-                grpTrangThai.add(rdoNgungBan);
-                rdoNgungBan.setText("Ngừng bán");
 
                 btnOpenThem.setText("Thêm mới");
                 btnOpenThem.addActionListener(new java.awt.event.ActionListener() {
@@ -331,33 +309,27 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                         pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDanhSachSPCTLayout.createSequentialGroup()
                                 .addGap(0, 0, 0)
-                                .addGroup(pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
+                                .addGroup(pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(pnlButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(pnlBoLoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDanhSachSPCTLayout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(btnOpenThem)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnOpenQRCode)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnTaiMaQR)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnMoi))
+                                        .addComponent(jScrollPaneSpct)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDanhSachSPCTLayout.createSequentialGroup()
                                                 .addGroup(pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(pnlBoLoc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
                                                                 .addGap(409, 409, 409)
                                                                 .addComponent(lblTieuDe))
-                                                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
-                                                                .addComponent(lblTrangThai)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(rdoTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(rdoDangBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(rdoNgungBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(btnOpenThem)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(btnOpenQRCode)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(btnTaiMaQR)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(btnMoi))
-                                                        .addComponent(lblBoLoc)
-                                                        .addComponent(jScrollPaneSpct, javax.swing.GroupLayout.Alignment.TRAILING))
-                                                .addContainerGap())
-                                        .addComponent(pnlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1052, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(lblBoLoc))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
                 );
                 pnlDanhSachSPCTLayout.setVerticalGroup(
                         pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,12 +342,6 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                 .addComponent(pnlBoLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
                                 .addGroup(pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlDanhSachSPCTLayout.createSequentialGroup()
-                                                .addGap(1, 1, 1)
-                                                .addComponent(lblTrangThai))
-                                        .addComponent(rdoTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(rdoDangBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(rdoNgungBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(pnlDanhSachSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(btnTaiMaQR)
                                                 .addComponent(btnOpenQRCode)
@@ -946,14 +912,20 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
 
                 pnlCboTong.add(jPanel11);
 
+                btnThem.setBackground(new java.awt.Color(153, 255, 255));
+                btnThem.setForeground(new java.awt.Color(51, 51, 255));
                 btnThem.setText("Thêm");
+                btnThem.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
                 btnThem.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 btnThemActionPerformed(evt);
                         }
                 });
 
+                btnQuayLai.setBackground(new java.awt.Color(153, 255, 255));
+                btnQuayLai.setForeground(new java.awt.Color(51, 51, 255));
                 btnQuayLai.setText("Quay lại");
+                btnQuayLai.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
                 btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 btnQuayLaiActionPerformed(evt);
@@ -964,18 +936,21 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 pnlThemSPCT.setLayout(pnlThemSPCTLayout);
                 pnlThemSPCTLayout.setHorizontalGroup(
                         pnlThemSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlThemSPCTLayout.createSequentialGroup()
-                                .addGroup(pnlThemSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(pnlCboTong, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(pnlThemSPCTLayout.createSequentialGroup()
-                                                .addGap(385, 385, 385)
-                                                .addComponent(btnQuayLai)
-                                                .addGap(117, 117, 117)
-                                                .addComponent(btnThem)))
-                                .addGap(2, 2, 2))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThemSPCTLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(lblTieuDe1)
                                 .addGap(380, 380, 380))
+                        .addGroup(pnlThemSPCTLayout.createSequentialGroup()
+                                .addGroup(pnlThemSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlThemSPCTLayout.createSequentialGroup()
+                                                .addComponent(pnlCboTong, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(pnlThemSPCTLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(2, 6, Short.MAX_VALUE))
                 );
                 pnlThemSPCTLayout.setVerticalGroup(
                         pnlThemSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -984,10 +959,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                                 .addComponent(lblTieuDe1)
                                 .addGap(18, 18, 18)
                                 .addComponent(pnlCboTong, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                                 .addGroup(pnlThemSPCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnQuayLai)
-                                        .addComponent(btnThem)))
+                                        .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
                 );
 
                 add(pnlThemSPCT, "card2");
@@ -1003,6 +979,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
 
         private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
                 this.clear();
+                maSP = "%";
                 fillToTable(pageIndex, limit);
         }//GEN-LAST:event_btnMoiActionPerformed
 
@@ -1012,22 +989,17 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                         if (index >= 0) {
                                 index = tblSPCT.getSelectedRow();
                                 SanPhamChiTietJFrame.maSPCT = (String) tblSPCT.getValueAt(index, 1);
-                                new SanPhamChiTietJFrame().setVisible(true);
+                                SanPhamChiTietJFrame frame = new SanPhamChiTietJFrame();
+                                frame.setVisible(true);
+                                frame.addWindowListener(new WindowAdapter() {
+                                        @Override
+                                        public void windowClosed(WindowEvent e) {
+                                                fillToTable(pageIndex, limit);
+                                        }
+                                });
                         }
                 }
         }//GEN-LAST:event_tblSPCTMouseClicked
-
-        private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
-                pnlDanhSachSPCT.setVisible(true);
-                pnlThemSPCT.setVisible(false);
-        }//GEN-LAST:event_btnQuayLaiActionPerformed
-
-        private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-                if (insert()) {
-                        pnlDanhSachSPCT.setVisible(true);
-                        pnlThemSPCT.setVisible(false);
-                }
-        }//GEN-LAST:event_btnThemActionPerformed
 
         private void btnOpenQRCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenQRCodeActionPerformed
                 new QR_Code().setVisible(true);
@@ -1079,82 +1051,65 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }//GEN-LAST:event_btnEndSpctActionPerformed
 
         private void btnNhaSanXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaSanXuatActionPerformed
-                ThuocTinhJFrame.tenBang = "Nha_San_Xuat";
-                ThuocTinhJFrame nsx = new ThuocTinhJFrame();
-                nsx.setVisible(true);
-                nsx.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowClosed(WindowEvent e) {
-                                fillComboBox(cboNhaSanXuat, "Nha_San_Xuat");
-                        }
-                });
+                fillThemTTNhanh(cboNhaSanXuat, "Nha_San_Xuat");
         }//GEN-LAST:event_btnNhaSanXuatActionPerformed
-
+        
         private void btnSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSizeActionPerformed
-                ThuocTinhJFrame.tenBang = "Size";
-                new ThuocTinhJFrame().setVisible(true);
+                fillThemTTNhanh(cboSize, "Size");
         }//GEN-LAST:event_btnSizeActionPerformed
 
         private void btnDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhMucActionPerformed
-                ThuocTinhJFrame.tenBang = "Danh_Muc";
-                new ThuocTinhJFrame().setVisible(true);
+                fillThemTTNhanh(cboDanhMuc, "Danh_Muc");
         }//GEN-LAST:event_btnDanhMucActionPerformed
 
         private void btnChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatLieuActionPerformed
-                ThuocTinhJFrame.tenBang = "Chat_Lieu";
-                new ThuocTinhJFrame().setVisible(true);
+                fillThemTTNhanh(cboChatLieu, "Chat_Lieu");
         }//GEN-LAST:event_btnChatLieuActionPerformed
 
         private void btnMauSacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMauSacActionPerformed
-                ThuocTinhJFrame.tenBang = "Mau_Sac";
-                new ThuocTinhJFrame().setVisible(true);
+                fillThemTTNhanh(cboMauSac, "Mau_Sac");
         }//GEN-LAST:event_btnMauSacActionPerformed
 
         private void btnThuongHieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuongHieuActionPerformed
-                ThuocTinhJFrame.tenBang = "Thuong_Hieu";
-                new ThuocTinhJFrame().setVisible(true);
+                fillThemTTNhanh(cboThuongHieu, "Thuong_Hieu");
         }//GEN-LAST:event_btnThuongHieuActionPerformed
 
         private void btnDeGiayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeGiayActionPerformed
-                ThuocTinhJFrame.tenBang = "De_Giay";
-                new ThuocTinhJFrame().setVisible(true);
+                fillThemTTNhanh(cboDeGiay, "De_Giay");
         }//GEN-LAST:event_btnDeGiayActionPerformed
 
         private void btnXuatXuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatXuActionPerformed
-                ThuocTinhJFrame.tenBang = "Xuat_Xu";
-                new ThuocTinhJFrame().setVisible(true);
+                fillThemTTNhanh(cboXuatXu, "Xuat_Xu");
         }//GEN-LAST:event_btnXuatXuActionPerformed
 
         private void btnCoGiayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoGiayActionPerformed
-                ThuocTinhJFrame.tenBang = "Co_Giay";
-                new ThuocTinhJFrame().setVisible(true);
-                fillComboBox(cboCoGiay, "Co_Giay");
+                fillThemTTNhanh(cboCoGiay, "Co_Giay");
         }//GEN-LAST:event_btnCoGiayActionPerformed
 
         private void cboFindNSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindNSXActionPerformed
                 if(cboFindNSX.getSelectedIndex() != -1) {
-                        nsx = cboFindNSX.getSelectedItem().toString();
+                        findNsx = cboFindNSX.getSelectedItem().toString();
                         locSPCT();
                 }
         }//GEN-LAST:event_cboFindNSXActionPerformed
 
         private void cboFindXuatXuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindXuatXuActionPerformed
                 if(cboFindXuatXu.getSelectedIndex() != -1) {
-                        xuatXu = cboFindXuatXu.getSelectedItem().toString();
+                        findXuatXu = cboFindXuatXu.getSelectedItem().toString();
                         locSPCT();
                 }
         }//GEN-LAST:event_cboFindXuatXuActionPerformed
 
         private void cboFindDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindDanhMucActionPerformed
                 if(cboFindDanhMuc.getSelectedIndex() != -1) {
-                        danhMuc = cboFindDanhMuc.getSelectedItem().toString();
+                        findDanhMuc = cboFindDanhMuc.getSelectedItem().toString();
                         locSPCT();
                 }
         }//GEN-LAST:event_cboFindDanhMucActionPerformed
 
         private void cboFindGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindGiaActionPerformed
                 if(cboFindGia.getSelectedIndex() != -1) {
-                        gia = cboFindGia.getSelectedIndex() != 0;
+                        findGia = cboFindGia.getSelectedIndex() != 0;
                         locSPCT();
                 }
         }//GEN-LAST:event_cboFindGiaActionPerformed
@@ -1162,6 +1117,18 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         private void btnTenSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTenSPActionPerformed
                 // TODO add your handling code here:
         }//GEN-LAST:event_btnTenSPActionPerformed
+
+        private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+                if (insert()) {
+                        pnlDanhSachSPCT.setVisible(true);
+                        pnlThemSPCT.setVisible(false);
+                }
+        }//GEN-LAST:event_btnThemActionPerformed
+
+        private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
+                pnlDanhSachSPCT.setVisible(true);
+                pnlThemSPCT.setVisible(false);
+        }//GEN-LAST:event_btnQuayLaiActionPerformed
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1178,11 +1145,11 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         private javax.swing.JButton btnOpenQRCode;
         private javax.swing.JButton btnOpenThem;
         private com.polyshoes.swing.Button btnPreviousSpct;
-        private javax.swing.JButton btnQuayLai;
+        private com.polyshoes.swing.Button btnQuayLai;
         private com.polyshoes.swing.Button btnSize;
         private javax.swing.JButton btnTaiMaQR;
         private com.polyshoes.swing.Button btnTenSP;
-        private javax.swing.JButton btnThem;
+        private com.polyshoes.swing.Button btnThem;
         private com.polyshoes.swing.Button btnThuongHieu;
         private com.polyshoes.swing.Button btnXuatXu;
         private com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion cboChatLieu;
@@ -1228,16 +1195,12 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         private javax.swing.JLabel lblTieuDe24;
         private javax.swing.JLabel lblTieuDe25;
         private javax.swing.JLabel lblTieuDe26;
-        private javax.swing.JLabel lblTrangThai;
         private javax.swing.JLabel lblXuatXu;
         private com.polyshoes.component.BorderJPanel pnlBoLoc;
         private javax.swing.JPanel pnlButton;
         private javax.swing.JPanel pnlCboTong;
         private javax.swing.JPanel pnlDanhSachSPCT;
         private javax.swing.JPanel pnlThemSPCT;
-        private com.polyshoes.swing.RadioButtonCustom rdoDangBan;
-        private com.polyshoes.swing.RadioButtonCustom rdoNgungBan;
-        private com.polyshoes.swing.RadioButtonCustom rdoTatCa;
         private com.polyshoes.swing.table.Table tblSPCT;
         private com.polyshoes.swing.TextField txtGia;
         private com.polyshoes.swing.TextField txtSoLuong;
@@ -1247,12 +1210,8 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 tblSPCT.fixTable(jScrollPaneSpct);
                 this.fillComboBoxSPCT();
                 this.fillToTable(pageIndex, limit);
-                if (tblSPCT.getRowCount() > 0) {
-                        lblSizeSpct.setText(String.valueOf(tongTrangSPCT(limit)));
-                } else {
-                        pageSize = 1;
-                        lblSizeSpct.setText(String.valueOf(pageSize));
-                }
+                int tongTrang = tongTrangSPCT(limit);
+                lblSizeSpct.setText(String.valueOf(tongTrang));
         }
 
         private void fillComboBox(JComboBox cbo, String tenBang) {
@@ -1262,7 +1221,21 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 for (ThuocTinh x : list) {
                         cboModel.addElement(x);
                 }
-                cbo.setSelectedIndex(0);
+                if(cbo.getItemCount() > 0) {
+                        cbo.setSelectedIndex(0);
+                }
+        }
+        
+        private void fillThemTTNhanh(JComboBox cbo, String tenBang) {
+                ThuocTinhJFrame.tenBang = tenBang;
+                ThuocTinhJFrame thuocTinh = new ThuocTinhJFrame();
+                thuocTinh.setVisible(true);
+                thuocTinh.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                                fillComboBox(cbo, tenBang);
+                        }
+                });
         }
 
         private void fillComboBoxSPCT() {
@@ -1292,31 +1265,12 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }
 
         private void fillToTable(int pageIndex, int limit) {
-                if (rdoTatCa.isSelected()) {
-                        this.fillSP(-1, pageIndex, limit);
-                }
-                if (rdoDangBan.isSelected()) {
-                        this.fillSP(0, pageIndex, limit);
-                }
-                if (rdoNgungBan.isSelected()) {
-                        this.fillSP(1, pageIndex, limit);
-                }
-        }
-
-        private void fillSP(int deleted, int pageIndex, int limit) {
                 DefaultTableModel tblModel = (DefaultTableModel) tblSPCT.getModel();
                 tblModel.setRowCount(0);
-                if (deleted == -1) {
-                        List<SanPhamChiTiet> list = dao.paging(maSP, (pageIndex - 1) * limit, limit);
+                List<SanPhamChiTiet> list = dao.selectDeleted(maSP, 0, (pageIndex - 1) * limit, limit);
+                if (list != null) {
                         for (SanPhamChiTiet x : list) {
                                 tblModel.addRow(x.toDataRow());
-                        }
-                } else {
-                        List<SanPhamChiTiet> list = dao.selectDeleted(maSP, deleted, (pageIndex - 1) * limit, limit);
-                        if(list != null) {
-                                for (SanPhamChiTiet x : list) {
-                                        tblModel.addRow(x.toDataRow());
-                                }
                         }
                 }
                 lblSizeSpct.setText(String.valueOf(this.getPageSize(limit)));
@@ -1363,30 +1317,32 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }
 
         private boolean insert() {
-                if (this.checkSPCT()) {
-                        ThuocTinh sp = (ThuocTinh) cboTenSP.getSelectedItem();
-                        int idSP = sp.getId();
-                        int idChatLieu = thuocTinhDao.getByName("Chat_Lieu", cboChatLieu.getSelectedItem().toString()).getId();
-                        int idSize = thuocTinhDao.getByName("Size", cboSize.getSelectedItem().toString()).getId();
-                        int idDanhMuc = thuocTinhDao.getByName("Danh_Muc", cboDanhMuc.getSelectedItem().toString()).getId();
-                        int idDeGiay = thuocTinhDao.getByName("De_Giay", cboDeGiay.getSelectedItem().toString()).getId();
-                        int idMauSac = thuocTinhDao.getByName("Mau_Sac", cboMauSac.getSelectedItem().toString()).getId();
-                        int idThuongHieu = thuocTinhDao.getByName("Thuong_Hieu", cboThuongHieu.getSelectedItem().toString()).getId();
-                        int idCoGiay = thuocTinhDao.getByName("Co_Giay", cboCoGiay.getSelectedItem().toString()).getId();
-                        int idXuatXu = thuocTinhDao.getByName("Xuat_Xu", cboXuatXu.getSelectedItem().toString()).getId();
-                        int idNSX = thuocTinhDao.getByName("Nha_San_Xuat", cboNhaSanXuat.getSelectedItem().toString()).getId();
-                        int soLuong = Integer.parseInt(txtSoLuong.getText());
-                        double gia = Double.parseDouble(txtGia.getText());
-                        String ma = SanPhamChiTiet.generateCode();
-                        try {
-                                dao.insert(idDanhMuc, idXuatXu, idNSX, idMauSac, idSize, idSP, idThuongHieu, idChatLieu, idDeGiay, idCoGiay, ma, gia, soLuong);
-                                DialogHelper.alert(this, "Thêm thành công!");
-                                this.fillToTable(pageIndex, limit);
-                                return true;
-                        } catch (Exception e) {
-                                e.printStackTrace();
-                                DialogHelper.alert(this, "Thêm thất bại!");
-                                return false;
+                if (DialogHelper.confirm(this, "Bạn có chắc muốn thêm không?")) {
+                        if (this.checkSPCT()) {
+                                ThuocTinh sp = (ThuocTinh) cboTenSP.getSelectedItem();
+                                int idSP = sp.getId();
+                                int idChatLieu = thuocTinhDao.getByName("Chat_Lieu", cboChatLieu.getSelectedItem().toString()).getId();
+                                int idSize = thuocTinhDao.getByName("Size", cboSize.getSelectedItem().toString()).getId();
+                                int idDanhMuc = thuocTinhDao.getByName("Danh_Muc", cboDanhMuc.getSelectedItem().toString()).getId();
+                                int idDeGiay = thuocTinhDao.getByName("De_Giay", cboDeGiay.getSelectedItem().toString()).getId();
+                                int idMauSac = thuocTinhDao.getByName("Mau_Sac", cboMauSac.getSelectedItem().toString()).getId();
+                                int idThuongHieu = thuocTinhDao.getByName("Thuong_Hieu", cboThuongHieu.getSelectedItem().toString()).getId();
+                                int idCoGiay = thuocTinhDao.getByName("Co_Giay", cboCoGiay.getSelectedItem().toString()).getId();
+                                int idXuatXu = thuocTinhDao.getByName("Xuat_Xu", cboXuatXu.getSelectedItem().toString()).getId();
+                                int idNSX = thuocTinhDao.getByName("Nha_San_Xuat", cboNhaSanXuat.getSelectedItem().toString()).getId();
+                                int soLuong = Integer.parseInt(txtSoLuong.getText());
+                                double gia = Double.parseDouble(txtGia.getText());
+                                String ma = SanPhamChiTiet.generateCode();
+                                try {
+                                        dao.insert(idDanhMuc, idXuatXu, idNSX, idMauSac, idSize, idSP, idThuongHieu, idChatLieu, idDeGiay, idCoGiay, ma, gia, soLuong);
+                                        DialogHelper.alert(this, "Thêm thành công!");
+                                        this.fillToTable(pageIndex, limit);
+                                        return true;
+                                } catch (Exception e) {
+                                        e.printStackTrace();
+                                        DialogHelper.alert(this, "Thêm thất bại!");
+                                        return false;
+                                }
                         }
                 }
                 return false;
@@ -1403,25 +1359,15 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }
 
         private int getPageSize(int limit) {
-                int tongSoSP = dao.selectAll(pageIndex, limit) == null ? 1 : dao.selectAll(pageIndex, limit).size();
-                int tongDaXoa = dao.selectDeleted(maSP, 1, 0, limit) == null ? 1 : dao.selectDeleted(maSP, 1, 0, limit).size();
-                int tongChuaXoa = dao.selectDeleted(maSP, 0, 0, limit) == null ? 1 : dao.selectDeleted(maSP, 0, 0, limit).size();
-                int tongTrang = (int) Math.ceil((double) tongSoSP / limit);
-                int tongTrangXoa = (int) Math.ceil((double) tongDaXoa / limit);
-                int tongTrangChuaXoa = (int) Math.ceil((double) tongChuaXoa / limit);
-                if (rdoTatCa.isSelected()) {
+                int tongChuaXoa = dao.selectDeleted(maSP, 0, 0, 1000) == null ? 1 : dao.selectDeleted(maSP, 0, 0, 100).size();
+                int tongTrang = (int) Math.ceil((double) tongChuaXoa / limit);
                         pageSize = tongTrang;
-                } else if (rdoDangBan.isSelected()) {
-                        pageSize = tongTrangChuaXoa;
-                } else {
-                        pageSize = tongTrangXoa;
-                }
                 return pageSize;
         }
         
         private void locSPCT() {
-                List<SanPhamChiTiet> list = dao.locSPCT(maSP, nsx, xuatXu, danhMuc, gia);
-                System.out.println("Ma:" + maSP + "\nNSX:" + nsx + "\nXuatXu:" + xuatXu + "\nDanhMuc:" + danhMuc + "\nGia:" + gia);
+                List<SanPhamChiTiet> list = dao.locSPCT(maSP, findNsx, findXuatXu, findDanhMuc, findGia);
+                System.out.println("Ma:" + maSP + "\nNSX:" + findNsx + "\nXuatXu:" + findXuatXu + "\nDanhMuc:" + findDanhMuc + "\nGia:" + findGia);
                 DefaultTableModel tblModel = (DefaultTableModel) tblSPCT.getModel();
                 tblModel.setRowCount(0);
                 for (SanPhamChiTiet x : list) {

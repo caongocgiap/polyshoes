@@ -10,7 +10,6 @@ public class TrangChuJPanel extends javax.swing.JPanel {
 
         public TrangChuJPanel() {
                 initComponents();
-                table1.fixTable(jScrollPane1);
                 setOpaque(false);
                 initData();
         }
@@ -40,15 +39,12 @@ public class TrangChuJPanel extends javax.swing.JPanel {
                 card3 = new com.polyshoes.component.CardJPanel();
                 card4 = new com.polyshoes.component.CardJPanel();
                 jPanel2 = new javax.swing.JPanel();
-                jLabel5 = new javax.swing.JLabel();
-                jScrollPane1 = new javax.swing.JScrollPane();
-                table1 = new com.polyshoes.swing.table.Table();
 
                 card1.setColorGradient(new java.awt.Color(211, 28, 215));
 
                 jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
                 jLabel1.setForeground(new java.awt.Color(4, 72, 210));
-                jLabel1.setText("Dashboard / Home");
+                jLabel1.setText("Trang chủ");
 
                 card2.setBackground(new java.awt.Color(10, 30, 214));
                 card2.setColorGradient(new java.awt.Color(72, 111, 252));
@@ -61,45 +57,15 @@ public class TrangChuJPanel extends javax.swing.JPanel {
 
                 jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-                jLabel5.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
-                jLabel5.setForeground(new java.awt.Color(76, 76, 76));
-                jLabel5.setText("Thông tin chung");
-                jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-
-                table1.setModel(new javax.swing.table.DefaultTableModel(
-                        new Object [][] {
-                                {null, null, null, null},
-                                {null, null, null, null},
-                                {null, null, null, null},
-                                {null, null, null, null}
-                        },
-                        new String [] {
-                                "Title 1", "Title 2", "Title 3", "Title 4"
-                        }
-                ));
-                jScrollPane1.setViewportView(table1);
-
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
                 jPanel2Layout.setHorizontalGroup(
                         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                        .addComponent(jScrollPane1))
-                                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE)
                 );
                 jPanel2Layout.setVerticalGroup(
                         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
-                                .addContainerGap())
+                        .addGap(0, 563, Short.MAX_VALUE)
                 );
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -146,9 +112,6 @@ public class TrangChuJPanel extends javax.swing.JPanel {
         private com.polyshoes.component.CardJPanel card3;
         private com.polyshoes.component.CardJPanel card4;
         private javax.swing.JLabel jLabel1;
-        private javax.swing.JLabel jLabel5;
         private javax.swing.JPanel jPanel2;
-        private javax.swing.JScrollPane jScrollPane1;
-        private com.polyshoes.swing.table.Table table1;
         // End of variables declaration//GEN-END:variables
 }

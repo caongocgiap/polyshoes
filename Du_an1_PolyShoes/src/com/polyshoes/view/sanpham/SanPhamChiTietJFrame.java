@@ -55,12 +55,12 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 lblTieuDe12 = new javax.swing.JLabel();
                 txtSoLuong = new com.polyshoes.swing.textfield_suggestion.TextFieldSuggestion();
                 lblTieuDe13 = new javax.swing.JLabel();
-                btnCapNhat = new javax.swing.JButton();
                 lblTieuDe14 = new javax.swing.JLabel();
                 jSeparator1 = new javax.swing.JSeparator();
                 jSeparator2 = new javax.swing.JSeparator();
                 lblTieuDe15 = new javax.swing.JLabel();
                 lblAnh = new javax.swing.JLabel();
+                btnCapNhat = new com.polyshoes.swing.Button();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
                 setTitle("Polyshoes");
@@ -192,13 +192,6 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 lblTieuDe13.setText("Số lượng");
                 lblTieuDe13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
-                btnCapNhat.setText("Cập nhật");
-                btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnCapNhatActionPerformed(evt);
-                        }
-                });
-
                 lblTieuDe14.setBackground(new java.awt.Color(0, 0, 255));
                 lblTieuDe14.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
                 lblTieuDe14.setForeground(new java.awt.Color(0, 0, 255));
@@ -217,9 +210,20 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lblAnh.setText("Ảnh");
                 lblAnh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+                lblAnh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 lblAnh.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 lblAnhMouseClicked(evt);
+                        }
+                });
+
+                btnCapNhat.setBackground(new java.awt.Color(153, 255, 255));
+                btnCapNhat.setForeground(new java.awt.Color(51, 51, 255));
+                btnCapNhat.setText("Cập nhật");
+                btnCapNhat.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+                btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnCapNhatActionPerformed(evt);
                         }
                 });
 
@@ -274,20 +278,17 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(lblTieuDe4)
                                                         .addComponent(lblTieuDe13)
-                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                .addComponent(btnCapNhat)
-                                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                                .addComponent(txtSoLuong, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                                .addComponent(cboXuatXu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                                                                .addComponent(lblTieuDe10, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(cboMauSac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                                                                        .addGap(42, 42, 42)))))
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addComponent(txtSoLuong, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(cboXuatXu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                                                .addComponent(lblTieuDe10, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(cboMauSac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                                        .addComponent(btnCapNhat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(28, 28, 28))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(44, 44, 44)
                                                 .addComponent(lblTieuDe15)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(10, 10, 10))
+                                                .addGap(0, 0, Short.MAX_VALUE))))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(398, 398, 398)
                                 .addComponent(lblTieuDe14)
@@ -365,10 +366,10 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                                                 .addComponent(lblTieuDe15)
                                                 .addGap(12, 12, 12)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                                        .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jSeparator2))
-                                                .addGap(1, 1, 1)
-                                                .addComponent(btnCapNhat)))
+                                                .addGap(24, 24, 24))
+                                        .addComponent(btnCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(20, 20, 20))
                 );
 
@@ -397,15 +398,15 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
                 }
         }//GEN-LAST:event_formWindowOpened
 
+        private void lblAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhMouseClicked
+                themAnh();
+        }//GEN-LAST:event_lblAnhMouseClicked
+
         private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
                 if(DialogHelper.confirm(this, "Bạn có chắc muốn cập nhật không?")) {
                         update();
                 }
         }//GEN-LAST:event_btnCapNhatActionPerformed
-
-        private void lblAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhMouseClicked
-                themAnh();
-        }//GEN-LAST:event_lblAnhMouseClicked
 
         public static void main(String args[]) {
                 /* Set the Nimbus look and feel */
@@ -440,7 +441,7 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
         }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton btnCapNhat;
+        private com.polyshoes.swing.Button btnCapNhat;
         private com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion cboChatLieu;
         private com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion cboCoGiay;
         private com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion cboDanhMuc;
