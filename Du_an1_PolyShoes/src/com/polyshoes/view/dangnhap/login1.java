@@ -24,10 +24,12 @@ public class login1 extends javax.swing.JFrame {
         initComponents();
         txtusername.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txtusername.setText("NV03");
+        txtpassword.setText("123");
     }
-
+    
     void dangNhap() {
-
+        
         String manv = txtusername.getText();
         String matKhau = new String(txtpassword.getPassword());
         NhanVienDao dao = new NhanVienDao();
@@ -35,11 +37,11 @@ public class login1 extends javax.swing.JFrame {
         if (nhanVien == null) {
             JOptionPane.showMessageDialog(this, "Sai username");
         } else if (!matKhau.equals(nhanVien.getMatKhau())) {
-
+            
             JOptionPane.showMessageDialog(this, "Sai mật khẩu!");
         } else {
             Auth.user = nhanVien;
-
+            
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
             this.dispose();
             new MainJFrame().setVisible(true);
@@ -243,7 +245,7 @@ public class login1 extends javax.swing.JFrame {
             try {
                 Thread.sleep(50);
             } catch (Exception e) {
-
+                
             }
         }
     }//GEN-LAST:event_formWindowOpened
@@ -254,7 +256,7 @@ public class login1 extends javax.swing.JFrame {
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         String manv = txtusername.getText();
-   
+        
         NhanVienDao dao = new NhanVienDao();
         NhanVien nhanVien = dao.selectById(manv);
         Auth.user = nhanVien;

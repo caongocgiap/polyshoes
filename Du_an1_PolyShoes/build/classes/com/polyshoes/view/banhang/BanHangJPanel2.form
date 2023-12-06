@@ -251,6 +251,9 @@
                           <Font name="SansSerif" size="12" style="1"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChonKHActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -344,7 +347,7 @@
                                                       <Component id="lblTenKH" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="lblTongTien" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="lblGiamGiaKM" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="lblNgayThanhToan" alignment="0" pref="187" max="32767" attributes="0"/>
+                                                      <Component id="lblNgayThanhToan" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Component id="cboHTTT" min="-2" pref="184" max="-2" attributes="0"/>
                                               </Group>
@@ -745,9 +748,6 @@
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cboHTTT">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
@@ -909,9 +909,6 @@
           <SubComponents>
             <Component class="com.polyshoes.swing.table.Table" name="tblHoaDon">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
@@ -963,9 +960,6 @@
                   <Dimension value="[40, 0]"/>
                 </Property>
                 <Property name="rowHeight" type="int" value="25"/>
-                <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
@@ -1083,9 +1077,6 @@
           <SubComponents>
             <Component class="com.polyshoes.swing.table.Table" name="tblGioHang">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="9" rowCount="0">
                     <Column editable="false" title="#" type="java.lang.Object"/>
@@ -1153,9 +1144,6 @@
                 </Property>
                 <Property name="rowHeight" type="int" value="25"/>
                 <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="showGrid" type="boolean" value="false"/>
@@ -1285,9 +1273,6 @@
           <SubComponents>
             <Component class="com.polyshoes.swing.table.Table" name="tblDSSP">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="8" rowCount="0">
                     <Column editable="false" title="#" type="java.lang.Object"/>
@@ -1348,9 +1333,6 @@
                   <Dimension value="[40, 0]"/>
                 </Property>
                 <Property name="rowHeight" type="int" value="25"/>
-                <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>

@@ -19,6 +19,7 @@ import com.polyshoes.view.banhang.BanHangJPanel;
 import com.polyshoes.view.banhang.BanHangJPanel2;
 
 import com.polyshoes.view.dangnhap.login1;
+import com.polyshoes.view.khachhang.KhacHangJPanel1;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
 import java.awt.Color;
@@ -78,7 +79,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         main.showForm(new QuanLyKhuyenMaiPanel());
                         break;
                     case 5:
-                        // Khach hang
+                        main.showForm(new KhacHangJPanel1());
                         break;
                     case 6:
                         // Thong ke
