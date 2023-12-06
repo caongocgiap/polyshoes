@@ -10,8 +10,6 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
 
         ThuocTinhDAO dao = new ThuocTinhDAO();
         int index = -1;
-        int pageIndex = 1;
-        int limit = 5;
 
         public ThuocTinhJPanel() {
                 initComponents();
@@ -25,14 +23,6 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
                 grpThuocTinh = new javax.swing.ButtonGroup();
                 lblTieuDe6 = new javax.swing.JLabel();
                 lblTieuDe7 = new javax.swing.JLabel();
-                pnlButton1 = new javax.swing.JPanel();
-                btnFirstThuocTinh = new com.polyshoes.swing.Button();
-                btnPreviousThuocTinh = new com.polyshoes.swing.Button();
-                lblIndexThuocTinh = new javax.swing.JLabel();
-                jLabel4 = new javax.swing.JLabel();
-                lblSizeThuocTinh = new javax.swing.JLabel();
-                btnNextThuocTinh = new com.polyshoes.swing.Button();
-                btnEndThuocTinh = new com.polyshoes.swing.Button();
                 jScrollPaneThuocTinh = new javax.swing.JScrollPane();
                 tblThuocTinh = new com.polyshoes.swing.table.Table();
                 borderJPanel3 = new com.polyshoes.component.BorderJPanel();
@@ -68,60 +58,6 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
                 lblTieuDe7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 lblTieuDe7.setText("Thiết lập thuộc tính");
                 lblTieuDe7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
-
-                pnlButton1.setBackground(new java.awt.Color(255, 255, 255));
-
-                btnFirstThuocTinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/back.png"))); // NOI18N
-                btnFirstThuocTinh.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnFirstThuocTinhActionPerformed(evt);
-                        }
-                });
-                pnlButton1.add(btnFirstThuocTinh);
-
-                btnPreviousThuocTinh.setForeground(new java.awt.Color(76, 76, 76));
-                btnPreviousThuocTinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/previous.png"))); // NOI18N
-                btnPreviousThuocTinh.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnPreviousThuocTinhActionPerformed(evt);
-                        }
-                });
-                pnlButton1.add(btnPreviousThuocTinh);
-
-                lblIndexThuocTinh.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-                lblIndexThuocTinh.setForeground(new java.awt.Color(255, 0, 0));
-                lblIndexThuocTinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lblIndexThuocTinh.setText("1");
-                pnlButton1.add(lblIndexThuocTinh);
-
-                jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-                jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-                jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                jLabel4.setText("/");
-                pnlButton1.add(jLabel4);
-
-                lblSizeThuocTinh.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-                lblSizeThuocTinh.setForeground(new java.awt.Color(255, 0, 0));
-                lblSizeThuocTinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lblSizeThuocTinh.setText("3");
-                pnlButton1.add(lblSizeThuocTinh);
-
-                btnNextThuocTinh.setForeground(new java.awt.Color(76, 76, 76));
-                btnNextThuocTinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/next.png"))); // NOI18N
-                btnNextThuocTinh.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnNextThuocTinhActionPerformed(evt);
-                        }
-                });
-                pnlButton1.add(btnNextThuocTinh);
-
-                btnEndThuocTinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/end.png"))); // NOI18N
-                btnEndThuocTinh.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnEndThuocTinhActionPerformed(evt);
-                        }
-                });
-                pnlButton1.add(btnEndThuocTinh);
 
                 jScrollPaneThuocTinh.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -390,7 +326,6 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(borderJPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pnlButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jScrollPaneThuocTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 1048, Short.MAX_VALUE)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(lblTieuDe6, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -410,28 +345,10 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
                                 .addGap(63, 63, 63)
                                 .addComponent(lblTieuDe6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPaneThuocTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPaneThuocTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                                 .addContainerGap())
                 );
         }// </editor-fold>//GEN-END:initComponents
-
-        private void btnFirstThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstThuocTinhActionPerformed
-                //                System.out.println(cboChatLieu.getSelectedItem().toString());
-        }//GEN-LAST:event_btnFirstThuocTinhActionPerformed
-
-        private void btnPreviousThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousThuocTinhActionPerformed
-                // TODO add your handling code here:
-        }//GEN-LAST:event_btnPreviousThuocTinhActionPerformed
-
-        private void btnNextThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextThuocTinhActionPerformed
-                // TODO add your handling code here:
-        }//GEN-LAST:event_btnNextThuocTinhActionPerformed
-
-        private void btnEndThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndThuocTinhActionPerformed
-                // TODO add your handling code here:
-        }//GEN-LAST:event_btnEndThuocTinhActionPerformed
 
         private void tblThuocTinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblThuocTinhMouseClicked
                 this.showDetailThuocTinh();
@@ -516,8 +433,10 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
         }//GEN-LAST:event_rdoCoGiayItemStateChanged
 
         private void btnThemTHuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTHuocTinhActionPerformed
-                this.insert();
-                this.clear();
+                if(DialogHelper.confirm(this, "Bạn có chắc muốn thêm?")) {
+                        this.insert();
+                        this.clear();
+                }
         }//GEN-LAST:event_btnThemTHuocTinhActionPerformed
 
         private void btnSuaThuocTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaThuocTinhActionPerformed
@@ -548,22 +467,14 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
         private com.polyshoes.component.BorderJPanel borderJPanel2;
         private com.polyshoes.component.BorderJPanel borderJPanel3;
         private com.polyshoes.component.BorderJPanel borderJPanel4;
-        private com.polyshoes.swing.Button btnEndThuocTinh;
-        private com.polyshoes.swing.Button btnFirstThuocTinh;
         private javax.swing.JButton btnMoiThuocTinh;
-        private com.polyshoes.swing.Button btnNextThuocTinh;
-        private com.polyshoes.swing.Button btnPreviousThuocTinh;
         private javax.swing.JButton btnSuaThuocTinh;
         private javax.swing.JButton btnThemTHuocTinh;
         private javax.swing.JButton btnXoaThuocTinh;
         private javax.swing.ButtonGroup grpThuocTinh;
-        private javax.swing.JLabel jLabel4;
         private javax.swing.JScrollPane jScrollPaneThuocTinh;
-        private javax.swing.JLabel lblIndexThuocTinh;
-        private javax.swing.JLabel lblSizeThuocTinh;
         private javax.swing.JLabel lblTieuDe6;
         private javax.swing.JLabel lblTieuDe7;
-        private javax.swing.JPanel pnlButton1;
         private javax.swing.JRadioButton rdoChatLieu;
         private javax.swing.JRadioButton rdoCoGiay;
         private javax.swing.JRadioButton rdoDanhMuc;
@@ -580,14 +491,7 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
 
         private void init() {
                 tblThuocTinh.fixTable(jScrollPaneThuocTinh);
-                lblSizeThuocTinh.setText(String.valueOf(this.tongTrangThuocTinh("Danh_Muc", limit)));
                 this.fillToTable("Danh_Muc");
-        }
-
-        private int tongTrangThuocTinh(String tenBang, int limit) {
-                int tongBanGhi = dao.select(tenBang).size();
-                int tongTrang = (int) Math.ceil((double) tongBanGhi / limit);
-                return tongTrang;
         }
 
         private void fillToTable(String tenBang) {

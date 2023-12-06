@@ -44,21 +44,42 @@ public class HoaDonDao {
     }
 
     public List<HoaDon> selectByLSSS(String keyword) {
-        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia,SUM(Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia) as TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
-                + " from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
-                + " join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
-                + "\n"
-                + "  where Hoa_Don.Deleted = 0  and Hoa_Don.mahd=?\n"
-                + "group by  Hoa_Don.id,\n"
+        String sql = "select\n"
+                + "    Hoa_Don.id,\n"
+                + "    Hoa_Don.MaHD,\n"
+                + "    Hoa_Don.NgayTao,\n"
+                + "    Hoa_Don.NgayThanhToan,\n"
+                + "    Hoa_Don_Chi_Tiet.SoLuong,\n"
+                + "    Hoa_Don_Chi_Tiet.Gia,\n"
+                + "    SUM(Hoa_Don_Chi_Tiet.SoLuong * Hoa_Don_Chi_Tiet.Gia) as thanhTien,\n"
+                + "	Hoa_Don.TongTien as TongTien,\n"
+                + "    Nhan_Vien.MaNV,\n"
+                + "    (DiaChi.Xa + ', ' + DiaChi.Quan + ', ' + DiaChi.Tinh) as DiaChi,\n"
+                + "    Khach_Hang.HoTen as HoTen,\n"
+                + "    Khach_Hang.SDT as SDT,\n"
+                + "    Hoa_Don.TrangThai\n"
+                + "from\n"
+                + "    Hoa_Don\n"
+                + "join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
+                + "join Khach_Hang on Khach_Hang.id = Hoa_Don.IDKhachHang\n"
+                + "join DiaChi on DiaChi.IDKhachHang = Khach_Hang.ID\n"
+                + "where\n"
+                + "    Hoa_Don.Deleted = 0 and Hoa_Don.maHD = ?\n"
+                + "group by\n"
+                + "    Hoa_Don.id,\n"
                 + "    Hoa_Don.MaHD,\n"
                 + "    Hoa_Don.NgayTao,\n"
                 + "    Hoa_Don.NgayThanhToan,\n"
                 + "    Hoa_Don_Chi_Tiet.SoLuong,\n"
                 + "    Hoa_Don_Chi_Tiet.Gia,\n"
                 + "    Nhan_Vien.MaNV,\n"
-                + "    Hoa_Don.DiaChi,\n"
-                + "    Hoa_Don.TenNguoiNhan,\n"
-                + "    Hoa_Don.SDT,\n"
+                + "	Hoa_Don.TongTien,\n"
+                + "    DiaChi.Xa,\n"
+                + "    DiaChi.Quan,\n"
+                + "    DiaChi.Tinh,\n"
+                + "    Khach_Hang.HoTen,\n"
+                + "    Khach_Hang.SDT,\n"
                 + "    Hoa_Don.TrangThai;";
         return select(sql, keyword);
     }
@@ -72,7 +93,7 @@ public class HoaDonDao {
                 + "join Mau_Sac on Mau_Sac.ID = San_Pham_Chi_Tiet.IDMauSac\n"
                 + "join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
                 + "join Size on Size.ID = San_Pham_Chi_Tiet.IDSize\n"
-                + "where Hoa_Don.MaHD =? and San_Pham_Chi_Tiet.Ma = ?\n"
+                + "where Hoa_Don.MaHD =? and San_Pham.Ma = ?\n"
                 + "group by Hoa_Don.id,\n"
                 + "    Hoa_Don.MaHD,\n"
                 + "    Hoa_Don.NgayTao,\n"
@@ -101,47 +122,168 @@ public class HoaDonDao {
     }
 
     public List<HoaDon> selectByKeyword(String MAHD, String tenNguoiNhan, String MaNV, String SDT) {
-        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don_Chi_Tiet.SoLuong,Hoa_Don_Chi_Tiet.Gia,SUM(Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia) as TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
-                + " from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
-                + " join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
-                + " where hoa_don.Deleted = 0 and hoa_don_chi_tiet.soluong != 0 and MAHD = ? or tenNguoiNhan like ? or MaNV = ? or Hoa_Don.SDT = ?\n"
-                + "\n"
-                + "group by  Hoa_Don.id,\n"
-                + "    Hoa_Don.MaHD,\n"
-                + "    Hoa_Don.NgayTao,\n"
-                + "    Hoa_Don.NgayThanhToan,\n"
-                + "    Hoa_Don_Chi_Tiet.SoLuong,\n"
-                + "    Hoa_Don_Chi_Tiet.Gia,\n"
-                + "    Nhan_Vien.MaNV,\n"
-                + "    Hoa_Don.DiaChi,\n"
-                + "    Hoa_Don.TenNguoiNhan,\n"
-                + "    Hoa_Don.SDT,\n"
-                + "    Hoa_Don.TrangThai;";
+        String sql = "SELECT\n"
+                + "                    Hoa_Don.id,\n"
+                + "                    Hoa_Don.MaHD,\n"
+                + "                    Hoa_Don.NgayTao,\n"
+                + "                    Hoa_Don.NgayThanhToan,\n"
+                + "                    SUM(Hoa_Don_Chi_Tiet.SoLuong * Hoa_Don_Chi_Tiet.Gia) AS TongTien,\n"
+                + "                    Nhan_Vien.MaNV,\n"
+                + "                    (DiaChi.Xa + ', ' + DiaChi.Quan + ', ' + DiaChi.Tinh) AS DiaChi,\n"
+                + "                    Khach_Hang.HoTen,\n"
+                + "                    Khach_Hang.SDT,\n"
+                + "                    Hoa_Don.TrangThai\n"
+                + "                FROM\n"
+                + "                    Hoa_Don\n"
+                + "                JOIN\n"
+                + "                    Nhan_Vien ON Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "                JOIN\n"
+                + "                    Hoa_Don_Chi_Tiet ON Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
+                + "                JOIN\n"
+                + "                    Khach_Hang ON Khach_Hang.id = Hoa_Don.IDKhachHang\n"
+                + "                JOIN\n"
+                + "                    DiaChi ON DiaChi.IDKhachHang = Khach_Hang.ID\n"
+                + "                WHERE\n"
+                + "                   hoa_don.Deleted = 0 and hoa_don_chi_tiet.soluong != 0 and MAHD = ? or HoTen like ? or MaNV = ? or Hoa_Don.SDT = ?\n"
+                + "                GROUP BY\n"
+                + "                    Hoa_Don.id,\n"
+                + "                    Hoa_Don.MaHD,\n"
+                + "                    Hoa_Don.NgayTao,\n"
+                + "                    Hoa_Don.NgayThanhToan,\n"
+                + "                    Nhan_Vien.MaNV,\n"
+                + "                    DiaChi.Xa,\n"
+                + "                    DiaChi.Quan,\n"
+                + "                    DiaChi.Tinh,\n"
+                + "                    Khach_Hang.HoTen,\n"
+                + "                    Khach_Hang.SDT,\n"
+                + "                    Hoa_Don.TrangThai,\n"
+                + "                    Hoa_Don.NgayCapnhat";
         return select(sql, MAHD, "%" + tenNguoiNhan + "%", MaNV, SDT);
     }
 
     public List<HoaDon> paging2(int TuSo, int DenSo, int page, int limit) {
-        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
-                + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
-                + "where TongTien BETWEEN ? AND ? AND Hoa_Don.deleted = 0\n"
-                + "ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        String sql = "	SELECT\n"
+                + "                    Hoa_Don.id,\n"
+                + "                    Hoa_Don.MaHD,\n"
+                + "                    Hoa_Don.NgayTao,\n"
+                + "                    Hoa_Don.NgayThanhToan,\n"
+                + "                    SUM(Hoa_Don_Chi_Tiet.SoLuong * Hoa_Don_Chi_Tiet.Gia) AS TongTien,\n"
+                + "                    Nhan_Vien.MaNV,\n"
+                + "                    (DiaChi.Xa + ', ' + DiaChi.Quan + ', ' + DiaChi.Tinh) AS DiaChi,\n"
+                + "                    Khach_Hang.HoTen,\n"
+                + "                    Khach_Hang.SDT,\n"
+                + "                    Hoa_Don.TrangThai\n"
+                + "                FROM\n"
+                + "                    Hoa_Don\n"
+                + "                JOIN\n"
+                + "                    Nhan_Vien ON Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "                JOIN\n"
+                + "                    Hoa_Don_Chi_Tiet ON Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
+                + "                JOIN\n"
+                + "                    Khach_Hang ON Khach_Hang.id = Hoa_Don.IDKhachHang\n"
+                + "                JOIN\n"
+                + "                    DiaChi ON DiaChi.IDKhachHang = Khach_Hang.ID\n"
+                + "                WHERE\n"
+                + "                    TongTien BETWEEN ? AND ? AND Hoa_Don.Deleted = 0\n"
+                + "                GROUP BY\n"
+                + "                    Hoa_Don.id,\n"
+                + "                    Hoa_Don.MaHD,\n"
+                + "                    Hoa_Don.NgayTao,\n"
+                + "                    Hoa_Don.NgayThanhToan,\n"
+                + "                    Nhan_Vien.MaNV,\n"
+                + "                    DiaChi.Xa,\n"
+                + "                    DiaChi.Quan,\n"
+                + "                    DiaChi.Tinh,\n"
+                + "                    Khach_Hang.HoTen,\n"
+                + "                    Khach_Hang.SDT,\n"
+                + "                    Hoa_Don.TrangThai,\n"
+                + "                    Hoa_Don.NgayCapnhat"
+                + "	 ORDER BY Hoa_Don.NgayCapnhat DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return select(sql, TuSo, DenSo, page * limit, limit);
     }
 
     public List<HoaDon> selectTrangThai(int keyword) {
-        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Hoa_Don.TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
-                + "from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
-                + "where Hoa_Don.Deleted = 0 and Hoa_Don.TrangThai = ?";
+        String sql = "SELECT\n"
+                + "    Hoa_Don.id,\n"
+                + "    Hoa_Don.MaHD,\n"
+                + "    Hoa_Don.NgayTao,\n"
+                + "    Hoa_Don.NgayThanhToan,\n"
+                + "    SUM(Hoa_Don_Chi_Tiet.SoLuong * Hoa_Don_Chi_Tiet.Gia) AS TongTien,\n"
+                + "    Nhan_Vien.MaNV,\n"
+                + "    (DiaChi.Xa + ', ' + DiaChi.Quan + ', ' + DiaChi.Tinh) AS DiaChi,\n"
+                + "    Khach_Hang.HoTen,\n"
+                + "    Khach_Hang.SDT,\n"
+                + "    Hoa_Don.TrangThai\n"
+                + "FROM\n"
+                + "    Hoa_Don\n"
+                + "JOIN\n"
+                + "    Nhan_Vien ON Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "JOIN\n"
+                + "    Hoa_Don_Chi_Tiet ON Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
+                + "JOIN\n"
+                + "    Khach_Hang ON Khach_Hang.id = Hoa_Don.IDKhachHang\n"
+                + "JOIN\n"
+                + "    DiaChi ON DiaChi.IDKhachHang = Khach_Hang.ID\n"
+                + "WHERE\n"
+                + "    Hoa_Don.Deleted = 0 and Hoa_Don.TrangThai = ?\n"
+                + "GROUP BY\n"
+                + "    Hoa_Don.id,\n"
+                + "    Hoa_Don.MaHD,\n"
+                + "    Hoa_Don.NgayTao,\n"
+                + "    Hoa_Don.NgayThanhToan,\n"
+                + "    Nhan_Vien.MaNV,\n"
+                + "    DiaChi.Xa,\n"
+                + "    DiaChi.Quan,\n"
+                + "    DiaChi.Tinh,\n"
+                + "    Khach_Hang.HoTen,\n"
+                + "    Khach_Hang.SDT,\n"
+                + "    Hoa_Don.TrangThai,\n"
+                + "    Hoa_Don.NgayCapnhat\n";
+
         return select(sql, keyword);
     }
 
     public List<HoaDon> selectThanhToan(String keyword) {
-        String sql = "SELECT hoa_don.ID, hoa_don.MaHD, hoa_don.NgayTao, hoa_don.NgayThanhToan, hoa_don.TongTien, Nhan_Vien.MaNV, hoa_don.TenNguoiNhan,hoa_don.DiaChi,hoa_don.SDT, hoa_don.TrangThai\n"
-                + "               FROM Hoa_Don\n"
-                + "              join Nhan_Vien on Nhan_Vien.ID = Hoa_Don.IDNhanVien\n"
-                + "               JOIN Hinh_Thuc_TT ON Hinh_Thuc_TT.IDHoaDon = Hoa_Don.ID\n"
-                + "               JOIN Thanh_Toan ON Thanh_Toan.id = Hinh_Thuc_TT.IDThanhToan\n"
-                + "              WHERE hoa_don.deleted =0 and  Thanh_Toan.MoTa LIKE ?";
+        String sql = "SELECT\n"
+                + "    Hoa_Don.id,\n"
+                + "    Hoa_Don.MaHD,\n"
+                + "    Hoa_Don.NgayTao,\n"
+                + "    Hoa_Don.NgayThanhToan,\n"
+                + "    SUM(Hoa_Don_Chi_Tiet.SoLuong * Hoa_Don_Chi_Tiet.Gia) AS TongTien,\n"
+                + "    Nhan_Vien.MaNV,\n"
+                + "    (DiaChi.Xa + ', ' + DiaChi.Quan + ', ' + DiaChi.Tinh) AS DiaChi,\n"
+                + "    Khach_Hang.HoTen,\n"
+                + "    Khach_Hang.SDT,\n"
+                + "    Hoa_Don.TrangThai\n"
+                + "FROM\n"
+                + "    Hoa_Don\n"
+                + "JOIN\n"
+                + "    Nhan_Vien ON Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "JOIN\n"
+                + "    Hoa_Don_Chi_Tiet ON Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
+                + "JOIN\n"
+                + "    Khach_Hang ON Khach_Hang.id = Hoa_Don.IDKhachHang\n"
+                + "JOIN\n"
+                + "    DiaChi ON DiaChi.IDKhachHang = Khach_Hang.ID\n"
+                + "JOIN \n"
+                + "	Hinh_Thuc_TT ON Hinh_Thuc_TT.IDHoaDon = Hoa_Don.ID\n"
+                + "JOIN \n"
+                + "	Thanh_Toan ON Thanh_Toan.id = Hinh_Thuc_TT.IDThanhToan\n"
+                + "WHERE\n"
+                + "    Hoa_Don.Deleted = 0 and Thanh_Toan.MoTa LIKE ?\n"
+                + "GROUP BY\n"
+                + "    Hoa_Don.id,\n"
+                + "    Hoa_Don.MaHD,\n"
+                + "    Hoa_Don.NgayTao,\n"
+                + "    Hoa_Don.NgayThanhToan,\n"
+                + "    Nhan_Vien.MaNV,\n"
+                + "    DiaChi.Xa,\n"
+                + "    DiaChi.Quan,\n"
+                + "    DiaChi.Tinh,\n"
+                + "    Khach_Hang.HoTen,\n"
+                + "    Khach_Hang.SDT,\n"
+                + "    Hoa_Don.TrangThai,\n"
+                + "    Hoa_Don.NgayCapnhat";
         return select(sql, "%" + keyword + "%");
     }
 
@@ -194,7 +336,7 @@ public class HoaDonDao {
         model.setTongTien(rs.getDouble("TongTien"));
         model.setMaNV(rs.getString("MaNV"));
         model.setDiaChi(rs.getString("DiaChi"));
-        model.setTenKH(rs.getString("TenNguoiNhan"));
+        model.setTenKH(rs.getString("HoTen"));
         model.setSDT(rs.getString("SDT"));
         model.setTrangThai(rs.getInt("TrangThai"));
 
@@ -207,22 +349,49 @@ public class HoaDonDao {
                 + "               join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
                 + "                 where Hoa_Don.Deleted = 0\n"
                 + "				 group by \n"
-                + "				 Hoa_Don.id,Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.ngayCapnhat,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
-                + "               ORDER BY Hoa_Don.ngayCapnhat DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+                + "				 Hoa_Don.id,Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
+                + "               ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return select(sql, page, limit);
     }
 
     public List<HoaDon> paging3(int page, int limit) {
-        String sql = "select Hoa_Don.id, Hoa_Don.MaHD,Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan,SUM(Hoa_Don_Chi_Tiet.SoLuong*Hoa_Don_Chi_Tiet.Gia) as TongTien,Nhan_Vien.MaNV,Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,Hoa_Don.SDT,Hoa_Don.TrangThai\n"
-                + "     from Hoa_Don join Nhan_Vien on Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
-                + "          join Hoa_Don_Chi_Tiet on Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
-                + "               where Hoa_Don.Deleted = 0\n"
-                + "        		 group by \n"
-                + "    		 Hoa_Don.id,Hoa_Don.MaHD,Hoa_Don.NgayTao,\n"
-                + "			 Hoa_Don.NgayThanhToan,Nhan_Vien.MaNV,\n"
-                + "			 Hoa_Don.DiaChi,Hoa_Don.DiaChi,Hoa_Don.TenNguoiNhan,\n"
-                + "			 Hoa_Don.SDT,Hoa_Don.TrangThai,Hoa_Don.NgayCapnhat\n"
-                + "              ORDER BY Hoa_Don.NgayCapnhat DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        String sql = "SELECT\n"
+                + "    Hoa_Don.id,\n"
+                + "    Hoa_Don.MaHD,\n"
+                + "    Hoa_Don.NgayTao,\n"
+                + "    Hoa_Don.NgayThanhToan,\n"
+                + "    SUM(Hoa_Don_Chi_Tiet.SoLuong * Hoa_Don_Chi_Tiet.Gia) AS TongTien,\n"
+                + "    Nhan_Vien.MaNV,\n"
+                + "    (DiaChi.Xa + ', ' + DiaChi.Quan + ', ' + DiaChi.Tinh) AS DiaChi,\n"
+                + "    Khach_Hang.HoTen,\n"
+                + "    Khach_Hang.SDT,\n"
+                + "    Hoa_Don.TrangThai\n"
+                + "FROM\n"
+                + "    Hoa_Don\n"
+                + "JOIN\n"
+                + "    Nhan_Vien ON Hoa_Don.IDNhanVien = Nhan_Vien.ID\n"
+                + "JOIN\n"
+                + "    Hoa_Don_Chi_Tiet ON Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID\n"
+                + "JOIN\n"
+                + "    Khach_Hang ON Khach_Hang.id = Hoa_Don.IDKhachHang\n"
+                + "JOIN\n"
+                + "    DiaChi ON DiaChi.IDKhachHang = Khach_Hang.ID\n"
+                + "WHERE\n"
+                + "    Hoa_Don.Deleted = 0\n"
+                + "GROUP BY\n"
+                + "    Hoa_Don.id,\n"
+                + "    Hoa_Don.MaHD,\n"
+                + "    Hoa_Don.NgayTao,\n"
+                + "    Hoa_Don.NgayThanhToan,\n"
+                + "    Nhan_Vien.MaNV,\n"
+                + "    DiaChi.Xa,\n"
+                + "    DiaChi.Quan,\n"
+                + "    DiaChi.Tinh,\n"
+                + "    Khach_Hang.HoTen,\n"
+                + "    Khach_Hang.SDT,\n"
+                + "    Hoa_Don.TrangThai,\n"
+                + "    Hoa_Don.NgayCapnhat\n"
+                + " ORDER BY Hoa_Don.NgayCapnhat DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return select(sql, page, limit);
     }
 //     public List<HoaDon> paging(int page, int limit) {
@@ -242,10 +411,10 @@ public class HoaDonDao {
 //                        "Khach_Hang ON Hoa_Don.IDKhachHang = Khach_Hang.ID";
 //            return selectBanHang(sql);
 //    }
-    final String GET_IDHD_BY_MA = "{CALL Get_HD_By_MaHD(?,?)}";
+    final String GET_HD_BY_MA = "{CALL Get_HD_By_MaHD(?,?)}";
 
     public List<HoaDon> getHD_ByMa(String maHD, int trangThai) {
-        return selectBanHang(GET_IDHD_BY_MA, maHD, trangThai);
+        return selectBanHang(GET_HD_BY_MA, maHD, trangThai);
     }
 
     public List<HoaDon> selectBanHang(String sql, Object... args) {
@@ -255,8 +424,8 @@ public class HoaDonDao {
             try {
                 rs = JdbcHelper.executeQuery(sql, args);
                 while (rs.next()) {
-                    HoaDon model = new HoaDon(rs.getInt(1), rs.getString(2), rs.getDate(3),
-                            rs.getDate(4), rs.getString(5), rs.getString(6), rs.getDouble(7), rs.getDouble(8), rs.getInt(9) == 0);
+                    HoaDon model = new HoaDon(rs.getInt("ID"), rs.getString("MaHD"), rs.getDate("NgayTao"),
+                            rs.getString("MaNV"), rs.getInt("TongSP"), rs.getDouble("TongTien"), rs.getInt("TrangThai"), rs.getDate("NgayThanhToan"));
                     list.add(model);
                 }
             } finally {

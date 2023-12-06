@@ -1,6 +1,5 @@
 package com.polyshoes.dao.HoaDon;
 
-
 import com.polyshoes.helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +8,7 @@ import java.util.List;
 import com.polyshoes.model.HoaDon.LichSuHoaDon;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
+import org.apache.log4j.helpers.DateTimeDateFormat;
 public class LichSuHoaDonDao {
 
     Connection con = null;
@@ -37,19 +36,29 @@ public class LichSuHoaDonDao {
     public List<LichSuHoaDon> selectByKeyword(String TenKH) {
         String sql = "SELECT  Lich_Su_Hoa_Don.ID, Nhan_Vien.TenNV,\n"
                 + "             Nhan_Vien.MaNV, Hoa_Don.TenNguoiNhan, Hoa_Don.TongTien, \n"
-                + "              Hoa_Don.NgayTao, Hoa_Don.NgayThanhToan,Hoa_Don.NgayCapNhat, Hoa_Don.TrangThai\n"
+                + "              Hoa_Don.NgayTao, Hoa_Don.NgayThanhToan,Hoa_Don.NgayCapNhat, Lich_Su_Hoa_Don.TrangThai\n"
                 + "                FROM Lich_Su_Hoa_Don INNER JOIN\n"
                 + "                 Hoa_Don ON Lich_Su_Hoa_Don.IDHoaDon = Hoa_Don.ID INNER JOIN\n"
                 + "             Nhan_Vien ON Hoa_Don.IDNhanVien = Nhan_Vien.ID where hoa_don.mahd = ?";
         return select(sql, TenKH);
     }
-     public List<LichSuHoaDon> selectByKeyword2(String TenKH) {
+
+    public List<LichSuHoaDon> selectByKeyword2(String TenKH) {
         String sql = "SELECT  Lich_Su_Hoa_Don.ID, Nhan_Vien.TenNV,\n"
                 + "             Nhan_Vien.MaNV, Hoa_Don.TenNguoiNhan, Hoa_Don.TongTien, \n"
                 + "              Hoa_Don.NgayTao,Hoa_Don.NgayThanhToan, Hoa_Don.NgayCapNhat, Lich_Su_Hoa_Don.TrangThai\n"
                 + "                FROM Lich_Su_Hoa_Don INNER JOIN\n"
                 + "                 Hoa_Don ON Lich_Su_Hoa_Don.IDHoaDon = Hoa_Don.ID INNER JOIN\n"
                 + "             Nhan_Vien ON Hoa_Don.IDNhanVien = Nhan_Vien.ID where hoa_don.mahd = ?";
+        return select(sql, TenKH);
+    }
+
+    public List<LichSuHoaDon> selectByKeyword3(String TenKH) {
+        String sql = "select Lich_Su_Hoa_Don.ID, Nhan_Vien.TenNV,Nhan_Vien.MaNV ,CONVERT(VARCHAR, Lich_Su_Hoa_Don.NgayCapNhat, 103) + ' ' + CONVERT(VARCHAR, Lich_Su_Hoa_Don.NgayCapNhat, 108) as NgayCapNhat,Lich_Su_Hoa_Don.HanhDong from Lich_Su_Hoa_Don\n"
+                + "					join Hoa_Don on Hoa_Don.id = Lich_Su_Hoa_Don.IDHoaDon\n"
+                + "					join Nhan_Vien on Nhan_Vien.id = Hoa_Don.IDNhanVien\n"
+                + "					where Hoa_Don.MaHD = ?\n"
+                + "order by NgayCapNhat desc";
         return select(sql, TenKH);
     }
 
@@ -74,15 +83,12 @@ public class LichSuHoaDonDao {
 
     private LichSuHoaDon readFromResultSet(ResultSet rs) throws SQLException {
         LichSuHoaDon model = new LichSuHoaDon();
-        model.setID(rs.getInt("ID"));
-        model.setTenNV(rs.getString("TenNV"));
+      
         model.setMaNV(rs.getString("MaNV"));
-        model.setTenKH(rs.getString("TenNguoiNhan"));
-        model.setTongTien(rs.getDouble("TongTien"));
-        model.setNgayTao(rs.getDate("NgayTao"));
-        model.setNgayTT(rs.getDate("NgayThanhToan"));
-        model.setTrangThai(rs.getInt("TrangThai"));
-        model.setNgayCapNhat(rs.getDate("ngaycapnhat"));
+    
+      
+        model.setTrangThai(rs.getInt("HanhDong"));
+        model.setNgayCapNhat(rs.getString("ngaycapnhat"));
         return model;
     }
 

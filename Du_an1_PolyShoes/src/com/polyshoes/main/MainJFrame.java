@@ -4,7 +4,6 @@ import com.polyshoes.component.HeaderJPanel;
 import com.polyshoes.component.MenuJPanel;
 import com.polyshoes.event.EventMenuSelected;
 import com.polyshoes.event.EventShowPopupMenu;
-import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.view.trangchu.TrangChuJPanel;
 import com.polyshoes.view.trangchu.MainJPanel;
 import com.polyshoes.swing.MenuItem;
@@ -13,10 +12,10 @@ import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
 import com.polyshoes.view.glasspanepopup.GlassPanePopup;
 import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanel;
-import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanellll;
 import com.polyshoes.view.HoaDon.HoaDonPanel10;
-import com.polyshoes.view.banhang.BanHangJPanel;
 import com.polyshoes.view.banhang.BanHangJPanel2;
+import com.polyshoes.view.khachhang.KhacHangJPanel1;
+import com.polyshoes.view.dangnhap.login1;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
 import java.awt.Color;
@@ -37,12 +36,15 @@ public class MainJFrame extends javax.swing.JFrame {
         private Animator animator;
 
         public MainJFrame() {
+
                 initComponents();
                 init();
                 GlassPanePopup.install(this);
+
         }
 
         private void init() {
+
                 layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
                 bg.setLayout(layout);
                 menu = new MenuJPanel();
@@ -58,6 +60,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 main.showForm(new TrangChuJPanel());
                                                 break;
                                         case 1:
+//                                                main.showForm(new BanHangJPanel());
                                                 main.showForm(new BanHangJPanel2());
                                                 break;
                                         case 2:
@@ -78,6 +81,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                         case 7:
                                                 main.showForm(new NhanVienJPanel());
                                                 break;
+
                                         default:
                                                 throw new AssertionError();
                                 }
@@ -141,43 +145,51 @@ public class MainJFrame extends javax.swing.JFrame {
         }
 
         @SuppressWarnings("unchecked")
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-                bg = new javax.swing.JLayeredPane();
+        bg = new javax.swing.JLayeredPane();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-                bg.setBackground(new java.awt.Color(245, 245, 245));
-                bg.setForeground(new java.awt.Color(255, 255, 255));
-                bg.setOpaque(true);
+        bg.setBackground(new java.awt.Color(245, 245, 245));
+        bg.setForeground(new java.awt.Color(255, 255, 255));
+        bg.setOpaque(true);
 
-                javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
-                bg.setLayout(bgLayout);
-                bgLayout.setHorizontalGroup(
-                        bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 1366, Short.MAX_VALUE)
-                );
-                bgLayout.setVerticalGroup(
-                        bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 783, Short.MAX_VALUE)
-                );
+        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
+        bg.setLayout(bgLayout);
+        bgLayout.setHorizontalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1366, Short.MAX_VALUE)
+        );
+        bgLayout.setVerticalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 783, Short.MAX_VALUE)
+        );
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(bg)
-                );
-                layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(bg)
-                );
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bg)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bg)
+        );
 
-                pack();
-                setLocationRelativeTo(null);
-        }// </editor-fold>//GEN-END:initComponents
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+    }//GEN-LAST:event_formWindowOpened
 
         public static void main(String args[]) {
                 /* Set the Nimbus look and feel */
@@ -208,12 +220,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 java.awt.EventQueue.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                                new MainJFrame().setVisible(true);
+                                new login1().setVisible(true);
+                                new MainJFrame().setVisible(false);
                         }
                 });
         }
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JLayeredPane bg;
-        // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLayeredPane bg;
+    // End of variables declaration//GEN-END:variables
 }

@@ -81,10 +81,9 @@ public final class PrintHoaDon21 extends javax.swing.JFrame {
     void fillTimkiemLS(String MaHD) {
         DefaultTableModel model = (DefaultTableModel) tblPrint.getModel();
         model.setRowCount(0);
-        int stt = 0;
         
         try {
-            List<PrintHoaDon> list = dao.select(MaHD);
+            List<PrintHoaDon> list = dao.selectaa(MaHD);
             for (PrintHoaDon ls : list) {
                 Object[] row = {
                     ls.getTenSP(),

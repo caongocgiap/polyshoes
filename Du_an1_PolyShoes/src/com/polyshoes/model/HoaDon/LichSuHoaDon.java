@@ -15,12 +15,12 @@ public class LichSuHoaDon {
     private Date NgayTao;
     private Date NgayTT;
     private int TrangThai;
-    private Date ngayCapNhat;
+    private String ngayCapNhat;
 
     public LichSuHoaDon() {
     }
 
-    public LichSuHoaDon(int ID, String TenNV, String MaNV, String TenKH, double TongTien, Date NgayTao, Date NgayTT, int TrangThai, Date ngayCapNhat) {
+    public LichSuHoaDon(int ID, String TenNV, String MaNV, String TenKH, double TongTien, Date NgayTao, Date NgayTT, int TrangThai, String ngayCapNhat) {
         this.ID = ID;
         this.TenNV = TenNV;
         this.MaNV = MaNV;
@@ -32,11 +32,11 @@ public class LichSuHoaDon {
         this.ngayCapNhat = ngayCapNhat;
     }
 
-    public Date getNgayCapNhat() {
+    public String getNgayCapNhat() {
         return ngayCapNhat;
     }
 
-    public void setNgayCapNhat(Date ngayCapNhat) {
+    public void setNgayCapNhat(String ngayCapNhat) {
         this.ngayCapNhat = ngayCapNhat;
     }
 
@@ -116,13 +116,11 @@ public class LichSuHoaDon {
     public String getTrangThaiA() {
         switch (getTrangThai()) {
             case 0:
-                return "tạo hóa đơn";
-//            case 1:
-//                return "hủy hóa đơn";
+                return "Đã thanh toán";
+            case 1:
+                return "Bán hàng";
             case 2:
-                return "hủy hóa đơn";
-            case 3:
-                return "trả hàng";
+                return "Hủy hóa đơn";
             default:
                 return null;
         }
@@ -152,7 +150,7 @@ public class LichSuHoaDon {
 
     public String getFormattedNgayCapNhat() {
         if (ngayCapNhat != null) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
             return dateFormat.format(ngayCapNhat);
         } else {
             return null;
@@ -166,5 +164,24 @@ public class LichSuHoaDon {
         } else {
             return null;
         }
+    }
+
+    public String ThoiGian() {
+        if (ngayCapNhat != null) {
+            String ketQua = ngayCapNhat.substring(11, 16); // Lấy từ vị trí 11 đến 15
+            return ketQua;
+        } else {
+            return null;
+        }
+
+    }
+     public String NgayCapS() {
+        if (ngayCapNhat != null) {
+            String ketQua = ngayCapNhat.substring(0, 10); // Lấy từ vị trí 11 đến 15
+            return ketQua;
+        } else {
+            return null;
+        }
+
     }
 }

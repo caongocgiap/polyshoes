@@ -7,6 +7,8 @@ import com.polyshoes.model.sanpham.SanPhamChiTiet;
 import com.polyshoes.model.sanpham.ThuocTinh;
 import com.qrcode.QR_Code;
 import com.qrcode.TaiMaQR;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -21,6 +23,10 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         int pageSize = 1;
         int limit = 5;
         public static String maSP = "%";
+        private String nsx = "%";
+        private String xuatXu = "%";
+        private String danhMuc = "%";
+        private boolean gia = false; // true: 1, false: 0
 
         public SanPhamChiTietJPanel() {
                 initComponents();
@@ -64,6 +70,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 jPanel2 = new javax.swing.JPanel();
                 cboTenSP = new com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion();
                 lblTieuDe13 = new javax.swing.JLabel();
+                btnTenSP = new com.polyshoes.swing.Button();
                 jPanel3 = new javax.swing.JPanel();
                 cboDanhMuc = new com.polyshoes.swing.combo_suggestion.ComboBoxSuggestion();
                 lblTieuDe15 = new javax.swing.JLabel();
@@ -134,13 +141,33 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 pnlBoLoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
                 cboFindNSX.setLabeText("Nhà sản xuất");
+                cboFindNSX.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cboFindNSXActionPerformed(evt);
+                        }
+                });
 
                 cboFindXuatXu.setLabeText("Xuất xứ");
+                cboFindXuatXu.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cboFindXuatXuActionPerformed(evt);
+                        }
+                });
 
                 cboFindDanhMuc.setLabeText("Danh mục");
+                cboFindDanhMuc.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cboFindDanhMucActionPerformed(evt);
+                        }
+                });
 
-                cboFindGia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cao đến thấp", "Thấp đến cao" }));
+                cboFindGia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Thấp đến cao", "Cao đến thấp" }));
                 cboFindGia.setLabeText("Giá");
+                cboFindGia.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cboFindGiaActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout pnlBoLocLayout = new javax.swing.GroupLayout(pnlBoLoc);
                 pnlBoLoc.setLayout(pnlBoLocLayout);
@@ -390,11 +417,21 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 lblTieuDe13.setText("Tên sản phẩm");
                 lblTieuDe13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
 
+                btnTenSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/add.png"))); // NOI18N
+                btnTenSP.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnTenSPActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
                 jPanel2Layout.setHorizontalGroup(
                         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 262, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(220, Short.MAX_VALUE)
+                                .addComponent(btnTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(0, 10, Short.MAX_VALUE)
@@ -405,7 +442,10 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 );
                 jPanel2Layout.setVerticalGroup(
                         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 143, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap(66, Short.MAX_VALUE)
+                                .addComponent(btnTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
@@ -963,6 +1003,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
 
         private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
                 this.clear();
+                fillToTable(pageIndex, limit);
         }//GEN-LAST:event_btnMoiActionPerformed
 
         private void tblSPCTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSPCTMouseClicked
@@ -1039,7 +1080,14 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
 
         private void btnNhaSanXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaSanXuatActionPerformed
                 ThuocTinhJFrame.tenBang = "Nha_San_Xuat";
-                new ThuocTinhJFrame().setVisible(true);
+                ThuocTinhJFrame nsx = new ThuocTinhJFrame();
+                nsx.setVisible(true);
+                nsx.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                                fillComboBox(cboNhaSanXuat, "Nha_San_Xuat");
+                        }
+                });
         }//GEN-LAST:event_btnNhaSanXuatActionPerformed
 
         private void btnSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSizeActionPerformed
@@ -1083,6 +1131,38 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 fillComboBox(cboCoGiay, "Co_Giay");
         }//GEN-LAST:event_btnCoGiayActionPerformed
 
+        private void cboFindNSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindNSXActionPerformed
+                if(cboFindNSX.getSelectedIndex() != -1) {
+                        nsx = cboFindNSX.getSelectedItem().toString();
+                        locSPCT();
+                }
+        }//GEN-LAST:event_cboFindNSXActionPerformed
+
+        private void cboFindXuatXuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindXuatXuActionPerformed
+                if(cboFindXuatXu.getSelectedIndex() != -1) {
+                        xuatXu = cboFindXuatXu.getSelectedItem().toString();
+                        locSPCT();
+                }
+        }//GEN-LAST:event_cboFindXuatXuActionPerformed
+
+        private void cboFindDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindDanhMucActionPerformed
+                if(cboFindDanhMuc.getSelectedIndex() != -1) {
+                        danhMuc = cboFindDanhMuc.getSelectedItem().toString();
+                        locSPCT();
+                }
+        }//GEN-LAST:event_cboFindDanhMucActionPerformed
+
+        private void cboFindGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFindGiaActionPerformed
+                if(cboFindGia.getSelectedIndex() != -1) {
+                        gia = cboFindGia.getSelectedIndex() != 0;
+                        locSPCT();
+                }
+        }//GEN-LAST:event_cboFindGiaActionPerformed
+
+        private void btnTenSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTenSPActionPerformed
+                // TODO add your handling code here:
+        }//GEN-LAST:event_btnTenSPActionPerformed
+
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private com.polyshoes.swing.Button btnChatLieu;
@@ -1101,6 +1181,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         private javax.swing.JButton btnQuayLai;
         private com.polyshoes.swing.Button btnSize;
         private javax.swing.JButton btnTaiMaQR;
+        private com.polyshoes.swing.Button btnTenSP;
         private javax.swing.JButton btnThem;
         private com.polyshoes.swing.Button btnThuongHieu;
         private com.polyshoes.swing.Button btnXuatXu;
@@ -1181,7 +1262,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 for (ThuocTinh x : list) {
                         cboModel.addElement(x);
                 }
-                cbo.setSelectedIndex(-1);
+                cbo.setSelectedIndex(0);
         }
 
         private void fillComboBoxSPCT() {
@@ -1199,6 +1280,9 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 fillComboBox(cboFindXuatXu, "Xuat_Xu");
                 fillComboBox(cboFindNSX, "Nha_San_Xuat");
                 cboFindGia.setSelectedIndex(-1);
+                cboFindDanhMuc.setSelectedIndex(-1);
+                cboFindXuatXu.setSelectedIndex(-1);
+                cboFindNSX.setSelectedIndex(-1);
         }
 
         private int tongTrangSPCT(int limit) {
@@ -1309,8 +1393,13 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }
 
         private void taiMaQR() {
-                TaiMaQR.maSPCT = (String) tblSPCT.getValueAt(tblSPCT.getSelectedRow(), 1);
-                TaiMaQR.taiQR();
+                index = tblSPCT.getSelectedRow();
+                if(index >= 0) {
+                        TaiMaQR.maSPCT = (String) tblSPCT.getValueAt(index, 1);
+                        TaiMaQR.taiQR();
+                } else {
+                        DialogHelper.alert(this, "Vui lòng chọn sản phẩm muốn tải");
+                }
         }
 
         private int getPageSize(int limit) {
@@ -1329,5 +1418,14 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 }
                 return pageSize;
         }
-
+        
+        private void locSPCT() {
+                List<SanPhamChiTiet> list = dao.locSPCT(maSP, nsx, xuatXu, danhMuc, gia);
+                System.out.println("Ma:" + maSP + "\nNSX:" + nsx + "\nXuatXu:" + xuatXu + "\nDanhMuc:" + danhMuc + "\nGia:" + gia);
+                DefaultTableModel tblModel = (DefaultTableModel) tblSPCT.getModel();
+                tblModel.setRowCount(0);
+                for (SanPhamChiTiet x : list) {
+                        tblModel.addRow(x.toDataRow());
+                }
+        }
 }

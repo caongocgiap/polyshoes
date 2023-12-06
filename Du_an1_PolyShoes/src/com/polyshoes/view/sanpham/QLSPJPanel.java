@@ -311,6 +311,9 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                                 .addComponent(cboFindTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
                 );
+
+                tab1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCapNhatSP, btnLamMoiSP, btnThemSP, btnXoaSP});
+
                 tab1Layout.setVerticalGroup(
                         tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(tab1Layout.createSequentialGroup()
@@ -627,26 +630,30 @@ public class QLSPJPanel extends javax.swing.JPanel {
         }
 
         private void insert() {
-                if (this.checkDataSP()) {
-                        if (dao.insert(this.readFormSP()) > 0) {
-                                DialogHelper.alert(this, "Thêm thành công !!");
-                                this.fillToTable(pageIndex, limit);
-                                this.clear();
-                        } else {
-                                DialogHelper.alert(this, "Thêm thất bại !!");
+                if (DialogHelper.confirm(this, "Bạn có chắc muốn thêm không?")) {
+                        if (this.checkDataSP()) {
+                                if (dao.insert(this.readFormSP()) > 0) {
+                                        DialogHelper.alert(this, "Thêm thành công !!");
+                                        this.fillToTable(pageIndex, limit);
+                                        this.clear();
+                                } else {
+                                        DialogHelper.alert(this, "Thêm thất bại !!");
+                                }
                         }
                 }
         }
 
         private void update() {
-                if (this.checkDataSP() && index >= 0) {
-                        if (DialogHelper.confirm(this, "Bạn có chắc muốn cập nhật không?")) {
-                                try {
-                                        dao.update(this.readFormSP());
-                                        this.fillToTable(pageIndex, limit);
-                                        DialogHelper.alert(this, "Cập nhật thành công");
-                                } catch (Exception e) {
-                                        DialogHelper.alert(this, "Cập nhật thất bại");
+                if (DialogHelper.confirm(this, "Bạn có chắc muôn sửa?")) {
+                        if (this.checkDataSP() && index >= 0) {
+                                if (DialogHelper.confirm(this, "Bạn có chắc muốn cập nhật không?")) {
+                                        try {
+                                                dao.update(this.readFormSP());
+                                                this.fillToTable(pageIndex, limit);
+                                                DialogHelper.alert(this, "Cập nhật thành công");
+                                        } catch (Exception e) {
+                                                DialogHelper.alert(this, "Cập nhật thất bại");
+                                        }
                                 }
                         }
                 }

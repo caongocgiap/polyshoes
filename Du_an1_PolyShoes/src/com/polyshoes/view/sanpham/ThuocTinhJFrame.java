@@ -87,7 +87,9 @@ public class ThuocTinhJFrame extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
         private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-                insert();
+                if(DialogHelper.confirm(this, "Bạn có chắc muốn thêm không?")) {
+                        insert();
+                }
         }//GEN-LAST:event_btnThemActionPerformed
 
         public static void main(String args[]) {
@@ -136,7 +138,7 @@ public class ThuocTinhJFrame extends javax.swing.JFrame {
                 try {
                         dao.insert(tenBang, model);
                         DialogHelper.alert(this, "Thêm thành công!");
-                        setVisible(false);
+                        dispose();
                 } catch (Exception e) {
                         DialogHelper.alert(this, "Thêm thất bại!");
                 }

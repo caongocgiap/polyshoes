@@ -530,12 +530,52 @@ BEGIN
 END
 GO
 exec getIDSP_ByTen 'Giày thu đông'
-select * from san_Pham
-/*
-	Bản chuẩn
-*/
 
 
+IF OBJECT_ID('Loc_SPCT') IS NOT NULL
+	DROP PROC Loc_SPCT
+GO
+CREATE PROC Loc_SPCT 
+	@Ma VARCHAR(10) = '%',
+	@NhaSanXuat NVARCHAR(50) = '%',
+	@XuatXu NVARCHAR(50) = '%',
+	@DanhMuc NVARCHAR(50) = '%',
+	@Gia BIT = 0
+AS
+BEGIN
+    DECLARE @sql NVARCHAR(MAX)
+    SET @sql = N'
+				SELECT
+				ROW_NUMBER() OVER (ORDER BY San_Pham.ID DESC) AS [STT],
+				San_Pham.Ma, San_Pham.Ten, Danh_Muc.Ten, Thuong_Hieu.Ten, Xuat_Xu.Ten, Nha_San_Xuat.Ten, Chat_Lieu.Ten, De_Giay.Ten, Co_Giay.Ten,
+				Mau_Sac.Ten AS Expr8, Size.Size, San_Pham_Chi_Tiet.Gia, San_Pham_Chi_Tiet.SoLuongTon, San_Pham_Chi_Tiet.KhoiLuong, San_Pham_Chi_Tiet.TrangThai
+				FROM San_Pham_Chi_Tiet JOIN
+				San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID JOIN
+				Size ON San_Pham_Chi_Tiet.IDSize = Size.ID JOIN
+				Thuong_Hieu ON San_Pham_Chi_Tiet.IDThuongHieu = Thuong_Hieu.ID JOIN
+				Xuat_Xu ON San_Pham_Chi_Tiet.IDXuatXu = Xuat_Xu.ID JOIN
+				Mau_Sac ON San_Pham_Chi_Tiet.IDMauSac = Mau_Sac.ID JOIN
+				Nha_San_Xuat ON San_Pham_Chi_Tiet.IDNSX = Nha_San_Xuat.ID JOIN
+				De_Giay ON San_Pham_Chi_Tiet.IDDeGiay = De_Giay.ID JOIN
+				Danh_Muc ON San_Pham_Chi_Tiet.IDDanhMuc = Danh_Muc.ID JOIN
+				Co_Giay ON San_Pham_Chi_Tiet.IDCoGiay = Co_Giay.ID JOIN
+				Chat_Lieu ON San_Pham_Chi_Tiet.IDChatLieu = Chat_Lieu.ID 
+				WHERE San_Pham.Ma LIKE @Ma
+					AND Nha_San_Xuat.ten LIKE @NhaSanXuat
+					AND Xuat_Xu.ten LIKE @XuatXu
+					AND Danh_Muc.ten LIKE @DanhMuc
+				ORDER BY 
+                    CASE WHEN @Gia = 0 THEN San_Pham_Chi_Tiet.Gia END ASC,
+                    CASE WHEN @Gia = 1 THEN San_Pham_Chi_Tiet.Gia END DESC'
+    EXEC sp_executesql @sql, N'@Ma VARCHAR(10), @NhaSanXuat NVARCHAR(50), @XuatXu NVARCHAR(50), @DanhMuc NVARCHAR(50), @Gia BIT', @Ma, @NhaSanXuat, @XuatXu, @DanhMuc, @Gia
+END
+GO
+
+exec get_all_SPCT 0, 15
+exec loc_SPCT 'SP-KKQPDTK', N'vasashoes', N'Trung quốc'
+
+
+select * from Hoa_Don
 
 
 
