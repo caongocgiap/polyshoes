@@ -17,15 +17,18 @@ import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanellll;
 import com.polyshoes.view.HoaDon.HoaDonPanel10;
 import com.polyshoes.view.banhang.BanHangJPanel;
 import com.polyshoes.view.banhang.BanHangJPanel2;
+import com.polyshoes.view.dangnhap.Auth;
 
 import com.polyshoes.view.dangnhap.login1;
 import com.polyshoes.view.khachhang.KhacHangJPanel1;
+import com.polyshoes.view.khachhang.KhacHangJPanel12;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -41,7 +44,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() {
 
-
         initComponents();
         init();
         GlassPanePopup.install(this);
@@ -49,7 +51,6 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     private void init() {
-       
 
         layout = new MigLayout("fill", "0[]0[100%, fill]0", "0[fill, top]0");
         bg.setLayout(layout);
@@ -79,13 +80,23 @@ public class MainJFrame extends javax.swing.JFrame {
                         main.showForm(new QuanLyKhuyenMaiPanel());
                         break;
                     case 5:
-                        main.showForm(new KhacHangJPanel1());
+                        main.showForm(new KhacHangJPanel12());
                         break;
                     case 6:
-                        // Thong ke
+                        if (!Auth.isManager()) {
+
+                            JOptionPane.showMessageDialog(MainJFrame.this, "Nhân Viên không được quyền vào phần này", "Cảnh báo", 0);
+                        } else {
+                            
+                        }
                         break;
                     case 7:
-                        main.showForm(new NhanVienJPanel());
+                        if (!Auth.isManager()) {
+
+                            JOptionPane.showMessageDialog(MainJFrame.this, "Nhân Viên không được quyền vào phần này", "Cảnh báo", 0);
+                        } else {
+                            main.showForm(new NhanVienJPanel());
+                        }
                         break;
 
                     default:
@@ -226,7 +237,7 @@ public class MainJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                 new login1().setVisible(true);
+                new login1().setVisible(true);
                 new MainJFrame().setVisible(false);
             }
         });

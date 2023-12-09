@@ -5,7 +5,7 @@
 package com.polyshoes.view.khachhang;
 
 
-import com.polyshoes.dao.khachhang.KhachHangDao;
+import com.polyshoes.dao.khachhang.KhachHangDao13;
 import com.polyshoes.model.khachhang.KhachHang;
 import java.awt.PopupMenu;
 import java.io.BufferedReader;
@@ -27,7 +27,7 @@ public class ChonKhachHangJFrame extends javax.swing.JFrame {
     /**
      * Creates new form ChonKhachHangJFrame
      */
-    KhachHangDao khdao = new KhachHangDao();
+    KhachHangDao13 khdao = new KhachHangDao13();
     
     DefaultTableModel mol = new DefaultTableModel();
     

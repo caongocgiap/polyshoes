@@ -134,7 +134,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     }
 
     public void fillTablePagging(long trang) {
-        mol = (DefaultTableModel) table1.getModel();
+        mol = (DefaultTableModel) table2.getModel();
         mol.setRowCount(0);
         counter = (int) ((trang - 1) * 7 + 1); // Tính lại giá trị của counter
         List<NhanVien> listNV = nvdao.selectAll(trang);
@@ -157,7 +157,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     }
 
     void fillTable() {
-        mol = (DefaultTableModel) table1.getModel();
+        mol = (DefaultTableModel) table2.getModel();
         mol.setRowCount(0);
         int counter = 1;
         List<NhanVien> listNV = nvdao.selectAll2();
@@ -170,7 +170,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     }
 
     void edit() {
-        String manh = (String) table1.getValueAt(this.row, 1);
+        String manh = (String) table2.getValueAt(this.row, 1);
         NhanVien nv = nvdao.selectById(manh);
         this.setForm(nv);
 
@@ -257,7 +257,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
                 try {
                     nvdao.insert(nv);
                     this.fillTable();
-                    table1.setRowSelectionInterval(0, 0);
+                    table2.setRowSelectionInterval(0, 0);
                     JOptionPane.showMessageDialog(this, "Thêm thành công");
                 } catch (Exception e) {
 
@@ -330,7 +330,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
 
     void delete() {
 
-        int row = table1.getSelectedRow();
+        int row = table2.getSelectedRow();
         if (row != -1) {
 
             NhanVien nv = getForm();
@@ -642,7 +642,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table1 = new javax.swing.JTable();
+        table2 = new javax.swing.JTable();
         tblImport = new javax.swing.JButton();
         tblExport = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -673,13 +673,14 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator10.setForeground(new java.awt.Color(0, 0, 255));
+        jSeparator10.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 71, 245, 10));
 
         txtCCCD.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtCCCD.setForeground(new java.awt.Color(0, 153, 255));
         txtCCCD.setBorder(null);
         txtCCCD.setDragEnabled(true);
-        jPanel1.add(txtCCCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 250, 20));
+        jPanel1.add(txtCCCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 229, 250, 20));
 
         jSeparator12.setForeground(new java.awt.Color(0, 0, 255));
         jSeparator12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -688,7 +689,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         txtDiaChi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtDiaChi.setForeground(new java.awt.Color(0, 153, 255));
         txtDiaChi.setBorder(null);
-        jPanel1.add(txtDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 245, 20));
+        jPanel1.add(txtDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 189, 245, 20));
 
         jSeparator13.setForeground(new java.awt.Color(0, 0, 255));
         jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 245, 10));
@@ -770,24 +771,24 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         txtEmail.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(0, 153, 255));
         txtEmail.setBorder(null);
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 245, 20));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 139, 245, 20));
 
         txtSDT.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtSDT.setForeground(new java.awt.Color(0, 153, 255));
         txtSDT.setBorder(null);
         txtSDT.setDragEnabled(true);
-        jPanel1.add(txtSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 245, 20));
+        jPanel1.add(txtSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 141, 245, 20));
 
         txtHoTen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtHoTen.setForeground(new java.awt.Color(0, 153, 255));
         txtHoTen.setBorder(null);
         txtHoTen.setDragEnabled(true);
-        jPanel1.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 245, 20));
+        jPanel1.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 45, 245, 20));
 
         txtMaNV.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtMaNV.setForeground(new java.awt.Color(0, 153, 255));
         txtMaNV.setBorder(null);
-        jPanel1.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 245, 20));
+        jPanel1.add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 49, 245, 20));
 
         jSeparator17.setForeground(new java.awt.Color(0, 0, 255));
         jPanel1.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 250, 11));
@@ -829,7 +830,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách nhân viên", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 255))); // NOI18N
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -840,17 +841,17 @@ public class NhanVienJPanel extends javax.swing.JPanel {
                 "STT", "MaNV", "TenNV", "SDT", "Email", "DiaChi", "GioiTinh", "NgaySinh", "ChucVu", "TrangThai"
             }
         ));
-        table1.setGridColor(new java.awt.Color(255, 255, 255));
-        table1.setRequestFocusEnabled(false);
-        table1.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        table1.setSelectionForeground(new java.awt.Color(0, 153, 255));
-        table1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+        table2.setGridColor(new java.awt.Color(255, 255, 255));
+        table2.setRequestFocusEnabled(false);
+        table2.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        table2.setSelectionForeground(new java.awt.Color(0, 153, 255));
+        table2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        table2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table1MouseClicked(evt);
+                table2MouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table1);
+        jScrollPane1.setViewportView(table2);
 
         tblImport.setBackground(new java.awt.Color(51, 255, 255));
         tblImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/import.png"))); // NOI18N
@@ -1059,14 +1060,14 @@ public class NhanVienJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(422, 422, 422))
+                .addGap(421, 421, 421))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1098,7 +1099,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void rdDaNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdDaNghiActionPerformed
-        mol = (DefaultTableModel) table1.getModel();
+        mol = (DefaultTableModel) table2.getModel();
         mol.setRowCount(0);
         int counter = 1;
         NhanVien nv1 = getForm();
@@ -1121,7 +1122,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_rdTatCaActionPerformed
 
     private void rdDangLamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdDangLamActionPerformed
-        mol = (DefaultTableModel) table1.getModel();
+        mol = (DefaultTableModel) table2.getModel();
         mol.setRowCount(0);
         int counter = 1;
         NhanVien nv1 = getForm();
@@ -1138,7 +1139,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_rdDangLamActionPerformed
 
     private void txtFindKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFindKeyReleased
-        mol = (DefaultTableModel) table1.getModel();
+        mol = (DefaultTableModel) table2.getModel();
         mol.setRowCount(0);
         int counter = 1;
 
@@ -1223,7 +1224,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
             // Gọi phương thức import dữ liệu từ file Excel vào mô hình
             try {
                 DefaultTableModel model = importFromExcel(filePath);
-                table1.setModel(model);
+                table2.setModel(model);
                 JOptionPane.showMessageDialog(null, "Import thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -1237,7 +1238,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
 
     private void tblExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tblExportActionPerformed
 
-        mol = (DefaultTableModel) table1.getModel();
+        mol = (DefaultTableModel) table2.getModel();
         mol.setRowCount(0);
         int counter = 1;
         List<NhanVien> listNV = nvdao.selectAll2();
@@ -1268,14 +1269,14 @@ public class NhanVienJPanel extends javax.swing.JPanel {
             Sheet sheet = workbook.createSheet("Sheet1");
 
             // Lấy dữ liệu từ tableModel
-            int rowCount = table1.getRowCount();
-            int columnCount = table1.getColumnCount();
+            int rowCount = table2.getRowCount();
+            int columnCount = table2.getColumnCount();
 
             // Ghi dữ liệu vào sheet
             for (int i = 0; i < rowCount; i++) {
                 Row row = sheet.createRow(i);
                 for (int j = 0; j < columnCount; j++) {
-                    Object value = table1.getValueAt(i, j);
+                    Object value = table2.getValueAt(i, j);
                     Cell cell = row.createCell(j);
                     if (value != null) {
                         cell.setCellValue(value.toString());
@@ -1305,28 +1306,8 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         btnKhoiPhuc.setVisible(false);
     }//GEN-LAST:event_btnXoaActionPerformed
 
-    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
-        if (evt.getClickCount() == 1) {
-            this.row = table1.getSelectedRow();
-            this.edit();
-            String trangThai1 = (String) table1.getValueAt(row, 9);
-            NhanVien nv = getForm();
-            if (trangThai1.equalsIgnoreCase("Đang làm")) {
-
-                btnXoa.setVisible(true);
-                btnKhoiPhuc.setVisible(false);
-            }
-            if (trangThai1.equalsIgnoreCase("Nghỉ làm")) {
-                btnKhoiPhuc.setVisible(true);
-                btnXoa.setVisible(false);
-            }
-
-        }
-
-    }//GEN-LAST:event_table1MouseClicked
-
     private void btnKhoiPhucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoiPhucActionPerformed
-        int row = table1.getSelectedRow();
+        int row = table2.getSelectedRow();
         if (row != -1) {
 
             NhanVien nv = getForm();
@@ -1430,7 +1411,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
                     rdNam.setSelected(true);
                 }
 
-                int minYear = 1900;
+                int minYear = 1970;
                 int maxYear = 2022;
                 int randomYear = ThreadLocalRandom.current().nextInt(minYear, maxYear + 1);
 
@@ -1485,6 +1466,25 @@ public class NhanVienJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnquetCCCDComponentHidden
 
+    private void table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseClicked
+        if (evt.getClickCount() == 1) {
+            this.row = table2.getSelectedRow();
+            this.edit();
+            String trangThai1 = (String) table2.getValueAt(row, 9);
+            NhanVien nv = getForm();
+            if (trangThai1.equalsIgnoreCase("Đang làm")) {
+
+                btnXoa.setVisible(true);
+                btnKhoiPhuc.setVisible(false);
+            }
+            if (trangThai1.equalsIgnoreCase("Nghỉ làm")) {
+                btnKhoiPhuc.setVisible(true);
+                btnXoa.setVisible(false);
+            }
+
+        }
+    }//GEN-LAST:event_table2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -1532,7 +1532,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rdNam;
     private javax.swing.JRadioButton rdNu;
     private javax.swing.JRadioButton rdTatCa;
-    private javax.swing.JTable table1;
+    private javax.swing.JTable table2;
     private javax.swing.JButton tblExport;
     private javax.swing.JButton tblImport;
     private javax.swing.JTextField txtCCCD;

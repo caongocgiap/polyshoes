@@ -26,6 +26,7 @@ public class login1 extends javax.swing.JFrame {
         txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtusername.setText("NV03");
         txtpassword.setText("123");
+        cbxNhoMatKhau.setSelected(true);
     }
     
     void dangNhap() {
@@ -73,7 +74,7 @@ public class login1 extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         disable = new javax.swing.JLabel();
         show = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cbxNhoMatKhau = new javax.swing.JCheckBox();
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -181,11 +182,11 @@ public class login1 extends javax.swing.JFrame {
         });
         jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 216, 40, 40));
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(199, 226, 255));
-        jCheckBox1.setText("Nhớ mật khẩu");
-        jCheckBox1.setOpaque(false);
-        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 261, -1, -1));
+        cbxNhoMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cbxNhoMatKhau.setForeground(new java.awt.Color(199, 226, 255));
+        cbxNhoMatKhau.setText("Nhớ mật khẩu");
+        cbxNhoMatKhau.setOpaque(false);
+        jPanel2.add(cbxNhoMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 261, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(199, 226, 255));
@@ -300,9 +301,9 @@ public class login1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox cbxNhoMatKhau;
     private javax.swing.JLabel disable;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

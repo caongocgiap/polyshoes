@@ -4,8 +4,10 @@ import com.polyshoes.dao.sanpham.SanPhamDAO;
 import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.model.sanpham.SanPham;
 import com.polyshoes.swing.table.EventAction;
+import com.polyshoes.view.dangnhap.Auth;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -624,6 +626,10 @@ public class QLSPJPanel extends javax.swing.JPanel {
         }
 
         private void insert() {
+            if(!Auth.isManager()){
+                JOptionPane.showMessageDialog(this, "Nhân Viên không được thức hiện chức năng này!","Cảnh báo",0);
+            }else{
+            
                 if (this.checkDataSP()) {
                         if (dao.insert(this.readFormSP()) > 0) {
                                 DialogHelper.alert(this, "Thêm thành công !!");
@@ -633,9 +639,13 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                 DialogHelper.alert(this, "Thêm thất bại !!");
                         }
                 }
+            }
         }
 
         private void update() {
+              if(!Auth.isManager()){
+                JOptionPane.showMessageDialog(this, "Nhân Viên không được thức hiện chức năng này!","Cảnh báo",0);
+            }else{
                 if (this.checkDataSP() && index >= 0) {
                         if (DialogHelper.confirm(this, "Bạn có chắc muốn cập nhật không?")) {
                                 try {
@@ -647,9 +657,13 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                 }
                         }
                 }
+              }
         }
 
         private void delete() {
+              if(!Auth.isManager()){
+                JOptionPane.showMessageDialog(this, "Nhân Viên không được thức hiện chức năng này!","Cảnh báo",0);
+            }else{
                 if (!txtMaSP.equals("###") && index >= 0) {
                         if (DialogHelper.confirm(this, "Bạn có chắc muốn xóa không?")) {
                                 try {
@@ -663,6 +677,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 } else {
                         DialogHelper.alert(this, "Vui lòng chọn sản phẩm cần xóa!");
                 }
+              }
         }
 
         private void showTab() {

@@ -19,7 +19,7 @@ import java.sql.*;
  */
 public class KhachHangDao {
 
-    Connection con = null;
+  Connection con = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
 
@@ -30,11 +30,12 @@ public class KhachHangDao {
     }
 
     public void update(KhachHang model) {
-        String sql = "UPDATE Khach_hang SET HoTen=?,SDT=?,GioiTinh=? where MaKH= ? ";
+        String sql = "UPDATE Khach_Hang set HoTen = ?,SDT = ?,GioiTinh = ?,DiaChi= ? WHERE MAKH like ?";
         JdbcHelper.executeUpdate(sql,
                 model.getHoTen(),
                 model.getSDT(),
                 model.isGioitinh(),
+                model.getDiaChi(),
                 model.getMaKH());
 
     }
@@ -77,37 +78,39 @@ public class KhachHangDao {
 //        return select(sql, "%" + MaKH + "%");
 //    }
     public List<KhachHang> selectByALL(String MaKH, String HoTen, String SDT) {
-        String sql = "  SELECT  Khach_Hang.MaKH, Khach_Hang.HoTen,DiaChi.Tinh,DiaChi.Quan,DiaChi.Xa, Khach_Hang.SDT,CONCAT(DiaChi.Xa ,',' ,DiaChi.Quan,',' ,DiaChi.Tinh)  AS DiaChiChiTiet, Khach_Hang.GioiTinh\n"
-                + "FROM     DiaChi INNER JOIN  Khach_Hang ON DiaChi.ID = Khach_Hang.ID WHERE MaKH like ? or HoTen like ? or SDT like ? ";
+        String sql = "  SELECT  MaKH, HoTen,DiaChi, SDT,GioiTinh\n"
+                + "FROM   Khach_Hang WHERE MaKH like ? or HoTen like ? or SDT like ? ";
         return select(sql, "%" + MaKH + "%", "%" + HoTen + "%", "%" + SDT + "%");
     }
 
-    public List<KhachHang> selectByALLLS(String MaKH, String HoTen, String SDT, String MaHD) {
-        String sql = "SELECT Khach_Hang.MaKH, Hoa_Don.MaHD, Khach_Hang.HoTen,Khach_Hang.SDT,CONCAT(DiaChi.Xa ,',' ,DiaChi.Quan,',' ,DiaChi.Tinh) AS DiaChiChiTiet\n"
-                + ", Hoa_Don.NgayNhan, Hoa_Don.TongTien, Hoa_Don.TrangThai FROM  Khach_Hang INNER JOIN\n"
-                + "                  Hoa_Don ON Khach_Hang.ID = Hoa_Don.ID  INNER JOIN DiaChi ON Khach_Hang.ID = DiaChi.ID  WHERE MaKH like ? or HoTen like ? or SDT like ? or MaHD like ?";
-        return select1(sql, "%" + MaKH + "%", "%" + HoTen + "%", "%" + SDT + "%", "%" + MaHD + "%");
+    public List<KhachHang> selectByALLLS(String MaKH, String HoTen, String MaHD) {
+        String sql = "SELECT Khach_Hang.MaKH,Hoa_Don.MaHD, Khach_Hang.HoTen, Khach_Hang.SDT, Khach_Hang.DiaChi,  Hoa_Don.NgayNhan,  Hoa_Don.TongTien,Hoa_Don.TrangThai\n" +
+"FROM     Hoa_Don INNER JOIN\n" +
+"                  Khach_Hang ON Hoa_Don.IDKhachHang = Khach_Hang.ID  WHERE MaKH like ? or HoTen like ?  or MaHD like ?";
+        return select1(sql, "%" + MaKH + "%", "%" + HoTen + "%", "%" + MaHD + "%");
     }
 
-    public KhachHang findById1(String MaKH) {
-        String sql = "  SELECT * FROM Khach_hang WHERE MaKH = ?";
-        List<KhachHang> list = select(sql, MaKH);
-        return !list.isEmpty() ? list.get(0) : null;
-    }
+//    public KhachHang findById1(String MaKH) {
+//        String sql = "  SELECT * FROM Khach_hang WHERE MaKH = ?";
+//        List<KhachHang> list = select(sql, MaKH);
+//        return !list.isEmpty() ? list.get(0) : null;
+//    }
 
     public List<KhachHang> select() {
-        String sql = "select * from Khach_Hang";
+        String sql = "select * from Khach_Hang where Deleted = 0";
         return select(sql);
     }
 
-    public List<KhachHang> selectHoaDon() {
-        String sql = "SELECT  Hoa_Don.MaHD,Khach_Hang.MaKH,Khach_Hang.HoTen, Hoa_Don.NgayNhan,Hoa_Don.TongTien, Hoa_Don.TrangThai\n"
-                + "FROM Khach_Hang INNER JOIN  Hoa_Don ON Khach_Hang.ID = Hoa_Don.IDKhachHang ";
-        return select1(sql);
-    }
+//    public List<KhachHang> selectHoaDon() {
+//        String sql = "SELECT  Hoa_Don.MaHD,Khach_Hang.MaKH,Khach_Hang.HoTen, Hoa_Don.NgayNhan,Hoa_Don.TongTien, Hoa_Don.TrangThai\n"
+//                + "FROM Khach_Hang INNER JOIN  Hoa_Don ON Khach_Hang.ID = Hoa_Don.IDKhachHang ";
+//        return select(sql);
+//    }
 
     public List<KhachHang> selectHoaDon1(String MaKH) {
-        String sql = "SELECT kh.MaKH,hd.MaHD, kh.HoTen,kh.SDT,kh.DiaChi,hd.NgayNhan,hd.TongTien, hd.TrangThai from Khach_Hang kh  join Hoa_Don hd on kh.ID = hd.IDKhachHang";
+        String sql = "SELECT Khach_Hang.MaKH,Hoa_Don.MaHD, Khach_Hang.HoTen, Khach_Hang.SDT, Khach_Hang.DiaChi,  Hoa_Don.NgayNhan,  Hoa_Don.TongTien,Hoa_Don.TrangThai\n" +
+"FROM     Hoa_Don INNER JOIN\n" +
+"                  Khach_Hang ON Hoa_Don.IDKhachHang = Khach_Hang.ID  where MaKH like ?";
         return select1(sql, "%" + MaKH + "%");
     }
 
@@ -116,10 +119,6 @@ public class KhachHangDao {
         JdbcHelper.executeUpdate(sql, MaKH);
     }
 
-    public void deleteDiaChi(String MaKH) {
-        String sql = "delete from DiaChi join Khach_Hang on Khach_Hang.ID = DiaChi.ID WHERE Khach_Hang.MaKH = ?";
-        JdbcHelper.executeUpdate(sql, MaKH);
-    }
 
     private List<KhachHang> select(String sql, Object... args) {
         List<KhachHang> list = new ArrayList<>();
@@ -179,8 +178,8 @@ public class KhachHangDao {
     }
 
     public List<KhachHang> paging(int page, int limit) {
-        String sql = "SELECT Khach_Hang.ID,Khach_Hang.MaKH, Khach_Hang.HoTen, Khach_Hang.SDT,Khach_Hang.Deleted,CONCAT(DiaChi.Xa ,',' ,DiaChi.Quan,',' ,DiaChi.Tinh) AS DiaChiChiTiet ,DiaChi.Tinh,DiaChi.Quan,DiaChi.Xa, Khach_Hang.GioiTinh\n"
-                + "FROM  Khach_Hang INNER JOIN DiaChi ON Khach_Hang.ID = DiaChi.ID   WHERE Khach_Hang.Deleted = 0 ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        String sql = "SELECT MaKH,HoTen,SDT,GioiTinh ,DiaChi from Khach_Hang\n" +
+"            ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return select(sql, page, limit);
     }
 
@@ -203,11 +202,11 @@ public class KhachHangDao {
 
     private KhachHang readFromResultSet1(ResultSet rs) throws SQLException {
         KhachHang model = new KhachHang();
+         model.setMaKH(rs.getString("MaKH"));
         model.setMaHD(rs.getString("MaHD"));
-        model.setMaKH(rs.getString("MaKH"));
         model.setHoTen(rs.getString("HoTen"));
         model.setSDT(rs.getString("SDT"));
-        model.setDiaChi(rs.getString("DiaChiChiTiet"));
+        model.setDiaChi(rs.getString("DiaChi"));
         model.setNgayGiaoDich(rs.getDate("NgayNhan"));
         model.setTongTien(rs.getInt("TongTien"));
         model.setTrangThai1(rs.getInt("TrangThai"));

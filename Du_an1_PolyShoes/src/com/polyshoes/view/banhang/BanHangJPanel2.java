@@ -10,6 +10,7 @@ import com.polyshoes.model.HoaDon.HoaDon;
 import com.polyshoes.model.HoaDon.HoaDonChiTiet;
 import com.polyshoes.model.khachhang.KhachHang;
 import com.polyshoes.model.sanpham.SanPhamChiTiet;
+import com.polyshoes.view.dangnhap.Auth;
 import com.qrcode.QR_Code;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -603,6 +604,11 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
         tblGioHang.setRowHeight(25);
         tblGioHang.setSelectionBackground(new java.awt.Color(255, 255, 255));
         tblGioHang.setShowGrid(false);
+        tblGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblGioHangMouseClicked(evt);
+            }
+        });
         jScrollPaneGioHang.setViewportView(tblGioHang);
         if (tblGioHang.getColumnModel().getColumnCount() > 0) {
             tblGioHang.getColumnModel().getColumn(0).setPreferredWidth(10);
@@ -791,6 +797,7 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
                 if (index >= 0) {
                     maHD = (String) tblHoaDon.getValueAt(index, 1);
                     this.createHD(maSPCT, soLuongMua, hdDao.getHD_ByMa(maHD, trangThai).get(0).getID());
+                    this.fillTableGioHang();
                 } else {
                     DialogHelper.alert(this, "Vui lòng tạo hóa đơn trước khi thêm vào giỏ hàng!");
                 }
@@ -798,7 +805,7 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
         }//GEN-LAST:event_tblDSSPMouseClicked
 
         private void btnTaoHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHDActionPerformed
-            dao.taoHD(2, 1);
+            dao.taoHD(Auth.user.getId(),1 );
             DialogHelper.alert(this, "Tạo hóa đơn thành công!");
             index = 0;
             fillTableHoaDon();
@@ -862,6 +869,10 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
       
 
     }//GEN-LAST:event_btnChonKHActionPerformed
+
+    private void tblGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGioHangMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblGioHangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -957,7 +968,7 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
         for (HoaDon x : listHD) {
             stt++;
             Object[] rowData = new Object[]{
-                stt, x.getMaHD(), x.getNgayTao(), x.getMaNV(), "Tiền mặt", x.getTrangThai() == 1 ? "Chờ thanh toán" : "Đã thanh toán"
+                stt, x.getMaHD(), x.getNgayTao(), x.getMaNV(), "Tiền mặt", x.getTrangThaiA()
             };
             tblModel.addRow(rowData);
         };
@@ -968,6 +979,7 @@ public class BanHangJPanel2 extends javax.swing.JPanel {
         tblModel.setRowCount(0);
         HoaDonChiTietDao dao = new HoaDonChiTietDao();
         index = tblHoaDon.getSelectedRow();
+        maHD = (String) tblHoaDon.getValueAt(index, 1);
         List<HoaDonChiTiet> listHD = dao.selectHDBanHang(maHD);
         int stt = 0;
         for (HoaDonChiTiet x : listHD) {

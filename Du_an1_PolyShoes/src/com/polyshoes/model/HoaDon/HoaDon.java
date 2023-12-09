@@ -175,9 +175,9 @@ public class HoaDon {
         public String getTrangThaiA() {
                 switch (getTrangThai()) {
                         case 0:
-                                return "Đã thanh toán";
-                        case 1:
                                 return "Chưa thanh toán";
+                        case 1:
+                                return "Đã thanh toán";
                         case 2:
                                 return "Đã hủy thanh toán";
                         default:

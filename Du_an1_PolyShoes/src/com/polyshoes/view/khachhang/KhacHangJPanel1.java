@@ -38,6 +38,7 @@ public class KhacHangJPanel1 extends javax.swing.JPanel {
     public KhacHangJPanel1() {
         initComponents();
         this.load();
+      
 //        DiaChi1 dc = new DiaChi1();
 //        TableActionEvent event = new TableActionEvent() {
 //            @Override
@@ -50,8 +51,8 @@ public class KhacHangJPanel1 extends javax.swing.JPanel {
 //        };
 //        lblBang.getColumnModel().getColumn(9).setCellRenderer(new TableActionCellRender());
 //        lblBang.getColumnModel().getColumn(9).setCellEditor(new TableActionCellEditor(event));
-////        String MaKH = (String) lblBang.getValueAt(0, 1);
-////        System.out.print(MaKH);
+//        String MaKH = (String) lblBang.getValueAt(0, 1);
+//        System.out.print(MaKH);
 
 //        this.filltable(0, 5);
 //        mochu(txtFindDiaChi);
@@ -61,20 +62,20 @@ public class KhacHangJPanel1 extends javax.swing.JPanel {
 //        mochu(txtFindDiaChi1);
     }
 
-//    public void mochu(JTextField textField) {
-//        Font font = textField.getFont();
-//        font = font.deriveFont(Font.ITALIC);
-//        textField.setFont(font);
-//        textField.setForeground(Color.GRAY);
-//    }
-//
-//    public void xoamochu(JTextField textField) {
-//        Font font = textField.getFont();
-//        font = font.deriveFont(Font.PLAIN);
-//        textField.setFont(font);
-//        textField.setForeground(Color.GRAY);
-//    }
-//
+    public void mochu(JTextField textField) {
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.ITALIC);
+        textField.setFont(font);
+        textField.setForeground(Color.GRAY);
+    }
+
+    public void xoamochu(JTextField textField) {
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.GRAY);
+    }
+
     void load() {
         DefaultTableModel tblModel = (DefaultTableModel) lblBang.getModel();
         tblModel.setRowCount(0);
@@ -554,6 +555,7 @@ public class KhacHangJPanel1 extends javax.swing.JPanel {
         jPanel5.add(txtFindDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 26, 267, 26));
 
         btnFindAll.setBackground(new java.awt.Color(51, 255, 255));
+        btnFindAll.setForeground(new java.awt.Color(255, 255, 255));
         btnFindAll.setText("Tìm");
         btnFindAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -676,6 +678,7 @@ public class KhacHangJPanel1 extends javax.swing.JPanel {
     private void btnFindAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindAllActionPerformed
         // TODO add your handling code here:
 //        this.timAll();
+   JOptionPane.showMessageDialog(this, "Mở thành công");
     }//GEN-LAST:event_btnFindAllActionPerformed
 
     private void txtFindDiaChiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFindDiaChiFocusLost
@@ -824,6 +827,8 @@ public class KhacHangJPanel1 extends javax.swing.JPanel {
 
     private void txtSDTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusGained
 //        // TODO add your handling code here:
+
+
 //        if (txtSDT.getText().equals("nhap sdt")) {
 //            txtSDT.setText(null);
 //            txtSDT.requestFocus();
@@ -880,6 +885,7 @@ public class KhacHangJPanel1 extends javax.swing.JPanel {
     private void btnFindAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindAll1ActionPerformed
         // TODO add your handling code here:
 //        this.timAllLS();
+   JOptionPane.showMessageDialog(this, "Mở thành công");
     }//GEN-LAST:event_btnFindAll1ActionPerformed
 
 
