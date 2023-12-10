@@ -74,9 +74,7 @@ public class NhanVienDao {
 
     public List<NhanVien> Find(String ma, String email, String ten, String sdt, String diaChi) {
         List<NhanVien> list = this.selectBySQL(SELECT_BY_FIND, "%" + ma + "%", "%" + email + "%", "%" + ten + "%", "%" + sdt + "%", "%" + diaChi + "%");
-        if (list.isEmpty()) {
-            return null;
-        }
+       
         return list;
     }
 

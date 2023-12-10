@@ -68,7 +68,7 @@ public class KhachHangDao123 {
 
 
     public KhachHang findByKhachHang(String MaKH) {
-        String sql = "SELECT MaKH ,HoTen FROM Khach_Hang WHERE MaKH = ?";
+        String sql = "SELECT MaKH ,HoTen FROM Khach_Hang WHERE   MaKH = ?";
         List<KhachHang> list = select3(sql, MaKH);
         return !list.isEmpty() ? list.get(0) : null;
     }
@@ -79,7 +79,7 @@ public class KhachHangDao123 {
 //    }
     public List<KhachHang> selectByALL(String MaKH, String HoTen, String SDT) {
         String sql = "  SELECT  MaKH, HoTen,DiaChi, SDT,GioiTinh\n"
-                + "FROM   Khach_Hang WHERE MaKH like ? or HoTen like ? or SDT like ? ";
+                + "FROM   Khach_Hang WHERE Deleted = 0 and MaKH like ? or HoTen like ? or SDT like ? ";
         return select(sql, "%" + MaKH + "%", "%" + HoTen + "%", "%" + SDT + "%");
     }
 

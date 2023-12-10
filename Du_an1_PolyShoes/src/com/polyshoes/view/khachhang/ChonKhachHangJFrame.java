@@ -35,6 +35,7 @@ public class ChonKhachHangJFrame extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.fillTBKH(khdao.select2());
+        tblKH.fixTable(jScrollPane3);
         
     }
     

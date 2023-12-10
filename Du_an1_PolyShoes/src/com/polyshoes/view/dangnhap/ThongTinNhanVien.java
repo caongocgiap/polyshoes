@@ -20,7 +20,7 @@ public class ThongTinNhanVien extends javax.swing.JFrame {
     }
     void filltxt() {
         if (Auth.isLogin()) {
-            txtMaNV.setText(Auth.user.getManv());
+            txtMaNV.setText(String.valueOf(Auth.user.getId()));
             txtHoTen.setText(Auth.user.getTennv());
             txtNgaySinh.setText(Auth.user.getNgaySinh().toString());
             txtGioiTinh.setText(Auth.user.getGioiTinh() == 1 ? "Nam" : "Nữ");

@@ -4,10 +4,8 @@
  */
 package com.polyshoes.view.khachhang;
 
-
 import com.polyshoes.dao.khachhang.KhachHangDao123;
 import com.polyshoes.dao.khachhang.KhachHangDao13;
-
 
 import com.polyshoes.model.khachhang.KhachHang;
 import com.polyshoes.helper.JdbcHelper;
@@ -32,8 +30,8 @@ import javax.swing.table.DefaultTableModel;
 public class KhacHangJPanel12 extends javax.swing.JPanel {
 
     KhachHangDao123 daokh = new KhachHangDao123();
-    int index = -1 ;
-      int pageIndex = 0;
+    int index = -1;
+    int pageIndex = 0;
 
     /**
      * Creates new form KhacHangJPanel
@@ -56,7 +54,8 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
 //        lblBang.getColumnModel().getColumn(9).setCellEditor(new TableActionCellEditor(event));
         String MaKH = (String) lblBang.getValueAt(0, 1);
         System.out.print(MaKH);
-
+        lblBang.fixTable(jScrollPane3);
+        lblBang1.fixTable(jScrollPane5);
 //        this.filltable(0, 5);
 //        mochu(txtFindDiaChi);
 //        mochu(txtTen);
@@ -92,7 +91,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
                     x.getHoTen(),
                     x.getSDT(),
                     x.getDiaChi(),
-                    x.isGioitinh() ? "Nam" : "Nu",};
+                    x.isGioitinh() ? "Nam" : "Nữ",};
                 tblModel.addRow(row);
                 stt++;
             }
@@ -102,6 +101,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         }
     }
 //
+
     void loadLichSu() {
         DefaultTableModel tblModel = (DefaultTableModel) lblBang1.getModel();
         tblModel.setRowCount(0);
@@ -130,6 +130,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         }
     }
 //
+
     void filltable(int page, int limit) {
         DefaultTableModel tblModel = (DefaultTableModel) lblBang.getModel();
         tblModel.setRowCount(0);
@@ -152,6 +153,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         }
     }
 //
+
     void timAll() {
         DefaultTableModel tblModel = (DefaultTableModel) lblBang.getModel();
         tblModel.setRowCount(0);
@@ -168,7 +170,6 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
                     x.getHoTen(),
                     x.getSDT(),
                     x.getDiaChi(),
-                   
                     x.isGioitinh() ? "Nam" : "Nữ",};
                 tblModel.addRow(row);
             }
@@ -179,6 +180,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         }
     }
 //
+
     void timAllLS() {
         DefaultTableModel tblModel = (DefaultTableModel) lblBang1.getModel();
         tblModel.setRowCount(0);
@@ -221,6 +223,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
 //        return true;
 //    }
 //
+
     KhachHang getModel() {
         KhachHang model = new KhachHang();
         model.setHoTen(txtTen.getText());
@@ -233,12 +236,13 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         return model;
     }
 //
+
     KhachHang getModel1() {
         KhachHang model = new KhachHang();
         model.setHoTen(txtTen.getText());
         model.setMaKH(txtMa.getText());
         model.setSDT(txtSDT.getText());
-      model.setDiaChi(txtDiaChi.getText());
+        model.setDiaChi(txtDiaChi.getText());
         model.setGioitinh(rdoNam.isSelected());
 
         return model;
@@ -261,11 +265,12 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         txtTen.setText(model.getHoTen());
         txtSDT.setText(model.getSDT());
         txtDiaChi.setText(String.valueOf(model.getDiaChi()));
-      
+
         rdoNu.setSelected(!model.isGioitinh());
         rdoNam.setSelected(model.isGioitinh());
     }
 //
+
     public void showdata(int index) {
         txtMa.setText(daokh.select().get(index).getMaKH());
         txtTen.setText(daokh.select().get(index).getHoTen());
@@ -284,6 +289,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
 //
 //    }
 //
+
     void clear() {
         this.setModel(new KhachHang());
 
@@ -319,15 +325,19 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         txtMa = new javax.swing.JTextField();
-        txtTen = new javax.swing.JTextField();
-        txtSDT = new javax.swing.JTextField();
-        txtDiaChi = new javax.swing.JTextField();
         rdoNam = new javax.swing.JRadioButton();
         rdoNu = new javax.swing.JRadioButton();
         btnThem = new com.polyshoes.swing.Button();
         btnSua = new com.polyshoes.swing.Button();
         btnXoa = new com.polyshoes.swing.Button();
         btnReset = new com.polyshoes.swing.Button();
+        jSeparator10 = new javax.swing.JSeparator();
+        txtSDT = new javax.swing.JTextField();
+        jSeparator11 = new javax.swing.JSeparator();
+        txtDiaChi = new javax.swing.JTextField();
+        jSeparator12 = new javax.swing.JSeparator();
+        txtTen = new javax.swing.JTextField();
+        jSeparator13 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         tab2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
@@ -351,15 +361,15 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1058, 741));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thiết lập thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thiết lập thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 255))); // NOI18N
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel25.setText("Mã KH");
         jPanel6.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("SDT");
-        jPanel6.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 30, 30));
+        jLabel26.setText("SĐT");
+        jPanel6.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 30, 20));
 
         jLabel27.setText("Họ và tên");
         jPanel6.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, 30));
@@ -368,53 +378,18 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         jPanel6.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, 40));
 
         jLabel29.setText("Địa chỉ ");
-        jPanel6.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, -1, 30));
+        jPanel6.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, -1, 20));
 
+        txtMa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtMa.setForeground(new java.awt.Color(0, 153, 255));
+        txtMa.setBorder(null);
         txtMa.setEnabled(false);
         txtMa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaActionPerformed(evt);
             }
         });
-        jPanel6.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 293, 33));
-
-        txtTen.setText("nhap ten");
-        txtTen.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTenFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTenFocusLost(evt);
-            }
-        });
-        jPanel6.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 293, 33));
-
-        txtSDT.setText("nhap sdt");
-        txtSDT.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtSDTFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtSDTFocusLost(evt);
-            }
-        });
-        jPanel6.add(txtSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, 322, 40));
-
-        txtDiaChi.setText("nhap dia chi");
-        txtDiaChi.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDiaChiFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDiaChiFocusLost(evt);
-            }
-        });
-        txtDiaChi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDiaChiActionPerformed(evt);
-            }
-        });
-        jPanel6.add(txtDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 322, 30));
+        jPanel6.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 270, 33));
 
         rdoNam.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(rdoNam);
@@ -431,71 +406,114 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         rdoNu.setText("Nữ");
         jPanel6.add(rdoNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
 
-        btnThem.setBackground(new java.awt.Color(51, 255, 255));
+        btnThem.setBackground(new java.awt.Color(204, 255, 255));
+        btnThem.setForeground(new java.awt.Color(51, 51, 255));
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/them.png"))); // NOI18N
-        btnThem.setText("thêm");
+        btnThem.setText("Thêm");
+        btnThem.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        jPanel6.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 196, 83, 40));
+        jPanel6.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 83, 40));
 
-        btnSua.setBackground(new java.awt.Color(51, 255, 255));
+        btnSua.setBackground(new java.awt.Color(204, 255, 255));
+        btnSua.setForeground(new java.awt.Color(51, 51, 255));
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/sua.png"))); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
-        jPanel6.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 196, 82, 40));
+        jPanel6.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 82, 40));
 
-        btnXoa.setBackground(new java.awt.Color(51, 255, 255));
+        btnXoa.setBackground(new java.awt.Color(204, 255, 255));
+        btnXoa.setForeground(new java.awt.Color(51, 51, 255));
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/thungrac.png"))); // NOI18N
         btnXoa.setText("Xóa");
+        btnXoa.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoa1ActionPerformed(evt);
             }
         });
-        jPanel6.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 196, 82, 40));
+        jPanel6.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 82, 40));
 
-        btnReset.setBackground(new java.awt.Color(51, 255, 255));
+        btnReset.setBackground(new java.awt.Color(204, 255, 255));
+        btnReset.setForeground(new java.awt.Color(51, 51, 255));
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/xoa.png"))); // NOI18N
         btnReset.setText("Làm mới");
+        btnReset.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
             }
         });
-        jPanel6.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 196, 90, 40));
+        jPanel6.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 90, 40));
+
+        jSeparator10.setForeground(new java.awt.Color(0, 0, 255));
+        jSeparator10.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel6.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, 300, 10));
+
+        txtSDT.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtSDT.setForeground(new java.awt.Color(0, 153, 255));
+        txtSDT.setBorder(null);
+        txtSDT.setDragEnabled(true);
+        jPanel6.add(txtSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, 300, 30));
+
+        jSeparator11.setForeground(new java.awt.Color(0, 0, 255));
+        jSeparator11.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel6.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 300, 10));
+
+        txtDiaChi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtDiaChi.setForeground(new java.awt.Color(0, 153, 255));
+        txtDiaChi.setBorder(null);
+        txtDiaChi.setDragEnabled(true);
+        jPanel6.add(txtDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 300, 30));
+
+        jSeparator12.setForeground(new java.awt.Color(0, 0, 255));
+        jSeparator12.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel6.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 65, 270, 10));
+
+        txtTen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtTen.setForeground(new java.awt.Color(0, 153, 255));
+        txtTen.setBorder(null);
+        txtTen.setDragEnabled(true);
+        jPanel6.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 270, 30));
+
+        jSeparator13.setForeground(new java.awt.Color(0, 0, 255));
+        jSeparator13.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel6.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 270, 10));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 153, 255))); // NOI18N
 
         tab2.setPreferredSize(new java.awt.Dimension(1004, 202));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBack.setBackground(new java.awt.Color(51, 255, 255));
-        btnBack.setText("<<");
+        btnBack.setBackground(new java.awt.Color(204, 255, 255));
+        btnBack.setForeground(new java.awt.Color(51, 51, 255));
+        btnBack.setText("<");
+        btnBack.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel3.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 82, 30));
 
-        BtnNext.setBackground(new java.awt.Color(51, 255, 255));
-        BtnNext.setText(">>");
+        BtnNext.setBackground(new java.awt.Color(204, 255, 255));
+        BtnNext.setForeground(new java.awt.Color(51, 51, 255));
+        BtnNext.setText(">");
+        BtnNext.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         BtnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNextActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 82, 30));
 
         lblBang.setForeground(new java.awt.Color(255, 255, 255));
         lblBang.setModel(new javax.swing.table.DefaultTableModel(
@@ -506,7 +524,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "stt", "MaKH", "Họ và tên", "SDT", "Địa chỉ  ", "Giới tính"
+                "stt", "Mã KH", "Họ và tên", "SDT", "Địa chỉ  ", "Giới tính"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -524,21 +542,10 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(lblBang);
 
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1060, 200));
-
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "tim theo ma,ten,dia chi,sdt", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm theo tên,mã,địa chỉ,sđt", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtFindDiaChi.setText("tim ma-ten-sdt-dia chi");
-        txtFindDiaChi.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFindDiaChiFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFindDiaChiFocusLost(evt);
-            }
-        });
         txtFindDiaChi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFindDiaChiActionPerformed(evt);
@@ -546,8 +553,10 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         });
         jPanel5.add(txtFindDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 26, 267, 26));
 
-        btnFindAll.setBackground(new java.awt.Color(51, 255, 255));
+        btnFindAll.setBackground(new java.awt.Color(204, 255, 255));
+        btnFindAll.setForeground(new java.awt.Color(51, 51, 255));
         btnFindAll.setText("Tìm");
+        btnFindAll.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnFindAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFindAllActionPerformed(evt);
@@ -555,21 +564,51 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         });
         jPanel5.add(btnFindAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 26, 82, 26));
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 430, 70));
-
-        lblPad.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblPad.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblPad.setForeground(new java.awt.Color(51, 51, 255));
         lblPad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPad.setText("1");
-        jPanel3.add(lblPad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 20, 20));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblPad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(BtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane3)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        jPanel5.getAccessibleContext().setAccessibleName("Tìm theo tên,mã,địa chỉ,sđt");
 
         tab2.addTab("Thông tin khách hàng", jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(1367, 350));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "tim theo ma,ten,dia chi,sdt", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm theo tên,mã,địa chỉ,sđt", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtFindDiaChi1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -582,8 +621,10 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         });
         jPanel7.add(txtFindDiaChi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 28, 267, 23));
 
-        btnFindAll1.setBackground(new java.awt.Color(51, 255, 255));
+        btnFindAll1.setBackground(new java.awt.Color(204, 255, 255));
+        btnFindAll1.setForeground(new java.awt.Color(51, 51, 255));
         btnFindAll1.setText("Tìm");
+        btnFindAll1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnFindAll1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFindAll1ActionPerformed(evt);
@@ -591,15 +632,19 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         });
         jPanel7.add(btnFindAll1, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 28, 82, 26));
 
-        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 410, 70));
-        jPanel7.getAccessibleContext().setAccessibleName("Nhập MaxKH, TênKH, Địa chỉ, SĐT");
-
+        lblBang1.setForeground(new java.awt.Color(255, 255, 255));
         lblBang1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "stt", "MaKH", "MaHD", "TenKH", "SDT", "Dia Chi", "Ngay Giao Dich", "Tong Tien", "Trang Thai"
+                "STT", "Mã KH", "Mã HD", "Tên KH", "SDT", "Địa Chỉ", "Ngày Giao Dịch", "Tổng tiền", "Trạng Thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -617,7 +662,26 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(lblBang1);
 
-        jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1030, 220));
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane5)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel7.getAccessibleContext().setAccessibleName("Nhập MaxKH, TênKH, Địa chỉ, SĐT");
 
         tab2.addTab("Lịch sử giao dịch", jPanel4);
 
@@ -642,7 +706,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1077, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -658,7 +722,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -670,23 +734,6 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.timAll();
     }//GEN-LAST:event_btnFindAllActionPerformed
-
-    private void txtFindDiaChiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFindDiaChiFocusLost
-        // TODO add your handling code here:
-        if (txtFindDiaChi.getText().length() == 0) {
-            mochu(txtFindDiaChi);
-            txtFindDiaChi.setText("tim ma-ten-sdt-dia chi");
-        }
-    }//GEN-LAST:event_txtFindDiaChiFocusLost
-
-    private void txtFindDiaChiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFindDiaChiFocusGained
-        // TODO add your handling code here:
-        if (txtFindDiaChi.getText().equals("tim ma-ten-sdt-dia chi")) {
-            txtFindDiaChi.setText(null);
-            txtFindDiaChi.requestFocus();
-            xoamochu(txtFindDiaChi);
-        }
-    }//GEN-LAST:event_txtFindDiaChiFocusGained
 
     private void lblBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBangMouseClicked
         if (evt.getClickCount() == 2) {
@@ -703,7 +750,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
     }//GEN-LAST:event_lblBangMouseClicked
 
     private void BtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNextActionPerformed
-     
+
         if (pageIndex >= 0) {
             pageIndex++;
             this.filltable(pageIndex, 5);
@@ -716,7 +763,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
     }//GEN-LAST:event_BtnNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-       
+
         if (pageIndex >= 0) {
             pageIndex--;
             this.filltable(pageIndex, 5);
@@ -734,26 +781,26 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnXoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa1ActionPerformed
-        int confirm = JOptionPane.showConfirmDialog(this, "ban co chac chan ko", "thong bao", JOptionPane.YES_NO_CANCEL_OPTION, 3);
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn xóa khách hàng này không", "thông báo", JOptionPane.YES_NO_CANCEL_OPTION, 3);
         if (confirm == JOptionPane.YES_OPTION) {
             String makh = txtMa.getText();
             try {
 
                 daokh.delete(makh);
-                
+
                 this.clear();
                 this.load();
-                DialogHelper.alert(this, "xoa thanh cong");
+                DialogHelper.alert(this, "Xóa thành công");
             } catch (Exception e) {
                 e.printStackTrace();
-                DialogHelper.alert(this, "xoa that bai");
+                DialogHelper.alert(this, "Xóa thất bại");
             }
         }
     }//GEN-LAST:event_btnXoa1ActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        int confirm = JOptionPane.showConfirmDialog(this, "ban co chac chan ko", "thong bao", JOptionPane.YES_NO_CANCEL_OPTION, 3);
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn sửa khách hàng này không", "thông báo", JOptionPane.YES_NO_CANCEL_OPTION, 3);
         if (confirm == JOptionPane.YES_OPTION) {
             KhachHang model = getModel1();
             String ma = txtMa.getText();
@@ -762,84 +809,29 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
                     daokh.update(model);
                     daokh.update(model);
                     this.load();
-                    DialogHelper.alert(this, "cap nhap  thanh cong");
+                    DialogHelper.alert(this, "Cập nhập thành công");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                DialogHelper.alert(this, "cap nhap  that bai");
+                DialogHelper.alert(this, "Cập nhập thất bại");
             }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        int confirm = JOptionPane.showConfirmDialog(this, "ban co chac chan ko", "thong bao", JOptionPane.YES_NO_CANCEL_OPTION, 3);
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn thêm khách hàng này không", "thông báo", JOptionPane.YES_NO_CANCEL_OPTION, 3);
         if (confirm == JOptionPane.YES_OPTION) {
             try {
                 daokh.insert(getModel());
                 this.load();
-                JOptionPane.showMessageDialog(this, "them thanh cong");
+                JOptionPane.showMessageDialog(this, "Thêm thành công");
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "them that bai");
+                JOptionPane.showMessageDialog(this, "Thêm thất bại");
             }
         }
     }//GEN-LAST:event_btnThemActionPerformed
-
-    private void txtDiaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaChiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDiaChiActionPerformed
-
-    private void txtDiaChiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaChiFocusLost
-        // TODO add your handling code here:
-        if (txtDiaChi.getText().length() == 0) {
-            mochu(txtDiaChi);
-            txtDiaChi.setText("nhap dia chi");
-        }
-    }//GEN-LAST:event_txtDiaChiFocusLost
-
-    private void txtDiaChiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaChiFocusGained
-        // TODO add your handling code here:
-        if (txtDiaChi.getText().equals("nhap dia chi")) {
-            txtDiaChi.setText(null);
-            txtDiaChi.requestFocus();
-            xoamochu(txtDiaChi);
-        }
-    }//GEN-LAST:event_txtDiaChiFocusGained
-
-    private void txtSDTFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusLost
-        // TODO add your handling code here:
-        if (txtTen.getText().length() == 0) {
-            mochu(txtTen);
-            txtTen.setText("nhap sdt");
-        }
-    }//GEN-LAST:event_txtSDTFocusLost
-
-    private void txtSDTFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSDTFocusGained
-//        // TODO add your handling code here:
-        if (txtSDT.getText().equals("nhap sdt")) {
-            txtSDT.setText(null);
-            txtSDT.requestFocus();
-            xoamochu(txtSDT);
-        }
-    }//GEN-LAST:event_txtSDTFocusGained
-
-    private void txtTenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenFocusLost
-        // TODO add your handling code here:
-        if (txtTen.getText().length() == 0) {
-            mochu(txtTen);
-            txtTen.setText("nhap ten");
-        }
-    }//GEN-LAST:event_txtTenFocusLost
-
-    private void txtTenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTenFocusGained
-        // TODO add your handling code here:
-        if (txtTen.getText().equals("nhap ten")) {
-            txtTen.setText(null);
-            txtTen.requestFocus();
-            xoamochu(txtTen);
-        }
-    }//GEN-LAST:event_txtTenFocusGained
 
     private void txtFindDiaChi1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFindDiaChi1FocusGained
 //        // TODO add your handling code here:
@@ -872,7 +864,7 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
 
     private void btnFindAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindAll1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "tim thanh cong");
+        JOptionPane.showMessageDialog(this, "Tìm thành công");
         this.timAllLS();
     }//GEN-LAST:event_btnFindAll1ActionPerformed
 
@@ -901,6 +893,10 @@ public class KhacHangJPanel12 extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
     private com.polyshoes.swing.table.Table lblBang;
     private com.polyshoes.swing.table.Table lblBang1;
     private javax.swing.JLabel lblPad;
