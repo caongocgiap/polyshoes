@@ -73,7 +73,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 main.showForm(new QuanLyKhuyenMaiPanel());
                                                 break;
                                         case 5:
-                                                // Khach hang
+                                                main.showForm(new KhacHangJPanel1());
                                                 break;
                                         case 6:
                                                 // Thong ke

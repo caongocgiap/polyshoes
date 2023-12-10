@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Desktop/gitHUb3/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/helper/JdbcHelper.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/gitHUb3/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/HoaDon/PrintHoaDon21.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/gitHUb3/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/HoaDon/TraHangJFrame.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/gitHUb3/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/HoaDon/HoaDonPanel10.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/gitHUb3/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/dao/HoaDon/HoaDonDao.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/gitHUb3/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/HoaDon/PrintHoaDonV2.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/gitHUb3/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/banhang/BanHangJPanel2.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/gitHUb3/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/dao/HoaDon/HoaDonChiTietDao.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/gitHUb3/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/model/HoaDon/LichSuHoaDon.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/githug4/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/dao/HoaDon/PrintDao.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/githug4/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/sanpham/SanPhamChiTietJPanel.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/githug4/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/HoaDon/PrintHoaDonV2.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/githug4/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/view/HoaDon/HoaDonPanel10.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/githug4/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/helper/JdbcHelper.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/githug4/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/helper/DialogHelper.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/githug4/polyshoes/Du_an1_PolyShoes/src/com/polyshoes/dao/HoaDon/HoaDonDao.java</file>
         </group>
     </open-files>
 </project-private>
