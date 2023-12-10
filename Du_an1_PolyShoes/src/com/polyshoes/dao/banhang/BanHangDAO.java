@@ -7,6 +7,10 @@ public class BanHangDAO {
         final String TAO_HD = "{CALL Tao_Hoa_Don(?,?,?)}";
         final String BAN_HANG = "{CALL Them_HDCT(?,?,?)}";
         
+        final String Ban_Hang2 = "{CALL ThemVaoGioHang(?,?,?)}";
+        
+        
+        
         public void taoHD(int idNV, int idKH) {
                 HoaDon hd = new HoaDon();
                 JdbcHelper.executeUpdate(TAO_HD, idNV, idKH, hd.generateCode());

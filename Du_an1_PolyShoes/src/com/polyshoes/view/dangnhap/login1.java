@@ -24,8 +24,8 @@ public class login1 extends javax.swing.JFrame {
         initComponents();
         txtusername.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
-        txtusername.setText("NV03");
-        txtpassword.setText("123");
+        txtusername.setText("NV01");
+        txtpassword.setText("1234");
         cbxNhoMatKhau.setSelected(true);
     }
     
