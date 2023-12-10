@@ -203,6 +203,18 @@ public class SanPhamChiTiet {
                 };
         }
         
+        public Object[] toDataRowNoStt() {
+                if(trangThai.equalsIgnoreCase("0")) {
+                        setTrangThai("Còn hàng");
+                } else {
+                        setTrangThai("Hết hàng");
+                }
+                DecimalFormat df = new DecimalFormat("#,##0 VND");
+                return new Object[] {
+                        ma, danhMuc, xuatXu, nsx, mauSac, size, thuongHieu, chatLieu, deGiay, coGiay, df.format(gia), soLuongTon, trangThai
+                };
+        }
+        
         public Object[] toInsert() {
                 setMa(generateCode());
                 return new Object[] {

@@ -13,8 +13,7 @@ import com.polyshoes.swing.icon.IconFontSwing;
 import com.polyshoes.view.glasspanepopup.GlassPanePopup;
 import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanel;
 import com.polyshoes.view.HoaDon.HoaDonPanel10;
-import com.polyshoes.view.banhang.BanHangJPanel2;
-import com.polyshoes.view.khachhang.KhacHangJPanel1;
+import com.polyshoes.view.banhang.BanHangJPanel;
 import com.polyshoes.view.dangnhap.login1;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
@@ -61,7 +60,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 break;
                                         case 1:
 //                                                main.showForm(new BanHangJPanel());
-                                                main.showForm(new BanHangJPanel2());
+                                                main.showForm(new BanHangJPanel());
                                                 break;
                                         case 2:
                                                 main.showForm(new HoaDonPanel10());

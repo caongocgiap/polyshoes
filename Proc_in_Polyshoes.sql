@@ -579,5 +579,7 @@ select * from Hoa_Don
 
 
 
+select * from Hinh_Anh
 
+INSERT INTO Hinh_Anh (IDSanPhamCT, URL) VALUES (?,?)
 

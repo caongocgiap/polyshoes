@@ -194,11 +194,8 @@ public class KhachHangDao {
                 model.setMaKH(rs.getString("MaKH"));
                 model.setHoTen(rs.getString("HoTen"));
                 model.setSDT(rs.getString("SDT"));
-                model.setDiaChi(rs.getString("DiaChiChiTiet"));
-                model.setTinh(rs.getString("Tinh"));
-                model.setQuan(rs.getString("Quan"));
-                model.setXa(rs.getString("Xa"));
                 model.setGioitinh(rs.getBoolean("GioiTinh"));
+                model.setDiaChi(rs.getString("DiaChi"));
                 return model;
         }
 
@@ -222,4 +219,52 @@ public class KhachHangDao {
                 return model;
         }
 
+        public List<KhachHang> select2() {
+                String sql = "SELECT MaKH, HoTen, SDT, GioiTinh, DiaChi from Khach_Hang";
+                return selectBanHang(sql);
+        }
+
+        private List<KhachHang> selectBanHang(String sql, Object... args) {
+                List<KhachHang> list = new ArrayList<>();
+                try {
+                        ResultSet rs = null;
+                        try {
+                                rs = JdbcHelper.executeQuery(sql, args);
+                                while (rs.next()) {
+                                        KhachHang model = readFromResultSetBanhang(rs);
+                                        list.add(model);
+                                }
+                        } finally {
+                                rs.getStatement().getConnection().close();
+                        }
+                } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                }
+                return list;
+        }
+
+        private KhachHang readFromResultSetBanhang(ResultSet rs) throws SQLException {
+                KhachHang model = new KhachHang();
+                model.setMaKH(rs.getString("MaKH"));
+                model.setHoTen(rs.getString("HoTen"));
+                model.setSDT(rs.getString("SDT"));
+                model.setGioitinh(rs.getBoolean("GioiTinh"));
+                model.setDiaChi(rs.getString("DiaChi"));
+
+                return model;
+        }
+
+        public List<KhachHang> findAll(String key) {
+                String sql = " SELECT MaKH, HoTen, SDT, GioiTinh, DiaChi from Khach_Hang where MaKH Like ? or SDT like ? or HoTen like ? or DiaChi like ?  ";
+                List<KhachHang> list = selectBanHang(sql, "%" + key + "%", "%" + key + "%", "%" + key + "%", "%" + key + "%");
+                return list;
+        }
+
+        public KhachHang findByMaKH(String MaKH) {
+                String sql = "SELECT MaKH, HoTen, SDT, GioiTinh, DiaChi from Khach_Hang where MaKH = ? ";
+                List<KhachHang> list = select(sql, MaKH);
+                return !list.isEmpty() ? list.get(0) : null;
+//        return findById(sql);
+////  return list.size() > 0 ? list.get(0) : null;
+        }
 }
