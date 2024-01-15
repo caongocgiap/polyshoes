@@ -1,6 +1,9 @@
 package com.polyshoes.model.HoaDon;
 
 import java.util.Date;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class HoaDonChiTiet {
 
@@ -10,6 +13,7 @@ public class HoaDonChiTiet {
     private String MaHD;
     private String Color;
     private int Size;
+    private String coGiay;
     private int SoLuong;
     private Double DonGia;
     private int TrangThai;
@@ -52,6 +56,14 @@ public class HoaDonChiTiet {
     public void setID(int ID) {
         this.ID = ID;
     }
+
+        public String getCoGiay() {
+                return coGiay;
+        }
+
+        public void setCoGiay(String coGiay) {
+                this.coGiay = coGiay;
+        }
 
     public String getMaSPCT() {
         return MaSPCT;
@@ -158,5 +170,15 @@ public class HoaDonChiTiet {
         }
 
     }
+ public String getFormattedTongTien() {
+        // Convert double to BigDecimal for precise currency handling
+        BigDecimal tongTienBigDecimal = BigDecimal.valueOf(TongTien);
 
+        // Set the locale to the desired one, e.g., Locale.US for US dollars
+        Locale locale = new Locale("vi", "VN");
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+
+        // Format the TongTien as currency
+        return currencyFormatter.format(tongTienBigDecimal);
+    }
 }

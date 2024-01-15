@@ -635,6 +635,12 @@ public class ThuocTinhJPanel extends javax.swing.JPanel {
                 String ma = txtMaThuocTinh.getText();
                 String ten = txtTenThuocTinh.getText();
                 ThuocTinh model = new ThuocTinh(ma, ten);
+                for (int row = 0; row < tblThuocTinh.getRowCount(); row++) {
+                        if(ten.equalsIgnoreCase(tblThuocTinh.getValueAt(row, 2).toString())) {
+                                DialogHelper.alert(this, "Thuộc tính đã tồn tại!");
+                                return;
+                        }
+                }
                 if (this.checkDataThuocTinh()) {
                         if (rdoDanhMuc.isSelected()) {
                                 this.insertDanhMucCon("Danh_Muc", model);

@@ -1,117 +1,95 @@
 package com.polyshoes.view.trangchu;
 
-import com.polyshoes.model.trangchu.Card;
-import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
-import com.polyshoes.swing.icon.IconFontSwing;
-import java.awt.Color;
-import javax.swing.Icon;
-
 public class TrangChuJPanel extends javax.swing.JPanel {
 
         public TrangChuJPanel() {
                 initComponents();
                 setOpaque(false);
-                initData();
-        }
-
-        private void initData() {
-                initCardData();
-        }
-
-        private void initCardData() {
-                Icon icon1 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.PEOPLE, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-                card1.setData(new Card("Tổng khách hàng hôm nay", 2, 60, icon1));
-                Icon icon2 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.MONETIZATION_ON, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-                card2.setData(new Card("Tổng doanh thu hôm nay", 890000, 80, icon2));
-                Icon icon3 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.SHOPPING_BASKET, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-                card3.setData(new Card("Tổng hóa đơn", 2, 80, icon3));
-                Icon icon4 = IconFontSwing.buildIcon(GoogleMaterialDesignIcons.BUSINESS_CENTER, 60, new Color(255, 255, 255, 100), new Color(255, 255, 255, 15));
-                card4.setData(new Card("Hóa đơn đã hủy", 0, 0, icon4));
         }
 
         @SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                card1 = new com.polyshoes.component.CardJPanel();
-                jLabel1 = new javax.swing.JLabel();
-                card2 = new com.polyshoes.component.CardJPanel();
-                card3 = new com.polyshoes.component.CardJPanel();
-                card4 = new com.polyshoes.component.CardJPanel();
                 jPanel2 = new javax.swing.JPanel();
-
-                card1.setColorGradient(new java.awt.Color(211, 28, 215));
-
-                jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-                jLabel1.setForeground(new java.awt.Color(4, 72, 210));
-                jLabel1.setText("Trang chủ");
-
-                card2.setBackground(new java.awt.Color(10, 30, 214));
-                card2.setColorGradient(new java.awt.Color(72, 111, 252));
-
-                card3.setBackground(new java.awt.Color(194, 85, 1));
-                card3.setColorGradient(new java.awt.Color(255, 212, 99));
-
-                card4.setBackground(new java.awt.Color(60, 195, 0));
-                card4.setColorGradient(new java.awt.Color(208, 255, 90));
+                jLabel1 = new javax.swing.JLabel();
+                jLabel2 = new javax.swing.JLabel();
+                jLabel3 = new javax.swing.JLabel();
+                jLabel4 = new javax.swing.JLabel();
+                jLabel5 = new javax.swing.JLabel();
 
                 jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+                jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+                jLabel1.setForeground(new java.awt.Color(4, 72, 210));
+                jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                jLabel1.setText("TRANG CHỦ");
+
+                jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/polyshoes/icon/banner_to.jpg"))); // NOI18N
+
+                jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+                jLabel3.setForeground(new java.awt.Color(4, 72, 210));
+                jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                jLabel3.setText("polyshoes.com.vn");
+
+                jLabel4.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+                jLabel4.setForeground(new java.awt.Color(4, 72, 210));
+                jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                jLabel4.setText("UY TÍN - TẬN TÂM - CHẤT LƯỢNG");
+
+                jLabel5.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
+                jLabel5.setForeground(new java.awt.Color(4, 72, 210));
+                jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                jLabel5.setText("POLYSHOES");
 
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
                 jPanel2Layout.setHorizontalGroup(
                         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
                 );
                 jPanel2Layout.setVerticalGroup(
                         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 563, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                                .addComponent(jLabel3))
                 );
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
                 this.setLayout(layout);
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(card1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(card2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(card3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(card4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel1)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap())
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(card1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(card2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(card3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(card4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 );
         }// </editor-fold>//GEN-END:initComponents
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private com.polyshoes.component.CardJPanel card1;
-        private com.polyshoes.component.CardJPanel card2;
-        private com.polyshoes.component.CardJPanel card3;
-        private com.polyshoes.component.CardJPanel card4;
         private javax.swing.JLabel jLabel1;
+        private javax.swing.JLabel jLabel2;
+        private javax.swing.JLabel jLabel3;
+        private javax.swing.JLabel jLabel4;
+        private javax.swing.JLabel jLabel5;
         private javax.swing.JPanel jPanel2;
         // End of variables declaration//GEN-END:variables
 }

@@ -146,4 +146,14 @@ public class NhanVienDao {
             throw new RuntimeException(e);
         }
     }
+    
+    /**
+     * Voucher
+     */
+    String SELECT_BY_ID = "select *  from [dbo].[Nhan_Vien] WHERE ID = ?";
+    
+    public String getMaById(int id) {
+           NhanVien model =  selectBySQL(SELECT_BY_ID, id).get(0);
+           return model.getManv();
+    }
 }

@@ -23,6 +23,7 @@ public class Auth {
     }
 
     public static boolean isManager() {
-        return Auth.isLogin();
+        
+       return Auth.isLogin() && user.hienThiChucVu().equals("Quản Lý");
     }
 }

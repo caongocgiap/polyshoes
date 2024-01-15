@@ -28,11 +28,12 @@ public class XuatDanhSach {
     private int soLuong;
     private double GiaBan;
     private double ThanhTien;
+    private double giamGia;
 
     public XuatDanhSach() {
     }
 
-    public XuatDanhSach(int id, String MaHD, Date ngayTao, Date ngayTT, String MaNV, String TenNguoiNhan, String DiaChi, String SDT, String MaSP, String TenSP, String hang, String mau, int Size, int soLuong, double GiaBan, double ThanhTien) {
+    public XuatDanhSach(int id, String MaHD, Date ngayTao, Date ngayTT, String MaNV, String TenNguoiNhan, String DiaChi, String SDT, String MaSP, String TenSP, String hang, String mau, int Size, int soLuong, double GiaBan, double ThanhTien, double giamGia) {
         this.id = id;
         this.MaHD = MaHD;
         this.ngayTao = ngayTao;
@@ -49,7 +50,18 @@ public class XuatDanhSach {
         this.soLuong = soLuong;
         this.GiaBan = GiaBan;
         this.ThanhTien = ThanhTien;
+        this.giamGia = giamGia;
     }
+
+    public double getGiamGia() {
+        return giamGia;
+    }
+
+    public void setGiamGia(double giamGia) {
+        this.giamGia = giamGia;
+    }
+
+ 
 
     public int getId() {
         return id;
