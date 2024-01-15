@@ -35,4 +35,9 @@ public class BanHangDAO {
         public void thanhToanHD(String maHD) {
                 JdbcHelper.executeUpdate(THANH_TOAN, maHD);
         }
+        
+        public int updateTongTien(double  tienSauGiam, String maHD) {
+                String sql = "UPDATE Hoa_Don SET TongTien = ? WHERE MaHD = ?";
+                return JdbcHelper.executeUpdate(sql, tienSauGiam, maHD);
+        }
 }

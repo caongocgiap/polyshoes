@@ -190,7 +190,7 @@ public class SanPhamChiTiet {
         public void setTrangThai(String trangThai) {
                 this.trangThai = trangThai;
         }
-        
+
         public Object[] toDataRow() {
                 if(trangThai.equalsIgnoreCase("0")) {
                         setTrangThai("Còn hàng");

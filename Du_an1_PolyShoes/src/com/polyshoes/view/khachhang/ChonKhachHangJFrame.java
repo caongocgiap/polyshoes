@@ -353,8 +353,8 @@ public class ChonKhachHangJFrame extends javax.swing.JFrame {
                 model.setHoTen(txtTenKH.getText());
                 model.setMaKH(model.generateCode());
                 model.setSDT(txtSDT.getText());
-                model.setDiaChi(txtDiaChi.getText());
                 model.setGioitinh(rdoNam.isSelected());
+                model.setDiaChi(txtDiaChi.getText());
                 return model;
         }
 

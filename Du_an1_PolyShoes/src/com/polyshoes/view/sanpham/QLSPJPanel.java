@@ -5,7 +5,6 @@ import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.model.sanpham.SanPham;
 import com.polyshoes.swing.table.EventAction;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -292,15 +291,14 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                                                 .addGap(77, 77, 77)
                                                                 .addGroup(tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                                         .addComponent(txtFindName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addGroup(tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                                .addGroup(tab1Layout.createSequentialGroup()
-                                                                                        .addComponent(btnXoaSP)
-                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                                        .addComponent(btnLamMoiSP))
-                                                                                .addGroup(tab1Layout.createSequentialGroup()
-                                                                                        .addComponent(btnThemSP)
-                                                                                        .addGap(30, 30, 30)
-                                                                                        .addComponent(btnCapNhatSP))))))
+                                                                        .addGroup(tab1Layout.createSequentialGroup()
+                                                                                .addComponent(btnXoaSP)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                .addComponent(btnLamMoiSP))
+                                                                        .addGroup(tab1Layout.createSequentialGroup()
+                                                                                .addComponent(btnThemSP)
+                                                                                .addGap(30, 30, 30)
+                                                                                .addComponent(btnCapNhatSP)))))
                                                 .addGap(34, 34, 34))
                                         .addComponent(pnlButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(tab1Layout.createSequentialGroup()
@@ -351,10 +349,10 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                         .addComponent(rdoSPNgungBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtFindName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPaneSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPaneSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
+                                .addGap(27, 27, 27))
                 );
 
                 tabTong.addTab("Sản phẩm", tab1);

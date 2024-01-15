@@ -190,7 +190,7 @@ public class KhachHang {
     }
 
     public Object[] todataROw() {
-        return new Object[]{this.MaKH, this.HoTen, this.SDT, this.gioitinh,this.tinh,this.quan,this.xa};
+        return new Object[]{this.MaKH, this.HoTen, this.SDT, this.gioitinh,this.DiaChi};
     }
 //     public Object[] todataROw1(EventAction event) {
 //        return new Object[]{this.MaKH, this.HoTen, this.SDT, this.gioitinh,this.tinh,this.quan,this.xa,new ModelAction(this,event)};

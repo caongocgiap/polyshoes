@@ -4,6 +4,7 @@ import com.polyshoes.component.HeaderJPanel;
 import com.polyshoes.component.MenuJPanel;
 import com.polyshoes.event.EventMenuSelected;
 import com.polyshoes.event.EventShowPopupMenu;
+import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.view.trangchu.TrangChuJPanel;
 import com.polyshoes.view.trangchu.MainJPanel;
 import com.polyshoes.swing.MenuItem;
@@ -11,16 +12,20 @@ import com.polyshoes.swing.PopupMenu;
 import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
 import com.polyshoes.view.glasspanepopup.GlassPanePopup;
-import com.polyshoes.view.khuyenmai.QuanLyKhuyenMaiPanel;
 import com.polyshoes.view.HoaDon.HoaDonPanel10;
+import com.polyshoes.view.ThongKe.ThongKeJPanel;
 import com.polyshoes.view.banhang.BanHangJPanel;
+import com.polyshoes.view.dangnhap.Auth;
 import com.polyshoes.view.dangnhap.login1;
+import com.polyshoes.view.khachhang.KhacHangJPanel12;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
+import com.polyshoes.view.voucher.VoucherJPanel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -35,8 +40,8 @@ public class MainJFrame extends javax.swing.JFrame {
         private Animator animator;
 
         public MainJFrame() {
-
                 initComponents();
+                setExtendedState(JFrame.MAXIMIZED_BOTH);
                 init();
                 GlassPanePopup.install(this);
 
@@ -59,7 +64,6 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 main.showForm(new TrangChuJPanel());
                                                 break;
                                         case 1:
-//                                                main.showForm(new BanHangJPanel());
                                                 main.showForm(new BanHangJPanel());
                                                 break;
                                         case 2:
@@ -69,18 +73,25 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 main.showForm(new QLSPJPanel());
                                                 break;
                                         case 4:
-                                                main.showForm(new QuanLyKhuyenMaiPanel());
+                                                main.showForm(new VoucherJPanel());
                                                 break;
                                         case 5:
-                                                // Khach hang
+                                                main.showForm(new KhacHangJPanel12());
                                                 break;
                                         case 6:
-                                                // Thong ke
+                                                if (Auth.isManager()) {
+                                                        main.showForm(new ThongKeJPanel());
+                                                } else {
+                                                        DialogHelper.alert(null, "Nhân Viên không được quyền vào phần này");
+                                                }
                                                 break;
                                         case 7:
-                                                main.showForm(new NhanVienJPanel());
+                                                if (Auth.isManager()) {
+                                                        main.showForm(new NhanVienJPanel());
+                                                } else {
+                                                        DialogHelper.alert(null, "Nhân Viên không được quyền vào phần này");
+                                                }
                                                 break;
-
                                         default:
                                                 throw new AssertionError();
                                 }
@@ -144,47 +155,48 @@ public class MainJFrame extends javax.swing.JFrame {
         }
 
         @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        private void initComponents() {
 
-        bg = new javax.swing.JLayeredPane();
+                bg = new javax.swing.JLayeredPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setTitle("Phần mềm bán giày thể thao Sneaker Polyshoes");
+                addWindowListener(new java.awt.event.WindowAdapter() {
+                        public void windowOpened(java.awt.event.WindowEvent evt) {
+                                formWindowOpened(evt);
+                        }
+                });
 
-        bg.setBackground(new java.awt.Color(245, 245, 245));
-        bg.setForeground(new java.awt.Color(255, 255, 255));
-        bg.setOpaque(true);
+                bg.setBackground(new java.awt.Color(245, 245, 245));
+                bg.setForeground(new java.awt.Color(255, 255, 255));
+                bg.setOpaque(true);
 
-        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
-        bg.setLayout(bgLayout);
-        bgLayout.setHorizontalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1366, Short.MAX_VALUE)
-        );
-        bgLayout.setVerticalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 783, Short.MAX_VALUE)
-        );
+                javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
+                bg.setLayout(bgLayout);
+                bgLayout.setHorizontalGroup(
+                        bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1366, Short.MAX_VALUE)
+                );
+                bgLayout.setVerticalGroup(
+                        bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 783, Short.MAX_VALUE)
+                );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg)
-        );
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                getContentPane().setLayout(layout);
+                layout.setHorizontalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bg)
+                );
+                layout.setVerticalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bg)
+                );
 
-        pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+                pack();
+                setLocationRelativeTo(null);
+        }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
@@ -225,7 +237,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 });
         }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLayeredPane bg;
-    // End of variables declaration//GEN-END:variables
+        // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JLayeredPane bg;
+        // End of variables declaration//GEN-END:variables
 }

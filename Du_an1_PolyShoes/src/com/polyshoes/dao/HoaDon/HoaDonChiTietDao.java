@@ -292,16 +292,16 @@ public class HoaDonChiTietDao {
 
     public List<HoaDonChiTiet> selectHDBanHang(String maHD) {
         String sql = """
-                         SELECT    San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Mau_Sac.Ten, Co_Giay.Ten, Size.size, 
-                                Hoa_Don_Chi_Tiet.Gia, Hoa_Don_Chi_Tiet.SoLuong, Hoa_Don_Chi_Tiet.ThanhTien
-                         FROM         Hoa_Don_Chi_Tiet LEFT JOIN
-                         Thanh_Toan ON Hoa_Don_Chi_Tiet.ID = Thanh_Toan.ID LEFT JOIN
-                         San_Pham_Chi_Tiet ON Hoa_Don_Chi_Tiet.IDSanPhamCT = San_Pham_Chi_Tiet.ID LEFT JOIN
-                         Mau_Sac ON San_Pham_Chi_Tiet.IDMauSac = Mau_Sac.ID LEFT JOIN
-                         Co_Giay ON San_Pham_Chi_Tiet.IDCoGiay = Co_Giay.ID LEFT JOIN
-                         Size ON San_Pham_Chi_Tiet.IDSize = Size.ID LEFT JOIN
-                         San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID LEFT JOIN
-                         Hoa_Don ON Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID WHERE Hoa_Don.MaHD = ?""";
+                        SELECT    San_Pham_Chi_Tiet.Ma, San_Pham.Ten, Mau_Sac.Ten, Co_Giay.Ten, Size.size, 
+                                                         Hoa_Don_Chi_Tiet.Gia, Hoa_Don_Chi_Tiet.SoLuong, Hoa_Don_Chi_Tiet.ThanhTien
+                                                  FROM         Hoa_Don_Chi_Tiet LEFT JOIN
+                                                  Thanh_Toan ON Hoa_Don_Chi_Tiet.ID = Thanh_Toan.ID LEFT JOIN
+                                                  San_Pham_Chi_Tiet ON Hoa_Don_Chi_Tiet.IDSanPhamCT = San_Pham_Chi_Tiet.ID LEFT JOIN
+                                                  Mau_Sac ON San_Pham_Chi_Tiet.IDMauSac = Mau_Sac.ID LEFT JOIN
+                                                  Co_Giay ON San_Pham_Chi_Tiet.IDCoGiay = Co_Giay.ID LEFT JOIN
+                                                  Size ON San_Pham_Chi_Tiet.IDSize = Size.ID LEFT JOIN
+                                                  San_Pham ON San_Pham_Chi_Tiet.IDSanPham = San_Pham.ID LEFT JOIN
+                                                  Hoa_Don ON Hoa_Don_Chi_Tiet.IDHoaDon = Hoa_Don.ID WHERE Hoa_Don.MaHD = ?""";
         return selectBanHang(sql, maHD);
     }
 }
