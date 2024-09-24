@@ -16,6 +16,7 @@ public class SanPhamCTDAO {
         final String INSERT = "{CALL them_SPCT(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
         final String UPDATE = "{CALL update_SPCT(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
         final String LOC_SPCT = "{CALL loc_SPCT(?,?,?,?,?)}";
+        final String LOC_SPCT_BY_TEN = "{CALL get_SPCT_ByTen(?)}";
 
         private List<SanPhamChiTiet> select(String sql, Object... args) {
                 List<SanPhamChiTiet> list = new ArrayList<>();
@@ -70,11 +71,16 @@ public class SanPhamCTDAO {
         }
 
         public SanPhamChiTiet getByMa(String maSPCT) {
-                return select(GET_BY_MA, maSPCT).get(0);
+                List<SanPhamChiTiet> list = select(GET_BY_MA, maSPCT);
+                return list.isEmpty() ? null : list.get(0);
+        }
+        
+        public List<SanPhamChiTiet> timTheoTen(String tenSPCT) {
+                return select(LOC_SPCT_BY_TEN, tenSPCT);
         }
 
-        public List<SanPhamChiTiet> locSPCT(String maSP, String nsx, String xuatXu, String danhMuc, boolean gia) { //Gia = 0 ? Tăng : Giảm
-                return select(LOC_SPCT, maSP, nsx, xuatXu, danhMuc, gia);
+        public List<SanPhamChiTiet> locSPCT(String maSP, String danhMuc, String xuatXu, String nsx, boolean gia) { //Gia = 0 ? Tăng : Giảm
+                return select(LOC_SPCT, maSP, danhMuc, xuatXu, nsx, gia);
         }
 
         public void insert(Object... args) {

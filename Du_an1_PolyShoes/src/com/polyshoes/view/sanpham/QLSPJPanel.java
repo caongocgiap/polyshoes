@@ -5,7 +5,6 @@ import com.polyshoes.helper.DialogHelper;
 import com.polyshoes.model.sanpham.SanPham;
 import com.polyshoes.swing.table.EventAction;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -44,7 +43,6 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 btnXoaSP = new javax.swing.JButton();
                 lblTenSP = new javax.swing.JLabel();
                 btnLamMoiSP = new javax.swing.JButton();
-                cboFindTenSP = new com.polyshoes.component.Combobox();
                 txtTenSP = new com.polyshoes.swing.textfield_suggestion.TextFieldSuggestion();
                 txtMaSP = new com.polyshoes.swing.textfield_suggestion.TextFieldSuggestion();
                 pnlButton = new javax.swing.JPanel();
@@ -56,6 +54,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 btnNextSP = new com.polyshoes.swing.Button();
                 btnEndSP = new com.polyshoes.swing.Button();
                 rdoSPTatCa = new com.polyshoes.swing.RadioButtonCustom();
+                txtFindName = new com.polyshoes.swing.TextField();
                 tab2 = new com.polyshoes.swing.tabbed.PanelRound();
                 tab3 = new com.polyshoes.swing.tabbed.PanelRound();
                 thuocTinhJPanel1 = new com.polyshoes.view.sanpham.ThuocTinhJPanel();
@@ -190,13 +189,6 @@ public class QLSPJPanel extends javax.swing.JPanel {
                         }
                 });
 
-                cboFindTenSP.setLabeText("Tên sản phẩm");
-                cboFindTenSP.addItemListener(new java.awt.event.ItemListener() {
-                        public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                                cboFindTenSPItemStateChanged(evt);
-                        }
-                });
-
                 txtMaSP.setBackground(new java.awt.Color(255, 255, 255));
                 txtMaSP.setText("###");
 
@@ -262,6 +254,15 @@ public class QLSPJPanel extends javax.swing.JPanel {
                         }
                 });
 
+                txtFindName.setBackground(new java.awt.Color(255, 255, 255));
+                txtFindName.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+                txtFindName.setLabelText("Tìm kiếm");
+                txtFindName.addKeyListener(new java.awt.event.KeyAdapter() {
+                        public void keyReleased(java.awt.event.KeyEvent evt) {
+                                txtFindNameKeyReleased(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout tab1Layout = new javax.swing.GroupLayout(tab1);
                 tab1.setLayout(tab1Layout);
                 tab1Layout.setHorizontalGroup(
@@ -283,10 +284,13 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                                                         .addComponent(txtMaSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                                 .addGap(74, 74, 74)))
                                                 .addGroup(tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblMoTaSP)
+                                                        .addComponent(lblTieuDe)
                                                         .addGroup(tab1Layout.createSequentialGroup()
                                                                 .addComponent(jScrollPaneMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(77, 77, 77)
                                                                 .addGroup(tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(txtFindName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                         .addGroup(tab1Layout.createSequentialGroup()
                                                                                 .addComponent(btnXoaSP)
                                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -294,9 +298,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                                                         .addGroup(tab1Layout.createSequentialGroup()
                                                                                 .addComponent(btnThemSP)
                                                                                 .addGap(30, 30, 30)
-                                                                                .addComponent(btnCapNhatSP))))
-                                                        .addComponent(lblMoTaSP)
-                                                        .addComponent(lblTieuDe))
+                                                                                .addComponent(btnCapNhatSP)))))
                                                 .addGap(34, 34, 34))
                                         .addComponent(pnlButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(tab1Layout.createSequentialGroup()
@@ -307,8 +309,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                                 .addComponent(rdoSPDangBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(rdoSPNgungBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(cboFindTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())
                 );
 
@@ -340,18 +341,18 @@ public class QLSPJPanel extends javax.swing.JPanel {
                                                 .addGroup(tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(btnXoaSP)
                                                         .addComponent(btnLamMoiSP))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                                 .addGroup(tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(lblTrangThai)
                                         .addComponent(rdoSPTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(rdoSPDangBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(rdoSPNgungBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cboFindTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtFindName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPaneSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPaneSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
+                                .addGap(27, 27, 27))
                 );
 
                 tabTong.addTab("Sản phẩm", tab1);
@@ -374,7 +375,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tabTong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tabTong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 );
         }// </editor-fold>//GEN-END:initComponents
 
@@ -430,10 +431,6 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 this.clear();
         }//GEN-LAST:event_btnLamMoiSPActionPerformed
 
-        private void cboFindTenSPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboFindTenSPItemStateChanged
-                this.fillTableByTen();
-        }//GEN-LAST:event_cboFindTenSPItemStateChanged
-
         private void btnFirstSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstSPActionPerformed
                 pageIndex = 1;
                 this.fillToTable(pageIndex, limit);
@@ -480,6 +477,10 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 this.fillToTable(pageIndex, limit);
         }//GEN-LAST:event_tab1ComponentShown
 
+        private void txtFindNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFindNameKeyReleased
+                fillTableByTen();
+        }//GEN-LAST:event_txtFindNameKeyReleased
+
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton btnCapNhatSP;
@@ -490,7 +491,6 @@ public class QLSPJPanel extends javax.swing.JPanel {
         private com.polyshoes.swing.Button btnPreviousSP;
         private javax.swing.JButton btnThemSP;
         private javax.swing.JButton btnXoaSP;
-        private com.polyshoes.component.Combobox cboFindTenSP;
         private javax.swing.ButtonGroup grpTrangThai;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JScrollPane jScrollPaneMoTa;
@@ -512,6 +512,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
         private com.polyshoes.swing.tabbed.MaterialTabbed tabTong;
         private com.polyshoes.swing.table.Table tblSanPham;
         private com.polyshoes.view.sanpham.ThuocTinhJPanel thuocTinhJPanel1;
+        private com.polyshoes.swing.TextField txtFindName;
         private com.polyshoes.swing.textfield_suggestion.TextFieldSuggestion txtMaSP;
         private javax.swing.JTextArea txtMoTa;
         private com.polyshoes.swing.textfield_suggestion.TextFieldSuggestion txtTenSP;
@@ -521,18 +522,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 tblSanPham.fixTable(jScrollPaneSanPham);
                 txtMaSP.setEditable(false);
                 this.fillToTable(pageIndex, limit);
-                this.fillComboBox();
                 this.showTab();
-        }
-
-        private void fillComboBox() {
-                DefaultComboBoxModel cboModel = (DefaultComboBoxModel) cboFindTenSP.getModel();
-                cboModel.removeAllElements();
-                List<SanPham> list = dao.selectAll();
-                for (SanPham x : list) {
-                        cboModel.addElement(x.getTen());
-                }
-                cboFindTenSP.setSelectedIndex(-1);
         }
 
         private void fillToTable(int pageIndex, int limit) {
@@ -556,7 +546,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
 
                         @Override
                         public void update(SanPham student) {
-                                
+
                         }
                 };
                 DefaultTableModel tblModel = (DefaultTableModel) tblSanPham.getModel();
@@ -609,7 +599,7 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 txtTenSP.setText("");
                 txtMoTa.setText("");
                 index = -1;
-                cboFindTenSP.setSelectedIndex(-1);
+                txtFindName.setText("");
         }
 
         private void showDetailSP() {
@@ -696,19 +686,13 @@ public class QLSPJPanel extends javax.swing.JPanel {
                 };
                 DefaultTableModel tblModel = (DefaultTableModel) tblSanPham.getModel();
                 tblModel.setRowCount(0);
-                if (cboFindTenSP.getSelectedIndex() >= 0) {
-                        String ten = cboFindTenSP.getSelectedItem().toString();
-                        List<SanPham> list = dao.findByTen(ten);
-                        for (SanPham x : list) {
-                                tblModel.addRow(x.toDataRow(eventAction));
-                        }
-                        pageSize = list.size();
-                        pageIndex = 1;
-                        lblIndexSP.setText(String.valueOf(pageIndex));
-                        lblSizeSP.setText(String.valueOf(pageSize));
-                } else {
-                        pageIndex = 1;
-                        this.fillToTable(pageIndex, limit);
+                List<SanPham> list = dao.findByTen("%" + txtFindName.getText() + "%");
+                for (SanPham x : list) {
+                        tblModel.addRow(x.toDataRow(eventAction));
                 }
+                pageSize = list.size();
+                pageIndex = 1;
+                lblIndexSP.setText(String.valueOf(pageIndex));
+                lblSizeSP.setText(String.valueOf(pageSize));
         }
 }

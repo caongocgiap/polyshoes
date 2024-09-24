@@ -30,6 +30,15 @@ public class KhachHang {
     private boolean gioitinh;
     private int TrangThai;
     
+   private int id;
+
+        public int getId() {
+                return id;
+        }
+
+        public void setId(int id) {
+                this.id = id;
+        }
    
 
     public KhachHang() {
@@ -43,7 +52,8 @@ public class KhachHang {
     }
     
 
-    public KhachHang(String MaKH, String HoTen,String DiaChi ,String SDT,  boolean gioitinh, int TrangThai) {
+    public KhachHang(int id, String MaKH, String HoTen,String DiaChi ,String SDT,  boolean gioitinh, int TrangThai) {
+            this.id = id;
         this.MaKH = MaKH;
         this.HoTen = HoTen;
         this.SDT = SDT;
@@ -190,7 +200,7 @@ public class KhachHang {
     }
 
     public Object[] todataROw() {
-        return new Object[]{this.MaKH, this.HoTen, this.SDT, this.gioitinh,this.tinh,this.quan,this.xa};
+        return new Object[]{this.MaKH, this.HoTen, this.SDT, this.gioitinh,this.DiaChi};
     }
 //     public Object[] todataROw1(EventAction event) {
 //        return new Object[]{this.MaKH, this.HoTen, this.SDT, this.gioitinh,this.tinh,this.quan,this.xa,new ModelAction(this,event)};
