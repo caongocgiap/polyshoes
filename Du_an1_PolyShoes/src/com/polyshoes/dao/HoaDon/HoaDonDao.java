@@ -343,7 +343,7 @@ public class HoaDonDao {
                 + "        Khach_Hang ON Khach_Hang.id = Hoa_Don.IDKhachHang\n"
                 + "    WHERE\n"
                 + "        Hoa_Don.Deleted = 0\n"
-                + "ORDER BY Hoa_Don.NgayCapnhat DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+                + "ORDER BY Hoa_Don.NgayThanhToan DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return select(sql, page, limit);
     }
 //     public List<HoaDon> paging(int page, int limit) {

@@ -71,7 +71,8 @@ public class SanPhamCTDAO {
         }
 
         public SanPhamChiTiet getByMa(String maSPCT) {
-                return select(GET_BY_MA, maSPCT).get(0);
+                List<SanPhamChiTiet> list = select(GET_BY_MA, maSPCT);
+                return list.isEmpty() ? null : list.get(0);
         }
         
         public List<SanPhamChiTiet> timTheoTen(String tenSPCT) {

@@ -40,4 +40,9 @@ public class BanHangDAO {
                 String sql = "UPDATE Hoa_Don SET TongTien = ? WHERE MaHD = ?";
                 return JdbcHelper.executeUpdate(sql, tienSauGiam, maHD);
         }
+        
+        public void updateKH(int idKH, String maHD) {
+                String sql = "UPDATE Hoa_Don SET IDKhachHang = ? WHERE MaHD = ?";
+                JdbcHelper.executeUpdate(sql, idKH, maHD);
+        }
 }

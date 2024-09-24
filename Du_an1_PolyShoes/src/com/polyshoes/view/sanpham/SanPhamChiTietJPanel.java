@@ -1119,7 +1119,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }//GEN-LAST:event_chkAllSPCTActionPerformed
 
         private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
-                if(chkAllSPCT.isSelected()) {
+                if (chkAllSPCT.isSelected()) {
                         xuatAllFile();
                 } else {
                         xuatFile();
@@ -1129,6 +1129,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         private void cboFindDanhMucItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboFindDanhMucItemStateChanged
                 if (cboFindDanhMuc.getSelectedIndex() >= 0) {
                         findDanhMuc = cboFindDanhMuc.getSelectedItem().toString();
+                        System.out.println(findDanhMuc);
                         locSPCT();
                 } else {
                         findDanhMuc = "%";
@@ -1396,14 +1397,24 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
         }
 
         private void taiNhieuQR() {
-                JFileChooser jfc = new JFileChooser("D:\\Tai_Ve_DuAn1");
-                jfc.setDialogTitle("Save QR");
                 DefaultTableModel tblModel = (DefaultTableModel) tblSPCT.getModel();
+                boolean checkNull = true;
+                for (int i = 0; i < tblModel.getRowCount(); i++) {
+                        if(tblSPCT.getValueAt(i, 14) != null) {
+                                checkNull = false;
+                        }
+                }
+                if(checkNull) {
+                        DialogHelper.alert(null, "Vui lòng chọn mã muốn tải về máy!");
+                        return;
+                }
+                JFileChooser jfc = new JFileChooser("D:\\");
+                jfc.setDialogTitle("Save QR");
                 int noiLuu = jfc.showSaveDialog(null);
                 boolean bienTam = false;
                 if (noiLuu == JFileChooser.APPROVE_OPTION) {
                         for (int i = 0; i < tblModel.getRowCount(); i++) {
-                                boolean rowChoose = (boolean) tblSPCT.getValueAt(i, 14);
+                                boolean rowChoose = tblSPCT.getValueAt(i, 14) != null;
                                 maSPCT = (String) tblSPCT.getValueAt(i, 1);
                                 if (rowChoose) {
                                         try {
@@ -1453,7 +1464,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 FileOutputStream execlFOS = null;
                 BufferedOutputStream excelBOS = null;
                 XSSFWorkbook excelJTableExporter = null;
-                JFileChooser noiSave = new JFileChooser("D:\\Tai_Ve_DuAn1");
+                JFileChooser noiSave = new JFileChooser("D:\\");
                 noiSave.setDialogTitle("Save As");
                 FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILES", "xls", "xlsx", "xlsm");
                 noiSave.setFileFilter(fnef);
@@ -1504,7 +1515,7 @@ public class SanPhamChiTietJPanel extends javax.swing.JPanel {
                 FileOutputStream excelFOS = null;
                 BufferedOutputStream excelBOS = null;
                 XSSFWorkbook excelJTableExporter = null;
-                JFileChooser noiSave = new JFileChooser("D:\\Tai_Ve_DuAn1");
+                JFileChooser noiSave = new JFileChooser("D:\\");
                 noiSave.setDialogTitle("Save As");
                 FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILES", "xls", "xlsx", "xlsm");
                 noiSave.setFileFilter(fnef);

@@ -68,7 +68,7 @@ public class KhachHangDao {
 
 
     public KhachHang findByKhachHang(String MaKH) {
-        String sql = "SELECT MaKH ,HoTen FROM Khach_Hang WHERE MaKH = ?";
+        String sql = "SELECT id, MaKH ,HoTen FROM Khach_Hang WHERE MaKH = ?";
         List<KhachHang> list = select3(sql, MaKH);
         return !list.isEmpty() ? list.get(0) : null;
     }
@@ -78,13 +78,13 @@ public class KhachHangDao {
 //        return select(sql, "%" + MaKH + "%");
 //    }
     public List<KhachHang> selectByALL(String MaKH, String HoTen, String SDT) {
-        String sql = "  SELECT  MaKH, HoTen,DiaChi, SDT,GioiTinh\n"
+        String sql = "  SELECT id,  MaKH, HoTen,DiaChi, SDT,GioiTinh\n"
                 + "FROM   Khach_Hang WHERE MaKH like ? or HoTen like ? or SDT like ? ";
         return select(sql, "%" + MaKH + "%", "%" + HoTen + "%", "%" + SDT + "%");
     }
 
     public List<KhachHang> selectByALLLS(String MaKH, String HoTen, String MaHD) {
-        String sql = "SELECT Khach_Hang.MaKH,Hoa_Don.MaHD, Khach_Hang.HoTen, Khach_Hang.SDT, Khach_Hang.DiaChi,  Hoa_Don.NgayNhan,  Hoa_Don.TongTien,Hoa_Don.TrangThai\n" +
+        String sql = "SELECT Khach_Hang.id Khach_Hang.MaKH,Hoa_Don.MaHD, Khach_Hang.HoTen, Khach_Hang.SDT, Khach_Hang.DiaChi,  Hoa_Don.NgayNhan,  Hoa_Don.TongTien,Hoa_Don.TrangThai\n" +
 "FROM     Hoa_Don INNER JOIN\n" +
 "                  Khach_Hang ON Hoa_Don.IDKhachHang = Khach_Hang.ID  WHERE MaKH like ? or HoTen like ?  or MaHD like ?";
         return select1(sql, "%" + MaKH + "%", "%" + HoTen + "%", "%" + MaHD + "%");
@@ -108,7 +108,7 @@ public class KhachHangDao {
 //    }
 
     public List<KhachHang> selectHoaDon1(String MaKH) {
-        String sql = "SELECT Khach_Hang.MaKH,Hoa_Don.MaHD, Khach_Hang.HoTen, Khach_Hang.SDT, Khach_Hang.DiaChi,  Hoa_Don.NgayNhan,  Hoa_Don.TongTien,Hoa_Don.TrangThai\n" +
+        String sql = "SELECT ID, Khach_Hang.MaKH,Hoa_Don.MaHD, Khach_Hang.HoTen, Khach_Hang.SDT, Khach_Hang.DiaChi,  Hoa_Don.NgayNhan,  Hoa_Don.TongTien,Hoa_Don.TrangThai\n" +
 "FROM     Hoa_Don INNER JOIN\n" +
 "                  Khach_Hang ON Hoa_Don.IDKhachHang = Khach_Hang.ID  where MaKH like ?";
         return select1(sql, "%" + MaKH + "%");
@@ -128,6 +128,25 @@ public class KhachHangDao {
                 rs = JdbcHelper.executeQuery(sql, args);
                 while (rs.next()) {
                     KhachHang model = readFromResultSet(rs);
+                    list.add(model);
+                }
+            } finally {
+                rs.getStatement().getConnection().close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+    
+    private List<KhachHang> selectBH(String sql, Object... args) {
+        List<KhachHang> list = new ArrayList<>();
+        try {
+            ResultSet rs = null;
+            try {
+                rs = JdbcHelper.executeQuery(sql, args);
+                while (rs.next()) {
+                    KhachHang model = readFromResultSetBanhang(rs);
                     list.add(model);
                 }
             } finally {
@@ -178,7 +197,7 @@ public class KhachHangDao {
     }
 
     public List<KhachHang> paging(int page, int limit) {
-        String sql = "SELECT MaKH,HoTen,SDT,GioiTinh ,DiaChi from Khach_Hang\n" +
+        String sql = "SELECT ID, MaKH,HoTen,SDT,GioiTinh ,DiaChi from Khach_Hang\n" +
 "            ORDER BY ID DESC OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return select(sql, page, limit);
     }
@@ -234,6 +253,7 @@ public class KhachHangDao {
 
     private KhachHang readFromResultSetBanhang(ResultSet rs) throws SQLException {
         KhachHang model = new KhachHang();
+        model.setId(rs.getInt("id"));
         model.setMaKH(rs.getString("MaKH"));
         model.setHoTen(rs.getString("HoTen"));
         model.setSDT(rs.getString("SDT"));
@@ -246,18 +266,18 @@ public class KhachHangDao {
     // Những đoạn code gọi bên phần chọn khách hàng 
     
     public List<KhachHang> findAll(String key) {
-        String sql = " SELECT MaKH, HoTen, SDT, GioiTinh, DiaChi from Khach_Hang where MaKH Like ? or SDT like ? or HoTen like ? or DiaChi like ?  ";
+        String sql = " SELECT ID, MaKH, HoTen, SDT, GioiTinh, DiaChi from Khach_Hang where MaKH Like ? or SDT like ? or HoTen like ? or DiaChi like ?  ";
         List<KhachHang> list = selectBanHang(sql, "%" + key + "%", "%" + key + "%","%" + key + "%","%" + key + "%");
         return list;
     }
 
     public List<KhachHang> select2() {
-        String sql = "SELECT MaKH, HoTen, SDT, GioiTinh, DiaChi from Khach_Hang";
+        String sql = "SELECT ID, MaKH, HoTen, SDT, GioiTinh, DiaChi from Khach_Hang";
         return selectBanHang(sql);
     }
         public KhachHang findByMaKH(String MaKH) {
-        String sql = "SELECT MaKH, HoTen, SDT, GioiTinh, DiaChi from Khach_Hang where MaKH = ? ";
-        List<KhachHang> list = select(sql, MaKH);
+        String sql = "SELECT ID, MaKH, HoTen, SDT, GioiTinh, DiaChi from Khach_Hang where MaKH = ? ";
+        List<KhachHang> list = selectBH(sql, MaKH);
         return !list.isEmpty() ? list.get(0) : null;
 //        return findById(sql);
 ////  return list.size() > 0 ? list.get(0) : null;

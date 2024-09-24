@@ -29,6 +29,10 @@ public class Voucher {
 
         public Voucher() {
         }
+        
+        public Voucher(String ten) {
+                this.ten = ten;
+        }
 
         public Voucher(int stt, int id, String ma, String ten, Date ngayBD, Date ngayKT, int soLuong, double giaTriMin, int phanTramGiam, double giamToiDa, Date ngayTao, int nguoiTao, int trangThai) {
                 this.stt = stt;

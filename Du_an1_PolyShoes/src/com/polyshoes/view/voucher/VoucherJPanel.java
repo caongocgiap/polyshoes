@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -388,7 +389,7 @@ public class VoucherJPanel extends javax.swing.JPanel {
                         tblModel.addRow(x.toDataRow());
                 }
         }
-        
+
         private void fillByTen(String tenKM) {
                 DefaultTableModel tblModel = (DefaultTableModel) tblVoucher.getModel();
                 tblModel.setRowCount(0);
@@ -397,7 +398,7 @@ public class VoucherJPanel extends javax.swing.JPanel {
                         tblModel.addRow(x.toDataRow());
                 }
         }
-        
+
         private void showDetail() {
                 String ten = tblVoucher.getValueAt(tblVoucher.getSelectedRow(), 2).toString();
                 Voucher model = (Voucher) dao.selectByTen(ten).get(0);
@@ -467,6 +468,25 @@ public class VoucherJPanel extends javax.swing.JPanel {
                 int phanTramGiam;
                 double hdMin;
                 double giamMax;
+                try {
+                        String ngayBD = txtNgayBD.getText();
+                        String ngayKT = txtNgayKT.getText();
+                        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                        
+                        Date dateBD = dateFormat.parse(ngayBD);
+                        Date dateKT = dateFormat.parse(ngayKT);
+                        
+                        LocalDate localDateBD = dateBD.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+                        LocalDate localDateKT = dateKT.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+                        
+                        if(localDateBD.isAfter(localDateKT)) {
+                                DialogHelper.alert(null, "Ngày bắt đầu không được sau ngày kết thúc!");
+                                return false;
+                        }
+
+                } catch (Exception e) {
+                }
+
                 if (txtTenKM.getText().isEmpty()) {
                         DialogHelper.alert(this, "Tên khuyến mại trống!");
                         return false;
@@ -484,14 +504,14 @@ public class VoucherJPanel extends javax.swing.JPanel {
         }
 
         private void huyVoucher() {
-                if(DialogHelper.confirm(this, "Bạn có chắc muốn hủy đợt giảm giá này không?")) {
-                        if(dao.updateTrangThai(3, tblVoucher.getValueAt(tblVoucher.getSelectedRow(), 1).toString()) > 0) {
+                if (DialogHelper.confirm(this, "Bạn có chắc muốn hủy đợt giảm giá này không?")) {
+                        if (dao.updateTrangThai(3, tblVoucher.getValueAt(tblVoucher.getSelectedRow(), 1).toString()) > 0) {
                                 DialogHelper.alert(this, "Hủy thành công!");
                                 fillAllTable();
                         } else {
                                 DialogHelper.alert(this, "Hủy thất bại!");
                         }
-                        
+
                 }
         }
 

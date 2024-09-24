@@ -288,7 +288,7 @@ public class HoaDon {
     public String getFormattedTT() {
         if (NgayTT != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            return dateFormat.format(NgayTao);
+            return dateFormat.format(NgayTT);
         } else {
             return null;
         }

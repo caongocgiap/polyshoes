@@ -469,8 +469,8 @@ public class BanHangJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblMoTaSP6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
                 );
 
                 javax.swing.GroupLayout pnlDonHangLayout = new javax.swing.GroupLayout(pnlDonHang);
@@ -940,12 +940,15 @@ public class BanHangJPanel extends javax.swing.JPanel {
                         public void windowClosed(WindowEvent e) {
                                 KhachHang kh = chon.chon();
                                 this.setTextField(kh);
+                                System.out.println("id kh: " + kh.getId());
+                                dao.updateKH(kh.getId(), maHD);
                         }
 
                         private void setTextField(KhachHang kh) {
                                 if (kh != null) {
                                         txtMaKH.setText(kh.getMaKH());
                                         txtTenKH.setText(kh.getHoTen());
+                                        lblTenKH.setText(kh.getHoTen());
                                 } else {
                                         txtMaKH.setText("KHDF-001");
                                         txtTenKH.setText("Khách bán lẻ");
@@ -1111,6 +1114,9 @@ public class BanHangJPanel extends javax.swing.JPanel {
                 for (Voucher x : list) {
                         cboModel.addElement(x);
                 }
+                if(list.isEmpty()) {
+                        cboModel.addElement("Không có mã nào để áp dụng");
+                }
         }
 
         private void fillComboBoxSPCT() {
@@ -1173,7 +1179,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
         }
 
         private void fillFormHD() {
-                if(index == -1) {
+                if (index == -1) {
                         maHD = (String) tblHoaDon.getValueAt(0, 1);
                 } else {
                         maHD = (String) tblHoaDon.getValueAt(index, 1);
@@ -1253,15 +1259,19 @@ public class BanHangJPanel extends javax.swing.JPanel {
                 }
                 if (tienThua >= 0) {
                         VoucherDAO voucherDao = new VoucherDAO();
-                        Voucher voucher = (Voucher) cboPhieuGiamGia.getSelectedItem();
-                        int idVoucher = voucher.getId();
                         try {
                                 dao.thanhToanHD(maHD);
                                 fillTableHoaDon();
                                 fillTableGioHang("");
                                 DialogHelper.alert(this, "Thanh toán thành công!");
                                 dao.updateTongTien(tienPhaiTra, maHD);
-                                voucherDao.updateSoLuong(idVoucher);
+                                if (cboPhieuGiamGia.getItemCount() > 0) {
+                                        if (cboPhieuGiamGia.getSelectedIndex() != -1) {
+                                                Voucher voucher = (Voucher) cboPhieuGiamGia.getSelectedItem();
+                                                int idVoucher = voucher.getId();
+                                                voucherDao.updateSoLuong(idVoucher);
+                                        }
+                                }
                                 tienThua = -1;
                                 clearFormHD();
                         } catch (Exception e) {
@@ -1334,6 +1344,10 @@ public class BanHangJPanel extends javax.swing.JPanel {
                         public void windowClosed(WindowEvent e) {
                                 SanPhamCTDAO spctDao = new SanPhamCTDAO();
                                 if (!maSPCT.equals("")) {
+                                        if(spctDao.getByMa(maSPCT) == null) {
+                                                DialogHelper.alert(null, "Sản phẩm không tồn tại, vui lòng thử lại sau!");
+                                                return;
+                                        }
                                         int maxSL = spctDao.getByMa(maSPCT).getSoLuongTon();
                                         try {
                                                 int soLuongMua = Integer.parseInt(DialogHelper.prompt(new BanHangJPanel(), "Nhập số lượng muốn mua:"));
@@ -1362,6 +1376,9 @@ public class BanHangJPanel extends javax.swing.JPanel {
                 } catch (NumberFormatException e) {
                         DialogHelper.alert(this, "Sai định dạng tiền!");
                 }
+                if(cboPhieuGiamGia.getSelectedIndex() == -1) {
+                        tienPhaiTra = tongTien;
+                }
                 tienThua = tienMat - tienPhaiTra;
                 if (cboHTTT.getSelectedIndex() == 0) {
                         lblTienThua.setText(tienFormat.format(tienThua));
@@ -1380,6 +1397,7 @@ public class BanHangJPanel extends javax.swing.JPanel {
                         }
                         NumberFormat tienFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
                         if (cboHTTT.getSelectedIndex() == 1) {
+                                tinhTienThua();
                                 txtChuyenKhoan.setText(tienFormat.format(tienPhaiTra));
                                 tienThua = 0;
                                 lblTienThua.setText("0");

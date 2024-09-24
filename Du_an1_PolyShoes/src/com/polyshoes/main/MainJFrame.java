@@ -13,13 +13,13 @@ import com.polyshoes.swing.icon.GoogleMaterialDesignIcons;
 import com.polyshoes.swing.icon.IconFontSwing;
 import com.polyshoes.view.glasspanepopup.GlassPanePopup;
 import com.polyshoes.view.HoaDon.HoaDonPanel10;
-import com.polyshoes.view.ThongKe.ThongKeJPanel;
 import com.polyshoes.view.banhang.BanHangJPanel;
 import com.polyshoes.view.dangnhap.Auth;
 import com.polyshoes.view.dangnhap.login1;
 import com.polyshoes.view.khachhang.KhacHangJPanel12;
 import com.polyshoes.view.nhanvien.NhanVienJPanel;
 import com.polyshoes.view.sanpham.QLSPJPanel;
+import com.polyshoes.view.thongke.Form_1;
 import com.polyshoes.view.voucher.VoucherJPanel;
 import java.awt.Color;
 import java.awt.Component;
@@ -80,7 +80,8 @@ public class MainJFrame extends javax.swing.JFrame {
                                                 break;
                                         case 6:
                                                 if (Auth.isManager()) {
-                                                        main.showForm(new ThongKeJPanel());
+//                                                        main.showForm(new ThongKeJPanel());
+                                                        main.showForm(new Form_1());
                                                 } else {
                                                         DialogHelper.alert(null, "Nhân Viên không được quyền vào phần này");
                                                 }

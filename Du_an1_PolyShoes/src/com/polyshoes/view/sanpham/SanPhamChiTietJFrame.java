@@ -466,6 +466,11 @@ public class SanPhamChiTietJFrame extends javax.swing.JFrame {
         }
 
         private void showDetail() {
+                if(dao.getByMa(maSPCT) == null) {
+                        DialogHelper.alert(null, "Sản phẩm không tồn tại, vui lòng thử lại sau!");
+                        dispose();
+                        return;
+                }
                 SanPhamChiTiet model = dao.getByMa(maSPCT);
                 setSelectedIndex(cboTenSP, model.getTen());
                 setSelectedIndex(cboChatLieu, model.getChatLieu());
